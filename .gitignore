@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Production build output
+dist/
+dist-ssr/
+
+# Environment files & secrets
+.env
+.env*.local
+
+# Temporary & build artifacts
+*.tsbuildinfo
+*.log
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Archives / scratch
+*.zip
+
+# Editor directories
+.vscode/
+.idea/
