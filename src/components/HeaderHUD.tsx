@@ -1,7 +1,6 @@
 import React from 'react';
 import { 
   Flame, 
-  ShieldAlert, 
   Layers, 
   Volume2, 
   VolumeX, 
@@ -35,26 +34,13 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
     <header className="w-full bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-30 select-none shadow-sm">
       <div className="max-w-[1720px] mx-auto px-3 sm:px-6 h-14 flex items-center justify-between gap-2 sm:gap-4">
         
-        {/* Sisi Kiri: Logo Bersih & Telemetri Desktop */}
+        {/* Sisi Kiri: Logo Bersih */}
         <div className="flex items-center gap-2 sm:gap-3 min-w-0">
           <div className="flex items-center gap-2 shrink-0">
             <span className="w-2.5 h-2.5 rounded-full bg-blue-600 animate-pulse glow-blue shrink-0" />
             <span className="font-mono text-sm sm:text-base font-extrabold tracking-wider text-slate-900 uppercase truncate">
               LEXICON<span className="text-blue-600">LAB</span>
             </span>
-          </div>
-
-          <span className="hidden lg:inline-block text-slate-300">|</span>
-
-          {/* Desktop Version Tag */}
-          <span className="hidden lg:inline-block text-slate-500 font-sans text-xs">
-            Studio Masteri Kosa Kata
-          </span>
-
-          {/* Elimination Zero Tolerance Status Tag (Desktop & Tablets) */}
-          <div className="hidden md:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-50 border border-red-200 text-red-700 font-mono text-[11px] tracking-wide animate-subtle-pulse shrink-0">
-            <ShieldAlert className="w-3.5 h-3.5 text-red-600 shrink-0" />
-            <span className="font-medium whitespace-nowrap">ZERO-TOLERANCE (1 SALAH = RESET TOTAL)</span>
           </div>
         </div>
 

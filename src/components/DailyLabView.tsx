@@ -50,6 +50,7 @@ interface DailyLabViewProps {
 
 export const DailyLabView: React.FC<DailyLabViewProps> = ({
   words,
+  allWords = [],
   statsMap,
   quizQuestions,
   phase,
@@ -95,6 +96,12 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
   const isBookmarked = currentStats?.isBookmarked || false;
   const inspectedCount = words.filter(w => statsMap[w.id]?.isInspected).length;
   const isAllInspected = inspectedCount === words.length && words.length > 0;
+
+  // Ekstraksi stage unik secara dinamis dari database (Google Sheets / Mock)
+  const availableStages = Array.from(
+    new Set(allWords.map((w) => w.stageId).filter(Boolean))
+  ).sort((a, b) => a - b);
+  const stagesToRender = availableStages.length > 0 ? availableStages : [1];
 
   const currentQ = quizQuestions[quizIndex];
 
@@ -402,7 +409,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
           </div>
 
           {/* Contoh Kalimat Kontekstual */}
-          {targetWordItem.contextSentences?.[0] && (
+          {targetWordItem.contextSentences?.[0]?.english?.trim() && (
             <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
               <span className="font-mono text-[10px] text-slate-500 font-bold uppercase block">
                 Contoh Penggunaan:
@@ -410,9 +417,11 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
               <p className="text-slate-800 font-sans italic text-sm">
                 "{targetWordItem.contextSentences[0].english}"
               </p>
-              <p className="text-slate-500 font-sans text-xs pt-1 border-t border-slate-200/60">
-                Artinya: "{targetWordItem.contextSentences[0].indonesian}"
-              </p>
+              {targetWordItem.contextSentences[0].indonesian?.trim() && (
+                <p className="text-slate-500 font-sans text-xs pt-1 border-t border-slate-200/60">
+                  Artinya: "{targetWordItem.contextSentences[0].indonesian}"
+                </p>
+              )}
             </div>
           )}
 
@@ -690,8 +699,8 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
       
       {/* 1. Header Ringkas: Nomor Stage & Judul */}
       <div className="bg-white border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 shadow-xs flex items-center justify-between gap-2">
-        <div className="flex items-center gap-1.5 min-w-0">
-          {[1, 2, 3].map(stgNum => {
+        <div className="flex items-center gap-1.5 min-w-0 overflow-x-auto no-scrollbar py-0.5">
+          {stagesToRender.map(stgNum => {
             const isActive = stgNum === currentStageId;
             const isCleared = clearedStages.includes(stgNum);
 
@@ -758,9 +767,11 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
             <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight font-sans">
               {currentWord.word}
             </h1>
-            <div className="text-sm font-mono text-slate-400 font-normal">
-              {currentWord.phonetic}
-            </div>
+            {currentWord.phonetic?.trim() && (
+              <div className="text-sm font-mono text-slate-400 font-normal">
+                {currentWord.phonetic}
+              </div>
+            )}
           </div>
 
           <button
@@ -798,26 +809,32 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
         </div>
 
         {/* Contoh Kalimat Dwibahasa */}
-        <div className="pt-3 border-t border-slate-100 space-y-2.5">
-          <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 font-bold uppercase tracking-wider flex items-center gap-1.5">
-            <BookOpen className="w-3.5 h-3.5 text-blue-600" />
-            <span>CONTOH PENGGUNAAN & TERJEMAHAN:</span>
-          </div>
-
-          {currentWord.contextSentences.map((ctx, idx) => (
-            <div 
-              key={idx}
-              className="p-3.5 sm:p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1"
-            >
-              <p className="text-xs sm:text-sm font-semibold text-slate-800 font-sans leading-relaxed">
-                "{ctx.english}"
-              </p>
-              <p className="text-xs sm:text-sm text-slate-500 font-sans leading-relaxed pt-1 border-t border-slate-200/60">
-                → {ctx.indonesian}
-              </p>
+        {currentWord.contextSentences?.some((ctx) => ctx.english?.trim()) && (
+          <div className="pt-3 border-t border-slate-100 space-y-2.5">
+            <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 font-bold uppercase tracking-wider flex items-center gap-1.5">
+              <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+              <span>CONTOH PENGGUNAAN & TERJEMAHAN:</span>
             </div>
-          ))}
-        </div>
+
+            {currentWord.contextSentences
+              .filter((ctx) => ctx.english?.trim())
+              .map((ctx, idx) => (
+                <div 
+                  key={idx}
+                  className="p-3.5 sm:p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1"
+                >
+                  <p className="text-xs sm:text-sm font-semibold text-slate-800 font-sans leading-relaxed">
+                    "{ctx.english}"
+                  </p>
+                  {ctx.indonesian?.trim() && (
+                    <p className="text-xs sm:text-sm text-slate-500 font-sans leading-relaxed pt-1 border-t border-slate-200/60">
+                      → {ctx.indonesian}
+                    </p>
+                  )}
+                </div>
+              ))}
+          </div>
+        )}
       </div>
 
       {/* Floating Navigation Dock di Flashcard Stage */}

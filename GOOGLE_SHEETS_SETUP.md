@@ -1,65 +1,170 @@
 # Panduan Integrasi Google Sheets & Google Apps Script (Lexicon Lab)
 
-Dokumen ini menjelaskan struktur kolom tabel Google Sheets dan kode **Google Apps Script** yang siap pakai untuk menghubungkan data kosa kata dinamis ke aplikasi **Lexicon Lab**.
+Dokumen ini menjelaskan struktur basis data Google Sheets dan kode **Google Apps Script (`Code.gs`)** yang mendukung arsitektur *hostless backend*:
+1. **Penyedia Kosa Kata Dinamis** (Tab `Vocabulary`).
+2. **Penyimpan Progres Belajar Cloud** (Tab `UserProgress`).
+3. **Otomasi Setup 1-Klik** (`setupDatabase()`) untuk menginisialisasi kedua tab dan mengisi 30 kata awal tanpa perlu ketik manual.
 
 ---
 
-## 1. Struktur Tabel Spreadsheet
+## 1. Langkah Cepat Setup 1-Klik (Hanya 3 Menit)
 
-Buat spreadsheet baru di [Google Sheets](https://sheets.new) dan ubah nama tab/sheet pertama menjadi: **`Vocabulary`**.
-
-### Header Baris ke-1 (Wajib Sama Persis)
-
-| Kolom | Nama Header | Tipe Data | Deskripsi & Contoh |
-| :--- | :--- | :--- | :--- |
-| **A** | `stage_id` | Angka | ID Stage kosa kata (misal: `1`, `2`, `3`) |
-| **B** | `stage_title` | Teks | Judul/tema stage (misal: `Cognitive & Sensory Perception`) |
-| **C** | `word` | Teks | Kata target bahasa Inggris (misal: `perceive`) |
-| **D** | `phonetic` | Teks | Pelafalan fonetik IPA (misal: `/pərˈsiːv/`) |
-| **E** | `part_of_speech` | Teks | Kelas kata: `verb`, `adjective`, `noun`, atau `adverb` |
-| **F** | `cefr` | Teks | Tingkat kemahiran: `B2`, `C1`, atau `C2` |
-| **G** | `translation` | Teks | Terjemahan bahasa Indonesia langsung (misal: `memahami, melihat, menyadari`) |
-| **H** | `definition` | Teks | Definisi lengkap dalam bahasa Indonesia |
-| **I** | `example_en` | Teks | Contoh kalimat dalam bahasa Inggris |
-| **J** | `example_id` | Teks | Terjemahan contoh kalimat ke bahasa Indonesia |
-
----
-
-### Contoh 5 Baris Data Awal (Siap Salin & Tempel)
-
-Salin baris di bawah ini dan tempelkan langsung mulai dari sel **A2** di Google Sheets Anda:
-
-```tsv
-1	Cognitive & Sensory Perception	perceive	/pərˈsiːv/	verb	B2	memahami, melihat, menyadari	Menjadi sadar atau memahami sesuatu melalui indra atau pikiran.	He could perceive a faint light through the dense fog.	Dia bisa melihat seberkas cahaya redup menembus kabut tebal.
-1	Cognitive & Sensory Perception	discern	/dɪˈsɜːrn/	verb	C1	membedakan, melihat dengan jelas	Mengenali atau membedakan sesuatu yang samar dengan ketajaman pikiran atau mata.	It was difficult to discern the truth from his vague statements.	Sulit untuk membedakan kebenaran dari pernyataan-pernyataannya yang samar.
-1	Cognitive & Sensory Perception	scrutinize	/ˈskruːtənaɪz/	verb	C1	meneliti, memeriksa dengan cermat	Memeriksa sesuatu secara sangat teliti dan kritis hingga ke detail terkecil.	The auditor will scrutinize every single financial transaction.	Auditor akan memeriksa setiap transaksi keuangan dengan sangat teliti.
-1	Cognitive & Sensory Perception	subtle	/ˈsʌtl/	adjective	B2	halus, samar, tidak kentara	Sesuatu yang begitu lembut atau tidak mencolok sehingga sulit diperhatikan secara langsung.	There was a subtle change in his tone during the negotiation.	Ada perubahan halus dalam nada bicaranya selama negosiasi.
-1	Cognitive & Sensory Perception	lucid	/ˈluːsɪd/	adjective	B2	jelas, mudah dipahami, jernih	Dinyatakan dengan sangat jelas, mudah dimengerti, atau keadaan pikiran yang sadar penuh.	The professor gave a lucid explanation of the quantum principle.	Profesor itu memberikan penjelasan yang sangat jelas tentang prinsip kuantum.
-```
+1. Buka spreadsheet baru di [Google Sheets](https://sheets.new) (atau spreadsheet yang sudah ada).
+2. Di menu atas, buka: **Extensions** > **Apps Script**.
+3. Hapus seluruh isi default file `Code.gs`, lalu **salin dan tempel seluruh kode di Bagian 2** di bawah ini ke editor.
+4. Di bilah toolbar atas Apps Script, pilih fungsi **`setupDatabase`** dari menu dropdown (di sebelah tombol *Debug* dan *Run*).
+5. Klik tombol **Run** (Jalankan). 
+   *(Jika muncul jendela 'Authorization Required', klik Continue > pilih akun Google Anda > Advanced > Go to (project name) > Allow)*.
+   *Selesai! Kedua tab `Vocabulary` (berisi 30 kosa kata Stage 1–3) dan `UserProgress` akan langsung dibuat otomatis.*
+6. Deploy Web App:
+   * Klik tombol biru **Deploy** (kanan atas) > pilih **New deployment** (atau jika sudah pernah deploy, pilih **Manage deployments** > klik ikon pensil > ubah versi ke **New version**).
+   * Pastikan **Execute as**: `Me` dan **Who has access**: **`Anyone`** (Wajib agar dapat diakses web tanpa login).
+   * Klik **Deploy**, lalu salin **Web app URL** yang berakhiran `/exec`.
+7. Masukkan Web app URL tersebut ke file `.env` proyek React:
+   ```bash
+   VITE_GOOGLE_SHEETS_API_URL="https://script.google.com/macros/s/AKfycb.../exec"
+   ```
 
 ---
 
-## 2. Kode Google Apps Script (`Code.gs`)
+## 2. Kode Lengkap Google Apps Script (`Code.gs`)
 
-1. Pada Google Sheets Anda, buka menu: **Extensions** > **Apps Script**.
-2. Hapus semua kode bawaan di dalam file `Code.gs`.
-3. Salin dan tempel kode berikut:
+Salin seluruh kode di bawah ini ke editor Google Apps Script:
 
 ```javascript
 /**
- * Lexicon Lab - Google Apps Script Web App API
- * Menghubungkan Google Sheets tab 'Vocabulary' ke antarmuka React Lexicon Lab
+ * Lexicon Lab - Google Apps Script Hostless API (v2.0)
+ * Menghubungkan Google Sheets ke React Lexicon Lab:
+ * - Ingestion Kosa Kata (Tab 'Vocabulary')
+ * - Sinkronisasi Progres Cloud (Tab 'UserProgress')
+ * - Otomasi Inisialisasi Database (setupDatabase)
  */
 
+/**
+ * 1. FUNGSI SETUP OTOMATIS 1-KLIK
+ * Jalankan fungsi ini sekali dari editor Apps Script untuk membuat dan mengisi tabel secara instan.
+ */
+function setupDatabase() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+
+  // A. Inisialisasi Tab Vocabulary
+  var vocabSheet = ss.getSheetByName('Vocabulary');
+  if (!vocabSheet) {
+    vocabSheet = ss.insertSheet('Vocabulary');
+  }
+
+  var vocabHeaders = [
+    'stage_id', 'stage_title', 'word', 'phonetic', 'part_of_speech',
+    'cefr', 'translation', 'definition', 'example_en', 'example_id'
+  ];
+
+  if (vocabSheet.getLastRow() === 0) {
+    vocabSheet.appendRow(vocabHeaders);
+    vocabSheet.getRange(1, 1, 1, vocabHeaders.length).setFontWeight('bold').setBackground('#f1f5f9');
+  }
+
+  // Jika tab Vocabulary masih kosong, isi dengan 30 kata baseline
+  if (vocabSheet.getLastRow() <= 1) {
+    var seedWords = [
+      // STAGE 1
+      [1, "Stage 01: Presisi Dialektika & Retorika Kritis", "ubiquitous", "/juːˈbɪk.wɪ.təs/", "adjective", "C1", "Ada di mana-mana / Merajalela", "Hadir, muncul, atau ditemukan di mana-mana secara bersamaan dalam kehidupan sehari-hari.", "Smartphones have become so ubiquitous that their absence in daily life is now viewed as an anomaly.", "Ponsel pintar telah menjadi begitu merajalela sehingga ketiadaannya dalam kehidupan sehari-hari kini dianggap aneh."],
+      [1, "Stage 01: Presisi Dialektika & Retorika Kritis", "anachronistic", "/əˌnæk.rəˈnɪs.tɪk/", "adjective", "C1", "Ketinggalan zaman / Anakronistis", "Berada di luar era yang tepat atau sangat kuno sehingga tidak cocok lagi dengan masa kini.", "In an era of instant algorithmic trading, paper ticker tapes appear charmingly anachronistic.", "Di era perdagangan algoritma instan, pita pencatat harga kertas tampak sangat ketinggalan zaman."],
+      [1, "Stage 01: Presisi Dialektika & Retorika Kritis", "obfuscate", "/ˈɒb.fʌs.keɪt/", "verb", "C1", "Mengaburkan / Memperkeruh", "Membuat sesuatu menjadi tidak jelas, membingungkan, atau sengaja disamarkan agar sulit dipahami.", "The company attempted to obfuscate the financial losses by burying them in dense footnotes.", "Perusahaan berusaha mengaburkan kerugian finansial dengan menyembunyikannya di catatan kaki yang padat."],
+      [1, "Stage 01: Presisi Dialektika & Retorika Kritis", "perfunctory", "/pəˈfʌŋk.tər.i/", "adjective", "C1", "Asal-asalan / Sekadar formalitas", "Dilakukan dengan usaha minimal, tergesa-gesa, atau sekadar memenuhi kewajiban rutin tanpa rasa peduli.", "The inspector cast a perfunctory glance at the manifest before stamping the container permit.", "Petugas pemeriksa hanya melihat sekilas secara asal-asalan ke manifes sebelum membubuhkan stempel izin."],
+      [1, "Stage 01: Presisi Dialektika & Retorika Kritis", "perspicacious", "/ˌpɜː.spɪˈkeɪ.ʃəs/", "adjective", "C2", "Cerdik / Berpandangan tajam", "Memiliki pemahaman yang sangat tajam, cepat mengerti, dan mampu melihat rincian yang terlewatkan orang lain.", "Thanks to perspicacious forecasting, the fund liquidated risky assets before the market crash.", "Berkat ramalan yang cerdik dan tajam, dana investasi mencairkan aset berisiko sebelum pasar anjlok."],
+      [1, "Stage 01: Presisi Dialektika & Retorika Kritis", "epitomize", "/ɪˈpɪt.ə.maɪz/", "verb", "C1", "Menjadi contoh sempurna / Mewakili", "Menjadi contoh paling representatif atau puncak perwujudan dari suatu sifat, gaya, atau kualitas.", "His calm resolve under immense pressure seemed to epitomize true leadership.", "Ketegaran tenangnya di bawah tekanan berat tampak menjadi contoh sempurna kepemimpinan sejati."],
+      [1, "Stage 01: Presisi Dialektika & Retorika Kritis", "exacerbate", "/ɪɡˈzæs.ə.beɪt/", "verb", "C1", "Memperburuk / Memperparah", "Menjadikan suatu masalah, penyakit, ketegangan, atau situasi buruk menjadi jauh lebih parah.", "Imposing severe trade tariffs will only exacerbate domestic inflation.", "Penerapan tarif dagang yang berat hanya akan memperparah inflasi domestik."],
+      [1, "Stage 01: Presisi Dialektika & Retorika Kritis", "esoteric", "/ˌes.əˈter.ɪk/", "adjective", "C2", "Eksoteris / Hanya dipahami segelintir orang", "Ditujukan untuk atau hanya mungkin dimengerti oleh segelintir orang yang memiliki pengetahuan khusus yang mendalam.", "The monograph explored esoteric mathematical formulations that baffled non-specialists.", "Monograf tersebut meneliti rumusan matematika esoteris yang membingungkan para non-ahli."],
+      [1, "Stage 01: Presisi Dialektika & Retorika Kritis", "equivocate", "/ɪˈkwɪv.ə.keɪt/", "verb", "C2", "Berbicara mendua / Berbelit-belit", "Menggunakan bahasa yang ambigu atau tidak jelas untuk menyembunyikan kebenaran atau menghindari komitmen.", "When questioned about campaign financing, the candidate began to equivocate.", "Ketika ditanya mengenai sumber dana kampanye, calon tersebut mulai berbicara berbelit-belit."],
+      [1, "Stage 01: Presisi Dialektika & Retorika Kritis", "sagacious", "/səˈɡeɪ.ʃəs/", "adjective", "C2", "Bijaksana / Berwawasan luas", "Menunjukkan pertimbangan yang matang, pandangan jernih, dan kearifan mendalam dalam mengambil keputusan.", "The mentor was respected for her sagacious guidance during critical corporate disputes.", "Sang mentor sangat dihormati atas bimbingannya yang bijaksana selama sengketa perusahaan."],
+
+      // STAGE 2
+      [2, "Stage 02: Aksi, Dinamika & Transformasi Sistemik", "ameliorate", "/əˈmiː.li.ə.reɪt/", "verb", "C1", "Memperbaiki / Meringankan", "Membuat sesuatu yang buruk, menyakitkan, atau tidak memuaskan menjadi jauh lebih baik dan tertahankan.", "Direct cash assistance helped to ameliorate poverty in rural regions.", "Bantuan tunai langsung membantu meringankan kemiskinan di daerah pedesaan."],
+      [2, "Stage 02: Aksi, Dinamika & Transformasi Sistemik", "galvanize", "/ˈɡæl.və.naɪz/", "verb", "C1", "Menggerakkan / Memantik Aksi", "Mengejutkan atau menyemangati seseorang atau masyarakat luas sehingga segera mengambil tindakan nyata.", "The investigative documentary served to galvanize public opinion against chemical dumping.", "Dokumenter investigasi tersebut berhasil menggerakkan opini publik untuk menolak pembuangan limbah kimia."],
+      [2, "Stage 02: Aksi, Dinamika & Transformasi Sistemik", "repudiate", "/rɪˈpjuː.di.eɪt/", "verb", "C1", "Menolak keras / Mengingkari", "Menolak untuk menerima, mengakui, atau diasosiasikan dengan suatu klaim, teori, atau perjanjian secara tegas.", "The laboratory issued a statement to repudiate the falsified research findings.", "Laboratorium mengeluarkan pernyataan tegas untuk menolak temuan penelitian yang dipalsukan."],
+      [2, "Stage 02: Aksi, Dinamika & Transformasi Sistemik", "truncate", "/trʌŋˈkeɪt/", "verb", "B2", "Memotong / Mempersingkat", "Mempersingkat atau memotong ujung sesuatu (seperti teks, waktu, atau data) sehingga menjadi tidak utuh.", "Due to time limits, the moderator had to truncate the debate session.", "Karena keterbatasan waktu, moderator harus mempersingkat sesi debat."],
+      [2, "Stage 02: Aksi, Dinamika & Transformasi Sistemik", "vacillate", "/ˈvæs.ɪ.leɪt/", "verb", "C1", "Ragu-ragu / Terombang-ambing", "Bimbang atau terus berganti-ganti pendapat, perasaan, atau keputusan tanpa ketetapan hati.", "The committee began to vacillate between approving the loan or demanding more collateral.", "Komite mulai terombang-ambing antara menyetujui pinjaman atau meminta agunan tambahan."],
+      [2, "Stage 02: Aksi, Dinamika & Transformasi Sistemik", "vindicate", "/ˈvɪn.dɪ.keɪt/", "verb", "C1", "Membenarkan / Membersihkan nama", "Membuktikan bahwa seseorang atau suatu tindakan itu benar, adil, atau bebas dari kesalahan setelah dicurigai.", "Subsequent DNA evidence helped to vindicate the wrongly accused defendant.", "Bukti DNA berikutnya berhasil membersihkan nama terdakwa yang dituduh secara keliru."],
+      [2, "Stage 02: Aksi, Dinamika & Transformasi Sistemik", "extrapolate", "/ɪkˈstræp.ə.leɪt/", "verb", "C1", "Mengekstrapolasi / Memperkirakan", "Memperkirakan atau memproyeksikan tren masa depan berdasarkan fakta, data, atau tren yang sudah diketahui saat ini.", "We can extrapolate future sales based on the fourth-quarter consumer trend.", "Kita dapat memperkirakan penjualan masa depan berdasarkan tren konsumen kuartal keempat."],
+      [2, "Stage 02: Aksi, Dinamika & Transformasi Sistemik", "delineate", "/dɪˈlɪn.i.eɪt/", "verb", "C1", "Menggambarkan rinci / Membatasi batas", "Menjelaskan, mendeskripsikan, atau menetapkan batasan sesuatu secara sangat terperinci dan presisi.", "The contract must clearly delineate the rights and obligations of both parties.", "Kontrak tersebut harus secara jelas menggambarkan hak dan kewajiban kedua belah pihak."],
+      [2, "Stage 02: Aksi, Dinamika & Transformasi Sistemik", "scrutinize", "/ˈskruː.tɪ.naɪz/", "verb", "C1", "Meneliti cermat / Memeriksa saksama", "Memeriksa atau meneliti seseorang atau dokumen secara sangat teliti, kritis, dan mendalam.", "Regulators will scrutinize every ledger entry to trace the missing funds.", "Regulator akan meneliti setiap entri buku besar untuk melacak dana yang hilang."],
+      [2, "Stage 02: Aksi, Dinamika & Transformasi Sistemik", "corroborate", "/kəˈrɒb.ə.reɪt/", "verb", "C1", "Menguatkan bukti / Mengonfirmasi", "Menyediakan informasi atau bukti baru yang memperkuat atau mendukung kebenaran suatu teori, pernyataan, atau temuan.", "Independent laboratory tests helped to corroborate the researchers' initial findings.", "Uji laboratorium independen membantu menguatkan bukti temuan awal para peneliti."],
+
+      // STAGE 3
+      [3, "Stage 03: Investigasi, Penalaran & Klarifikasi", "articulate", "/ɑːˈtɪk.jə.leɪt/", "verb", "C1", "Menyatakan jelas / Mengartikulasikan", "Mengungkapkan ide, pikiran, atau argumen dengan sangat jelas dan fasih menggunakan kata-kata yang tepat.", "She was able to articulate the complex scientific theory in terms anyone could understand.", "Ia mampu menyatakan teori ilmiah yang rumit dengan sangat jelas sehingga bisa dipahami siapa saja."],
+      [3, "Stage 03: Investigasi, Penalaran & Klarifikasi", "mitigate", "/ˈmɪt.ɪ.ɡeɪt/", "verb", "C1", "Meringankan / Meredam bahaya", "Membuat sesuatu menjadi tidak terlalu parah, berbahaya, atau merusak.", "Planting mangroves along the coast will help mitigate coastal erosion.", "Menanam bakau di sepanjang pantai akan membantu meredam erosi pantai."],
+      [3, "Stage 03: Investigasi, Penalaran & Klarifikasi", "proliferate", "/prəˈlɪf.ər.eɪt/", "verb", "C2", "Menjamur / Berkembang biak pesat", "Meningkat dalam jumlah atau menyebar dengan sangat cepat dalam waktu singkat.", "Digital payment platforms began to proliferate across emerging economies.", "Platform pembayaran digital mulai menjamur dan berkembang pesat di seluruh negara berkembang."],
+      [3, "Stage 03: Investigasi, Penalaran & Klarifikasi", "substantiate", "/səbˈstæn.ʃi.eɪt/", "verb", "C1", "Membuktikan kebenaran / Mengabsahkan", "Menyediakan fakta atau bukti yang cukup untuk membuktikan kebenaran suatu klaim.", "The plaintiff could not substantiate his claims of intellectual property theft.", "Penggugat tidak dapat membuktikan kebenaran klaimnya terkait pencurian kekayaan intelektual."],
+      [3, "Stage 03: Investigasi, Penalaran & Klarifikasi", "elucidate", "/iˈluː.sɪ.deɪt/", "verb", "C2", "Menerangkan lugas / Memperjelas", "Menjelaskan atau menerangkan sesuatu secara mendalam sehingga menjadi terang benderang dan mudah dimengerti.", "The keynote speaker attempted to elucidate the ethical dilemmas of artificial intelligence.", "Pembicara utama berusaha menerangkan lugas dilema etika dari kecerdasan buatan."],
+      [3, "Stage 03: Investigasi, Penalaran & Klarifikasi", "pragmatic", "/præɡˈmæt.ɪk/", "adjective", "B2", "Praktis / Berorientasi hasil nyata", "Menyelesaikan masalah secara bijak, realistis, dan berorientasi pada hasil nyata daripada teori semata.", "We need a pragmatic approach to renewable energy transition rather than idealistic slogans.", "Kita memerlukan pendekatan praktis dan realistis terhadap transisi energi terbarukan daripada sekadar slogan idealis."],
+      [3, "Stage 03: Investigasi, Penalaran & Klarifikasi", "tenuous", "/ˈten.ju.əs/", "adjective", "C1", "Sangat lemah / Renggang / Tipis", "Sangat rapuh, lemah, tipis, atau tidak pasti sehingga mudah runtuh atau diragukan kebenarannya.", "The link between the two events was tenuous at best.", "Kaitan antara kedua peristiwa tersebut sangatlah lemah dan meragukan."],
+      [3, "Stage 03: Investigasi, Penalaran & Klarifikasi", "meticulous", "/məˈtɪk.jə.ləs/", "adjective", "C1", "Sangat teliti / Cermat mendalam", "Memperhatikan setiap detail kecil secara sangat cermat, hati-hati, dan presisi tinggi.", "Her meticulous research methodology earned unanimous praise from peer reviewers.", "Metodologi penelitiannya yang sangat teliti mendapat pujian bulat dari para peninjau sejawat."],
+      [3, "Stage 03: Investigasi, Penalaran & Klarifikasi", "superfluous", "/suːˈpɜː.flu.əs/", "adjective", "C2", "Berlebihan / Tidak diperlukan", "Lebih banyak dari yang dibutuhkan atau diperlukan; mubazir sehingga pantas disingkirkan.", "The editor trimmed superfluous paragraphs to enhance the article's pacing.", "Editor memangkas paragraf yang berlebihan dan tidak diperlukan untuk mempercepat tempo artikel."],
+      [3, "Stage 03: Investigasi, Penalaran & Klarifikasi", "fastidious", "/fæsˈtɪd.i.əs/", "adjective", "C2", "Sangat rewel / Menuntut kesempurnaan", "Sangat peduli terhadap kerapian, kesempurnaan, atau ketepatan detail dan sulit sekali dibuat puas.", "The chef was fastidious about the temperature and presentation of each dish.", "Sang koki sangat rewel dan menuntut kesempurnaan atas suhu dan penyajian setiap hidangan."]
+    ];
+
+    vocabSheet.getRange(2, 1, seedWords.length, seedWords[0].length).setValues(seedWords);
+  }
+
+  // B. Inisialisasi Tab UserProgress
+  var progressSheet = ss.getSheetByName('UserProgress');
+  if (!progressSheet) {
+    progressSheet = ss.insertSheet('UserProgress');
+  }
+
+  var progressHeaders = ['user_id', 'progress_json', 'updated_at'];
+  if (progressSheet.getLastRow() === 0) {
+    progressSheet.appendRow(progressHeaders);
+    progressSheet.getRange(1, 1, 1, progressHeaders.length).setFontWeight('bold').setBackground('#f1f5f9');
+    progressSheet.appendRow(['default', '{}', new Date().toISOString()]);
+  }
+
+  Logger.log("Database setup selesai! Tab 'Vocabulary' dan 'UserProgress' telah siap digunakan.");
+}
+
+/**
+ * 2. HANDLER GET (doGet)
+ * - action=getProgress : Mengambil data JSON UserProgressData
+ * - default (action=getVocab) : Mengambil array WordItem[] kosa kata
+ */
 function doGet(e) {
   try {
     var ss = SpreadsheetApp.getActiveSpreadsheet();
-    var sheet = ss.getSheetByName('Vocabulary');
+    var action = (e && e.parameter && e.parameter.action) ? String(e.parameter.action).trim() : 'getVocab';
 
+    // A. Mode Progres Pengguna
+    if (action === 'getProgress') {
+      var progressSheet = ss.getSheetByName('UserProgress');
+      if (!progressSheet) {
+        return createJsonResponse({ status: 'empty', data: null });
+      }
+
+      var progressData = progressSheet.getDataRange().getValues();
+      if (progressData.length <= 1) {
+        return createJsonResponse({ status: 'empty', data: null });
+      }
+
+      var rawJson = String(progressData[1][1] || '').trim();
+      var updatedAt = progressData[1][2] || '';
+
+      if (!rawJson || rawJson === '{}') {
+        return createJsonResponse({ status: 'empty', data: null });
+      }
+
+      var parsed = JSON.parse(rawJson);
+      return createJsonResponse({
+        status: 'success',
+        data: parsed,
+        updatedAt: updatedAt
+      });
+    }
+
+    // B. Mode Kosa Kata (Default)
+    var sheet = ss.getSheetByName('Vocabulary');
     if (!sheet) {
       return createJsonResponse({
         status: 'error',
-        message: "Sheet 'Vocabulary' tidak ditemukan. Pastikan nama tab sheet adalah 'Vocabulary'."
+        message: "Sheet 'Vocabulary' tidak ditemukan. Jalankan fungsi 'setupDatabase' di Apps Script terlebih dahulu."
       }, 404);
     }
 
@@ -68,7 +173,6 @@ function doGet(e) {
       return createJsonResponse([]);
     }
 
-    // Ambil baris header (Baris 1)
     var headers = data[0].map(function(h) { 
       return String(h).trim().toLowerCase(); 
     });
@@ -86,30 +190,27 @@ function doGet(e) {
 
     var words = [];
 
-    // Iterasi mulai dari baris 2 (indeks 1)
     for (var i = 1; i < data.length; i++) {
       var row = data[i];
 
       var word = String(row[colWord >= 0 ? colWord : 2] || '').trim();
-      if (!word) continue; // Abaikan baris kosong
+      if (!word) continue;
 
       var rawStageId = row[colStageId >= 0 ? colStageId : 0];
       var stageId = parseInt(rawStageId, 10) || 1;
 
       var stageTitle = String(row[colStageTitle >= 0 ? colStageTitle : 1] || '').trim() || ('Stage ' + stageId);
       var phonetic = String(row[colPhonetic >= 0 ? colPhonetic : 3] || '').trim();
+      var translation = String(row[colTranslation >= 0 ? colTranslation : 6] || '').trim();
+      var definition = String(row[colDefinition >= 0 ? colDefinition : 7] || '').trim();
       var rawPos = String(row[colPos >= 0 ? colPos : 4] || '').toLowerCase().trim();
-      var partOfSpeech = ['verb', 'adjective', 'noun', 'adverb'].indexOf(rawPos) >= 0 ? rawPos : 'verb';
+      var partOfSpeech = normalizePartOfSpeechGas(rawPos, translation || definition);
       
       var rawCefr = String(row[colCefr >= 0 ? colCefr : 5] || '').toUpperCase().trim();
       var cefr = ['B2', 'C1', 'C2'].indexOf(rawCefr) >= 0 ? rawCefr : 'B2';
-
-      var translation = String(row[colTranslation >= 0 ? colTranslation : 6] || '').trim();
-      var definition = String(row[colDefinition >= 0 ? colDefinition : 7] || '').trim();
       var exampleEn = String(row[colExampleEn >= 0 ? colExampleEn : 8] || '').trim();
       var exampleId = String(row[colExampleId >= 0 ? colExampleId : 9] || '').trim();
 
-      // Buat kalimat cloze (isi bagian kosong) otomatis
       var escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       var clozeEnglish = exampleEn;
       if (exampleEn) {
@@ -121,6 +222,7 @@ function doGet(e) {
         }
       }
 
+      // ID deterministik w{stageId}-{wordSlug}
       var wordId = 'w' + stageId + '-' + word.toLowerCase().replace(/[^a-z0-9]/g, '-');
 
       words.push({
@@ -154,39 +256,200 @@ function doGet(e) {
 }
 
 /**
- * Format respons JSON dengan Header CORS untuk akses Web Client
+ * 3. HANDLER POST (doPost)
+ * - action === 'appendVocab' : Menambahkan kosa kata baru secara bulk (tanpa duplikasi)
+ * - default : Menyimpan progress pengguna ke tab 'UserProgress'
+ */
+function doPost(e) {
+  try {
+    var rawBody = (e && e.postData && e.postData.contents) ? e.postData.contents : '';
+    if (!rawBody) {
+      return createJsonResponse({ status: 'error', message: 'Payload body kosong' }, 400);
+    }
+
+    // Validasi apakah payload merupakan format JSON valid
+    var parsed = JSON.parse(rawBody);
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+
+    // A. Mode Bulk Append Vocabulary
+    if (parsed && (parsed.action === 'appendVocab' || parsed.action === 'appendVocabBatch')) {
+      var vocabSheet = ss.getSheetByName('Vocabulary');
+      if (!vocabSheet) {
+        return createJsonResponse({ status: 'error', message: "Sheet 'Vocabulary' tidak ditemukan. Jalankan 'setupDatabase' terlebih dahulu." }, 404);
+      }
+
+      var data = vocabSheet.getDataRange().getValues();
+      var existingWords = {};
+      var colWord = 2; // Default Kolom C (0-indexed = 2)
+
+      if (data.length > 0) {
+        var headers = data[0].map(function(h) { return String(h).trim().toLowerCase(); });
+        var foundCol = headers.indexOf('word');
+        if (foundCol >= 0) colWord = foundCol;
+
+        for (var i = 1; i < data.length; i++) {
+          var existingWord = String(data[i][colWord] || '').trim().toLowerCase();
+          if (existingWord) existingWords[existingWord] = true;
+        }
+      }
+
+      var incomingWords = Array.isArray(parsed.words) ? parsed.words : [];
+      var rowsToAdd = [];
+      var skippedDuplicates = 0;
+
+      for (var j = 0; j < incomingWords.length; j++) {
+        var item = incomingWords[j];
+        var wordStr = '';
+        var rowData = [];
+
+        if (Array.isArray(item)) {
+          wordStr = String(item[2] || '').trim();
+          var rawP = String(item[4] || 'verb');
+          rowData = [
+            item[0] || 1,
+            item[1] || ('Stage ' + (item[0] || 1)),
+            wordStr,
+            item[3] || '',
+            normalizePartOfSpeechGas(rawP, String(item[6] || item[7] || '')),
+            item[5] || 'B2',
+            item[6] || '',
+            item[7] || '',
+            item[8] || '',
+            item[9] || ''
+          ];
+        } else if (item && typeof item === 'object') {
+          wordStr = String(item.word || '').trim();
+          var sId = parseInt(item.stage_id || item.stageId, 10) || 1;
+          var sTitle = String(item.stage_title || item.stageTitle || ('Stage ' + (sId < 10 ? '0' + sId : sId))).trim();
+          var transStr = String(item.translation || '').trim();
+          var defStr = String(item.definition || '').trim();
+          rowData = [
+            sId,
+            sTitle,
+            wordStr,
+            String(item.phonetic || '').trim(),
+            normalizePartOfSpeechGas(item.part_of_speech || item.partOfSpeech || 'verb', transStr || defStr),
+            String(item.cefr || 'B2').toUpperCase().trim(),
+            transStr,
+            defStr,
+            String(item.example_en || item.exampleEn || '').trim(),
+            String(item.example_id || item.exampleId || '').trim()
+          ];
+        }
+
+        if (!wordStr) continue;
+
+        var lowerWord = wordStr.toLowerCase();
+        if (existingWords[lowerWord]) {
+          skippedDuplicates++;
+          continue;
+        }
+
+        existingWords[lowerWord] = true;
+        rowsToAdd.push(rowData);
+      }
+
+      if (rowsToAdd.length > 0) {
+        var startRow = vocabSheet.getLastRow() + 1;
+        vocabSheet.getRange(startRow, 1, rowsToAdd.length, 10).setValues(rowsToAdd);
+      }
+
+      return createJsonResponse({
+        status: 'success',
+        message: rowsToAdd.length + ' kosa kata baru berhasil ditambahkan.',
+        addedCount: rowsToAdd.length,
+        skippedDuplicates: skippedDuplicates,
+        totalWordsInSheet: vocabSheet.getLastRow() - 1
+      });
+    }
+
+    // B. Mode Default: Simpan Progres Belajar (UserProgress)
+    var progressSheet = ss.getSheetByName('UserProgress');
+    if (!progressSheet) {
+      progressSheet = ss.insertSheet('UserProgress');
+      progressSheet.appendRow(['user_id', 'progress_json', 'updated_at']);
+    }
+
+    var nowIso = new Date().toISOString();
+
+    // Baris ke-2 selalu dialokasikan untuk profile default
+    if (progressSheet.getLastRow() < 2) {
+      progressSheet.appendRow(['default', JSON.stringify(parsed), nowIso]);
+    } else {
+      progressSheet.getRange(2, 2).setValue(JSON.stringify(parsed));
+      progressSheet.getRange(2, 3).setValue(nowIso);
+    }
+
+    return createJsonResponse({
+      status: 'success',
+      message: 'Progres pengguna berhasil disimpan di Google Sheets',
+      updatedAt: nowIso
+    });
+
+  } catch (err) {
+    return createJsonResponse({
+      status: 'error',
+      message: err.toString()
+    }, 500);
+  }
+}
+
+/**
+ * Utilitas pembentuk response JSON dengan CORS Header
  */
 function createJsonResponse(dataObject) {
   var output = ContentService.createTextOutput(JSON.stringify(dataObject));
   output.setMimeType(ContentService.MimeType.JSON);
   return output;
 }
+
+/**
+ * Normalisasi kelas kata (part of speech), termasuk format gabungan seperti "Noun / Verb"
+ */
+function normalizePartOfSpeechGas(posStr, indonesianText) {
+  var str = String(posStr || '').toLowerCase().trim();
+  var validPos = ['verb', 'adjective', 'noun', 'adverb'];
+  if (validPos.indexOf(str) >= 0) return str;
+
+  var tokens = str.split(/[\/,|]/).map(function(t) { return t.trim(); });
+  if (tokens.indexOf('verb') >= 0) {
+    var indo = String(indonesianText || '').toLowerCase().trim();
+    if (indo.indexOf('me') === 0 || indo.indexOf('ber') === 0 || indo.indexOf('di') === 0) {
+      return 'verb';
+    }
+  }
+
+  for (var i = 0; i < tokens.length; i++) {
+    if (validPos.indexOf(tokens[i]) >= 0) return tokens[i];
+  }
+
+  return 'verb';
+}
 ```
 
 ---
 
-## 3. Langkah Deploy Menjadi Web App
+## 3. Struktur Kolom Tab
 
-Agar endpoint dapat diakses oleh browser tanpa login:
+### Tab 1: `Vocabulary` (10 Kolom)
 
-1. Di editor Apps Script, klik tombol biru **Deploy** (Kanan atas) > pilih **New deployment**.
-2. Klik ikon gerigi (Select type) > pilih **Web app**.
-3. Isi konfigurasi deployment:
-   - **Description**: `Lexicon Lab API v1`
-   - **Execute as**: `Me (email-anda@gmail.com)`
-   - **Who has access**: **`Anyone`** *(Sangat penting: pilih "Anyone" agar browser dapat mem-fetch data tanpa otentikasi Google).*
-4. Klik **Deploy**.
-5. Jika muncul jendela otorisasi akun (*Authorization Required*), pilih akun Anda > klik *Advanced* > klik *Go to (project name) (unsafe)* > klik *Allow*.
-6. Salin **Web app URL** yang dihasilkan (contoh format: `https://script.google.com/macros/s/AKfycb.../exec`).
+| Kolom | Header | Tipe Data | Keterangan |
+| :--- | :--- | :--- | :--- |
+| **A** | `stage_id` | Angka | ID Stage (misal `1`, `2`, `3`) |
+| **B** | `stage_title` | Teks | Judul/tema stage |
+| **C** | `word` | Teks | Kata bahasa Inggris target |
+| **D** | `phonetic` | Teks | Simbol fonetik IPA (misal `/pərˈsiːv/`) |
+| **E** | `part_of_speech` | Teks | `verb`, `adjective`, `noun`, atau `adverb` |
+| **F** | `cefr` | Teks | `B2`, `C1`, atau `C2` |
+| **G** | `translation` | Teks | Terjemahan bahasa Indonesia |
+| **H** | `definition` | Teks | Definisi lengkap bahasa Indonesia |
+| **I** | `example_en` | Teks | Contoh kalimat bahasa Inggris |
+| **J** | `example_id` | Teks | Terjemahan contoh kalimat bahasa Indonesia |
 
----
+### Tab 2: `UserProgress` (3 Kolom)
 
-## 4. Konfigurasi di Aplikasi React Lexicon Lab
-
-1. Buka file `.env` di root proyek ini (atau salin dari `.env.example`).
-2. Tempelkan Web app URL ke variabel `VITE_GOOGLE_SHEETS_API_URL`:
-   ```bash
-   VITE_GOOGLE_SHEETS_API_URL=https://script.google.com/macros/s/AKfycb.../exec
-   ```
-3. Restart dev server (`npm run dev`) atau jalankan build (`npm run build`).
-4. Buka aplikasi di browser. Header HUD akan menampilkan badge hijau: **`Sheets: Live`**. Jika URL kosong atau offline, aplikasi secara otomatis menggunakan data cadangan bawaan (**`Data: Local Mock`**).
+| Kolom | Header | Tipe Data | Keterangan |
+| :--- | :--- | :--- | :--- |
+| **A** | `user_id` | Teks | ID pengguna (`default`) |
+| **B** | `progress_json` | Teks Panjang | String JSON objek `UserProgressData` (streak, clearedStages, wordStats) |
+| **C** | `updated_at` | Teks ISO-8601 | Timestamp terakhir kali data disimpan |

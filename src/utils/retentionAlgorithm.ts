@@ -85,7 +85,7 @@ export function calculateVerbDrawWeight(stats?: WordRetentionStats): {
 }
 
 /**
- * Sampel kata kerja acak terbobot dari stage yang sudah selesai (SRS)
+ * Sampel kata acak terbobot dari stage yang sudah selesai (SRS)
  */
 export function sampleWeightedVerbs(
   verbs: WordItem[],
@@ -119,6 +119,8 @@ export function sampleWeightedVerbs(
 
   return selected;
 }
+
+export const sampleWeightedWords = sampleWeightedVerbs;
 
 /**
  * Pengacakan array algoritma Fisher-Yates
@@ -191,6 +193,18 @@ export function isExactTranslationMatch(userInput: string, targetTranslation: st
     }
   }
 
+  return false;
+}
+
+/**
+ * Pencocokan ketikan kata bahasa Inggris target (Exact Match, case-insensitive & auto-trim)
+ */
+export function isExactWordMatch(userInput: string, targetWord: string): boolean {
+  const cleanInput = userInput.trim().toLowerCase();
+  const cleanTarget = targetWord.trim().toLowerCase();
+  if (!cleanInput || !cleanTarget) return false;
+  if (cleanInput === cleanTarget) return true;
+  if (cleanInput.replace(/-/g, ' ') === cleanTarget.replace(/-/g, ' ')) return true;
   return false;
 }
 

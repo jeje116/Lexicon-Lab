@@ -13,7 +13,8 @@ import { WordItem, WordRetentionStats, QuizVariant } from '../types/lexicon';
 import { 
   sampleWeightedVerbs, 
   shuffleArray, 
-  isExactTranslationMatch 
+  isExactTranslationMatch,
+  isExactWordMatch
 } from '../utils/retentionAlgorithm';
 import { 
   playTactileClick, 
@@ -32,6 +33,13 @@ interface NeuralVerbRetentionViewProps {
   soundEnabled: boolean;
 }
 
+const RETENTION_VARIANTS: QuizVariant[] = [
+  'TYPE_TRANSLATION',
+  'TYPE_WORD_EN',
+  'MCQ_DEFINITION',
+  'MCQ_WORD_TO_DEF'
+];
+
 export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = ({
   allWords,
   clearedStages,
@@ -41,9 +49,8 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
   onBackToStage,
   soundEnabled
 }) => {
-  // Hanya ambil kata kerja dari stage yang sudah selesai (atau fallback stage 1 jika belum ada yang cleared)
-  const verbPool = allWords.filter(w => {
-    if (w.partOfSpeech !== 'verb') return false;
+  // Ambil seluruh kosa kata dari stage yang sudah selesai (semua kelas kata, fallback stage 1 jika belum ada yang cleared)
+  const retentionPool = allWords.filter(w => {
     if (clearedStages.length > 0) {
       return clearedStages.includes(w.stageId);
     }
@@ -60,17 +67,17 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // Undi kata kerja acak terbobot dan tentukan varian kuis acak (Ketik Arti atau Pilgan Definisi)
+  // Undi kosa kata acak terbobot dan tentukan varian kuis 2-arah (4 varian acak)
   const drawNextVerb = () => {
-    if (verbPool.length === 0) return;
+    if (retentionPool.length === 0) return;
     playTactileClick(soundEnabled);
 
-    const [sampled] = sampleWeightedVerbs(verbPool, statsMap, 1);
-    const chosenVerb = sampled || verbPool[Math.floor(Math.random() * verbPool.length)];
-    setActiveVerb(chosenVerb);
+    const [sampled] = sampleWeightedVerbs(retentionPool, statsMap, 1);
+    const chosenWord = sampled || retentionPool[Math.floor(Math.random() * retentionPool.length)];
+    setActiveVerb(chosenWord);
 
-    // Pilih salah satu dari dua format secara acak
-    const chosenVariant: QuizVariant = Math.random() > 0.5 ? 'TYPE_TRANSLATION' : 'MCQ_DEFINITION';
+    // Pilih salah satu dari empat format 2-arah secara acak
+    const chosenVariant: QuizVariant = RETENTION_VARIANTS[Math.floor(Math.random() * RETENTION_VARIANTS.length)];
     setVariant(chosenVariant);
 
     // Reset input & status evaluasi
@@ -79,19 +86,31 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
     setSelectedOption(null);
     setEvalState('testing');
 
-    // Jika varian MCQ_DEFINITION, siapkan 4 opsi pilihan ganda
+    // Setup opsi pilihan ganda
     if (chosenVariant === 'MCQ_DEFINITION') {
-      const otherVerbs = allWords.filter(w => w.partOfSpeech === 'verb' && w.id !== chosenVerb.id);
-      const shuffledDistractors = shuffleArray(otherVerbs).slice(0, 3);
+      // Definisi -> Pilih Kata EN
+      const otherWords = allWords.filter(w => w.id !== chosenWord.id);
+      const samePos = otherWords.filter(w => w.partOfSpeech === chosenWord.partOfSpeech);
+      const candidates = samePos.length >= 3 ? samePos : otherWords;
+      const shuffledDistractors = shuffleArray(candidates).slice(0, 3);
       const options = [
-        { text: chosenVerb.word, isCorrect: true },
+        { text: chosenWord.word, isCorrect: true },
         ...shuffledDistractors.map(d => ({ text: d.word, isCorrect: false }))
+      ];
+      setMcqOptions(shuffleArray(options));
+    } else if (chosenVariant === 'MCQ_WORD_TO_DEF') {
+      // Kata EN -> Pilih Definisi ID
+      const otherWords = allWords.filter(w => w.id !== chosenWord.id);
+      const shuffledDistractors = shuffleArray(otherWords).slice(0, 3);
+      const options = [
+        { text: chosenWord.definition, isCorrect: true },
+        ...shuffledDistractors.map(d => ({ text: d.definition, isCorrect: false }))
       ];
       setMcqOptions(shuffleArray(options));
     }
 
     // Auto-focus input ketik jika varian ketik
-    if (chosenVariant === 'TYPE_TRANSLATION') {
+    if (chosenVariant === 'TYPE_TRANSLATION' || chosenVariant === 'TYPE_WORD_EN') {
       setTimeout(() => {
         inputRef.current?.focus();
       }, 120);
@@ -113,14 +132,14 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
         return;
       }
 
-      if (variant === 'TYPE_TRANSLATION') {
+      if (variant === 'TYPE_TRANSLATION' || variant === 'TYPE_WORD_EN') {
         if (e.key === 'Enter') {
           e.preventDefault();
           handleSubmitTyping();
         }
       }
 
-      if (variant === 'MCQ_DEFINITION' && mcqOptions.length > 0) {
+      if ((variant === 'MCQ_DEFINITION' || variant === 'MCQ_WORD_TO_DEF') && mcqOptions.length > 0) {
         const keyNum = parseInt(e.key, 10);
         if (keyNum >= 1 && keyNum <= mcqOptions.length) {
           e.preventDefault();
@@ -133,7 +152,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [evalState, variant, mcqOptions, activeVerb]);
 
-  // Submit Uji Arti (Wajib Ketik - Exact Match 100%)
+  // Submit Uji Ketik (Exact Match 100% presisi)
   const handleSubmitTyping = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (evalState !== 'testing' || !activeVerb || !typedInput.trim()) return;
@@ -141,7 +160,14 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
     const trimmed = typedInput.trim();
     setUserTypedAnswer(trimmed);
 
-    const isMatch = isExactTranslationMatch(trimmed, activeVerb.translation);
+    let isMatch = false;
+    if (variant === 'TYPE_TRANSLATION') {
+      // EN -> ID
+      isMatch = isExactTranslationMatch(trimmed, activeVerb.translation);
+    } else if (variant === 'TYPE_WORD_EN') {
+      // ID -> EN
+      isMatch = isExactWordMatch(trimmed, activeVerb.word);
+    }
 
     if (isMatch) {
       playCorrectChime(soundEnabled);
@@ -154,7 +180,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
     }
   };
 
-  // Submit Uji Definisi (Pilihan Ganda 4 Opsi)
+  // Submit Uji Pilihan Ganda (MCQ)
   const handleSelectOption = (idx: number) => {
     if (evalState !== 'testing' || !activeVerb) return;
     setSelectedOption(idx);
@@ -177,9 +203,9 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
         <div className="p-3 rounded-2xl bg-amber-50 border border-amber-200 text-amber-600">
           <Lock className="w-8 h-8" />
         </div>
-        <h3 className="text-slate-900 text-base font-bold">Bank Kata Kerja Belum Terbuka</h3>
+        <h3 className="text-slate-900 text-base font-bold">Bank Kosa Kata Belum Terbuka</h3>
         <p className="text-slate-500 text-xs leading-relaxed">
-          Selesaikan Stage 01 dengan nilai sempurna 20/20 terlebih dahulu untuk membuka tes retensi kata kerja.
+          Selesaikan Stage 01 dengan nilai sempurna 20/20 terlebih dahulu untuk membuka tes retensi memori.
         </p>
         <button
           onClick={() => onNavigateToStage(1)}
@@ -206,11 +232,11 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
           <ChevronLeft className="w-5 h-5" />
         </button>
         <h2 className="text-base font-extrabold text-slate-900 tracking-tight font-sans">
-          RETENSI KATA KERJA
+          TES RETENSI MEMORI
         </h2>
       </div>
 
-      {/* 2. Single Hero Card Kuis Verba */}
+      {/* 2. Single Hero Card Kuis Retensi */}
       <div className={`bg-white border rounded-3xl p-6 sm:p-8 shadow-sm transition-all space-y-6 ${
         evalState === 'correct'
           ? 'border-emerald-300 ring-2 ring-emerald-100 shadow-md'
@@ -225,7 +251,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
         {evalState === 'testing' && (
           <div className="space-y-5">
             
-            {/* Varian A: Ketik Arti */}
+            {/* Varian 1: Ketik Arti (EN -> ID) */}
             {variant === 'TYPE_TRANSLATION' && (
               <div className="space-y-5">
                 <div className="text-center py-4 space-y-2">
@@ -242,8 +268,10 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                       <Volume2 className="w-5 h-5" />
                     </button>
                   </div>
-                  <div className="text-xs font-mono text-blue-600 font-bold">
-                    Kata Kerja (Verb) • {activeVerb.phonetic}
+                  <div className="text-xs font-mono text-blue-600 font-bold uppercase">
+                    {activeVerb.phonetic?.trim()
+                      ? `${activeVerb.partOfSpeech} • ${activeVerb.phonetic}`
+                      : activeVerb.partOfSpeech}
                   </div>
                 </div>
 
@@ -262,7 +290,6 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                     className="w-full bg-white border-2 border-slate-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 rounded-2xl px-5 py-4 text-base sm:text-lg font-sans text-slate-900 placeholder-slate-400 outline-none transition-all shadow-xs"
                   />
 
-                  {/* Tombol Kirim Lega di Bawah Input */}
                   <button
                     type="submit"
                     disabled={!typedInput.trim()}
@@ -275,12 +302,53 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
               </div>
             )}
 
-            {/* Varian B: Pilihan Ganda Definisi */}
+            {/* Varian 2: Ketik Kata EN (ID -> EN) */}
+            {variant === 'TYPE_WORD_EN' && (
+              <div className="space-y-5">
+                <div className="text-center py-4 space-y-2.5">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 font-mono text-xs font-bold uppercase">
+                    <span>{activeVerb.partOfSpeech}</span>
+                    <span>•</span>
+                    <span>{activeVerb.cefr}</span>
+                  </div>
+                  <div className="text-2xl sm:text-4xl font-extrabold text-slate-900 tracking-tight font-sans">
+                    "{activeVerb.translation}"
+                  </div>
+                </div>
+
+                <div className="text-xs sm:text-sm font-semibold text-slate-600">
+                  Ketik kata bahasa Inggris yang tepat sesuai arti di atas:
+                </div>
+
+                <form onSubmit={handleSubmitTyping} className="space-y-3">
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={typedInput}
+                    onChange={(e) => setTypedInput(e.target.value)}
+                    placeholder="Ketik kata bahasa Inggris..."
+                    autoComplete="off"
+                    className="w-full bg-white border-2 border-slate-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 rounded-2xl px-5 py-4 text-base sm:text-lg font-sans text-slate-900 placeholder-slate-400 outline-none transition-all shadow-xs"
+                  />
+
+                  <button
+                    type="submit"
+                    disabled={!typedInput.trim()}
+                    className="w-full py-3.5 px-6 rounded-2xl bg-blue-600 hover:bg-blue-700 disabled:opacity-40 text-white font-mono text-xs sm:text-sm font-bold flex items-center justify-center gap-2 shadow-md shadow-blue-500/20 transition-all cursor-pointer min-h-[48px] active:scale-[0.99]"
+                  >
+                    <span>KIRIM JAWABAN</span>
+                    <Send className="w-4 h-4" />
+                  </button>
+                </form>
+              </div>
+            )}
+
+            {/* Varian 3: Pilihan Ganda Definisi (Definisi ID -> Pilih Kata EN) */}
             {variant === 'MCQ_DEFINITION' && (
               <div className="space-y-4">
                 <div className="p-5 rounded-2xl bg-blue-50/70 border border-blue-200/80">
                   <span className="font-mono text-[10px] text-blue-700 uppercase tracking-wider block mb-1 font-bold">
-                    DEFINISI KATA KERJA:
+                    DEFINISI ({activeVerb.partOfSpeech.toUpperCase()}):
                   </span>
                   <div className="font-sans text-sm sm:text-base text-slate-900 leading-relaxed font-medium">
                     "{activeVerb.definition}"
@@ -288,7 +356,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                 </div>
 
                 <div className="text-xs sm:text-sm font-semibold text-slate-600">
-                  Pilih kata kerja bahasa Inggris yang sesuai dengan definisi di atas:
+                  Pilih kata bahasa Inggris yang sesuai dengan definisi di atas:
                 </div>
 
                 <div className="space-y-2.5 sm:space-y-3">
@@ -311,6 +379,54 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                 </div>
               </div>
             )}
+
+            {/* Varian 4: Pilihan Ganda Kata ke Definisi (Kata EN -> Pilih Definisi ID) */}
+            {variant === 'MCQ_WORD_TO_DEF' && (
+              <div className="space-y-4">
+                <div className="text-center py-3 space-y-2">
+                  <div className="flex items-center justify-center gap-3">
+                    <div className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight uppercase font-sans">
+                      {activeVerb.word}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => speakLexeme(activeVerb.word)}
+                      className="p-2.5 rounded-2xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-600 cursor-pointer transition-colors active:scale-95 shadow-xs"
+                      title="Dengarkan Suara"
+                    >
+                      <Volume2 className="w-5 h-5" />
+                    </button>
+                  </div>
+                  <div className="text-xs font-mono text-blue-600 font-bold uppercase">
+                    {activeVerb.phonetic?.trim()
+                      ? `${activeVerb.partOfSpeech} • ${activeVerb.phonetic}`
+                      : activeVerb.partOfSpeech}
+                  </div>
+                </div>
+
+                <div className="text-xs sm:text-sm font-semibold text-slate-600">
+                  Pilih definisi bahasa Indonesia yang paling tepat untuk kata di atas:
+                </div>
+
+                <div className="space-y-2.5 sm:space-y-3">
+                  {mcqOptions.map((opt, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleSelectOption(idx)}
+                      className="w-full p-4 rounded-2xl border border-slate-200 hover:border-blue-300 bg-white hover:bg-blue-50/30 text-slate-800 text-left transition-all flex items-start gap-3 cursor-pointer group min-h-[52px] active:scale-[0.99] shadow-xs"
+                    >
+                      <span className="w-7 h-7 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center font-mono text-xs font-bold text-slate-500 shrink-0 mt-0.5">
+                        {idx + 1}
+                      </span>
+                      <span className="font-sans text-xs sm:text-sm text-slate-800 leading-relaxed font-medium break-words">
+                        {opt.text}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
           </div>
         )}
 
@@ -334,7 +450,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                 </div>
 
                 <div className="text-sm font-sans text-slate-700 pt-1">
-                  Kata kerja <strong className="font-mono uppercase text-slate-900 font-bold">{activeVerb.word}</strong> berhasil dijawab dengan tepat.
+                  Kosa kata <strong className="font-mono uppercase text-slate-900 font-bold">{activeVerb.word}</strong> berhasil dijawab dengan tepat.
                 </div>
 
                 <div className="p-3.5 rounded-xl bg-white border border-slate-200 text-xs font-sans text-slate-700 space-y-1 mt-2 shadow-xs">
@@ -349,7 +465,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
             </div>
 
             {/* Contoh Kalimat */}
-            {primaryContext && (
+            {primaryContext?.english?.trim() && (
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-1">
                 <span className="font-mono text-[10px] text-slate-500 font-bold uppercase flex items-center gap-1">
                   <BookOpen className="w-3.5 h-3.5 text-blue-600" />
@@ -358,9 +474,11 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                 <p className="text-slate-800 font-sans leading-relaxed italic">
                   "{primaryContext.english}"
                 </p>
-                <p className="text-slate-500 font-sans text-[11px] pt-1 border-t border-slate-200/60">
-                  → {primaryContext.indonesian}
-                </p>
+                {primaryContext.indonesian?.trim() && (
+                  <p className="text-slate-500 font-sans text-[11px] pt-1 border-t border-slate-200/60">
+                    → {primaryContext.indonesian}
+                  </p>
+                )}
               </div>
             )}
 
@@ -369,7 +487,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
               onClick={drawNextVerb}
               className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-mono text-sm font-bold tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer min-h-[48px] active:scale-[0.99]"
             >
-              <span>KATA KERJA BERIKUTNYA</span>
+              <span>KOSA KATA BERIKUTNYA</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
@@ -377,11 +495,9 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
 
         {/* ==================================================== */}
         {/* LAYAR JAWABAN SALAH (evalState === 'failed')          */}
-        {/* Bersih, Lega, Bebas Terpotong, & Tanpa Badge Toleransi */}
         {/* ==================================================== */}
         {evalState === 'failed' && (
           <div className="space-y-6 animate-fadeIn">
-            {/* Header Ringkas Tanpa Badge Toleransi */}
             <div className="flex items-center gap-3.5 pb-4 border-b border-slate-100">
               <div className="p-3 rounded-2xl bg-red-50 border border-red-200 text-red-600 shrink-0">
                 <ShieldAlert className="w-7 h-7" />
@@ -396,7 +512,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
               </div>
             </div>
 
-            {/* Komparasi Jawaban yang Lega */}
+            {/* Komparasi Jawaban */}
             <div className="space-y-3">
               {/* Jawaban Pengguna */}
               <div className="p-4 rounded-2xl bg-red-50/70 border border-red-200">
@@ -404,7 +520,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                   Pilihan / Ketikan Anda:
                 </span>
                 <div className="text-base font-bold text-red-900 break-words font-sans">
-                  {variant === 'TYPE_TRANSLATION'
+                  {variant === 'TYPE_TRANSLATION' || variant === 'TYPE_WORD_EN'
                     ? (userTypedAnswer || '(Jawaban Kurang Tepat)')
                     : (selectedOption !== null && mcqOptions[selectedOption] ? mcqOptions[selectedOption].text : '(Jawaban Kurang Tepat)')}
                 </div>
@@ -454,7 +570,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
             </div>
 
             {/* Contoh Kalimat Kontekstual */}
-            {primaryContext && (
+            {primaryContext?.english?.trim() && (
               <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
                 <span className="font-mono text-[10px] text-slate-500 font-bold uppercase block">
                   Contoh Penggunaan:
@@ -462,9 +578,11 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                 <p className="text-slate-800 font-sans italic text-sm">
                   "{primaryContext.english}"
                 </p>
-                <p className="text-slate-500 font-sans text-xs pt-1 border-t border-slate-200/60">
-                  Artinya: "{primaryContext.indonesian}"
-                </p>
+                {primaryContext.indonesian?.trim() && (
+                  <p className="text-slate-500 font-sans text-xs pt-1 border-t border-slate-200/60">
+                    Artinya: "{primaryContext.indonesian}"
+                  </p>
+                )}
               </div>
             )}
 

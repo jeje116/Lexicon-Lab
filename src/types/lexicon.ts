@@ -37,7 +37,11 @@ export interface WordRetentionStats {
 
 export type MemoryTier = 'CRITICAL' | 'VULNERABLE' | 'CONSOLIDATING' | 'CRYSTALLIZED';
 
-export type QuizVariant = 'TYPE_TRANSLATION' | 'MCQ_DEFINITION';
+export type QuizVariant = 
+  | 'TYPE_TRANSLATION' 
+  | 'TYPE_WORD_EN' 
+  | 'MCQ_DEFINITION' 
+  | 'MCQ_WORD_TO_DEF';
 
 export interface QuizQuestionOption {
   text: string;
@@ -50,8 +54,8 @@ export interface QuizQuestion {
   targetWord: string;
   variant: QuizVariant;
   prompt: string;
-  challengeText: string; // Kata Inggris (jika ketik arti) atau Kalimat Definisi (jika pilgan)
-  options?: QuizQuestionOption[]; // Khusus MCQ_DEFINITION (4 opsi)
+  challengeText: string; // Kata Inggris, Definisi, atau Arti Terjemahan sesuai varian
+  options?: QuizQuestionOption[]; // Untuk varian pilihan ganda (MCQ)
   correctAnswer: string;
   translation: string;
   definition: string;

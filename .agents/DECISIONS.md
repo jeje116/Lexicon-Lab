@@ -130,3 +130,33 @@ Decision:
 Implications:
 - Aplikasi tidak akan pernah crash akibat network failure atau URL endpoint yang tidak valid.
 - Pengguna dapat mengelola bank kata secara kolaboratif melalui Google Sheets tanpa perlu redeploy kode aplikasi.
+
+---
+
+# ADR-007 — Bidirectional 4-Variant Retention & Hostless Google Sheets Cloud Progress Sync
+
+Status:
+LOCKED
+
+Decision:
+1. **Bidirectional 4-Variant Retention Engine**:
+   - Modul Tes Retensi Memori (`NeuralVerbRetentionView.tsx`) mencakup seluruh kelas kata (`verb`, `adjective`, `noun`, `adverb`) dari stage yang telah tuntas (`clearedStages`).
+   - Menerapkan 4 varian kuis 2-arah yang diundi secara acak:
+     1. `TYPE_TRANSLATION`: Tampilkan kata Inggris target, ketik arti bahasa Indonesia (100% presisi via `isExactTranslationMatch`).
+     2. `TYPE_WORD_EN`: Tampilkan arti bahasa Indonesia + chip kelas kata & CEFR, ketik kata bahasa Inggris target (100% presisi via `isExactWordMatch`).
+     3. `MCQ_DEFINITION`: Tampilkan kalimat definisi bahasa Indonesia, pilih kata bahasa Inggris dari 4 opsi.
+     4. `MCQ_WORD_TO_DEF`: Tampilkan kata bahasa Inggris target (+ audio TTS), pilih definisi bahasa Indonesia dari 4 opsi.
+   - Stage Quiz (`DailyLabView.tsx`) tetap diisolasi mematuhi ADR-005 (20 soal interleaved: 10 ketik arti + 10 pilgan definisi).
+2. **Deterministic ID Normalization & Legacy Key Migration**:
+   - Skema ID kosa kata di seluruh sistem diseragamkan ke format semantik `w{stageId}-{wordSlug}` (contoh: `w1-ubiquitous`), identik dengan formula Google Apps Script.
+   - `src/utils/storage.ts` mengimplementasikan fungsi migrasi otomatis (`migrateLegacyWordStats`) untuk memetakan kunci lama `stgX-YY` ke `wX-word` saat `loadUserData()` dipanggil.
+3. **Hostless Google Sheets Cloud Progress Sync & Smart-Merge**:
+   - Tab Google Sheets `UserProgress` bertindak sebagai database cloud nir-server untuk menyimpan `UserProgressData` (dailyStreak, clearedStages, totalRuns, wordStats).
+   - `Code.gs` mengimplementasikan fungsi 1-klik `setupDatabase()` untuk auto-provisioning tab `Vocabulary` dan `UserProgress`, handler dwimode `doGet(e)` (`action=getProgress` dan default `getVocab`), serta handler `doPost(e)` (menerima payload `Content-Type: text/plain;charset=utf-8` untuk melewati batasan CORS preflight browser).
+   - `mergeUserProgress()` di `src/utils/storage.ts` melakukan smart-merge deterministik saat inisialisasi aplikasi (union `clearedStages`, resolusi konflik `wordStats` berdasarkan `totalAttempts` dan `lastReviewedAt` tertinggi, serta akumulasi flag `isMastered` dan `isBookmarked`).
+   - Perubahan data pengguna di-push secara asinkron (debounced 1500ms) ke Google Sheets di background.
+
+Implications:
+- Memperkuat daya ingat aktif dua arah (produksi dan pemahaman kosa kata bahasa Inggris).
+- Progres belajar tersimpan persisten di Google Sheets pribadi pengguna dan dapat disinkronkan lintas perangkat tanpa memerlukan server backend terdedikasi atau login OAuth yang rumit.
+- Sistem tahan terhadap jaringan offline berkat arsitektur local-first storage dengan smart-merge.

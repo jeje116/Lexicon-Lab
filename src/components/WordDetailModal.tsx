@@ -78,9 +78,11 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
               <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 uppercase font-sans tracking-tight">
                 {word.word}
               </h2>
-              <span className="font-mono text-sm sm:text-base text-blue-600">
-                {word.phonetic}
-              </span>
+              {word.phonetic?.trim() && (
+                <span className="font-mono text-sm sm:text-base text-blue-600">
+                  {word.phonetic}
+                </span>
+              )}
               <button
                 onClick={handlePlayAudio}
                 className="p-2 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-600 transition-colors cursor-pointer min-h-[36px] min-w-[36px] flex items-center justify-center"
@@ -197,22 +199,28 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
         </div>
 
         {/* Contoh Kalimat Kontekstual & Terjemahan */}
-        <div className="space-y-3">
-          <div className="flex items-center gap-1.5 text-xs font-mono text-slate-600 uppercase font-bold">
-            <BookOpen className="w-3.5 h-3.5 text-blue-600" />
-            <span>CONTOH PENGGUNAAN & TERJEMAHAN:</span>
-          </div>
-          {word.contextSentences.map((ctx, idx) => (
-            <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
-              <p className="text-slate-900 font-sans text-xs sm:text-sm font-semibold leading-relaxed">
-                "{ctx.english}"
-              </p>
-              <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed border-t border-slate-200/60 pt-1.5">
-                → {ctx.indonesian}
-              </p>
+        {word.contextSentences?.some((ctx) => ctx.english?.trim()) && (
+          <div className="space-y-3">
+            <div className="flex items-center gap-1.5 text-xs font-mono text-slate-600 uppercase font-bold">
+              <BookOpen className="w-3.5 h-3.5 text-blue-600" />
+              <span>CONTOH PENGGUNAAN & TERJEMAHAN:</span>
             </div>
-          ))}
-        </div>
+            {word.contextSentences
+              .filter((ctx) => ctx.english?.trim())
+              .map((ctx, idx) => (
+                <div key={idx} className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-xs space-y-1.5">
+                  <p className="text-slate-900 font-sans text-xs sm:text-sm font-semibold leading-relaxed">
+                    "{ctx.english}"
+                  </p>
+                  {ctx.indonesian?.trim() && (
+                    <p className="text-slate-500 font-sans text-xs sm:text-sm leading-relaxed border-t border-slate-200/60 pt-1.5">
+                      → {ctx.indonesian}
+                    </p>
+                  )}
+                </div>
+              ))}
+          </div>
+        )}
       </div>
     </div>
   );

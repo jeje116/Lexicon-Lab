@@ -9,8 +9,8 @@ import { HotkeyHelperModal } from './components/HotkeyHelperModal';
 
 import { TerminalMode, StagePhase, QuizQuestion, WordItem } from './types/lexicon';
 import { ALL_WORDS_POOL } from './data/mockLexicon';
-import { fetchVocabularyData, VocabDataSource } from './services/vocabService';
-import { loadUserData, saveUserData, recordWordAttempt, getDefaultUserData } from './utils/storage';
+import { fetchVocabularyData, fetchCloudUserProgress, pushCloudUserProgress, VocabDataSource } from './services/vocabService';
+import { loadUserData, saveUserData, recordWordAttempt, getDefaultUserData, mergeUserProgress } from './utils/storage';
 import { generateStageQuizQuestions, getMemoryTier } from './utils/retentionAlgorithm';
 import { playTactileClick } from './utils/audio';
 
@@ -28,11 +28,12 @@ export default function App() {
   const currentStageId = userData.currentStageId || 1;
   const clearedStages = userData.clearedStages || [];
 
-  // Ingestion kosa kata dari Google Sheets Web App saat mount
+  // Ingestion kosa kata dan progress cloud dari Google Sheets Web App saat mount
   useEffect(() => {
     let isMounted = true;
     setSyncStatus('syncing');
 
+    // 1. Fetch bank kosa kata dinamis
     fetchVocabularyData()
       .then(({ words, source }) => {
         if (!isMounted) return;
@@ -44,6 +45,20 @@ export default function App() {
       .catch((err) => {
         console.warn('[App] Gagal inisialisasi kosa kata dinamis:', err);
         if (isMounted) setSyncStatus('mock');
+      });
+
+    // 2. Fetch progres belajar cloud dan lakukan smart-merge dengan localStorage
+    fetchCloudUserProgress()
+      .then((cloudProgress) => {
+        if (!isMounted || !cloudProgress) return;
+        setUserData((prev) => {
+          const merged = mergeUserProgress(prev, cloudProgress);
+          saveUserData(merged);
+          return merged;
+        });
+      })
+      .catch((err) => {
+        console.warn('[App] Gagal sinkronisasi progres cloud saat mount:', err);
       });
 
     return () => {
@@ -71,9 +86,15 @@ export default function App() {
     }
   }, [stageWords, wordsPool]);
 
-  // Sync state ke LocalStorage
+  // Sync state ke LocalStorage dan debounced background sync ke Google Sheets
   useEffect(() => {
     saveUserData(userData);
+
+    const timeoutId = setTimeout(() => {
+      pushCloudUserProgress(userData);
+    }, 1500);
+
+    return () => clearTimeout(timeoutId);
   }, [userData]);
 
   // Global keyboard shortcuts (Alt+1..3, Escape)
