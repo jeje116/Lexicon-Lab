@@ -312,7 +312,7 @@ export default function App() {
             />
           )}
 
-          {/* Tab 2: Retensi Kata Kerja (Neural Weighted Probability dari Stage Cleared) */}
+          {/* Tab 2: Retensi Memori 2-Arah (Neural Weighted Probability dari Stage Cleared) */}
           {currentMode === 'retention' && (
             <NeuralVerbRetentionView
               allWords={wordsPool}

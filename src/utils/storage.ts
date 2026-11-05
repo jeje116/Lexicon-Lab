@@ -57,7 +57,7 @@ export function migrateLegacyWordStats(
 
 export function getDefaultUserData(): UserProgressData {
   return {
-    dailyStreak: 7,
+    dailyStreak: 1,
     lastStreakDate: new Date().toISOString().split('T')[0],
     clearedStages: [], // Stage yang sudah lulus 100% (20/20)
     currentStageId: 1, // Stage yang sedang dipelajari

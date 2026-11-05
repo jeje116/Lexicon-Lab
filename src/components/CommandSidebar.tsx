@@ -57,8 +57,8 @@ export const CommandSidebar: React.FC<CommandSidebarProps> = ({
     {
       id: 'retention' as TerminalMode,
       number: '02',
-      title: 'Retensi Kata Kerja',
-      subtitle: 'Pengulangan Berbobot (SRS)',
+      title: 'Retensi Memori',
+      subtitle: 'Uji 2-Arah Lintas Stage',
       icon: Zap,
       badge: 'SRS ENGINE',
       badgeColor: 'text-amber-700 border-amber-200 bg-amber-50'

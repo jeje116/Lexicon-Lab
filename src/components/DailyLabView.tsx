@@ -506,7 +506,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
           </div>
 
           <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 mb-6 leading-relaxed">
-            Semua kata kerja dari Stage ini kini otomatis terhubung ke Tab Retensi Kata Kerja dengan sampling probabilitas berbobot Spaced Repetition.
+            Semua kosa kata dari Stage ini kini otomatis terhubung ke Tab Retensi Memori dengan sampling probabilitas berbobot Spaced Repetition 2-Arah.
           </div>
 
           {/* Tombol Lanjutan */}

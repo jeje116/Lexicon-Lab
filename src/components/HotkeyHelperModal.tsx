@@ -12,7 +12,7 @@ export const HotkeyHelperModal: React.FC<HotkeyHelperModalProps> = ({ onClose })
     { key: 'Spasi / Panah Kanan', desc: 'Lanjut ke kata berikutnya pada flashcard stage' },
     { key: 'Panah Kiri', desc: 'Kembali ke kata sebelumnya pada flashcard stage' },
     { key: 'Alt + 1', desc: 'Pindah ke Tab 01: Stage Lab' },
-    { key: 'Alt + 2', desc: 'Pindah ke Tab 02: Retensi Kata Kerja' },
+    { key: 'Alt + 2', desc: 'Pindah ke Tab 02: Retensi Memori' },
     { key: 'Alt + 3', desc: 'Pindah ke Tab 03: Matriks Memori' },
     { key: 'Esc', desc: 'Tutup jendela modal yang sedang aktif' }
   ];
