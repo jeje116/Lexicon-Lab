@@ -74,11 +74,12 @@ test('All word IDs follow the deterministic pattern w{stageId}-{slug}', () => {
   });
 });
 
-test('INITIAL_WORD_STATS keys match the normalized IDs', () => {
-  Object.keys(INITIAL_WORD_STATS).forEach((key) => {
-    assertMatch(key, /^w\d+-[a-z0-9-]+$/, `Key "${key}" must be in normalized format`);
-    assertEqual(INITIAL_WORD_STATS[key].wordId, key);
-  });
+test('INITIAL_WORD_STATS is clean baseline in production', () => {
+  assertEqual(Object.keys(INITIAL_WORD_STATS).length, 0, 'INITIAL_WORD_STATS should be empty for a clean state');
+  const defaultUser = getDefaultUserData();
+  assertEqual(defaultUser.dailyStreak, 1, 'Default dailyStreak should be 1');
+  assertEqual(defaultUser.clearedStages.length, 0, 'Default clearedStages should be empty');
+  assertEqual(Object.keys(defaultUser.wordStats).length, 0, 'Default wordStats should be empty');
 });
 
 // =========================================================================

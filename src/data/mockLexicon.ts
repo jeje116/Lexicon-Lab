@@ -9230,16 +9230,5 @@ export const ALL_WORDS_POOL: WordItem[] = [
   }
 ];
 
-// Initial mock stats (Stage 1 baseline)
-export const INITIAL_WORD_STATS: Record<string, WordRetentionStats> = {
-  "w1-ubiquitous": { wordId: "w1-ubiquitous", totalAttempts: 6, correctAttempts: 6, consecutiveStreak: 4, lastReviewedAt: Date.now() - 86400000 * 2, isMastered: true, isBookmarked: false, isInspected: true },
-  "w1-anachronistic": { wordId: "w1-anachronistic", totalAttempts: 4, correctAttempts: 3, consecutiveStreak: 2, lastReviewedAt: Date.now() - 86400000 * 1, isMastered: false, isBookmarked: true, isInspected: true },
-  "w1-obfuscate": { wordId: "w1-obfuscate", totalAttempts: 5, correctAttempts: 2, consecutiveStreak: 0, lastReviewedAt: Date.now() - 86400000 * 3, isMastered: false, isBookmarked: false, isInspected: true },
-  "w1-perfunctory": { wordId: "w1-perfunctory", totalAttempts: 3, correctAttempts: 3, consecutiveStreak: 3, lastReviewedAt: Date.now() - 86400000 * 1, isMastered: false, isBookmarked: false, isInspected: true },
-  "w1-perspicacious": { wordId: "w1-perspicacious", totalAttempts: 4, correctAttempts: 4, consecutiveStreak: 4, lastReviewedAt: Date.now() - 86400000 * 2, isMastered: true, isBookmarked: false, isInspected: true },
-  "w1-epitomize": { wordId: "w1-epitomize", totalAttempts: 5, correctAttempts: 4, consecutiveStreak: 2, lastReviewedAt: Date.now() - 86400000 * 2, isMastered: false, isBookmarked: false, isInspected: true },
-  "w1-exacerbate": { wordId: "w1-exacerbate", totalAttempts: 6, correctAttempts: 2, consecutiveStreak: 0, lastReviewedAt: Date.now() - 86400000 * 4, isMastered: false, isBookmarked: true, isInspected: true },
-  "w1-esoteric": { wordId: "w1-esoteric", totalAttempts: 3, correctAttempts: 2, consecutiveStreak: 1, lastReviewedAt: Date.now() - 86400000 * 1, isMastered: false, isBookmarked: false, isInspected: true },
-  "w1-equivocate": { wordId: "w1-equivocate", totalAttempts: 5, correctAttempts: 1, consecutiveStreak: 0, lastReviewedAt: Date.now() - 86400000 * 5, isMastered: false, isBookmarked: false, isInspected: true },
-  "w1-sagacious": { wordId: "w1-sagacious", totalAttempts: 4, correctAttempts: 4, consecutiveStreak: 3, lastReviewedAt: Date.now() - 86400000 * 2, isMastered: true, isBookmarked: false, isInspected: true }
-};
+// Initial baseline stats (Clean production state: empty)
+export const INITIAL_WORD_STATS: Record<string, WordRetentionStats> = {};

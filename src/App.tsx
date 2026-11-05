@@ -233,6 +233,7 @@ export default function App() {
     const fresh = getDefaultUserData();
     setUserData(fresh);
     saveUserData(fresh);
+    pushCloudUserProgress(fresh).catch(err => console.warn('[App] Push reset progress failed:', err));
     setCurrentMode('stage');
     setStagePhase('deck');
     const initialStageWords = wordsPool.filter(w => w.stageId === 1);

@@ -1,7 +1,7 @@
 import { UserProgressData, WordRetentionStats } from '../types/lexicon';
 import { INITIAL_WORD_STATS } from '../data/mockLexicon';
 
-const STORAGE_KEY = 'lexicon_terminal_progress_v2';
+const STORAGE_KEY = 'lexicon_terminal_progress_v3';
 
 export const LEGACY_ID_MAP: Record<string, string> = {
   'stg1-01': 'w1-ubiquitous',
