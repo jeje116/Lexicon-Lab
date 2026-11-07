@@ -119,7 +119,33 @@ function setupDatabase() {
     progressSheet.appendRow(['default', '{}', new Date().toISOString()]);
   }
 
-  Logger.log("Database setup selesai! Tab 'Vocabulary' dan 'UserProgress' telah siap digunakan.");
+  // C. Inisialisasi Tab KnowledgeTopics
+  setupKnowledgeTopics();
+
+  Logger.log("Database setup selesai! Tab 'Vocabulary', 'UserProgress', dan 'KnowledgeTopics' telah siap digunakan.");
+}
+
+/**
+ * Inisialisasi Tab KnowledgeTopics (8 kolom)
+ */
+function setupKnowledgeTopics() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var topicSheet = ss.getSheetByName('KnowledgeTopics');
+  if (!topicSheet) {
+    topicSheet = ss.insertSheet('KnowledgeTopics');
+  }
+
+  var headers = [
+    'branch_id', 'branch_title', 'topic_id', 'topic_title',
+    'stage_id', 'stage_title', 'content', 'key_points'
+  ];
+
+  if (topicSheet.getLastRow() === 0) {
+    topicSheet.appendRow(headers);
+    topicSheet.getRange(1, 1, 1, headers.length).setFontWeight('bold').setBackground('#f1f5f9');
+  }
+
+  return topicSheet;
 }
 
 /**
@@ -159,7 +185,65 @@ function doGet(e) {
       });
     }
 
-    // B. Mode Kosa Kata (Default)
+    // B. Mode Pengetahuan / Topik Multi-Branch (action=getTopics)
+    if (action === 'getTopics') {
+      var topicSheet = ss.getSheetByName('KnowledgeTopics');
+      if (!topicSheet) {
+        return createJsonResponse([]);
+      }
+
+      var topicData = topicSheet.getDataRange().getValues();
+      if (topicData.length <= 1) {
+        return createJsonResponse([]);
+      }
+
+      var topicHeaders = topicData[0].map(function(h) { 
+        return String(h).trim().toLowerCase(); 
+      });
+
+      var colBranchId = topicHeaders.indexOf('branch_id');
+      var colBranchTitle = topicHeaders.indexOf('branch_title');
+      var colTopicId = topicHeaders.indexOf('topic_id');
+      var colTopicTitle = topicHeaders.indexOf('topic_title');
+      var colStageId = topicHeaders.indexOf('stage_id');
+      var colStageTitle = topicHeaders.indexOf('stage_title');
+      var colContent = topicHeaders.indexOf('content');
+      var colKeyPoints = topicHeaders.indexOf('key_points');
+
+      var topics = [];
+
+      for (var t = 1; t < topicData.length; t++) {
+        var tRow = topicData[t];
+        var topicId = String(tRow[colTopicId >= 0 ? colTopicId : 2] || '').trim();
+        var rawStageId = tRow[colStageId >= 0 ? colStageId : 4];
+        var stageId = parseInt(rawStageId, 10) || 1;
+        var content = String(tRow[colContent >= 0 ? colContent : 6] || '').trim();
+        if (!topicId || !content) continue;
+
+        var branchId = String(tRow[colBranchId >= 0 ? colBranchId : 0] || 'general').trim();
+        var branchTitle = String(tRow[colBranchTitle >= 0 ? colBranchTitle : 1] || 'General').trim();
+        var topicTitle = String(tRow[colTopicTitle >= 0 ? colTopicTitle : 3] || 'Untitled Topic').trim();
+        var stageTitle = String(tRow[colStageTitle >= 0 ? colStageTitle : 5] || ('Bagian ' + stageId)).trim();
+        var rawKeyPoints = String(tRow[colKeyPoints >= 0 ? colKeyPoints : 7] || '').trim();
+        var keyPoints = rawKeyPoints ? rawKeyPoints.split('|').map(function(s) { return s.trim(); }).filter(Boolean) : [];
+
+        topics.push({
+          id: topicId + '-s' + stageId,
+          branchId: branchId,
+          branchTitle: branchTitle,
+          topicId: topicId,
+          topicTitle: topicTitle,
+          stageId: stageId,
+          stageTitle: stageTitle,
+          content: content,
+          keyPoints: keyPoints
+        });
+      }
+
+      return createJsonResponse(topics);
+    }
+
+    // C. Mode Kosa Kata (Default)
     var sheet = ss.getSheetByName('Vocabulary');
     if (!sheet) {
       return createJsonResponse({

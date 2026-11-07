@@ -1,15 +1,23 @@
 import { useState, useEffect, useMemo } from 'react';
-import { HeaderHUD } from './components/HeaderHUD';
-import { CommandSidebar } from './components/CommandSidebar';
+import { HeaderHUD, LearningBranch } from './components/HeaderHUD';
+import { CommandSidebar, BranchTopicSummary } from './components/CommandSidebar';
 import { BottomNav } from './components/BottomNav';
 import { DailyLabView } from './components/DailyLabView';
 import { NeuralVerbRetentionView } from './components/NeuralVerbRetentionView';
 import { MemoryMatrixView } from './components/MemoryMatrixView';
+import { KnowledgeTopicReaderView } from './components/KnowledgeTopicReaderView';
 import { HotkeyHelperModal } from './components/HotkeyHelperModal';
 
-import { TerminalMode, StagePhase, QuizQuestion, WordItem } from './types/lexicon';
+import { TerminalMode, StagePhase, QuizQuestion, WordItem, KnowledgeStageItem } from './types/lexicon';
 import { ALL_WORDS_POOL } from './data/mockLexicon';
-import { fetchVocabularyData, fetchCloudUserProgress, pushCloudUserProgress, VocabDataSource } from './services/vocabService';
+import { MOCK_KNOWLEDGE_TOPICS } from './data/mockKnowledgeTopics';
+import { 
+  fetchVocabularyData, 
+  fetchCloudUserProgress, 
+  pushCloudUserProgress, 
+  fetchKnowledgeTopicsData,
+  VocabDataSource 
+} from './services/vocabService';
 import { loadUserData, saveUserData, recordWordAttempt, getDefaultUserData, mergeUserProgress } from './utils/storage';
 import { generateStageQuizQuestions, getMemoryTier } from './utils/retentionAlgorithm';
 import { playTactileClick } from './utils/audio';
@@ -25,10 +33,15 @@ export default function App() {
   const [wordsPool, setWordsPool] = useState<WordItem[]>(() => ALL_WORDS_POOL);
   const [syncStatus, setSyncStatus] = useState<VocabDataSource | 'syncing'>('mock');
 
+  // Multi-Branch Knowledge Topics State
+  const [knowledgeTopics, setKnowledgeTopics] = useState<KnowledgeStageItem[]>(() => MOCK_KNOWLEDGE_TOPICS);
+  const [activeBranchId, setActiveBranchId] = useState<string>('english');
+  const [selectedTopicId, setSelectedTopicId] = useState<string>('psy-read-people');
+
   const currentStageId = userData.currentStageId || 1;
   const clearedStages = userData.clearedStages || [];
 
-  // Ingestion kosa kata dan progress cloud dari Google Sheets Web App saat mount
+  // Ingestion kosa kata, progres cloud, dan topik materi saat mount
   useEffect(() => {
     let isMounted = true;
     setSyncStatus('syncing');
@@ -59,6 +72,18 @@ export default function App() {
       })
       .catch((err) => {
         console.warn('[App] Gagal sinkronisasi progres cloud saat mount:', err);
+      });
+
+    // 3. Fetch materi topik pengetahuan (KnowledgeTopics)
+    fetchKnowledgeTopicsData()
+      .then(({ topics }) => {
+        if (!isMounted) return;
+        if (topics && topics.length > 0) {
+          setKnowledgeTopics(topics);
+        }
+      })
+      .catch((err) => {
+        console.warn('[App] Gagal fetch knowledge topics:', err);
       });
 
     return () => {
@@ -240,6 +265,102 @@ export default function App() {
     setQuizQuestions(generateStageQuizQuestions(initialStageWords.length > 0 ? initialStageWords : wordsPool, wordsPool));
   };
 
+  // Dynamic Branches list (English Lexicon + auto-grouped dari KnowledgeTopics)
+  const branches = useMemo<LearningBranch[]>(() => {
+    const list: LearningBranch[] = [
+      { id: 'english', title: 'English Lexicon', badge: '3 Modul' }
+    ];
+
+    const branchMap = new Map<string, { title: string; count: number }>();
+    knowledgeTopics.forEach((item) => {
+      const cur = branchMap.get(item.branchId) || { title: item.branchTitle, count: 0 };
+      cur.count += 1;
+      branchMap.set(item.branchId, cur);
+    });
+
+    branchMap.forEach((val, id) => {
+      list.push({
+        id,
+        title: val.title,
+        badge: `${val.count} Bagian`
+      });
+    });
+
+    return list;
+  }, [knowledgeTopics]);
+
+  // Daftar topik di cabang aktif
+  const currentBranchTopics = useMemo<BranchTopicSummary[]>(() => {
+    if (activeBranchId === 'english') return [];
+    const topicMap = new Map<string, { topicId: string; topicTitle: string; totalStages: number }>();
+    knowledgeTopics
+      .filter((t) => t.branchId === activeBranchId)
+      .forEach((t) => {
+        const cur = topicMap.get(t.topicId) || { topicId: t.topicId, topicTitle: t.topicTitle, totalStages: 0 };
+        cur.totalStages += 1;
+        topicMap.set(t.topicId, cur);
+      });
+
+    return Array.from(topicMap.values()).map((t) => {
+      const readList = userData.readTopicStages?.[t.topicId] || [];
+      return {
+        topicId: t.topicId,
+        topicTitle: t.topicTitle,
+        totalStages: t.totalStages,
+        readStagesCount: readList.length
+      };
+    });
+  }, [knowledgeTopics, activeBranchId, userData.readTopicStages]);
+
+  // Tahapan / bagian untuk topik yang sedang aktif dibaca
+  const activeTopicStages = useMemo(() => {
+    return knowledgeTopics
+      .filter((t) => t.topicId === selectedTopicId)
+      .sort((a, b) => a.stageId - b.stageId);
+  }, [knowledgeTopics, selectedTopicId]);
+
+  const activeTopicInfo = useMemo(() => {
+    const stg = activeTopicStages[0];
+    return {
+      title: stg ? stg.topicTitle : 'Topic Reader',
+      branchTitle: stg ? stg.branchTitle : ''
+    };
+  }, [activeTopicStages]);
+
+  const handleSelectBranch = (branchId: string) => {
+    playTactileClick(userData.soundEnabled);
+    setActiveBranchId(branchId);
+    if (branchId !== 'english') {
+      const firstTopic = knowledgeTopics.find((t) => t.branchId === branchId);
+      if (firstTopic) {
+        setSelectedTopicId(firstTopic.topicId);
+      }
+    }
+  };
+
+  const handleSelectTopic = (topicId: string) => {
+    playTactileClick(userData.soundEnabled);
+    setSelectedTopicId(topicId);
+  };
+
+  const handleToggleReadStage = (stageId: number) => {
+    setUserData((prev) => {
+      const currentRead = prev.readTopicStages?.[selectedTopicId] || [];
+      const isRead = currentRead.includes(stageId);
+      const nextRead = isRead
+        ? currentRead.filter((id) => id !== stageId)
+        : [...currentRead, stageId].sort((a, b) => a - b);
+
+      return {
+        ...prev,
+        readTopicStages: {
+          ...(prev.readTopicStages || {}),
+          [selectedTopicId]: nextRead
+        }
+      };
+    });
+  };
+
   // Telemetry counts
   const inspectedCount = stageWords.filter(w => userData.wordStats[w.id]?.isInspected).length;
   const criticalDecayCount = wordsPool.filter(w => getMemoryTier(userData.wordStats[w.id]) === 'CRITICAL').length;
@@ -255,6 +376,9 @@ export default function App() {
         totalLexemesLearned={wordsPool.length}
         soundEnabled={userData.soundEnabled}
         syncStatus={syncStatus}
+        branches={branches}
+        activeBranchId={activeBranchId}
+        onSelectBranch={handleSelectBranch}
         onToggleSound={() => {
           setUserData(prev => ({ ...prev, soundEnabled: !prev.soundEnabled }));
         }}
@@ -280,72 +404,91 @@ export default function App() {
           stagePhase={stagePhase}
           isStageCleared={isStageCleared}
           currentStageId={currentStageId}
+          activeBranchId={activeBranchId}
+          activeBranchTitle={branches.find((b) => b.id === activeBranchId)?.title || 'English Lexicon'}
+          branchTopics={currentBranchTopics}
+          selectedTopicId={selectedTopicId}
+          onSelectTopic={handleSelectTopic}
         />
 
         {/* Dynamic Main Workspace Stage */}
         <main className="flex-1 overflow-y-auto bg-slate-50 relative">
           
-          {/* Tab 1: Stage Lab (Stage Deck + Floating Control Dock + Zero-Tolerance Stage Quiz) */}
-          {currentMode === 'stage' && (
-            <DailyLabView
-              words={stageWords}
-              allWords={wordsPool}
-              statsMap={userData.wordStats}
-              quizQuestions={quizQuestions}
-              phase={stagePhase}
-              onSetPhase={setStagePhase}
-              onToggleBookmark={handleToggleBookmark}
-              onMarkInspected={handleMarkInspected}
-              onQuizCorrectAnswer={handleQuizCorrectAnswer}
-              onQuizEliminationFail={handleQuizEliminationFail}
-              onQuizFlawlessVictory={handleQuizFlawlessVictory}
-              onRebootQuiz={handleRebootQuiz}
-              onNavigateTab={(tab) => {
-                playTactileClick(userData.soundEnabled);
-                setCurrentMode(tab);
-              }}
-              currentStageId={currentStageId}
-              clearedStages={clearedStages}
-              onSelectStage={handleSelectStage}
-              dailyStreak={userData.dailyStreak}
-              clustersMasteredCount={clearedStages.length}
+          {/* Cabang Non-Inggris: Tampilkan Pembaca Topik / Audiobook */}
+          {activeBranchId !== 'english' ? (
+            <KnowledgeTopicReaderView
+              stages={activeTopicStages}
+              topicTitle={activeTopicInfo.title}
+              topicId={selectedTopicId}
+              readStageIds={userData.readTopicStages?.[selectedTopicId] || []}
+              onToggleReadStage={handleToggleReadStage}
               soundEnabled={userData.soundEnabled}
             />
-          )}
+          ) : (
+            <>
+              {/* Tab 1: Stage Lab (Stage Deck + Floating Control Dock + Zero-Tolerance Stage Quiz) */}
+              {currentMode === 'stage' && (
+                <DailyLabView
+                  words={stageWords}
+                  allWords={wordsPool}
+                  statsMap={userData.wordStats}
+                  quizQuestions={quizQuestions}
+                  phase={stagePhase}
+                  onSetPhase={setStagePhase}
+                  onToggleBookmark={handleToggleBookmark}
+                  onMarkInspected={handleMarkInspected}
+                  onQuizCorrectAnswer={handleQuizCorrectAnswer}
+                  onQuizEliminationFail={handleQuizEliminationFail}
+                  onQuizFlawlessVictory={handleQuizFlawlessVictory}
+                  onRebootQuiz={handleRebootQuiz}
+                  onNavigateTab={(tab) => {
+                    playTactileClick(userData.soundEnabled);
+                    setCurrentMode(tab);
+                  }}
+                  currentStageId={currentStageId}
+                  clearedStages={clearedStages}
+                  onSelectStage={handleSelectStage}
+                  dailyStreak={userData.dailyStreak}
+                  clustersMasteredCount={clearedStages.length}
+                  soundEnabled={userData.soundEnabled}
+                />
+              )}
 
-          {/* Tab 2: Retensi Memori 2-Arah (Neural Weighted Probability dari Stage Cleared) */}
-          {currentMode === 'retention' && (
-            <NeuralVerbRetentionView
-              allWords={wordsPool}
-              clearedStages={clearedStages}
-              statsMap={userData.wordStats}
-              onRecordResult={handleRetentionResult}
-              onNavigateToStage={(stgId) => {
-                handleSelectStage(stgId);
-                setCurrentMode('stage');
-                setStagePhase('deck');
-              }}
-              onBackToStage={() => {
-                setCurrentMode('stage');
-              }}
-              soundEnabled={userData.soundEnabled}
-            />
-          )}
+              {/* Tab 2: Retensi Memori 2-Arah (Neural Weighted Probability dari Stage Cleared) */}
+              {currentMode === 'retention' && (
+                <NeuralVerbRetentionView
+                  allWords={wordsPool}
+                  clearedStages={clearedStages}
+                  statsMap={userData.wordStats}
+                  onRecordResult={handleRetentionResult}
+                  onNavigateToStage={(stgId) => {
+                    handleSelectStage(stgId);
+                    setCurrentMode('stage');
+                    setStagePhase('deck');
+                  }}
+                  onBackToStage={() => {
+                    setCurrentMode('stage');
+                  }}
+                  soundEnabled={userData.soundEnabled}
+                />
+              )}
 
-          {/* Tab 3: Matriks Memori (Memory Matrix & Crystallization) */}
-          {currentMode === 'matrix' && (
-            <MemoryMatrixView
-              allWords={wordsPool}
-              statsMap={userData.wordStats}
-              onToggleBookmark={handleToggleBookmark}
-              soundEnabled={userData.soundEnabled}
-            />
+              {/* Tab 3: Matriks Memori (Memory Matrix & Crystallization) */}
+              {currentMode === 'matrix' && (
+                <MemoryMatrixView
+                  allWords={wordsPool}
+                  statsMap={userData.wordStats}
+                  onToggleBookmark={handleToggleBookmark}
+                  soundEnabled={userData.soundEnabled}
+                />
+              )}
+            </>
           )}
         </main>
       </div>
 
       {/* Mobile-Only Bottom Navigation Bar: Otomatis Sembunyi Saat Kuis Aktif */}
-      {!(currentMode === 'stage' && stagePhase === 'quiz') && (
+      {!(activeBranchId === 'english' && currentMode === 'stage' && stagePhase === 'quiz') && (
         <BottomNav
           currentMode={currentMode}
           onSelectMode={(mode) => {
@@ -355,6 +498,11 @@ export default function App() {
           stagePhase={stagePhase}
           criticalDecayCount={criticalDecayCount}
           isStageCleared={isStageCleared}
+          activeBranchId={activeBranchId}
+          branchTopics={currentBranchTopics}
+          selectedTopicId={selectedTopicId}
+          onSelectTopic={handleSelectTopic}
+          onSelectBranch={handleSelectBranch}
         />
       )}
 

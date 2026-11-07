@@ -160,3 +160,32 @@ Implications:
 - Memperkuat daya ingat aktif dua arah (produksi dan pemahaman kosa kata bahasa Inggris).
 - Progres belajar tersimpan persisten di Google Sheets pribadi pengguna dan dapat disinkronkan lintas perangkat tanpa memerlukan server backend terdedikasi atau login OAuth yang rumit.
 - Sistem tahan terhadap jaringan offline berkat arsitektur local-first storage dengan smart-merge.
+
+---
+
+# ADR-008 — Multi-Branch Knowledge Architecture & Interactive Concept Reader
+
+Status:
+LOCKED
+
+Decision:
+1. **Multi-Branch Hierarchy**:
+   - Sistem pembelajaran diperluas mendukung multi-cabang ilmu melalui `Branch Selector Dropdown` di Header HUD:
+     * Cabang `english` (English Lexicon - memuat 3 modul: Stage Lab, Retensi Memori, Matriks Memori).
+     * Cabang dinamis non-Inggris (misal: `psychology`, `statistics`) yang otomatis dikelompokkan dari data `KnowledgeTopics`.
+2. **Tab Google Sheets `KnowledgeTopics`**:
+   - Tab spreadsheet `KnowledgeTopics` (8 kolom: `branch_id`, `branch_title`, `topic_id`, `topic_title`, `stage_id`, `stage_title`, `content`, `key_points`) menjadi single source of truth untuk topik bacaan/audiobook ringkas.
+   - Akses API disediakan via `doGet(e)` dengan `action=getTopics`.
+   - Modul `src/services/vocabService.ts` menerapkan 3-tier fallback (`getTopics` live fetch -> LocalStorage cache `lexicon_topics_cache_v1` -> Mock fallback `MOCK_KNOWLEDGE_TOPICS`).
+3. **Interactive Concept Reader View (`KnowledgeTopicReaderView.tsx`)**:
+   - Mengadopsi prinsip Porcelain Slate Light Mode dan Single Floating Dock (ADR-004):
+     * *Horizontal Stage Selector Strip*: Navigasi antar-bagian (1..N) dengan penanda progres selesai baca.
+     * *Interactive Content Rendering*: Pemecahan paragraf `\n\n`, rendering `**bold**` sebagai `<strong>`, dan rendering `==highlight==` sebagai `<mark>` beraksen amber lembut.
+     * *Key Points Box*: Kotak rangkuman poin kunci yang selalu terbuka langsung di bawah konten tanpa memerlukan interaksi klik tambahan.
+     * *Floating Dock Navigasi*: Tombol panah kiri/kanan, tombol status/tandai dibaca di tengah, serta dukungan navigasi keyboard panah Kiri/Kanan.
+4. **User Progress Schema Extension**:
+   - `UserProgressData` diperluas dengan field opsional `readTopicStages?: Record<string, number[]>` untuk memetakan `topicId` ke daftar `stageId` yang telah selesai dibaca, yang otomatis tersinkron ke `UserProgress` cloud sheet.
+
+Implications:
+- Lexicon Lab bertransformasi menjadi platform multi-disiplin ilmu yang scalable dan dinamis tanpa memecah kesederhanaan modul kosa kata bahasa Inggris yang sudah ada.
+- Pengguna dapat membaca ringkasan buku/audiobook terstruktur dengan pengalaman membaca yang fokus dan nyaman.

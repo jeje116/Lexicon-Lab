@@ -1,6 +1,7 @@
 import React from 'react';
-import { BookOpen, Zap, Grid3X3, Flame } from 'lucide-react';
+import { BookOpen, Zap, Grid3X3, Flame, Compass } from 'lucide-react';
 import { TerminalMode, StagePhase } from '../types/lexicon';
+import { BranchTopicSummary } from './CommandSidebar';
 
 interface BottomNavProps {
   currentMode: TerminalMode;
@@ -8,6 +9,11 @@ interface BottomNavProps {
   stagePhase: StagePhase;
   criticalDecayCount: number;
   isStageCleared: boolean;
+  activeBranchId?: string;
+  branchTopics?: BranchTopicSummary[];
+  selectedTopicId?: string;
+  onSelectTopic?: (topicId: string) => void;
+  onSelectBranch?: (branchId: string) => void;
 }
 
 export const BottomNav: React.FC<BottomNavProps> = ({
@@ -15,13 +21,19 @@ export const BottomNav: React.FC<BottomNavProps> = ({
   onSelectMode,
   stagePhase,
   criticalDecayCount,
-  isStageCleared
+  isStageCleared,
+  activeBranchId = 'english',
+  branchTopics = [],
+  selectedTopicId,
+  onSelectTopic,
+  onSelectBranch
 }) => {
   // Sembunyikan BottomNav secara otomatis saat sesi kuis aktif
-  if (currentMode === 'stage' && stagePhase === 'quiz') {
+  if (activeBranchId === 'english' && currentMode === 'stage' && stagePhase === 'quiz') {
     return null;
   }
 
+  const isEnglishBranch = activeBranchId === 'english';
   const isQuizActive = false;
 
   const navItems = [
@@ -56,6 +68,51 @@ export const BottomNav: React.FC<BottomNavProps> = ({
         : 'bg-emerald-50 text-emerald-700 border-emerald-200'
     }
   ];
+
+  if (!isEnglishBranch) {
+    return (
+      <nav 
+        aria-label="Navigasi Topik" 
+        className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-slate-200 pb-[env(safe-area-inset-bottom,0px)] shadow-[0_-4px_20px_-5px_rgba(0,0,0,0.05)]"
+      >
+        <div className="flex items-center justify-between h-16 max-w-md mx-auto px-3 gap-2">
+          {/* List topik dalam cabang */}
+          <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar flex-1 py-1">
+            {branchTopics.map((topic, idx) => {
+              const isSelected = selectedTopicId === topic.topicId;
+              return (
+                <button
+                  key={topic.topicId}
+                  onClick={() => onSelectTopic && onSelectTopic(topic.topicId)}
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-all cursor-pointer shrink-0 ${
+                    isSelected
+                      ? 'bg-blue-50 border border-blue-200 text-blue-700 font-bold'
+                      : 'text-slate-600 hover:bg-slate-50'
+                  }`}
+                >
+                  <BookOpen className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate max-w-[140px]">{topic.topicTitle || `Topik ${idx + 1}`}</span>
+                  <span className="text-[10px] font-mono opacity-80">({topic.readStagesCount}/{topic.totalStages})</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Tombol Cepat Kembali ke English Lexicon */}
+          {onSelectBranch && (
+            <button
+              onClick={() => onSelectBranch('english')}
+              className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 text-xs font-mono font-bold shrink-0 flex items-center gap-1"
+              title="Kembali ke English Lexicon"
+            >
+              <Compass className="w-3.5 h-3.5 text-blue-600" />
+              <span>English</span>
+            </button>
+          )}
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <nav 

@@ -66,7 +66,8 @@ export function getDefaultUserData(): UserProgressData {
     totalFlawlessRuns: 0,
     soundEnabled: true,
     speechRate: 1.0,
-    wordStats: { ...INITIAL_WORD_STATS }
+    wordStats: { ...INITIAL_WORD_STATS },
+    readTopicStages: {}
   };
 }
 
@@ -84,7 +85,8 @@ export function loadUserData(): UserProgressData {
       wordStats: {
         ...INITIAL_WORD_STATS,
         ...migratedStats
-      }
+      },
+      readTopicStages: parsed.readTopicStages || {}
     };
   } catch (err) {
     console.error('Failed to load user progress:', err);
@@ -154,6 +156,18 @@ export function mergeUserProgress(
       ? local.lastStreakDate
       : cloud.lastStreakDate || local.lastStreakDate;
 
+  // Merge readTopicStages deterministik
+  const mergedReadStages: Record<string, number[]> = {
+    ...(local.readTopicStages || {})
+  };
+  if (cloud && cloud.readTopicStages) {
+    for (const [topicId, stages] of Object.entries(cloud.readTopicStages)) {
+      const existing = mergedReadStages[topicId] || [];
+      const incoming = Array.isArray(stages) ? stages : [];
+      mergedReadStages[topicId] = Array.from(new Set([...existing, ...incoming])).sort((a, b) => a - b);
+    }
+  }
+
   return {
     dailyStreak: Math.max(local.dailyStreak || 0, cloud.dailyStreak || 0),
     lastStreakDate: latestStreakDate,
@@ -168,7 +182,21 @@ export function mergeUserProgress(
     totalFlawlessRuns: Math.max(local.totalFlawlessRuns || 0, cloud.totalFlawlessRuns || 0),
     soundEnabled: local.soundEnabled !== undefined ? local.soundEnabled : (cloud.soundEnabled ?? true),
     speechRate: local.speechRate || cloud.speechRate || 1.0,
-    wordStats: mergedWordStats
+    wordStats: mergedWordStats,
+    readTopicStages: mergedReadStages
+  };
+}
+
+export function markTopicStageRead(
+  prevReadTopicStages: Record<string, number[]> = {},
+  topicId: string,
+  stageId: number
+): Record<string, number[]> {
+  const currentList = prevReadTopicStages[topicId] || [];
+  if (currentList.includes(stageId)) return prevReadTopicStages;
+  return {
+    ...prevReadTopicStages,
+    [topicId]: [...currentList, stageId].sort((a, b) => a - b)
   };
 }
 

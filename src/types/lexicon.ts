@@ -74,4 +74,17 @@ export interface UserProgressData {
   soundEnabled: boolean;
   speechRate: number; // 0.75 atau 1.0
   wordStats: Record<string, WordRetentionStats>;
+  readTopicStages?: Record<string, number[]>; // topicId -> array of stageIds read
+}
+
+export interface KnowledgeStageItem {
+  id: string;           // format: `${topicId}-s${stageId}`
+  branchId: string;     // misal: 'psychology' | 'statistics'
+  branchTitle: string;  // misal: 'Psychology & Life'
+  topicId: string;      // misal: 'psy-read-people'
+  topicTitle: string;   // misal: 'Read People Like a Book – Understanding Human Behavior'
+  stageId: number;      // 1..N
+  stageTitle: string;
+  content: string;      // mendukung **bold**, ==highlight==, dan \n\n
+  keyPoints: string[];  // hasil split dari kolom key_points dengan delimiter '|'
 }

@@ -6,6 +6,7 @@
 
 ## Completed
 
+- [x] ENG-012: Multi-Branch Knowledge Architecture (Dropdown Branch Switcher, KnowledgeTopics Sheet Sync, & Interactive Concept Reader)
 - [x] ENG-011: Bulk Excel Vocabulary Ingestion (423 New Words, Stage 04–46) & Optional Field UI Polish
 - [x] ENG-010: Bidirectional (2-Way) Retention Engine & Hostless Google Sheets Full-Database Sync
 

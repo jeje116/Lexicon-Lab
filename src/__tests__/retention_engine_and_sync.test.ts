@@ -1,15 +1,17 @@
 import { ALL_WORDS_POOL, INITIAL_WORD_STATS } from '../data/mockLexicon';
+import { MOCK_KNOWLEDGE_TOPICS } from '../data/mockKnowledgeTopics';
 import { 
   mergeUserProgress, 
   migrateLegacyWordStats, 
-  getDefaultUserData 
+  getDefaultUserData,
+  markTopicStageRead 
 } from '../utils/storage';
 import { 
   isExactTranslationMatch, 
   isExactWordMatch, 
   generateStageQuizQuestions 
 } from '../utils/retentionAlgorithm';
-import { normalizePartOfSpeech } from '../services/vocabService';
+import { normalizePartOfSpeech, normalizeKnowledgeTopicItems } from '../services/vocabService';
 import { UserProgressData } from '../types/lexicon';
 
 console.log('🧪 [AUTONOMOUS QA] Starting ENG-010 Verification Test Suite...\n');
@@ -328,6 +330,104 @@ test('Retention pool strictly enforces gatekeeper when clearedStages is empty', 
   const multiStagePool = getRetentionPool(ALL_WORDS_POOL, [1, 2]);
   assertEqual(multiStagePool.length, 20, 'Retention pool must have 20 words when Stage 1 & 2 are cleared');
   assertTrue(multiStagePool.every(w => w.stageId === 1 || w.stageId === 2), 'All words in pool must be from Stage 1 or 2');
+});
+
+// =========================================================================
+// TEST SUITE 8: ENG-012 MULTI-BRANCH KNOWLEDGE & CONTENT PARSER
+// =========================================================================
+console.log('\n--- Test Suite 8: Multi-Branch Knowledge & Content Parser ---');
+
+test('MOCK_KNOWLEDGE_TOPICS contains 25 stages across Psychology and Statistics', () => {
+  assertEqual(MOCK_KNOWLEDGE_TOPICS.length, 25, 'Total stages in mock knowledge topics must be 25');
+
+  const psyStages = MOCK_KNOWLEDGE_TOPICS.filter((t) => t.topicId === 'psy-read-people');
+  assertEqual(psyStages.length, 21, 'Read People Like a Book must have exactly 21 stages');
+
+  const statStages = MOCK_KNOWLEDGE_TOPICS.filter((t) => t.topicId === 'stat-kmeans');
+  assertEqual(statStages.length, 4, 'K-Means topic must have exactly 4 stages');
+
+  // Verify ID format `${topicId}-s${stageId}`
+  MOCK_KNOWLEDGE_TOPICS.forEach((item) => {
+    assertEqual(item.id, `${item.topicId}-s${item.stageId}`);
+    assertTrue(item.content.length > 20, `Content of stage ${item.id} must be non-empty`);
+    assertTrue(item.keyPoints.length > 0, `Key points of stage ${item.id} must be non-empty`);
+  });
+});
+
+test('normalizeKnowledgeTopicItems handles string pipe delimiter for keyPoints', () => {
+  const rawItems = [
+    {
+      topicId: 'raw-topic',
+      topicTitle: 'Raw Topic Title',
+      branchId: 'test-branch',
+      branchTitle: 'Test Branch',
+      stageId: '1',
+      stageTitle: '01. Intro',
+      content: 'Sample **bold** and ==highlight== text',
+      keyPoints: 'Point Alpha | Point Beta | Point Gamma'
+    }
+  ];
+
+  const normalized = normalizeKnowledgeTopicItems(rawItems);
+  assertEqual(normalized.length, 1);
+  assertEqual(normalized[0].stageId, 1);
+  assertEqual(normalized[0].keyPoints.length, 3);
+  assertEqual(normalized[0].keyPoints[0], 'Point Alpha');
+  assertEqual(normalized[0].keyPoints[1], 'Point Beta');
+  assertEqual(normalized[0].keyPoints[2], 'Point Gamma');
+});
+
+test('markTopicStageRead adds stageId immutably and deduplicates', () => {
+  const initial = {};
+  const after1 = markTopicStageRead(initial, 'psy-read-people', 1);
+  assertEqual(after1['psy-read-people'].length, 1);
+  assertEqual(after1['psy-read-people'][0], 1);
+
+  // Re-adding same stageId does not duplicate
+  const duplicate = markTopicStageRead(after1, 'psy-read-people', 1);
+  assertEqual(duplicate['psy-read-people'].length, 1);
+
+  // Adding stage 3 sorts cleanly
+  const after3 = markTopicStageRead(after1, 'psy-read-people', 3);
+  assertEqual(after3['psy-read-people'].length, 2);
+  assertEqual(after3['psy-read-people'][0], 1);
+  assertEqual(after3['psy-read-people'][1], 3);
+});
+
+test('mergeUserProgress deterministically merges readTopicStages from cloud', () => {
+  const local: UserProgressData = {
+    ...getDefaultUserData(),
+    readTopicStages: {
+      'psy-read-people': [1, 2]
+    }
+  };
+
+  const cloud: UserProgressData = {
+    ...getDefaultUserData(),
+    readTopicStages: {
+      'psy-read-people': [2, 3],
+      'stat-kmeans': [1]
+    }
+  };
+
+  const merged = mergeUserProgress(local, cloud);
+  assertEqual(merged.readTopicStages?.['psy-read-people']?.length, 3);
+  assertEqual(merged.readTopicStages?.['psy-read-people']?.[0], 1);
+  assertEqual(merged.readTopicStages?.['psy-read-people']?.[1], 2);
+  assertEqual(merged.readTopicStages?.['psy-read-people']?.[2], 3);
+  assertEqual(merged.readTopicStages?.['stat-kmeans']?.length, 1);
+  assertEqual(merged.readTopicStages?.['stat-kmeans']?.[0], 1);
+});
+
+test('Markdown formatting pattern isolates **bold** and ==highlight== cleanly', () => {
+  const sample = '**Membaca orang** adalah kemampuan. ==Tujuan utamanya bukan menebak.== Selesai.';
+  const tokens = sample.split(/(\*\*.*?\*\*|==.*?==)/g);
+  
+  const boldToken = tokens.find((t) => t.startsWith('**') && t.endsWith('**'));
+  assertEqual(boldToken, '**Membaca orang**');
+
+  const hlToken = tokens.find((t) => t.startsWith('==') && t.endsWith('=='));
+  assertEqual(hlToken, '==Tujuan utamanya bukan menebak.==');
 });
 
 console.log(`\n======================================================`);
