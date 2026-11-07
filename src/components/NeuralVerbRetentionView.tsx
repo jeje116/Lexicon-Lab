@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { 
   Volume2, 
   ArrowRight, 
@@ -49,13 +49,11 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
   onBackToStage,
   soundEnabled
 }) => {
-  // Ambil seluruh kosa kata dari stage yang sudah selesai (semua kelas kata, fallback stage 1 jika belum ada yang cleared)
-  const retentionPool = allWords.filter(w => {
-    if (clearedStages.length > 0) {
-      return clearedStages.includes(w.stageId);
-    }
-    return w.stageId === 1;
-  });
+  // Ambil seluruh kosa kata dari stage yang sudah selesai (TIDAK ADA fallback ke Stage 1 jika clearedStages kosong)
+  const retentionPool = useMemo(() => {
+    if (!clearedStages || clearedStages.length === 0) return [];
+    return allWords.filter(w => clearedStages.includes(w.stageId));
+  }, [allWords, clearedStages]);
 
   const [activeVerb, setActiveVerb] = useState<WordItem | null>(null);
   const [variant, setVariant] = useState<QuizVariant>('TYPE_TRANSLATION');
@@ -118,11 +116,17 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
   };
 
   useEffect(() => {
-    drawNextVerb();
-  }, [clearedStages.length]);
+    if (retentionPool.length > 0) {
+      drawNextVerb();
+    } else {
+      setActiveVerb(null);
+    }
+  }, [retentionPool.length]);
 
   // Keyboard shortcut listener
   useEffect(() => {
+    if (retentionPool.length === 0 || !activeVerb) return;
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (evalState !== 'testing' || !activeVerb) {
         if (e.key === ' ' || e.key === 'ArrowRight' || e.key === 'Enter') {
@@ -197,22 +201,46 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
     }
   };
 
-  if (!activeVerb) {
+  if (retentionPool.length === 0 || !activeVerb) {
     return (
-      <div className="flex-1 flex flex-col items-center justify-center p-6 text-center max-w-md mx-auto space-y-4 font-sans">
-        <div className="p-3 rounded-2xl bg-amber-50 border border-amber-200 text-amber-600">
-          <Lock className="w-8 h-8" />
+      <div className="flex-1 flex flex-col p-3 sm:p-6 lg:p-8 max-w-xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-32">
+        {/* 1. Header Ultra-Bersih: Hanya Tombol Kembali dan Judul */}
+        <div className="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm flex items-center gap-3">
+          <button
+            onClick={() => onBackToStage ? onBackToStage() : onNavigateToStage(1)}
+            className="w-10 h-10 rounded-xl bg-slate-100 hover:bg-slate-200 border border-slate-200 text-slate-700 flex items-center justify-center transition-colors cursor-pointer shrink-0"
+            title="Kembali ke Stage"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <h2 className="text-base font-extrabold text-slate-900 tracking-tight font-sans">
+            TES RETENSI MEMORI
+          </h2>
         </div>
-        <h3 className="text-slate-900 text-base font-bold">Bank Kosa Kata Belum Terbuka</h3>
-        <p className="text-slate-500 text-xs leading-relaxed">
-          Selesaikan Stage 01 dengan nilai sempurna 20/20 terlebih dahulu untuk membuka tes retensi memori.
-        </p>
-        <button
-          onClick={() => onNavigateToStage(1)}
-          className="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-md cursor-pointer transition-colors"
-        >
-          Pergi ke Stage 01
-        </button>
+
+        {/* 2. Gatekeeper Card (Light Mode Slate-50) */}
+        <div className="bg-white border border-slate-200/90 rounded-3xl p-8 sm:p-12 shadow-sm flex flex-col items-center justify-center text-center space-y-6 font-sans">
+          <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-slate-400">
+            <Lock className="w-10 h-10" />
+          </div>
+
+          <div className="space-y-2 max-w-md">
+            <h3 className="text-slate-900 text-lg sm:text-xl font-extrabold tracking-tight">
+              Belum Ada Materi untuk Diuji
+            </h3>
+            <p className="text-slate-500 text-xs sm:text-sm leading-relaxed">
+              Tes Retensi Memori menguji kosa kata dari stage yang telah Anda kuasai. Selesaikan kuis kelulusan (20/20) pada minimal satu stage di Stage Lab untuk memulai.
+            </p>
+          </div>
+
+          <button
+            onClick={() => onNavigateToStage(1)}
+            className="px-6 py-3.5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-500/20 cursor-pointer transition-all active:scale-[0.98] flex items-center gap-2"
+          >
+            <BookOpen className="w-4 h-4" />
+            <span>Buka Stage Lab</span>
+          </button>
+        </div>
       </div>
     );
   }

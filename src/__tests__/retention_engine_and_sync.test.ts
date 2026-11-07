@@ -307,6 +307,29 @@ test('Master vocabulary stages span Stage 4 to 46 with valid partition counts', 
   assertEqual(stage46Count, 2, 'Stage 46 must have exactly 2 words');
 });
 
+// =========================================================================
+// TEST SUITE 7: RETENTION GATEKEEPER (NO STAGES CLEARED)
+// =========================================================================
+console.log('\n--- Test Suite 7: Retention Gatekeeper Verification ---');
+
+test('Retention pool strictly enforces gatekeeper when clearedStages is empty', () => {
+  const getRetentionPool = (allWords: typeof ALL_WORDS_POOL, clearedStages: number[]) => {
+    if (!clearedStages || clearedStages.length === 0) return [];
+    return allWords.filter(w => clearedStages.includes(w.stageId));
+  };
+
+  const emptyPool = getRetentionPool(ALL_WORDS_POOL, []);
+  assertEqual(emptyPool.length, 0, 'Retention pool must be empty when no stages are cleared');
+
+  const stage1Pool = getRetentionPool(ALL_WORDS_POOL, [1]);
+  assertEqual(stage1Pool.length, 10, 'Retention pool must have 10 words when Stage 1 is cleared');
+  assertTrue(stage1Pool.every(w => w.stageId === 1), 'All words in pool must be from Stage 1');
+
+  const multiStagePool = getRetentionPool(ALL_WORDS_POOL, [1, 2]);
+  assertEqual(multiStagePool.length, 20, 'Retention pool must have 20 words when Stage 1 & 2 are cleared');
+  assertTrue(multiStagePool.every(w => w.stageId === 1 || w.stageId === 2), 'All words in pool must be from Stage 1 or 2');
+});
+
 console.log(`\n======================================================`);
 console.log(`🎯 Test Summary: ${testsPassed}/${testsTotal} passed (${Math.round((testsPassed / testsTotal) * 100)}%)`);
 console.log(`======================================================\n`);
