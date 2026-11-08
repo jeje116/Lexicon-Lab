@@ -290,7 +290,7 @@ export function normalizeKnowledgeTopicItems(items: unknown[]): KnowledgeStageIt
       const branchTitle = String(raw.branchTitle || 'General').trim();
       const topicTitle = String(raw.topicTitle || 'Untitled Topic').trim();
       const stageTitle = String(raw.stageTitle || `Bagian ${stageId}`).trim();
-      const content = String(raw.content || '').trim();
+      const content = String(raw.content || '').replace(/\\n/g, '\n').trim();
 
       let keyPoints: string[] = [];
       if (Array.isArray(raw.keyPoints)) {

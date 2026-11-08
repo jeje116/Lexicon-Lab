@@ -21,20 +21,37 @@ interface KnowledgeTopicReaderViewProps {
 }
 
 /**
- * Render teks paragraf dengan format **bold** dan ==highlight==
+ * Render teks dalam baris (mendukung **bold** di dalam *italic*)
+ */
+function renderNestedBold(inner: string): React.ReactNode[] {
+  return inner.split(/(\*\*.*?\*\*)/g).map((seg, i) => {
+    if (seg.startsWith('**') && seg.endsWith('**')) {
+      return (
+        <strong key={i} className="font-semibold text-slate-900 not-italic">
+          {seg.slice(2, -2)}
+        </strong>
+      );
+    }
+    return <span key={i}>{seg}</span>;
+  });
+}
+
+/**
+ * Render teks paragraf dengan format **bold**, ==highlight==, *italic*, dan newline
  */
 export function renderFormattedContent(text: string): React.ReactNode[] {
-  const paragraphs = text
+  const normalized = text.replace(/\\n/g, '\n');
+  const paragraphs = normalized
     .split(/\n\s*\n/)
     .map((p) => p.trim())
     .filter(Boolean);
 
   return paragraphs.map((para, pIdx) => {
-    // Regex membagi string berdasarkan **bold** dan ==highlight==
-    const tokens = para.split(/(\*\*.*?\*\*|==.*?==)/g);
+    // Regex membagi string berdasarkan **bold**, ==highlight==, dan *italic* (termasuk bold di dalam italic)
+    const tokens = para.split(/(\*\*.*?\*\*|==.*?==|\*(?!\*)(?:[^*\n]|\*\*.*?\*\*)+?\*(?!\*))/g);
 
     return (
-      <p key={pIdx} className="leading-relaxed text-slate-700 text-base sm:text-lg font-sans">
+      <p key={pIdx} className="leading-relaxed text-slate-700 text-base sm:text-lg font-sans whitespace-pre-line">
         {tokens.map((token, tIdx) => {
           if (token.startsWith('**') && token.endsWith('**')) {
             return (
@@ -51,6 +68,13 @@ export function renderFormattedContent(text: string): React.ReactNode[] {
               >
                 {token.slice(2, -2)}
               </mark>
+            );
+          }
+          if (token.startsWith('*') && token.endsWith('*') && token.length > 2) {
+            return (
+              <em key={tIdx} className="italic text-slate-800">
+                {renderNestedBold(token.slice(1, -1))}
+              </em>
             );
           }
           return <span key={tIdx}>{token}</span>;
@@ -290,3 +314,4 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
     </div>
   );
 };
+
