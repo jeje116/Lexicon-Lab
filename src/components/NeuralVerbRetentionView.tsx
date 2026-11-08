@@ -289,7 +289,10 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                     </div>
                     <button
                       type="button"
-                      onClick={() => speakLexeme(activeVerb.word)}
+                      onClick={() => {
+                        const isIndo = activeVerb.id.startsWith('id-w');
+                        speakLexeme(activeVerb.word, 1.0, isIndo ? 'id-ID' : 'en-US');
+                      }}
                       className="p-2.5 rounded-2xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-600 cursor-pointer transition-colors active:scale-95 shadow-xs"
                       title="Dengarkan Suara"
                     >
@@ -418,7 +421,10 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                     </div>
                     <button
                       type="button"
-                      onClick={() => speakLexeme(activeVerb.word)}
+                      onClick={() => {
+                        const isIndo = activeVerb.id.startsWith('id-w');
+                        speakLexeme(activeVerb.word, 1.0, isIndo ? 'id-ID' : 'en-US');
+                      }}
                       className="p-2.5 rounded-2xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-600 cursor-pointer transition-colors active:scale-95 shadow-xs"
                       title="Dengarkan Suara"
                     >

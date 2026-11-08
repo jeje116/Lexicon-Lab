@@ -35,15 +35,19 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
 
   const handlePlayAudio = () => {
     playTactileClick(soundEnabled);
-    speakLexeme(word.word);
+    const isIndo = word.id.startsWith('id-w');
+    speakLexeme(word.word, 1.0, isIndo ? 'id-ID' : 'en-US');
   };
 
-  const partOfSpeechLabel = {
-    verb: 'KATA KERJA (VERB)',
-    adjective: 'KATA SIFAT (ADJECTIVE)',
-    noun: 'KATA BENDA (NOUN)',
-    adverb: 'KATA KETERANGAN (ADVERB)'
-  }[word.partOfSpeech] || word.partOfSpeech.toUpperCase();
+  const isIndoWord = word.id.startsWith('id-w');
+  const partOfSpeechLabel = isIndoWord 
+    ? (word.phonetic || word.partOfSpeech.toUpperCase())
+    : ({
+        verb: 'KATA KERJA (VERB)',
+        adjective: 'KATA SIFAT (ADJECTIVE)',
+        noun: 'KATA BENDA (NOUN)',
+        adverb: 'KATA KETERANGAN (ADVERB)'
+      }[word.partOfSpeech] || word.partOfSpeech.toUpperCase());
 
   const tierLabel = {
     CRITICAL: 'KRITIS (<40%)',

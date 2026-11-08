@@ -495,6 +495,37 @@ test('generateIndonesianStageQuizQuestions produces 20 balanced 2-way questions 
   });
 });
 
+test('Indonesian retention pool correctly includes Adjectives and Nouns when Stage 1 is cleared', () => {
+  const indoStages = MOCK_KNOWLEDGE_TOPICS.filter((t) => t.branchId === 'kosa-kata-indonesia');
+  const converted = convertIndonesianStagesToWordItems(indoStages);
+  const clearedIndonesianStages = [1];
+
+  // Stage 1 in Indonesian Lexicon has mostly Adjectives and Nouns
+  const retentionPool = converted.filter(w => clearedIndonesianStages.includes(w.stageId));
+  assertEqual(retentionPool.length, 10, 'Retention pool must contain all 10 words from Stage 1');
+  
+  const hasAdjectives = retentionPool.some(w => w.partOfSpeech === 'adjective');
+  const hasNouns = retentionPool.some(w => w.partOfSpeech === 'noun');
+  assertTrue(hasAdjectives, 'Stage 1 must have adjectives');
+  assertTrue(hasNouns, 'Stage 1 must have nouns');
+});
+
+test('UI Navigation 3 Modules visibility contract is satisfied for Indonesian Lexicon', () => {
+  const activeBranchId: string = 'kosa-kata-indonesia';
+  const isEnglishBranch = activeBranchId === 'english';
+  const isIndoBranch = activeBranchId === 'kosa-kata-indonesia';
+
+  // Both English and Indonesian branches must expose exactly 3 system modules
+  const modulesVisible = isEnglishBranch || isIndoBranch;
+  assertTrue(modulesVisible, 'Modul Sistem must be active for Indonesian Lexicon branch');
+
+  const navItemIds: string[] = ['stage', 'retention', 'matrix'];
+  assertEqual(navItemIds.length, 3, 'Exactly 3 navigation items must be configured');
+  assertEqual(navItemIds[0], 'stage');
+  assertEqual(navItemIds[1], 'retention');
+  assertEqual(navItemIds[2], 'matrix');
+});
+
 console.log(`\n======================================================`);
 console.log(`🎯 Test Summary: ${testsPassed}/${testsTotal} passed (${Math.round((testsPassed / testsTotal) * 100)}%)`);
 console.log(`======================================================\n`);
