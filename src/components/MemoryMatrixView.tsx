@@ -27,7 +27,7 @@ export const MemoryMatrixView: React.FC<MemoryMatrixViewProps> = ({
   onToggleBookmark,
   soundEnabled
 }) => {
-  const [filterType, setFilterType] = useState<'all' | 'verb' | 'adjective' | 'critical' | 'mastered' | 'bookmarked'>('all');
+  const [filterType, setFilterType] = useState<'all' | 'verb' | 'noun' | 'adjective' | 'critical' | 'mastered' | 'bookmarked'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedWord, setSelectedWord] = useState<WordItem | null>(null);
 
@@ -46,6 +46,7 @@ export const MemoryMatrixView: React.FC<MemoryMatrixViewProps> = ({
     }
 
     if (filterType === 'verb') return word.partOfSpeech === 'verb';
+    if (filterType === 'noun') return word.partOfSpeech === 'noun';
     if (filterType === 'adjective') return word.partOfSpeech === 'adjective';
     if (filterType === 'critical') return tier === 'CRITICAL' || tier === 'VULNERABLE';
     if (filterType === 'mastered') return stats?.isMastered || tier === 'CRYSTALLIZED';
@@ -68,9 +69,12 @@ export const MemoryMatrixView: React.FC<MemoryMatrixViewProps> = ({
     setSelectedWord(word);
   };
 
+  const hasNouns = allWords.some(w => w.partOfSpeech === 'noun');
+
   const filterButtons = [
     { id: 'all', label: 'Semua Kata', count: totalCount },
     { id: 'verb', label: 'Kata Kerja', count: allWords.filter(w => w.partOfSpeech === 'verb').length },
+    ...(hasNouns ? [{ id: 'noun', label: 'Kata Benda', count: allWords.filter(w => w.partOfSpeech === 'noun').length }] : []),
     { id: 'adjective', label: 'Kata Sifat', count: allWords.filter(w => w.partOfSpeech === 'adjective').length },
     { id: 'critical', label: 'Perlu Diulang', count: criticalCount + vulnerableCount, alert: criticalCount > 0 },
     { id: 'mastered', label: 'Dikuasai', count: masteredCount },
@@ -162,7 +166,7 @@ export const MemoryMatrixView: React.FC<MemoryMatrixViewProps> = ({
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Cari kata bahasa Inggris atau terjemahan Indonesia..."
+            placeholder="Cari kata atau arti terjemahan..."
             className="w-full pl-10 pr-4 py-3 rounded-xl bg-white border border-slate-300 text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-blue-600 focus:ring-4 focus:ring-blue-100 transition-all shadow-sm"
           />
         </div>

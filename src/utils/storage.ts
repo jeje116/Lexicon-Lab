@@ -67,7 +67,8 @@ export function getDefaultUserData(): UserProgressData {
     soundEnabled: true,
     speechRate: 1.0,
     wordStats: { ...INITIAL_WORD_STATS },
-    readTopicStages: {}
+    readTopicStages: {},
+    clearedIndonesianStages: []
   };
 }
 
@@ -119,6 +120,11 @@ export function mergeUserProgress(
   const localStages = Array.isArray(local.clearedStages) ? local.clearedStages : [];
   const cloudStages = Array.isArray(cloud.clearedStages) ? cloud.clearedStages : [];
   const mergedStages = Array.from(new Set([...localStages, ...cloudStages])).sort((a, b) => a - b);
+
+  // Union clearedIndonesianStages
+  const localIndoStages = Array.isArray(local.clearedIndonesianStages) ? local.clearedIndonesianStages : [];
+  const cloudIndoStages = Array.isArray(cloud.clearedIndonesianStages) ? cloud.clearedIndonesianStages : [];
+  const mergedIndoStages = Array.from(new Set([...localIndoStages, ...cloudIndoStages])).sort((a, b) => a - b);
 
   // Union wordStats dengan resolusi konflik deterministik
   const mergedWordStats: Record<string, WordRetentionStats> = {
@@ -172,6 +178,7 @@ export function mergeUserProgress(
     dailyStreak: Math.max(local.dailyStreak || 0, cloud.dailyStreak || 0),
     lastStreakDate: latestStreakDate,
     clearedStages: mergedStages,
+    clearedIndonesianStages: mergedIndoStages,
     currentStageId: local.currentStageId || cloud.currentStageId || 1,
     clustersMasteredCount: Math.max(
       local.clustersMasteredCount || 0,

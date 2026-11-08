@@ -66,7 +66,8 @@ export interface QuizQuestion {
 export interface UserProgressData {
   dailyStreak: number;
   lastStreakDate: string; // YYYY-MM-DD
-  clearedStages: number[]; // ID Stage yang sudah lulus 100% (10/10)
+  clearedStages: number[]; // ID Stage yang sudah lulus 100% (10/10) untuk English Lexicon
+  clearedIndonesianStages?: number[]; // ID Stage yang sudah lulus 100% (10/10) untuk Kosa Kata Indonesia
   currentStageId: number;  // Stage yang sedang aktif dibuka
   clustersMasteredCount: number;
   totalRunsAttempted: number;

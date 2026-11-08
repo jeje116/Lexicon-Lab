@@ -24,7 +24,7 @@ import {
   playEliminationBuzzer, 
   playVictoryFanfare 
 } from '../utils/audio';
-import { isExactTranslationMatch } from '../utils/retentionAlgorithm';
+import { isExactTranslationMatch, isExactWordMatch } from '../utils/retentionAlgorithm';
 
 interface DailyLabViewProps {
   words: WordItem[];
@@ -192,7 +192,8 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
     const target = wordToSpeak || currentWord?.word;
     if (!target) return;
     setIsPlayingAudio(true);
-    speakLexeme(target);
+    const isIndo = currentWord?.id?.startsWith('id-w');
+    speakLexeme(target, 1.0, isIndo ? 'id-ID' : 'en-US');
     setTimeout(() => setIsPlayingAudio(false), 1200);
   };
 
@@ -292,13 +293,16 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
     }, 450);
   };
 
-  // Submit Varian A: UJI ARTI (WAJIB KETIK - EXACT MATCH 100%)
+  // Submit Varian A: UJI ARTI / KATA (WAJIB KETIK - EXACT MATCH 100%)
   const handleSubmitTyping = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (isEvaluating || !currentQ || !typedInput.trim()) return;
 
-    // Evaluasi 100% exact match
+    // Evaluasi 100% exact match (baik untuk kosa kata maupun terjemahan)
     const isMatch = isExactTranslationMatch(
+      typedInput,
+      currentQ.correctAnswer
+    ) || isExactWordMatch(
       typedInput,
       currentQ.correctAnswer
     );
@@ -600,17 +604,34 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
         <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5 my-auto">
 
           {/* ==================================================== */}
-          {/* VARIAN A: UJI ARTI (WAJIB KETIK PERSIS 100%)          */}
+          {/* VARIAN A: UJI ARTI / KATA (WAJIB KETIK PERSIS 100%)    */}
           {/* ==================================================== */}
           {currentQ?.variant === 'TYPE_TRANSLATION' && (
             <div className="space-y-4">
               <div className="text-center py-4">
-                <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight uppercase">
-                  {currentQ.targetWord}
-                </div>
-                <div className="text-xs font-mono text-blue-600 font-bold mt-1">
+                {currentQ.challengeText !== currentQ.targetWord ? (
+                  // Mode Kosa Kata Indonesia: Tampilkan Inti Makna di atas input
+                  <div className="space-y-2">
+                    <span className="font-mono text-[10px] text-blue-700 uppercase tracking-wider block font-bold">
+                      INTI MAKNA / PENGERTIAN:
+                    </span>
+                    <div className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight leading-snug">
+                      "{currentQ.challengeText}"
+                    </div>
+                  </div>
+                ) : (
+                  // Mode English: Tampilkan Target Word
+                  <div className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight uppercase">
+                    {currentQ.targetWord}
+                  </div>
+                )}
+                <div className="text-xs font-mono text-blue-600 font-bold mt-2">
                   Kelas Kata: {getPosBadgeIndonesian(currentQ.partOfSpeech)}
                 </div>
+              </div>
+
+              <div className="text-xs sm:text-sm font-semibold text-slate-600 text-center">
+                {currentQ.prompt || 'Ketik jawaban yang tepat:'}
               </div>
 
               <form onSubmit={handleSubmitTyping} className="space-y-3">
@@ -619,7 +640,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
                   type="text"
                   value={typedInput}
                   onChange={(e) => setTypedInput(e.target.value)}
-                  placeholder="Ketik terjemahan bahasa Indonesia..."
+                  placeholder="Ketik jawaban yang tepat..."
                   autoComplete="off"
                   className="w-full bg-white border-2 border-slate-300 focus:border-blue-600 focus:ring-4 focus:ring-blue-100 rounded-2xl px-5 py-4 text-base font-sans text-slate-900 placeholder-slate-400 outline-none transition-all shadow-sm"
                 />
@@ -640,13 +661,19 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
           {/* ==================================================== */}
           {currentQ?.variant === 'MCQ_DEFINITION' && (
             <div className="space-y-4">
-              {/* Kotak Definisi Bahasa Indonesia Lengkap */}
-              <div className="p-5 rounded-2xl bg-blue-50/70 border border-blue-200/80">
+              {/* Kotak Tantangan Soal (Kata Besar atau Definisi) */}
+              <div className="p-5 rounded-2xl bg-blue-50/70 border border-blue-200/80 text-center">
                 <span className="font-mono text-[10px] text-blue-700 uppercase tracking-wider block mb-1 font-bold">
-                  DEFINISI LENGKAP:
+                  {currentQ.challengeText === currentQ.targetWord.toUpperCase() ? 'KOSA KATA TARGET:' : 'DEFINISI LENGKAP:'}
                 </span>
-                <div className="font-sans text-sm sm:text-base text-slate-900 leading-relaxed font-medium">
-                  "{currentQ.challengeText}"
+                <div className={`font-sans text-slate-900 leading-relaxed font-bold ${
+                  currentQ.challengeText === currentQ.targetWord.toUpperCase()
+                    ? 'text-2xl sm:text-3xl tracking-tight'
+                    : 'text-sm sm:text-base'
+                }`}>
+                  {currentQ.challengeText === currentQ.targetWord.toUpperCase() 
+                    ? currentQ.challengeText 
+                    : `"${currentQ.challengeText}"`}
                 </div>
               </div>
 

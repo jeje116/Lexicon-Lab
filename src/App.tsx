@@ -6,12 +6,15 @@ import { DailyLabView } from './components/DailyLabView';
 import { NeuralVerbRetentionView } from './components/NeuralVerbRetentionView';
 import { MemoryMatrixView } from './components/MemoryMatrixView';
 import { KnowledgeTopicReaderView } from './components/KnowledgeTopicReaderView';
-import { IndonesianVocabLabView } from './components/IndonesianVocabLabView';
 import { HotkeyHelperModal } from './components/HotkeyHelperModal';
 
 import { TerminalMode, StagePhase, QuizQuestion, WordItem, KnowledgeStageItem } from './types/lexicon';
 import { ALL_WORDS_POOL } from './data/mockLexicon';
 import { MOCK_KNOWLEDGE_TOPICS } from './data/mockKnowledgeTopics';
+import { 
+  convertIndonesianStagesToWordItems, 
+  generateIndonesianStageQuizQuestions 
+} from './utils/indonesianLexiconAdapter';
 import { 
   fetchVocabularyData, 
   fetchCloudUserProgress, 
@@ -40,8 +43,23 @@ export default function App() {
   const [selectedTopicId, setSelectedTopicId] = useState<string>('psy-read-people');
   const [indoActiveStageNum, setIndoActiveStageNum] = useState<number>(1);
 
-  const currentStageId = userData.currentStageId || 1;
-  const clearedStages = userData.clearedStages || [];
+  const isIndoBranch = activeBranchId === 'kosa-kata-indonesia';
+
+  // Konversi 500 materi Kosa Kata Indonesia menjadi WordItem[]
+  const indonesianWordsPool = useMemo<WordItem[]>(() => {
+    const rawIndo = knowledgeTopics.filter((t) => t.branchId === 'kosa-kata-indonesia');
+    return convertIndonesianStagesToWordItems(rawIndo);
+  }, [knowledgeTopics]);
+
+  // Pool kata aktif tergantung cabang: English Lexicon vs Kosa Kata Indonesia
+  const activeWordsPool = useMemo<WordItem[]>(() => {
+    return isIndoBranch ? indonesianWordsPool : wordsPool;
+  }, [isIndoBranch, indonesianWordsPool, wordsPool]);
+
+  const currentStageId = isIndoBranch ? indoActiveStageNum : (userData.currentStageId || 1);
+  const clearedStages = isIndoBranch 
+    ? (userData.clearedIndonesianStages || []) 
+    : (userData.clearedStages || []);
 
   // Ingestion kosa kata, progres cloud, dan topik materi saat mount
   useEffect(() => {
@@ -95,23 +113,29 @@ export default function App() {
 
   // 10 kata untuk stage yang sedang aktif dari pool dinamis
   const stageWords = useMemo(() => {
-    const matched = wordsPool.filter(w => w.stageId === currentStageId);
+    const matched = activeWordsPool.filter(w => w.stageId === currentStageId);
     if (matched.length > 0) return matched;
     // Fallback jika stageId belum ada, tampilkan stage 1
-    return wordsPool.filter(w => w.stageId === 1);
-  }, [wordsPool, currentStageId]);
+    return activeWordsPool.filter(w => w.stageId === 1);
+  }, [activeWordsPool, currentStageId]);
 
   // Soal Stage Quiz Acak 20 Soal Total (Zero-Tolerance)
   const [quizQuestions, setQuizQuestions] = useState<QuizQuestion[]>(() => {
-    return generateStageQuizQuestions(stageWords, wordsPool);
+    return isIndoBranch
+      ? generateIndonesianStageQuizQuestions(stageWords, activeWordsPool)
+      : generateStageQuizQuestions(stageWords, activeWordsPool);
   });
 
-  // Re-generate soal saat stage berganti atau pool kosa kata diperbarui
+  // Re-generate soal saat stage berganti, pool kosa kata diperbarui, atau cabang beralih
   useEffect(() => {
     if (stageWords.length > 0) {
-      setQuizQuestions(generateStageQuizQuestions(stageWords, wordsPool));
+      setQuizQuestions(
+        isIndoBranch
+          ? generateIndonesianStageQuizQuestions(stageWords, activeWordsPool)
+          : generateStageQuizQuestions(stageWords, activeWordsPool)
+      );
     }
-  }, [stageWords, wordsPool]);
+  }, [stageWords, activeWordsPool, isIndoBranch]);
 
   // Sync state ke LocalStorage dan debounced background sync ke Google Sheets
   useEffect(() => {
@@ -222,6 +246,21 @@ export default function App() {
 
   const handleQuizFlawlessVictory = () => {
     setUserData(prev => {
+      if (isIndoBranch) {
+        const alreadyCleared = (prev.clearedIndonesianStages || []).includes(currentStageId);
+        const nextIndoStages = alreadyCleared
+          ? (prev.clearedIndonesianStages || [])
+          : [...(prev.clearedIndonesianStages || []), currentStageId].sort((a, b) => a - b);
+
+        return {
+          ...prev,
+          dailyStreak: prev.dailyStreak + 1,
+          clearedIndonesianStages: nextIndoStages,
+          totalFlawlessRuns: prev.totalFlawlessRuns + 1,
+          totalRunsAttempted: prev.totalRunsAttempted + 1
+        };
+      }
+
       const alreadyCleared = prev.clearedStages.includes(currentStageId);
       const nextClearedStages = alreadyCleared 
         ? prev.clearedStages 
@@ -239,14 +278,22 @@ export default function App() {
   };
 
   const handleRebootQuiz = () => {
-    setQuizQuestions(generateStageQuizQuestions(stageWords, wordsPool));
+    setQuizQuestions(
+      isIndoBranch
+        ? generateIndonesianStageQuizQuestions(stageWords, activeWordsPool)
+        : generateStageQuizQuestions(stageWords, activeWordsPool)
+    );
   };
 
   const handleSelectStage = (stageId: number) => {
-    setUserData(prev => ({
-      ...prev,
-      currentStageId: stageId
-    }));
+    if (isIndoBranch) {
+      setIndoActiveStageNum(stageId);
+    } else {
+      setUserData(prev => ({
+        ...prev,
+        currentStageId: stageId
+      }));
+    }
   };
 
   const handleRetentionResult = (wordId: string, isCorrect: boolean) => {
@@ -284,7 +331,7 @@ export default function App() {
       list.push({
         id,
         title: val.title,
-        badge: `${val.count} Bagian`
+        badge: id === 'kosa-kata-indonesia' ? '3 Modul' : `${val.count} Bagian`
       });
     });
 
@@ -315,20 +362,6 @@ export default function App() {
   }, [knowledgeTopics, activeBranchId, userData.readTopicStages]);
 
   // Tahapan / bagian untuk topik yang sedang aktif dibaca
-  const isIndoBranch = activeBranchId === 'kosa-kata-indonesia';
-
-  // Cabang Kosa Kata Indonesia: filter seluruh kata di cabang dan stage aktif
-  const allIndoStages = useMemo(() => {
-    return knowledgeTopics.filter((t) => t.branchId === 'kosa-kata-indonesia');
-  }, [knowledgeTopics]);
-
-  const currentIndoTopicId = `id-stage-${String(indoActiveStageNum).padStart(2, '0')}`;
-  const currentIndoStages = useMemo(() => {
-    return allIndoStages
-      .filter((t) => t.topicId === currentIndoTopicId)
-      .sort((a, b) => a.stageId - b.stageId);
-  }, [allIndoStages, currentIndoTopicId]);
-
   const activeTopicStages = useMemo(() => {
     return knowledgeTopics
       .filter((t) => t.topicId === selectedTopicId)
@@ -378,19 +411,9 @@ export default function App() {
   };
 
   // Telemetry counts
-  const inspectedCount = isIndoBranch
-    ? currentIndoStages.filter(s => (userData.readTopicStages?.[currentIndoTopicId] || []).includes(s.stageId)).length
-    : stageWords.filter(w => userData.wordStats[w.id]?.isInspected).length;
-
-  const totalWordsInActiveStage = isIndoBranch
-    ? currentIndoStages.length
-    : stageWords.length;
-
-  const criticalDecayCount = wordsPool.filter(w => getMemoryTier(userData.wordStats[w.id]) === 'CRITICAL').length;
-  
-  const isStageCleared = isIndoBranch
-    ? currentIndoStages.length > 0 && inspectedCount === currentIndoStages.length
-    : clearedStages.includes(currentStageId);
+  const inspectedCount = stageWords.filter(w => userData.wordStats[w.id]?.isInspected).length;
+  const criticalDecayCount = activeWordsPool.filter(w => getMemoryTier(userData.wordStats[w.id]) === 'CRITICAL').length;
+  const isStageCleared = clearedStages.includes(currentStageId);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans relative selection:bg-blue-100 selection:text-blue-900">
@@ -399,7 +422,7 @@ export default function App() {
       <HeaderHUD
         dailyStreak={userData.dailyStreak}
         clustersMasteredCount={clearedStages.length}
-        totalLexemesLearned={wordsPool.length}
+        totalLexemesLearned={activeWordsPool.length}
         soundEnabled={userData.soundEnabled}
         syncStatus={syncStatus}
         branches={branches}
@@ -425,11 +448,11 @@ export default function App() {
           collapsed={sidebarCollapsed}
           onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
           inspectedCount={inspectedCount}
-          totalWordsInStage={totalWordsInActiveStage}
+          totalWordsInStage={stageWords.length}
           criticalDecayCount={criticalDecayCount}
           stagePhase={stagePhase}
           isStageCleared={isStageCleared}
-          currentStageId={isIndoBranch ? indoActiveStageNum : currentStageId}
+          currentStageId={currentStageId}
           activeBranchId={activeBranchId}
           activeBranchTitle={branches.find((b) => b.id === activeBranchId)?.title || 'English Lexicon'}
           branchTopics={currentBranchTopics}
@@ -440,38 +463,8 @@ export default function App() {
         {/* Dynamic Main Workspace Stage */}
         <main className="flex-1 overflow-y-auto bg-slate-50 relative">
           
-          {/* Cabang Kosa Kata Indonesia: Layout Identik Hero Vocabulary Flashcard */}
-          {activeBranchId === 'kosa-kata-indonesia' ? (
-            <IndonesianVocabLabView
-              stages={currentIndoStages}
-              allStages={allIndoStages}
-              activeStageNumber={indoActiveStageNum}
-              onSelectStage={(stgNum) => {
-                setIndoActiveStageNum(stgNum);
-              }}
-              readStageIds={userData.readTopicStages?.[currentIndoTopicId] || []}
-              onToggleReadStage={(stageId) => {
-                setUserData((prev) => {
-                  const currentRead = prev.readTopicStages?.[currentIndoTopicId] || [];
-                  const isRead = currentRead.includes(stageId);
-                  const nextRead = isRead
-                    ? currentRead.filter((id) => id !== stageId)
-                    : [...currentRead, stageId].sort((a, b) => a - b);
-
-                  return {
-                    ...prev,
-                    readTopicStages: {
-                      ...(prev.readTopicStages || {}),
-                      [currentIndoTopicId]: nextRead
-                    }
-                  };
-                });
-              }}
-              bookmarkedIds={Object.keys(userData.wordStats).filter(k => userData.wordStats[k]?.isBookmarked)}
-              onToggleBookmark={handleToggleBookmark}
-              soundEnabled={userData.soundEnabled}
-            />
-          ) : activeBranchId !== 'english' ? (
+          {/* Cabang Non-Inggris & Non-Indo (seperti Psychology / Statistics): Tampilkan Pembaca Topik / Audiobook */}
+          {activeBranchId !== 'english' && activeBranchId !== 'kosa-kata-indonesia' ? (
             <KnowledgeTopicReaderView
               stages={activeTopicStages}
               topicTitle={activeTopicInfo.title}
@@ -487,7 +480,7 @@ export default function App() {
               {currentMode === 'stage' && (
                 <DailyLabView
                   words={stageWords}
-                  allWords={wordsPool}
+                  allWords={activeWordsPool}
                   statsMap={userData.wordStats}
                   quizQuestions={quizQuestions}
                   phase={stagePhase}
@@ -514,7 +507,7 @@ export default function App() {
               {/* Tab 2: Retensi Memori 2-Arah (Neural Weighted Probability dari Stage Cleared) */}
               {currentMode === 'retention' && (
                 <NeuralVerbRetentionView
-                  allWords={wordsPool}
+                  allWords={activeWordsPool}
                   clearedStages={clearedStages}
                   statsMap={userData.wordStats}
                   onRecordResult={handleRetentionResult}
@@ -533,7 +526,7 @@ export default function App() {
               {/* Tab 3: Matriks Memori (Memory Matrix & Crystallization) */}
               {currentMode === 'matrix' && (
                 <MemoryMatrixView
-                  allWords={wordsPool}
+                  allWords={activeWordsPool}
                   statsMap={userData.wordStats}
                   onToggleBookmark={handleToggleBookmark}
                   soundEnabled={userData.soundEnabled}
@@ -545,7 +538,7 @@ export default function App() {
       </div>
 
       {/* Mobile-Only Bottom Navigation Bar: Otomatis Sembunyi Saat Kuis Aktif */}
-      {!(activeBranchId === 'english' && currentMode === 'stage' && stagePhase === 'quiz') && (
+      {!(currentMode === 'stage' && stagePhase === 'quiz') && (
         <BottomNav
           currentMode={currentMode}
           onSelectMode={(mode) => {

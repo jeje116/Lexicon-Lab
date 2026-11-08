@@ -166,11 +166,11 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
 
     let isMatch = false;
     if (variant === 'TYPE_TRANSLATION') {
-      // EN -> ID
-      isMatch = isExactTranslationMatch(trimmed, activeVerb.translation);
+      // EN -> ID atau ID Word -> Inti Makna (mendukung pencocokan terjemahan atau kata)
+      isMatch = isExactTranslationMatch(trimmed, activeVerb.translation) || isExactWordMatch(trimmed, activeVerb.word);
     } else if (variant === 'TYPE_WORD_EN') {
-      // ID -> EN
-      isMatch = isExactWordMatch(trimmed, activeVerb.word);
+      // ID -> EN atau Inti Makna -> ID Word
+      isMatch = isExactWordMatch(trimmed, activeVerb.word) || isExactTranslationMatch(trimmed, activeVerb.translation);
     }
 
     if (isMatch) {

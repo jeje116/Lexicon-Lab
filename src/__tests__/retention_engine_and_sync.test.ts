@@ -12,6 +12,10 @@ import {
   generateStageQuizQuestions 
 } from '../utils/retentionAlgorithm';
 import { normalizePartOfSpeech, normalizeKnowledgeTopicItems } from '../services/vocabService';
+import { 
+  convertIndonesianStagesToWordItems, 
+  generateIndonesianStageQuizQuestions 
+} from '../utils/indonesianLexiconAdapter';
 import { UserProgressData } from '../types/lexicon';
 
 console.log('🧪 [AUTONOMOUS QA] Starting ENG-010 Verification Test Suite...\n');
@@ -440,6 +444,55 @@ test('Markdown formatting pattern isolates **bold** and ==highlight== cleanly', 
 
   const hlToken = tokens.find((t) => t.startsWith('==') && t.endsWith('=='));
   assertEqual(hlToken, '==Tujuan utamanya bukan menebak.==');
+});
+
+// --- Test Suite 9: Indonesian Lexicon Adapter & 2-Way Quiz Engine ---
+test('convertIndonesianStagesToWordItems produces exactly 500 valid WordItems with clean deterministic IDs', () => {
+  const indoStages = MOCK_KNOWLEDGE_TOPICS.filter((t) => t.branchId === 'kosa-kata-indonesia');
+  const converted = convertIndonesianStagesToWordItems(indoStages);
+  assertEqual(converted.length, 500, 'Must convert all 500 Indonesian knowledge items');
+
+  const first = converted[0];
+  assertEqual(first.word, 'eksentrik');
+  assertEqual(first.stageId, 1);
+  assertEqual(first.id, 'id-w1-eksentrik');
+  assertEqual(first.partOfSpeech, 'adjective');
+  assertEqual(first.phonetic, 'Kata Sifat (Adjektiva)');
+  assertTrue(first.translation.length > 5, 'Translation (core meaning) must be extracted');
+  assertTrue(first.definition.length > 20, 'Definition must be extracted');
+  assertEqual(first.contextSentences.length, 3, 'Must extract 3 context sentences from keyPoints');
+
+  // Verify deterministic uniqueness
+  const ids = new Set(converted.map(w => w.id));
+  assertEqual(ids.size, 500, 'All 500 Indonesian word IDs must be strictly unique');
+});
+
+test('generateIndonesianStageQuizQuestions produces 20 balanced 2-way questions (10 Type + 10 MCQ)', () => {
+  const indoStages = MOCK_KNOWLEDGE_TOPICS.filter((t) => t.branchId === 'kosa-kata-indonesia');
+  const converted = convertIndonesianStagesToWordItems(indoStages);
+  const stage1Words = converted.filter(w => w.stageId === 1);
+  assertEqual(stage1Words.length, 10, 'Stage 1 must have 10 words');
+
+  const questions = generateIndonesianStageQuizQuestions(stage1Words, converted);
+  assertEqual(questions.length, 20, 'Quiz must have exactly 20 questions (10 Type + 10 MCQ)');
+
+  const typeQuestions = questions.filter(q => q.variant === 'TYPE_TRANSLATION');
+  const mcqQuestions = questions.filter(q => q.variant === 'MCQ_DEFINITION');
+  assertEqual(typeQuestions.length, 10, 'Must have 10 typing questions');
+  assertEqual(mcqQuestions.length, 10, 'Must have 10 MCQ questions');
+
+  // Verify Arah 1: Arti -> Kosa Kata (Ketik Kosa Kata)
+  typeQuestions.forEach(q => {
+    assertEqual(q.correctAnswer, q.targetWord, 'Typing answer must be the target Indonesian word');
+    assertTrue(q.prompt.includes('kosa kata Bahasa Indonesia'), 'Prompt must indicate Indonesian word typing');
+  });
+
+  // Verify Arah 2: Kosa Kata -> Arti (MCQ 4 Opsi)
+  mcqQuestions.forEach(q => {
+    assertEqual(q.options?.length, 4, 'MCQ must have 4 options');
+    const correctOpt = q.options?.find(o => o.isCorrect);
+    assertEqual(correctOpt?.text, q.translation, 'MCQ correct option must be the Inti Makna');
+  });
 });
 
 console.log(`\n======================================================`);
