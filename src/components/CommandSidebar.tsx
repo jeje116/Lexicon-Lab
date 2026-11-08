@@ -55,8 +55,23 @@ export const CommandSidebar: React.FC<CommandSidebarProps> = ({
 }) => {
   const isQuizActive = stagePhase === 'quiz';
   const isEnglishBranch = activeBranchId === 'english';
+  const isIndoBranch = activeBranchId === 'kosa-kata-indonesia';
 
-  const navItems = [
+  const navItems = isIndoBranch ? [
+    {
+      id: 'stage' as TerminalMode,
+      number: '01',
+      title: 'Stage Lab',
+      subtitle: `Stage ${String(currentStageId).padStart(2, '0')} (${inspectedCount}/${totalWordsInStage} Kata)`,
+      icon: BookOpen,
+      badge: isStageCleared ? 'LULUS' : inspectedCount === totalWordsInStage ? 'SELESAI' : `${totalWordsInStage - inspectedCount} LAGI`,
+      badgeColor: isStageCleared 
+        ? 'text-emerald-700 border-emerald-200 bg-emerald-50'
+        : inspectedCount === totalWordsInStage 
+        ? 'text-emerald-700 border-emerald-200 bg-emerald-50' 
+        : 'text-blue-700 border-blue-200 bg-blue-50'
+    }
+  ] : [
     {
       id: 'stage' as TerminalMode,
       number: '01',
@@ -102,7 +117,7 @@ export const CommandSidebar: React.FC<CommandSidebarProps> = ({
       <div className="p-3">
         {/* Strip Header */}
         <div className="flex items-center justify-between px-2 py-2 mb-2 text-slate-400 font-mono text-[11px] tracking-wider uppercase border-b border-slate-100">
-          {!collapsed && <span>{isEnglishBranch ? 'MODUL SISTEM' : 'TOPIK BUKU / AUDIO'}</span>}
+          {!collapsed && <span>{isEnglishBranch || isIndoBranch ? 'MODUL SISTEM' : 'TOPIK BUKU / AUDIO'}</span>}
           <button
             onClick={onToggleCollapse}
             className="p-1 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors ml-auto cursor-pointer"
@@ -114,7 +129,7 @@ export const CommandSidebar: React.FC<CommandSidebarProps> = ({
 
         {/* Navigation list */}
         <nav className="space-y-1.5 overflow-y-auto max-h-[calc(100vh-220px)] pr-1">
-          {isEnglishBranch ? (
+          {isEnglishBranch || isIndoBranch ? (
             navItems.map((item) => {
               const isActive = currentMode === item.id;
               const Icon = item.icon;
@@ -231,7 +246,7 @@ export const CommandSidebar: React.FC<CommandSidebarProps> = ({
       {/* Bottom Telemetry Card (Desktop only, when expanded) */}
       {!collapsed && (
         <div className="p-4 m-3 rounded-2xl bg-slate-50 border border-slate-200 text-xs font-sans">
-          {isEnglishBranch ? (
+          {isEnglishBranch || isIndoBranch ? (
             <>
               <div className="flex items-center gap-1.5 text-slate-800 font-bold mb-2.5">
                 <Layers className="w-3.5 h-3.5 text-blue-600" />
@@ -250,20 +265,22 @@ export const CommandSidebar: React.FC<CommandSidebarProps> = ({
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span>Status Kuis:</span>
+                  <span>Status Stage:</span>
                   <span className={isStageCleared ? "text-emerald-700 font-bold" : "text-amber-700 font-bold"}>
-                    {isStageCleared ? "CLEARED (10/10)" : "IN_PROGRESS"}
+                    {isStageCleared ? (isIndoBranch ? "LULUS / SELESAI" : "CLEARED (10/10)") : "DALAM PROGRES"}
                   </span>
                 </div>
-                <div className="flex justify-between">
-                  <span>Risiko Lupa:</span>
-                  <span className={criticalDecayCount > 0 ? "text-amber-700 font-bold" : "text-emerald-700 font-bold"}>
-                    {criticalDecayCount > 0 ? `${criticalDecayCount} Perlu Review` : "Aman"}
-                  </span>
-                </div>
+                {!isIndoBranch && (
+                  <div className="flex justify-between">
+                    <span>Risiko Lupa:</span>
+                    <span className={criticalDecayCount > 0 ? "text-amber-700 font-bold" : "text-emerald-700 font-bold"}>
+                      {criticalDecayCount > 0 ? `${criticalDecayCount} Perlu Review` : "Aman"}
+                    </span>
+                  </div>
+                )}
               </div>
 
-              {criticalDecayCount > 0 && (
+              {!isIndoBranch && criticalDecayCount > 0 && (
                 <div className="mt-2.5 pt-2 border-t border-slate-200 flex items-center gap-1.5 text-[10px] text-amber-700 font-medium">
                   <AlertTriangle className="w-3.5 h-3.5 shrink-0 text-amber-600" />
                   <span>Ada kata kerja memudar! Coba Modul 02.</span>

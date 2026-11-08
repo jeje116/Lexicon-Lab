@@ -34,9 +34,21 @@ export const BottomNav: React.FC<BottomNavProps> = ({
   }
 
   const isEnglishBranch = activeBranchId === 'english';
+  const isIndoBranch = activeBranchId === 'kosa-kata-indonesia';
   const isQuizActive = false;
 
-  const navItems = [
+  const navItems = isIndoBranch ? [
+    {
+      id: 'stage' as TerminalMode,
+      label: 'Stage Lab',
+      icon: BookOpen,
+      iconColor: 'text-blue-600',
+      badge: isStageCleared ? 'LULUS' : '10 KATA',
+      badgeColor: isStageCleared 
+        ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+        : 'bg-blue-50 text-blue-700 border-blue-200'
+    }
+  ] : [
     {
       id: 'stage' as TerminalMode,
       label: 'Stage Lab',
@@ -69,7 +81,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
     }
   ];
 
-  if (!isEnglishBranch) {
+  if (!isEnglishBranch && !isIndoBranch) {
     return (
       <nav 
         aria-label="Navigasi Topik" 
@@ -119,7 +131,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
       aria-label="Navigasi Utama" 
       className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-slate-200 pb-[env(safe-area-inset-bottom,0px)] shadow-[0_-4px_20px_-5px_rgba(0,0,0,0.05)]"
     >
-      <div className="grid grid-cols-3 h-16 max-w-md mx-auto px-2">
+      <div className={`grid ${navItems.length === 1 ? 'grid-cols-1' : 'grid-cols-3'} h-16 max-w-md mx-auto px-2`}>
         {navItems.map((item) => {
           const isActive = currentMode === item.id;
           const Icon = item.icon;

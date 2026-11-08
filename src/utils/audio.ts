@@ -135,24 +135,29 @@ export function playVictoryFanfare(enabled: boolean = true) {
   }
 }
 
-export function speakLexeme(text: string, rate: number = 1.0) {
+export function speakLexeme(text: string, rate: number = 1.0, lang: string = 'en-US') {
   if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
   try {
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US';
+    utterance.lang = lang;
     utterance.rate = rate;
     utterance.pitch = 1.0;
 
-    // Try finding an English voice
+    // Try finding matching voice for language
     const voices = window.speechSynthesis.getVoices();
-    const englishVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Daniel') || v.name.includes('Samantha')));
-    if (englishVoice) {
-      utterance.voice = englishVoice;
+    const prefix = lang.slice(0, 2).toLowerCase();
+    const voice = voices.find(v => v.lang.toLowerCase().startsWith(prefix) && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Indonesian') || v.name.includes('Daniel') || v.name.includes('Samantha') || v.name.includes('Gadis') || v.name.includes('Damayanti')));
+    if (voice) {
+      utterance.voice = voice;
     }
 
     window.speechSynthesis.speak(utterance);
   } catch {
     // Ignore speech errors
   }
+}
+
+export function speakWord(text: string, lang: string = 'id-ID') {
+  speakLexeme(text, 1.0, lang);
 }

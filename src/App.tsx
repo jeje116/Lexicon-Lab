@@ -6,6 +6,7 @@ import { DailyLabView } from './components/DailyLabView';
 import { NeuralVerbRetentionView } from './components/NeuralVerbRetentionView';
 import { MemoryMatrixView } from './components/MemoryMatrixView';
 import { KnowledgeTopicReaderView } from './components/KnowledgeTopicReaderView';
+import { IndonesianVocabLabView } from './components/IndonesianVocabLabView';
 import { HotkeyHelperModal } from './components/HotkeyHelperModal';
 
 import { TerminalMode, StagePhase, QuizQuestion, WordItem, KnowledgeStageItem } from './types/lexicon';
@@ -37,6 +38,7 @@ export default function App() {
   const [knowledgeTopics, setKnowledgeTopics] = useState<KnowledgeStageItem[]>(() => MOCK_KNOWLEDGE_TOPICS);
   const [activeBranchId, setActiveBranchId] = useState<string>('english');
   const [selectedTopicId, setSelectedTopicId] = useState<string>('psy-read-people');
+  const [indoActiveStageNum, setIndoActiveStageNum] = useState<number>(1);
 
   const currentStageId = userData.currentStageId || 1;
   const clearedStages = userData.clearedStages || [];
@@ -313,6 +315,20 @@ export default function App() {
   }, [knowledgeTopics, activeBranchId, userData.readTopicStages]);
 
   // Tahapan / bagian untuk topik yang sedang aktif dibaca
+  const isIndoBranch = activeBranchId === 'kosa-kata-indonesia';
+
+  // Cabang Kosa Kata Indonesia: filter seluruh kata di cabang dan stage aktif
+  const allIndoStages = useMemo(() => {
+    return knowledgeTopics.filter((t) => t.branchId === 'kosa-kata-indonesia');
+  }, [knowledgeTopics]);
+
+  const currentIndoTopicId = `id-stage-${String(indoActiveStageNum).padStart(2, '0')}`;
+  const currentIndoStages = useMemo(() => {
+    return allIndoStages
+      .filter((t) => t.topicId === currentIndoTopicId)
+      .sort((a, b) => a.stageId - b.stageId);
+  }, [allIndoStages, currentIndoTopicId]);
+
   const activeTopicStages = useMemo(() => {
     return knowledgeTopics
       .filter((t) => t.topicId === selectedTopicId)
@@ -362,9 +378,19 @@ export default function App() {
   };
 
   // Telemetry counts
-  const inspectedCount = stageWords.filter(w => userData.wordStats[w.id]?.isInspected).length;
+  const inspectedCount = isIndoBranch
+    ? currentIndoStages.filter(s => (userData.readTopicStages?.[currentIndoTopicId] || []).includes(s.stageId)).length
+    : stageWords.filter(w => userData.wordStats[w.id]?.isInspected).length;
+
+  const totalWordsInActiveStage = isIndoBranch
+    ? currentIndoStages.length
+    : stageWords.length;
+
   const criticalDecayCount = wordsPool.filter(w => getMemoryTier(userData.wordStats[w.id]) === 'CRITICAL').length;
-  const isStageCleared = clearedStages.includes(currentStageId);
+  
+  const isStageCleared = isIndoBranch
+    ? currentIndoStages.length > 0 && inspectedCount === currentIndoStages.length
+    : clearedStages.includes(currentStageId);
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans relative selection:bg-blue-100 selection:text-blue-900">
@@ -399,11 +425,11 @@ export default function App() {
           collapsed={sidebarCollapsed}
           onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
           inspectedCount={inspectedCount}
-          totalWordsInStage={stageWords.length}
+          totalWordsInStage={totalWordsInActiveStage}
           criticalDecayCount={criticalDecayCount}
           stagePhase={stagePhase}
           isStageCleared={isStageCleared}
-          currentStageId={currentStageId}
+          currentStageId={isIndoBranch ? indoActiveStageNum : currentStageId}
           activeBranchId={activeBranchId}
           activeBranchTitle={branches.find((b) => b.id === activeBranchId)?.title || 'English Lexicon'}
           branchTopics={currentBranchTopics}
@@ -414,8 +440,38 @@ export default function App() {
         {/* Dynamic Main Workspace Stage */}
         <main className="flex-1 overflow-y-auto bg-slate-50 relative">
           
-          {/* Cabang Non-Inggris: Tampilkan Pembaca Topik / Audiobook */}
-          {activeBranchId !== 'english' ? (
+          {/* Cabang Kosa Kata Indonesia: Layout Identik Hero Vocabulary Flashcard */}
+          {activeBranchId === 'kosa-kata-indonesia' ? (
+            <IndonesianVocabLabView
+              stages={currentIndoStages}
+              allStages={allIndoStages}
+              activeStageNumber={indoActiveStageNum}
+              onSelectStage={(stgNum) => {
+                setIndoActiveStageNum(stgNum);
+              }}
+              readStageIds={userData.readTopicStages?.[currentIndoTopicId] || []}
+              onToggleReadStage={(stageId) => {
+                setUserData((prev) => {
+                  const currentRead = prev.readTopicStages?.[currentIndoTopicId] || [];
+                  const isRead = currentRead.includes(stageId);
+                  const nextRead = isRead
+                    ? currentRead.filter((id) => id !== stageId)
+                    : [...currentRead, stageId].sort((a, b) => a - b);
+
+                  return {
+                    ...prev,
+                    readTopicStages: {
+                      ...(prev.readTopicStages || {}),
+                      [currentIndoTopicId]: nextRead
+                    }
+                  };
+                });
+              }}
+              bookmarkedIds={Object.keys(userData.wordStats).filter(k => userData.wordStats[k]?.isBookmarked)}
+              onToggleBookmark={handleToggleBookmark}
+              soundEnabled={userData.soundEnabled}
+            />
+          ) : activeBranchId !== 'english' ? (
             <KnowledgeTopicReaderView
               stages={activeTopicStages}
               topicTitle={activeTopicInfo.title}
