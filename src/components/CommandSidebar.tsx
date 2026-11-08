@@ -57,21 +57,7 @@ export const CommandSidebar: React.FC<CommandSidebarProps> = ({
   const isEnglishBranch = activeBranchId === 'english';
   const isIndoBranch = activeBranchId === 'kosa-kata-indonesia';
 
-  const navItems = isIndoBranch ? [
-    {
-      id: 'stage' as TerminalMode,
-      number: '01',
-      title: 'Stage Lab',
-      subtitle: `Stage ${String(currentStageId).padStart(2, '0')} (${inspectedCount}/${totalWordsInStage} Kata)`,
-      icon: BookOpen,
-      badge: isStageCleared ? 'LULUS' : inspectedCount === totalWordsInStage ? 'SELESAI' : `${totalWordsInStage - inspectedCount} LAGI`,
-      badgeColor: isStageCleared 
-        ? 'text-emerald-700 border-emerald-200 bg-emerald-50'
-        : inspectedCount === totalWordsInStage 
-        ? 'text-emerald-700 border-emerald-200 bg-emerald-50' 
-        : 'text-blue-700 border-blue-200 bg-blue-50'
-    }
-  ] : [
+  const navItems = [
     {
       id: 'stage' as TerminalMode,
       number: '01',

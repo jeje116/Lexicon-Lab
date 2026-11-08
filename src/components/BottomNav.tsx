@@ -37,18 +37,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({
   const isIndoBranch = activeBranchId === 'kosa-kata-indonesia';
   const isQuizActive = false;
 
-  const navItems = isIndoBranch ? [
-    {
-      id: 'stage' as TerminalMode,
-      label: 'Stage Lab',
-      icon: BookOpen,
-      iconColor: 'text-blue-600',
-      badge: isStageCleared ? 'LULUS' : '10 KATA',
-      badgeColor: isStageCleared 
-        ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-        : 'bg-blue-50 text-blue-700 border-blue-200'
-    }
-  ] : [
+  const navItems = [
     {
       id: 'stage' as TerminalMode,
       label: 'Stage Lab',
