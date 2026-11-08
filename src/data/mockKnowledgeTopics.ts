@@ -1,5 +1,11 @@
-import { KnowledgeStageItem } from '../types/lexicon';
+import { KnowledgeStageItem } from "../types/lexicon";
 
+/**
+ * Dataset materi konsep / topik pengetahuan multi-cabang (Fallback & Seed).
+ * - Cabang 1: Psychology & Life (Read People Like a Book - Patrick King - 20 bagian terhubung)
+ * - Cabang 2: Statistics & Data (K-Means Clustering - 4 bagian)
+ * - Cabang 3: Kosa Kata Indonesia (50 Stage / 500 Kosa Kata)
+ */
 export const MOCK_KNOWLEDGE_TOPICS: KnowledgeStageItem[] = [
   {
     "id": "psy-read-people-s1",
@@ -362,6 +368,7506 @@ export const MOCK_KNOWLEDGE_TOPICS: KnowledgeStageItem[] = [
       "Wajib melakukan standarisasi data sebelum clustering",
       "Sensitif terhadap outlier dan skala variabel",
       "Gunakan inisialisasi K-Means++ untuk mencegah optimum lokal"
+    ]
+  },
+  {
+    "id": "id-stage-01-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-01",
+    "topicTitle": "Stage 01: Diksi Konseptual & Karakteristik Pemikiran",
+    "stageId": 1,
+    "stageTitle": "01. Eksentrik (Adjektiva)",
+    "content": "Menurut KBBI, eksentrik berarti aneh atau tidak lazim, terutama dalam hal sikap, perilaku, atau cara berpikir. ==Memiliki karakteristik yang berbeda dari kebiasaan umum atau menyimpang dari pola yang dianggap normal== merupakan inti maknanya.\\n\\nKata ini digunakan untuk menggambarkan seseorang yang memiliki kepribadian, gaya hidup, atau gagasan tidak konvensional. Berbeda dari sekadar unik, **eksentrik** biasanya mengandung kesan penyimpangan dari kebiasaan sosial, tetapi tidak selalu bermakna negatif. Kolokasi: kepribadian eksentrik, perilaku eksentrik, gaya eksentrik.",
+    "keyPoints": [
+      "**Eksentrik** yang dimiliki direktur tersebut tercermin dari cara ia mengambil keputusan yang berbeda dari kebanyakan pemimpin perusahaan.",
+      "Meskipun sering dianggap **eksentrik**, pendekatan penelitian profesor itu justru menghasilkan penemuan yang inovatif.",
+      "Penampilan **eksentrik** sang seniman menjadi bagian dari identitas artistik yang sengaja ia bangun."
+    ]
+  },
+  {
+    "id": "id-stage-01-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-01",
+    "topicTitle": "Stage 01: Diksi Konseptual & Karakteristik Pemikiran",
+    "stageId": 2,
+    "stageTitle": "02. Eksklusif (Adjektiva)",
+    "content": "Eksklusif berarti terpisah dari yang lain atau khusus, tidak termasuk kelompok umum; dapat pula berarti terbatas pada kalangan tertentu. ==Bersifat khusus dan membatasi keterlibatan atau akses pihak lain== merupakan inti maknanya.\\n\\nKata ini digunakan untuk menunjukkan sesuatu yang memiliki akses terbatas, hak istimewa, atau karakteristik yang tidak tersedia bagi semua orang. Dalam bisnis, kata ini sering digunakan untuk produk, layanan, keanggotaan, dan perjanjian. Berbeda dari **khusus**, eksklusif sering menekankan adanya pembatasan akses atau keistimewaan. Kolokasi: akses eksklusif, penawaran eksklusif, wawancara eksklusif.",
+    "keyPoints": [
+      "Perusahaan tersebut memberikan akses **eksklusif** kepada investor institusional untuk mengikuti paparan strategi bisnis tahunannya.",
+      "Media itu berhasil memperoleh wawancara **eksklusif** dengan pejabat yang terlibat langsung dalam perumusan kebijakan tersebut.",
+      "Keanggotaan **eksklusif** tidak selalu menjamin kualitas layanan yang lebih baik dibandingkan layanan terbuka."
+    ]
+  },
+  {
+    "id": "id-stage-01-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-01",
+    "topicTitle": "Stage 01: Diksi Konseptual & Karakteristik Pemikiran",
+    "stageId": 3,
+    "stageTitle": "03. Intrinsik (Adjektiva)",
+    "content": "Intrinsik berarti terkandung di dalam sesuatu sebagai bagian yang tidak terpisahkan dari hakikat atau sifat dasarnya. ==Berasal dari dalam dan melekat pada karakteristik dasar suatu objek atau hal== merupakan inti maknanya.\\n\\nKata ini lazim digunakan dalam filsafat, ekonomi, psikologi, dan penilaian aset. Dalam ekonomi, misalnya, nilai intrinsik mengacu pada nilai yang melekat berdasarkan karakteristik fundamental, bukan semata-mata harga pasar. Berbeda dari **ekstrinsik** yang berasal dari faktor luar. Kolokasi: nilai intrinsik, motivasi intrinsik, karakteristik intrinsik.",
+    "keyPoints": [
+      "Motivasi **intrinsik** karyawan cenderung berkembang ketika pekerjaan memberikan makna dan kepuasan pribadi.",
+      "Investor perlu membedakan nilai **intrinsik** perusahaan dari harga saham yang terbentuk melalui mekanisme pasar.",
+      "Kejujuran merupakan bagian dari prinsip **intrinsik** yang harus melekat pada tata kelola organisasi."
+    ]
+  },
+  {
+    "id": "id-stage-01-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-01",
+    "topicTitle": "Stage 01: Diksi Konseptual & Karakteristik Pemikiran",
+    "stageId": 4,
+    "stageTitle": "04. Ekstrapolasi (Nomina)",
+    "content": "Ekstrapolasi adalah perluasan atau perkiraan keadaan berdasarkan data, kecenderungan, atau informasi yang sudah diketahui untuk memperkirakan kondisi di luar cakupan pengamatan. ==Metode memperkirakan nilai atau keadaan yang belum diketahui dengan memperluas pola dari data yang tersedia== merupakan inti maknanya.\\n\\nKata ini sering digunakan dalam statistik, penelitian, ekonomi, dan pemodelan prediktif. Berbeda dari **interpolasi**, yang memperkirakan nilai di antara titik-titik data yang telah diketahui, ekstrapolasi memperkirakan nilai di luar rentang data tersebut sehingga risikonya lebih besar apabila pola sebelumnya berubah. Kolokasi: metode ekstrapolasi, hasil ekstrapolasi, proyeksi melalui ekstrapolasi.",
+    "keyPoints": [
+      "Analis menggunakan **ekstrapolasi** pertumbuhan pendapatan selama tiga tahun terakhir untuk memperkirakan kinerja perusahaan pada tahun berikutnya.",
+      "Hasil **ekstrapolasi** tersebut perlu dievaluasi kembali karena kondisi pasar dapat berubah secara signifikan.",
+      "Peneliti tidak boleh menganggap **ekstrapolasi** dari sampel terbatas sebagai gambaran pasti mengenai populasi secara keseluruhan."
+    ]
+  },
+  {
+    "id": "id-stage-01-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-01",
+    "topicTitle": "Stage 01: Diksi Konseptual & Karakteristik Pemikiran",
+    "stageId": 5,
+    "stageTitle": "05. Karikatur (Nomina)",
+    "content": "Karikatur adalah gambar atau penggambaran suatu objek, khususnya wajah atau tokoh, dengan cara melebih-lebihkan ciri tertentu untuk menghasilkan efek lucu, menyindir, atau mengkritik. ==Representasi yang mendistorsi atau membesar-besarkan karakteristik tertentu untuk menonjolkan ciri khasnya== merupakan inti maknanya.\\n\\nDalam konteks komunikasi dan kritik sosial, karikatur juga digunakan secara kiasan untuk menggambarkan sesuatu secara berlebihan hingga kehilangan kompleksitas aslinya. Berbeda dari **satire**, yang merupakan gaya kritik atau sindiran, karikatur adalah bentuk representasi yang dapat digunakan untuk menyampaikan satire. Kolokasi: gambar karikatur, karikatur politik, karikatur sosial.",
+    "keyPoints": [
+      "Kartunis tersebut membuat **karikatur** seorang pejabat untuk mengkritik kebijakan publik yang dianggap tidak berpihak kepada masyarakat.",
+      "Penggambaran kelompok tertentu sebagai pihak yang sepenuhnya tidak rasional merupakan **karikatur** yang mengabaikan kompleksitas persoalan sebenarnya.",
+      "Artikel opini itu menyajikan **karikatur** birokrasi yang terlalu berlebihan sehingga argumen utamanya kehilangan keseimbangan."
+    ]
+  },
+  {
+    "id": "id-stage-01-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-01",
+    "topicTitle": "Stage 01: Diksi Konseptual & Karakteristik Pemikiran",
+    "stageId": 6,
+    "stageTitle": "06. Kontemporer (Adjektiva)",
+    "content": "Kontemporer berarti pada waktu yang sama; semasa atau dewasa ini. Dalam penggunaan umum, kata ini merujuk pada sesuatu yang berkaitan dengan masa kini atau perkembangan zaman sekarang. ==Berkaitan dengan keadaan, pemikiran, atau karya yang hidup dan berkembang pada zaman yang sama atau masa kini== merupakan inti maknanya.\\n\\nKata ini banyak digunakan dalam seni, budaya, filsafat, dan ilmu sosial. Berbeda dari **modern** yang dapat menekankan pembaruan atau karakteristik kemodernan, kontemporer lebih menekankan keterkaitan dengan periode waktu tertentu, khususnya masa sekarang. Kolokasi: seni kontemporer, pemikiran kontemporer, isu kontemporer.",
+    "keyPoints": [
+      "Pameran tersebut menampilkan karya seni **kontemporer** yang merefleksikan perubahan sosial akibat perkembangan teknologi digital.",
+      "Pemikiran ekonomi **kontemporer** mulai memberikan perhatian lebih besar terhadap keberlanjutan lingkungan.",
+      "Penelitian ini mengkaji relevansi teori klasik dalam menjelaskan fenomena **kontemporer** di pasar keuangan."
+    ]
+  },
+  {
+    "id": "id-stage-01-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-01",
+    "topicTitle": "Stage 01: Diksi Konseptual & Karakteristik Pemikiran",
+    "stageId": 7,
+    "stageTitle": "07. Komprehensif (Adjektiva)",
+    "content": "Komprehensif berarti bersifat luas dan menyeluruh, mencakup berbagai aspek atau unsur penting dari suatu persoalan. ==Mencakup keseluruhan aspek yang relevan secara luas dan terpadu== merupakan inti maknanya.\\n\\nKata ini digunakan ketika suatu analisis, evaluasi, laporan, atau pendekatan mempertimbangkan berbagai dimensi persoalan, bukan hanya satu bagian. Berbeda dari **lengkap** yang menekankan tidak adanya bagian yang tertinggal, komprehensif juga menekankan keluasan cakupan dan keterpaduan pembahasan. Kolokasi: analisis komprehensif, evaluasi komprehensif, pendekatan komprehensif.",
+    "keyPoints": [
+      "Manajemen membutuhkan analisis **komprehensif** sebelum memutuskan ekspansi perusahaan ke pasar internasional.",
+      "Laporan tersebut memberikan gambaran **komprehensif** mengenai risiko operasional dan kondisi keuangan organisasi.",
+      "Pemerintah perlu menerapkan pendekatan **komprehensif** untuk mengatasi persoalan ketimpangan ekonomi."
+    ]
+  },
+  {
+    "id": "id-stage-01-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-01",
+    "topicTitle": "Stage 01: Diksi Konseptual & Karakteristik Pemikiran",
+    "stageId": 8,
+    "stageTitle": "08. Ambigu (Adjektiva)",
+    "content": "Ambigu berarti mempunyai lebih dari satu makna atau penafsiran sehingga menimbulkan ketidakjelasan. ==Memiliki makna atau maksud yang dapat ditafsirkan dengan lebih dari satu cara== merupakan inti maknanya.\\n\\nKata ini sering digunakan dalam komunikasi, hukum, linguistik, dan penyusunan dokumen profesional. Sesuatu disebut ambigu apabila rumusan atau pernyataannya memungkinkan penafsiran berbeda. Berbeda dari **tidak jelas** yang bersifat umum, ambigu secara khusus menunjukkan adanya lebih dari satu kemungkinan interpretasi. Kolokasi: pernyataan ambigu, ketentuan ambigu, frasa ambigu.",
+    "keyPoints": [
+      "Kontrak tersebut perlu direvisi karena terdapat klausul **ambigu** yang dapat menimbulkan sengketa antara kedua belah pihak.",
+      "Pernyataan manajemen yang **ambigu** membuat investor kesulitan memahami arah kebijakan perusahaan.",
+      "Peneliti harus menghindari pertanyaan **ambigu** agar responden tidak memberikan jawaban berdasarkan interpretasi yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-01-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-01",
+    "topicTitle": "Stage 01: Diksi Konseptual & Karakteristik Pemikiran",
+    "stageId": 9,
+    "stageTitle": "09. Signifikan (Adjektiva)",
+    "content": "Signifikan berarti penting atau berarti karena mempunyai pengaruh atau dampak yang cukup besar terhadap sesuatu. Dalam statistik, istilah ini juga digunakan untuk menunjukkan hasil yang memenuhi kriteria kemaknaan statistik tertentu. ==Memiliki arti penting atau pengaruh yang cukup berarti terhadap suatu keadaan atau hasil== merupakan inti maknanya.\\n\\nKata ini lazim digunakan dalam penelitian, analisis bisnis, ekonomi, dan evaluasi kebijakan. Perlu dibedakan antara **signifikan secara statistik** dan **signifikan secara praktis**: hasil yang bermakna secara statistik belum tentu memiliki dampak nyata yang besar. Kolokasi: peningkatan signifikan, dampak signifikan, perbedaan signifikan.",
+    "keyPoints": [
+      "Perusahaan mencatat peningkatan **signifikan** pada pendapatan setelah memperluas jaringan distribusinya.",
+      "Hasil penelitian menunjukkan hubungan yang **signifikan** antara kualitas layanan dan tingkat kepuasan pelanggan.",
+      "Meskipun perbedaannya **signifikan** secara statistik, dampak ekonominya relatif kecil."
+    ]
+  },
+  {
+    "id": "id-stage-01-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-01",
+    "topicTitle": "Stage 01: Diksi Konseptual & Karakteristik Pemikiran",
+    "stageId": 10,
+    "stageTitle": "10. Relevan (Adjektiva)",
+    "content": "Relevan berarti mempunyai hubungan atau kaitan dengan sesuatu yang sedang dibicarakan atau dipersoalkan. ==Memiliki keterkaitan langsung dan kegunaan terhadap konteks, persoalan, atau tujuan tertentu== merupakan inti maknanya.\\n\\nKata ini digunakan untuk menilai apakah informasi, argumen, data, atau pengalaman benar-benar berkaitan dengan persoalan yang sedang dianalisis. Berbeda dari **penting**, relevan menekankan kesesuaian hubungan dengan konteks, bukan semata-mata tingkat kepentingannya. Kolokasi: informasi relevan, argumen relevan, pengalaman relevan.",
+    "keyPoints": [
+      "Manajemen hanya akan mempertimbangkan data yang **relevan** dengan keputusan investasi yang sedang dievaluasi.",
+      "Pengalaman kerja kandidat tersebut sangat **relevan** dengan tanggung jawab posisi yang ditawarkan.",
+      "Meskipun menarik, sebagian besar argumen dalam presentasi itu tidak **relevan** dengan permasalahan utama perusahaan."
+    ]
+  },
+  {
+    "id": "id-stage-02-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-02",
+    "topicTitle": "Stage 02: Komunikasi & Penyusunan Gagasan",
+    "stageId": 1,
+    "stageTitle": "01. Mengartikulasikan (Verba)",
+    "content": "Dalam pemakaian bahasa baku, mengartikulasikan berarti menyampaikan atau mengungkapkan gagasan, perasaan, atau pendapat dengan jelas. ==Menyampaikan atau mengungkapkan gagasan, perasaan, atau pendapat dengan jelas==.\\n\\nDalam konteks penyampaian informasi, perumusan pendapat, dan kejelasan pesan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dipakai ketika suatu gagasan dibuat eksplisit dan terucapkan; kolokasi: mengartikulasikan visi, kepentingan, gagasan. kolokasi: mengartikulasikan gagasan, mengklarifikasi informasi, atau merumuskan kebijakan.",
+    "keyPoints": [
+      "Dalam penyampaian informasi, perumusan pendapat, dan kejelasan pesan, tim perlu **mengartikulasikan** bukti dari berbagai sumber sebelum menetapkan rekomendasi.",
+      "Pimpinan meminta setiap unit **mengartikulasikan** temuan utama beserta alasan dan batasannya dalam rapat evaluasi.",
+      "Peneliti menggunakan kerangka tersebut untuk **mengartikulasikan** perubahan yang terjadi selama periode pengamatan."
+    ]
+  },
+  {
+    "id": "id-stage-02-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-02",
+    "topicTitle": "Stage 02: Komunikasi & Penyusunan Gagasan",
+    "stageId": 2,
+    "stageTitle": "02. Mengklarifikasi (Verba)",
+    "content": "Dalam pemakaian bahasa baku, mengklarifikasi berarti menjelaskan sesuatu agar menjadi lebih terang dan tidak menimbulkan salah pengertian. ==Menjelaskan sesuatu agar menjadi lebih terang dan tidak menimbulkan salah pengertian==.\\n\\nDalam konteks penyampaian informasi, perumusan pendapat, dan kejelasan pesan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan penghilangan ketidakjelasan; berbeda dari membenarkan yang berarti menyatakan sesuatu benar. kolokasi: mengartikulasikan gagasan, mengklarifikasi informasi, atau merumuskan kebijakan.",
+    "keyPoints": [
+      "Dalam penyampaian informasi, perumusan pendapat, dan kejelasan pesan, tim perlu **mengklarifikasi** bukti dari berbagai sumber sebelum menetapkan rekomendasi.",
+      "Pimpinan meminta setiap unit **mengklarifikasi** temuan utama beserta alasan dan batasannya dalam rapat evaluasi.",
+      "Peneliti menggunakan kerangka tersebut untuk **mengklarifikasi** perubahan yang terjadi selama periode pengamatan."
+    ]
+  },
+  {
+    "id": "id-stage-02-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-02",
+    "topicTitle": "Stage 02: Komunikasi & Penyusunan Gagasan",
+    "stageId": 3,
+    "stageTitle": "03. Merumuskan (Verba)",
+    "content": "Dalam pemakaian bahasa baku, merumuskan berarti menyusun atau menyatakan sesuatu dalam bentuk yang ringkas, tepat, dan teratur. ==Menyusun atau menyatakan sesuatu dalam bentuk yang ringkas, tepat, dan teratur==.\\n\\nDalam konteks penyampaian informasi, perumusan pendapat, dan kejelasan pesan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Lazim untuk tujuan, masalah, kebijakan, atau kesimpulan; menuntut ketepatan susunan. kolokasi: mengartikulasikan gagasan, mengklarifikasi informasi, atau merumuskan kebijakan.",
+    "keyPoints": [
+      "Dalam penyampaian informasi, perumusan pendapat, dan kejelasan pesan, tim perlu **merumuskan** bukti dari berbagai sumber sebelum menetapkan rekomendasi.",
+      "Pimpinan meminta setiap unit **merumuskan** temuan utama beserta alasan dan batasannya dalam rapat evaluasi.",
+      "Peneliti menggunakan kerangka tersebut untuk **merumuskan** perubahan yang terjadi selama periode pengamatan."
+    ]
+  },
+  {
+    "id": "id-stage-02-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-02",
+    "topicTitle": "Stage 02: Komunikasi & Penyusunan Gagasan",
+    "stageId": 4,
+    "stageTitle": "04. Mengemukakan (Verba)",
+    "content": "Dalam pemakaian bahasa baku, mengemukakan berarti menyampaikan pendapat, gagasan, atau fakta ke hadapan orang lain. ==Menyampaikan pendapat, gagasan, atau fakta ke hadapan orang lain==.\\n\\nDalam konteks penyampaian informasi, perumusan pendapat, dan kejelasan pesan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Lebih formal daripada mengatakan; tidak dengan sendirinya berarti membuktikan. kolokasi: mengartikulasikan gagasan, mengklarifikasi informasi, atau merumuskan kebijakan.",
+    "keyPoints": [
+      "Dalam penyampaian informasi, perumusan pendapat, dan kejelasan pesan, tim perlu **mengemukakan** bukti dari berbagai sumber sebelum menetapkan rekomendasi.",
+      "Pimpinan meminta setiap unit **mengemukakan** temuan utama beserta alasan dan batasannya dalam rapat evaluasi.",
+      "Peneliti menggunakan kerangka tersebut untuk **mengemukakan** perubahan yang terjadi selama periode pengamatan."
+    ]
+  },
+  {
+    "id": "id-stage-02-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-02",
+    "topicTitle": "Stage 02: Komunikasi & Penyusunan Gagasan",
+    "stageId": 5,
+    "stageTitle": "05. Menegaskan (Verba)",
+    "content": "Dalam pemakaian bahasa baku, menegaskan berarti menyatakan sesuatu dengan jelas dan sungguh-sungguh agar tidak diragukan. ==Menyatakan sesuatu dengan jelas dan sungguh-sungguh agar tidak diragukan==.\\n\\nDalam konteks penyampaian informasi, perumusan pendapat, dan kejelasan pesan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk memperkuat posisi atau batas suatu pernyataan; kolokasi: menegaskan komitmen, prinsip, batas. kolokasi: mengartikulasikan gagasan, mengklarifikasi informasi, atau merumuskan kebijakan.",
+    "keyPoints": [
+      "Dalam penyampaian informasi, perumusan pendapat, dan kejelasan pesan, tim perlu **menegaskan** bukti dari berbagai sumber sebelum menetapkan rekomendasi.",
+      "Pimpinan meminta setiap unit **menegaskan** temuan utama beserta alasan dan batasannya dalam rapat evaluasi.",
+      "Peneliti menggunakan kerangka tersebut untuk **menegaskan** perubahan yang terjadi selama periode pengamatan."
+    ]
+  },
+  {
+    "id": "id-stage-02-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-02",
+    "topicTitle": "Stage 02: Komunikasi & Penyusunan Gagasan",
+    "stageId": 6,
+    "stageTitle": "06. Argumentasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, argumentasi berarti alasan atau rangkaian alasan yang dikemukakan untuk mendukung atau menolak pendapat. ==Alasan atau rangkaian alasan yang dikemukakan untuk mendukung atau menolak pendapat==.\\n\\nDalam konteks penyampaian informasi, perumusan pendapat, dan kejelasan pesan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berisi klaim dan alasan pendukung; berbeda dari opini yang dapat dinyatakan tanpa pembuktian. kolokasi: konsep argumentasi, isu argumentasi, atau analisis mengenai argumentasi.",
+    "keyPoints": [
+      "Dalam penyampaian informasi, perumusan pendapat, dan kejelasan pesan, **argumentasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **argumentasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **argumentasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-02-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-02",
+    "topicTitle": "Stage 02: Komunikasi & Penyusunan Gagasan",
+    "stageId": 7,
+    "stageTitle": "07. Koheren (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, koheren berarti berhubungan secara logis sehingga bagian-bagiannya membentuk kesatuan yang masuk akal. ==Berhubungan secara logis sehingga bagian-bagiannya membentuk kesatuan yang masuk akal==.\\n\\nDalam konteks penyampaian informasi, perumusan pendapat, dan kejelasan pesan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menilai alur tulisan, penjelasan, atau kebijakan; berkaitan dengan keterpaduan makna. kolokasi: pendekatan koheren, karakteristik koheren, atau sifat yang koheren.",
+    "keyPoints": [
+      "Dalam penyampaian informasi, perumusan pendapat, dan kejelasan pesan, pendekatan yang **koheren** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **koheren** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **koheren** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-02-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-02",
+    "topicTitle": "Stage 02: Komunikasi & Penyusunan Gagasan",
+    "stageId": 8,
+    "stageTitle": "08. Artikulatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, artikulatif berarti mampu menyampaikan pikiran atau perasaan dengan jelas dan teratur. ==Mampu menyampaikan pikiran atau perasaan dengan jelas dan teratur==.\\n\\nDalam konteks penyampaian informasi, perumusan pendapat, dan kejelasan pesan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Lebih menggambarkan kemampuan pengungkapan seseorang daripada isi argumennya. kolokasi: pendekatan artikulatif, karakteristik artikulatif, atau sifat yang artikulatif.",
+    "keyPoints": [
+      "Dalam penyampaian informasi, perumusan pendapat, dan kejelasan pesan, pendekatan yang **artikulatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **artikulatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **artikulatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-02-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-02",
+    "topicTitle": "Stage 02: Komunikasi & Penyusunan Gagasan",
+    "stageId": 9,
+    "stageTitle": "09. Eksplanasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, eksplanasi berarti penjelasan mengenai bagaimana atau mengapa suatu hal terjadi. ==Penjelasan mengenai bagaimana atau mengapa suatu hal terjadi==.\\n\\nDalam konteks penyampaian informasi, perumusan pendapat, dan kejelasan pesan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan pemaparan sebab atau mekanisme, bukan hanya penyebutan fakta. kolokasi: konsep eksplanasi, isu eksplanasi, atau analisis mengenai eksplanasi.",
+    "keyPoints": [
+      "Dalam penyampaian informasi, perumusan pendapat, dan kejelasan pesan, **eksplanasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **eksplanasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **eksplanasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-02-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-02",
+    "topicTitle": "Stage 02: Komunikasi & Penyusunan Gagasan",
+    "stageId": 10,
+    "stageTitle": "10. Elaborasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, elaborasi berarti penguraian atau pengembangan gagasan secara lebih terperinci. ==Penguraian atau pengembangan gagasan secara lebih terperinci==.\\n\\nDalam konteks penyampaian informasi, perumusan pendapat, dan kejelasan pesan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Tepat ketika ide awal diperluas dengan alasan, rincian, dan contoh; bukan pengulangan semata. kolokasi: konsep elaborasi, isu elaborasi, atau analisis mengenai elaborasi.",
+    "keyPoints": [
+      "Dalam penyampaian informasi, perumusan pendapat, dan kejelasan pesan, **elaborasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **elaborasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **elaborasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-03-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-03",
+    "topicTitle": "Stage 03: Organisasi, Peran & Profesionalisme",
+    "stageId": 1,
+    "stageTitle": "01. Delegasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, delegasi berarti pelimpahan tugas, wewenang, atau tanggung jawab kepada pihak lain. ==Pelimpahan tugas, wewenang, atau tanggung jawab kepada pihak lain==.\\n\\nDalam konteks pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjuk tindakan atau susunan pelimpahan; kewenangan yang didelegasikan tetap memiliki batas. kolokasi: konsep delegasi, isu delegasi, atau analisis mengenai delegasi.",
+    "keyPoints": [
+      "Dalam pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, **delegasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **delegasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **delegasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-03-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-03",
+    "topicTitle": "Stage 03: Organisasi, Peran & Profesionalisme",
+    "stageId": 2,
+    "stageTitle": "02. Koordinasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, koordinasi berarti pengaturan kegiatan agar berbagai pihak bekerja selaras untuk mencapai tujuan. ==Pengaturan kegiatan agar berbagai pihak bekerja selaras untuk mencapai tujuan==.\\n\\nDalam konteks pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan penyelarasan antarbagian, bukan penggabungan seluruh kewenangan. kolokasi: konsep koordinasi, isu koordinasi, atau analisis mengenai koordinasi.",
+    "keyPoints": [
+      "Dalam pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, **koordinasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **koordinasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **koordinasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-03-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-03",
+    "topicTitle": "Stage 03: Organisasi, Peran & Profesionalisme",
+    "stageId": 3,
+    "stageTitle": "03. Kolaborasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kolaborasi berarti kerja sama antara dua pihak atau lebih untuk menghasilkan sesuatu. ==Kerja sama antara dua pihak atau lebih untuk menghasilkan sesuatu==.\\n\\nDalam konteks pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Biasanya melibatkan kontribusi bersama; berbeda dari koordinasi yang dapat hanya menyelaraskan aktivitas. kolokasi: konsep kolaborasi, isu kolaborasi, atau analisis mengenai kolaborasi.",
+    "keyPoints": [
+      "Dalam pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, **kolaborasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kolaborasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kolaborasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-03-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-03",
+    "topicTitle": "Stage 03: Organisasi, Peran & Profesionalisme",
+    "stageId": 4,
+    "stageTitle": "04. Akuntabilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, akuntabilitas berarti keadaan yang dapat dimintai pertanggungjawaban atas tindakan atau keputusan. ==Keadaan yang dapat dimintai pertanggungjawaban atas tindakan atau keputusan==.\\n\\nDalam konteks pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menuntut penjelasan dan pertanggungjawaban yang dapat diperiksa; lebih kuat daripada sekadar tanggung jawab informal. kolokasi: konsep akuntabilitas, isu akuntabilitas, atau analisis mengenai akuntabilitas.",
+    "keyPoints": [
+      "Dalam pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, **akuntabilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **akuntabilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **akuntabilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-03-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-03",
+    "topicTitle": "Stage 03: Organisasi, Peran & Profesionalisme",
+    "stageId": 5,
+    "stageTitle": "05. Otoritas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, otoritas berarti kekuasaan atau hak yang sah untuk memerintah, mengambil keputusan, atau memberi persetujuan. ==Kekuasaan atau hak yang sah untuk memerintah, mengambil keputusan, atau memberi persetujuan==.\\n\\nDalam konteks pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat bersumber dari jabatan, aturan, atau keahlian; berbeda dari pengaruh yang tidak selalu resmi. kolokasi: konsep otoritas, isu otoritas, atau analisis mengenai otoritas.",
+    "keyPoints": [
+      "Dalam pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, **otoritas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **otoritas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **otoritas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-03-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-03",
+    "topicTitle": "Stage 03: Organisasi, Peran & Profesionalisme",
+    "stageId": 6,
+    "stageTitle": "06. Kompetensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kompetensi berarti kemampuan atau kecakapan yang memadai untuk melakukan tugas tertentu. ==Kemampuan atau kecakapan yang memadai untuk melakukan tugas tertentu==.\\n\\nDalam konteks pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mencakup pengetahuan, keterampilan, dan sikap; bukan hanya pengalaman kerja. kolokasi: konsep kompetensi, isu kompetensi, atau analisis mengenai kompetensi.",
+    "keyPoints": [
+      "Dalam pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, **kompetensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kompetensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kompetensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-03-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-03",
+    "topicTitle": "Stage 03: Organisasi, Peran & Profesionalisme",
+    "stageId": 7,
+    "stageTitle": "07. Kapabilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kapabilitas berarti kemampuan atau kapasitas yang dimiliki untuk melakukan atau mengembangkan sesuatu. ==Kemampuan atau kapasitas yang dimiliki untuk melakukan atau mengembangkan sesuatu==.\\n\\nDalam konteks pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering merujuk pada potensi dan kemampuan organisasi; kompetensi lebih sering melekat pada kecakapan menjalankan tugas. kolokasi: konsep kapabilitas, isu kapabilitas, atau analisis mengenai kapabilitas.",
+    "keyPoints": [
+      "Dalam pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, **kapabilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kapabilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kapabilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-03-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-03",
+    "topicTitle": "Stage 03: Organisasi, Peran & Profesionalisme",
+    "stageId": 8,
+    "stageTitle": "08. Produktivitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, produktivitas berarti kemampuan menghasilkan keluaran dibandingkan dengan sumber daya atau waktu yang digunakan. ==Kemampuan menghasilkan keluaran dibandingkan dengan sumber daya atau waktu yang digunakan==.\\n\\nDalam konteks pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menilai hubungan antara hasil dan masukan, bukan sekadar kesibukan. kolokasi: konsep produktivitas, isu produktivitas, atau analisis mengenai produktivitas.",
+    "keyPoints": [
+      "Dalam pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, **produktivitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **produktivitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **produktivitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-03-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-03",
+    "topicTitle": "Stage 03: Organisasi, Peran & Profesionalisme",
+    "stageId": 9,
+    "stageTitle": "09. Efisiensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, efisiensi berarti ketepatan cara menggunakan sumber daya untuk memperoleh hasil dengan pemborosan sekecil mungkin. ==Ketepatan cara menggunakan sumber daya untuk memperoleh hasil dengan pemborosan sekecil mungkin==.\\n\\nDalam konteks pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berfokus pada perbandingan masukan dan keluaran; berbeda dari efektivitas yang menilai ketercapaian tujuan. kolokasi: konsep efisiensi, isu efisiensi, atau analisis mengenai efisiensi.",
+    "keyPoints": [
+      "Dalam pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, **efisiensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **efisiensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **efisiensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-03-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-03",
+    "topicTitle": "Stage 03: Organisasi, Peran & Profesionalisme",
+    "stageId": 10,
+    "stageTitle": "10. Efektivitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, efektivitas berarti tingkat keberhasilan dalam mencapai tujuan atau hasil yang telah ditetapkan. ==Tingkat keberhasilan dalam mencapai tujuan atau hasil yang telah ditetapkan==.\\n\\nDalam konteks pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menilai apakah sasaran tercapai, terlepas dari seberapa hemat sumber daya digunakan. kolokasi: konsep efektivitas, isu efektivitas, atau analisis mengenai efektivitas.",
+    "keyPoints": [
+      "Dalam pembagian tanggung jawab, kapasitas individu, dan tata kerja organisasi, **efektivitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **efektivitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **efektivitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-04-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-04",
+    "topicTitle": "Stage 04: Strategi, Prioritas & Pengambilan Keputusan",
+    "stageId": 1,
+    "stageTitle": "01. Prioritas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, prioritas berarti hal yang didahulukan atau diutamakan dibandingkan hal lainnya. ==Hal yang didahulukan atau diutamakan dibandingkan hal lainnya==.\\n\\nDalam konteks penentuan arah, pilihan tindakan, dan pengelolaan prioritas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dipakai untuk menentukan urutan perhatian berdasarkan urgensi atau nilai strategis. kolokasi: konsep prioritas, isu prioritas, atau analisis mengenai prioritas.",
+    "keyPoints": [
+      "Dalam penentuan arah, pilihan tindakan, dan pengelolaan prioritas, **prioritas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **prioritas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **prioritas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-04-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-04",
+    "topicTitle": "Stage 04: Strategi, Prioritas & Pengambilan Keputusan",
+    "stageId": 2,
+    "stageTitle": "02. Strategi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, strategi berarti rencana yang cermat mengenai kegiatan untuk mencapai sasaran khusus. ==Rencana yang cermat mengenai kegiatan untuk mencapai sasaran khusus==.\\n\\nDalam konteks penentuan arah, pilihan tindakan, dan pengelolaan prioritas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menyangkut arah dan pilihan jangka menengah atau panjang; berbeda dari taktik yang lebih operasional. kolokasi: konsep strategi, isu strategi, atau analisis mengenai strategi.",
+    "keyPoints": [
+      "Dalam penentuan arah, pilihan tindakan, dan pengelolaan prioritas, **strategi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **strategi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **strategi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-04-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-04",
+    "topicTitle": "Stage 04: Strategi, Prioritas & Pengambilan Keputusan",
+    "stageId": 3,
+    "stageTitle": "03. Taktis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, taktis berarti berkaitan dengan taktik atau cara praktis untuk mencapai tujuan tertentu. ==Berkaitan dengan taktik atau cara praktis untuk mencapai tujuan tertentu==.\\n\\nDalam konteks penentuan arah, pilihan tindakan, dan pengelolaan prioritas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan langkah pelaksanaan yang lebih dekat dan spesifik dibandingkan strategi. kolokasi: pendekatan taktis, karakteristik taktis, atau sifat yang taktis.",
+    "keyPoints": [
+      "Dalam penentuan arah, pilihan tindakan, dan pengelolaan prioritas, pendekatan yang **taktis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **taktis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **taktis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-04-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-04",
+    "topicTitle": "Stage 04: Strategi, Prioritas & Pengambilan Keputusan",
+    "stageId": 4,
+    "stageTitle": "04. Proaktif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, proaktif berarti bersikap aktif mengambil tindakan sebelum keadaan memaksa atau masalah membesar. ==Bersikap aktif mengambil tindakan sebelum keadaan memaksa atau masalah membesar==.\\n\\nDalam konteks penentuan arah, pilihan tindakan, dan pengelolaan prioritas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan inisiatif dan antisipasi, bukan sekadar reaksi cepat. kolokasi: pendekatan proaktif, karakteristik proaktif, atau sifat yang proaktif.",
+    "keyPoints": [
+      "Dalam penentuan arah, pilihan tindakan, dan pengelolaan prioritas, pendekatan yang **proaktif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **proaktif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **proaktif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-04-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-04",
+    "topicTitle": "Stage 04: Strategi, Prioritas & Pengambilan Keputusan",
+    "stageId": 5,
+    "stageTitle": "05. Antisipatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, antisipatif berarti bersifat memperhitungkan atau memperkirakan kemungkinan yang akan terjadi. ==Bersifat memperhitungkan atau memperkirakan kemungkinan yang akan terjadi==.\\n\\nDalam konteks penentuan arah, pilihan tindakan, dan pengelolaan prioritas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk langkah yang disiapkan menghadapi risiko atau perubahan mendatang. kolokasi: pendekatan antisipatif, karakteristik antisipatif, atau sifat yang antisipatif.",
+    "keyPoints": [
+      "Dalam penentuan arah, pilihan tindakan, dan pengelolaan prioritas, pendekatan yang **antisipatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **antisipatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **antisipatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-04-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-04",
+    "topicTitle": "Stage 04: Strategi, Prioritas & Pengambilan Keputusan",
+    "stageId": 6,
+    "stageTitle": "06. Adaptif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, adaptif berarti mudah atau mampu menyesuaikan diri dengan keadaan yang berubah. ==Mudah atau mampu menyesuaikan diri dengan keadaan yang berubah==.\\n\\nDalam konteks penentuan arah, pilihan tindakan, dan pengelolaan prioritas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan kemampuan penyesuaian tanpa harus kehilangan tujuan pokok. kolokasi: pendekatan adaptif, karakteristik adaptif, atau sifat yang adaptif.",
+    "keyPoints": [
+      "Dalam penentuan arah, pilihan tindakan, dan pengelolaan prioritas, pendekatan yang **adaptif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **adaptif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **adaptif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-04-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-04",
+    "topicTitle": "Stage 04: Strategi, Prioritas & Pengambilan Keputusan",
+    "stageId": 7,
+    "stageTitle": "07. Fleksibel (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, fleksibel berarti luwes dan mudah disesuaikan dengan kebutuhan atau keadaan. ==Luwes dan mudah disesuaikan dengan kebutuhan atau keadaan==.\\n\\nDalam konteks penentuan arah, pilihan tindakan, dan pengelolaan prioritas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan keluwesan aturan atau pendekatan; tidak selalu berarti tanpa prinsip. kolokasi: pendekatan fleksibel, karakteristik fleksibel, atau sifat yang fleksibel.",
+    "keyPoints": [
+      "Dalam penentuan arah, pilihan tindakan, dan pengelolaan prioritas, pendekatan yang **fleksibel** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **fleksibel** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **fleksibel** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-04-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-04",
+    "topicTitle": "Stage 04: Strategi, Prioritas & Pengambilan Keputusan",
+    "stageId": 8,
+    "stageTitle": "08. Resiliensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, resiliensi berarti kemampuan untuk bertahan dan pulih setelah menghadapi tekanan, kesulitan, atau perubahan. ==Kemampuan untuk bertahan dan pulih setelah menghadapi tekanan, kesulitan, atau perubahan==.\\n\\nDalam konteks penentuan arah, pilihan tindakan, dan pengelolaan prioritas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam konteks individu, organisasi, dan sistem; bukan berarti tidak mengalami gangguan. kolokasi: konsep resiliensi, isu resiliensi, atau analisis mengenai resiliensi.",
+    "keyPoints": [
+      "Dalam penentuan arah, pilihan tindakan, dan pengelolaan prioritas, **resiliensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **resiliensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **resiliensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-04-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-04",
+    "topicTitle": "Stage 04: Strategi, Prioritas & Pengambilan Keputusan",
+    "stageId": 9,
+    "stageTitle": "09. Optimalisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, optimalisasi berarti proses atau tindakan menjadikan sesuatu paling baik atau paling menguntungkan dalam batas tertentu. ==Proses atau tindakan menjadikan sesuatu paling baik atau paling menguntungkan dalam batas tertentu==.\\n\\nDalam konteks penentuan arah, pilihan tindakan, dan pengelolaan prioritas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan peningkatan hasil dengan mempertimbangkan kendala dan sumber daya. kolokasi: konsep optimalisasi, isu optimalisasi, atau analisis mengenai optimalisasi.",
+    "keyPoints": [
+      "Dalam penentuan arah, pilihan tindakan, dan pengelolaan prioritas, **optimalisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **optimalisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **optimalisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-04-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-04",
+    "topicTitle": "Stage 04: Strategi, Prioritas & Pengambilan Keputusan",
+    "stageId": 10,
+    "stageTitle": "10. Implementasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, implementasi berarti pelaksanaan atau penerapan suatu rencana, kebijakan, atau gagasan. ==Pelaksanaan atau penerapan suatu rencana, kebijakan, atau gagasan==.\\n\\nDalam konteks penentuan arah, pilihan tindakan, dan pengelolaan prioritas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mengacu pada tahap mengubah rancangan menjadi tindakan nyata; berbeda dari perumusan. kolokasi: konsep implementasi, isu implementasi, atau analisis mengenai implementasi.",
+    "keyPoints": [
+      "Dalam penentuan arah, pilihan tindakan, dan pengelolaan prioritas, **implementasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **implementasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **implementasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-05-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-05",
+    "topicTitle": "Stage 05: Bisnis, Pasar & Model Usaha",
+    "stageId": 1,
+    "stageTitle": "01. Distribusi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, distribusi berarti penyaluran atau pembagian barang, jasa, atau informasi kepada pihak yang membutuhkan. ==Penyaluran atau pembagian barang, jasa, atau informasi kepada pihak yang membutuhkan==.\\n\\nDalam konteks aktivitas komersial, posisi pasar, dan pengembangan usaha, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam bisnis merujuk pada jalur dan proses penyaluran dari produsen menuju pengguna. kolokasi: konsep distribusi, isu distribusi, atau analisis mengenai distribusi.",
+    "keyPoints": [
+      "Dalam aktivitas komersial, posisi pasar, dan pengembangan usaha, **distribusi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **distribusi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **distribusi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-05-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-05",
+    "topicTitle": "Stage 05: Bisnis, Pasar & Model Usaha",
+    "stageId": 2,
+    "stageTitle": "02. Segmentasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, segmentasi berarti pembagian pasar atau kelompok menjadi bagian-bagian berdasarkan ciri tertentu. ==Pembagian pasar atau kelompok menjadi bagian-bagian berdasarkan ciri tertentu==.\\n\\nDalam konteks aktivitas komersial, posisi pasar, dan pengembangan usaha, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk mengenali kelompok dengan kebutuhan atau perilaku serupa; bukan penentuan posisi merek. kolokasi: konsep segmentasi, isu segmentasi, atau analisis mengenai segmentasi.",
+    "keyPoints": [
+      "Dalam aktivitas komersial, posisi pasar, dan pengembangan usaha, **segmentasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **segmentasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **segmentasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-05-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-05",
+    "topicTitle": "Stage 05: Bisnis, Pasar & Model Usaha",
+    "stageId": 3,
+    "stageTitle": "03. Diversifikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, diversifikasi berarti penganekaragaman usaha, produk, sumber pendapatan, atau investasi. ==Penganekaragaman usaha, produk, sumber pendapatan, atau investasi==.\\n\\nDalam konteks aktivitas komersial, posisi pasar, dan pengembangan usaha, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Bertujuan menyebarkan peluang dan risiko; tidak otomatis menjamin risiko hilang. kolokasi: konsep diversifikasi, isu diversifikasi, atau analisis mengenai diversifikasi.",
+    "keyPoints": [
+      "Dalam aktivitas komersial, posisi pasar, dan pengembangan usaha, **diversifikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **diversifikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **diversifikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-05-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-05",
+    "topicTitle": "Stage 05: Bisnis, Pasar & Model Usaha",
+    "stageId": 4,
+    "stageTitle": "04. Konsolidasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konsolidasi berarti penggabungan atau penguatan beberapa unsur menjadi satu kesatuan yang lebih kukuh. ==Penggabungan atau penguatan beberapa unsur menjadi satu kesatuan yang lebih kukuh==.\\n\\nDalam konteks aktivitas komersial, posisi pasar, dan pengembangan usaha, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam bisnis dapat berupa penggabungan operasi, aset, atau laporan; juga berarti pemantapan. kolokasi: konsep konsolidasi, isu konsolidasi, atau analisis mengenai konsolidasi.",
+    "keyPoints": [
+      "Dalam aktivitas komersial, posisi pasar, dan pengembangan usaha, **konsolidasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konsolidasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konsolidasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-05-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-05",
+    "topicTitle": "Stage 05: Bisnis, Pasar & Model Usaha",
+    "stageId": 5,
+    "stageTitle": "05. Ekspansi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ekspansi berarti perluasan wilayah, kegiatan, kapasitas, atau skala usaha. ==Perluasan wilayah, kegiatan, kapasitas, atau skala usaha==.\\n\\nDalam konteks aktivitas komersial, posisi pasar, dan pengembangan usaha, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan pertumbuhan cakupan; berbeda dari intensifikasi yang memperdalam pemanfaatan kegiatan yang sudah ada. kolokasi: konsep ekspansi, isu ekspansi, atau analisis mengenai ekspansi.",
+    "keyPoints": [
+      "Dalam aktivitas komersial, posisi pasar, dan pengembangan usaha, **ekspansi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ekspansi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ekspansi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-05-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-05",
+    "topicTitle": "Stage 05: Bisnis, Pasar & Model Usaha",
+    "stageId": 6,
+    "stageTitle": "06. Penetrasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, penetrasi berarti proses masuk atau menembus ke suatu pasar, lingkungan, atau kelompok. ==Proses masuk atau menembus ke suatu pasar, lingkungan, atau kelompok==.\\n\\nDalam konteks aktivitas komersial, posisi pasar, dan pengembangan usaha, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam pemasaran merujuk pada upaya memperoleh tempat atau pangsa di pasar sasaran. kolokasi: konsep penetrasi, isu penetrasi, atau analisis mengenai penetrasi.",
+    "keyPoints": [
+      "Dalam aktivitas komersial, posisi pasar, dan pengembangan usaha, **penetrasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **penetrasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **penetrasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-05-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-05",
+    "topicTitle": "Stage 05: Bisnis, Pasar & Model Usaha",
+    "stageId": 7,
+    "stageTitle": "07. Retensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, retensi berarti pemertahanan atau kemampuan mempertahankan pelanggan, pegawai, atau sumber daya. ==Pemertahanan atau kemampuan mempertahankan pelanggan, pegawai, atau sumber daya==.\\n\\nDalam konteks aktivitas komersial, posisi pasar, dan pengembangan usaha, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan dalam strategi pelanggan dan sdm; berfokus pada keberlanjutan hubungan. kolokasi: konsep retensi, isu retensi, atau analisis mengenai retensi.",
+    "keyPoints": [
+      "Dalam aktivitas komersial, posisi pasar, dan pengembangan usaha, **retensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **retensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **retensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-05-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-05",
+    "topicTitle": "Stage 05: Bisnis, Pasar & Model Usaha",
+    "stageId": 8,
+    "stageTitle": "08. Akuisisi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, akuisisi berarti pengambilalihan atau pemerolehan kepemilikan atau kendali atas sesuatu. ==Pengambilalihan atau pemerolehan kepemilikan atau kendali atas sesuatu==.\\n\\nDalam konteks aktivitas komersial, posisi pasar, dan pengembangan usaha, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam bisnis biasanya merujuk pada pembelian perusahaan atau aset; berbeda dari merger yang menggabungkan entitas. kolokasi: konsep akuisisi, isu akuisisi, atau analisis mengenai akuisisi.",
+    "keyPoints": [
+      "Dalam aktivitas komersial, posisi pasar, dan pengembangan usaha, **akuisisi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **akuisisi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **akuisisi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-05-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-05",
+    "topicTitle": "Stage 05: Bisnis, Pasar & Model Usaha",
+    "stageId": 9,
+    "stageTitle": "09. Portofolio (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, portofolio berarti kumpulan aset, investasi, karya, atau proyek yang dimiliki atau dikelola seseorang atau organisasi. ==Kumpulan aset, investasi, karya, atau proyek yang dimiliki atau dikelola seseorang atau organisasi==.\\n\\nDalam konteks aktivitas komersial, posisi pasar, dan pengembangan usaha, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan himpunan yang dinilai sebagai satu keseluruhan untuk mengelola variasi dan risiko. kolokasi: konsep portofolio, isu portofolio, atau analisis mengenai portofolio.",
+    "keyPoints": [
+      "Dalam aktivitas komersial, posisi pasar, dan pengembangan usaha, **portofolio** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **portofolio** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **portofolio** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-05-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-05",
+    "topicTitle": "Stage 05: Bisnis, Pasar & Model Usaha",
+    "stageId": 10,
+    "stageTitle": "10. Komoditas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, komoditas berarti barang dagangan atau produk yang dapat diperjualbelikan. ==Barang dagangan atau produk yang dapat diperjualbelikan==.\\n\\nDalam konteks aktivitas komersial, posisi pasar, dan pengembangan usaha, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering merujuk pada barang yang relatif seragam dan diperdagangkan di pasar, seperti hasil pertanian atau bahan tambang. kolokasi: konsep komoditas, isu komoditas, atau analisis mengenai komoditas.",
+    "keyPoints": [
+      "Dalam aktivitas komersial, posisi pasar, dan pengembangan usaha, **komoditas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **komoditas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **komoditas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-06-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-06",
+    "topicTitle": "Stage 06: Ekonomi, Keuangan & Nilai",
+    "stageId": 1,
+    "stageTitle": "01. Likuiditas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, likuiditas berarti kemampuan aset atau pihak tertentu memenuhi kewajiban jangka pendek atau diubah menjadi uang tunai dengan mudah. ==Kemampuan aset atau pihak tertentu memenuhi kewajiban jangka pendek atau diubah menjadi uang tunai dengan mudah==.\\n\\nDalam konteks kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam keuangan perusahaan berkaitan dengan kecukupan aset lancar; jangan disamakan dengan profitabilitas. kolokasi: konsep likuiditas, isu likuiditas, atau analisis mengenai likuiditas.",
+    "keyPoints": [
+      "Dalam kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, **likuiditas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **likuiditas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **likuiditas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-06-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-06",
+    "topicTitle": "Stage 06: Ekonomi, Keuangan & Nilai",
+    "stageId": 2,
+    "stageTitle": "02. Solvabilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, solvabilitas berarti kemampuan entitas memenuhi seluruh kewajiban keuangannya, terutama dalam jangka panjang. ==Kemampuan entitas memenuhi seluruh kewajiban keuangannya, terutama dalam jangka panjang==.\\n\\nDalam konteks kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menilai kesehatan struktur pendanaan dan utang, bukan hanya kas yang tersedia saat ini. kolokasi: konsep solvabilitas, isu solvabilitas, atau analisis mengenai solvabilitas.",
+    "keyPoints": [
+      "Dalam kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, **solvabilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **solvabilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **solvabilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-06-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-06",
+    "topicTitle": "Stage 06: Ekonomi, Keuangan & Nilai",
+    "stageId": 3,
+    "stageTitle": "03. Volatilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, volatilitas berarti tingkat perubahan atau gejolak nilai yang terjadi dalam suatu periode. ==Tingkat perubahan atau gejolak nilai yang terjadi dalam suatu periode==.\\n\\nDalam konteks kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering dipakai untuk harga aset dan pasar; volatilitas tinggi berarti perubahan lebih besar, bukan selalu penurunan. kolokasi: konsep volatilitas, isu volatilitas, atau analisis mengenai volatilitas.",
+    "keyPoints": [
+      "Dalam kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, **volatilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **volatilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **volatilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-06-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-06",
+    "topicTitle": "Stage 06: Ekonomi, Keuangan & Nilai",
+    "stageId": 4,
+    "stageTitle": "04. Apresiasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, apresiasi berarti kenaikan nilai atau penghargaan terhadap mutu, jasa, atau prestasi. ==Kenaikan nilai atau penghargaan terhadap mutu, jasa, atau prestasi==.\\n\\nDalam konteks kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam ekonomi berarti kenaikan nilai mata uang atau aset; dalam konteks umum berarti penghargaan. kolokasi: konsep apresiasi, isu apresiasi, atau analisis mengenai apresiasi.",
+    "keyPoints": [
+      "Dalam kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, **apresiasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **apresiasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **apresiasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-06-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-06",
+    "topicTitle": "Stage 06: Ekonomi, Keuangan & Nilai",
+    "stageId": 5,
+    "stageTitle": "05. Depresiasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, depresiasi berarti penurunan nilai mata uang atau aset secara bertahap. ==Penurunan nilai mata uang atau aset secara bertahap==.\\n\\nDalam konteks kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam akuntansi dapat merujuk pada penyusutan nilai aset; konteks menentukan pemakaiannya. kolokasi: konsep depresiasi, isu depresiasi, atau analisis mengenai depresiasi.",
+    "keyPoints": [
+      "Dalam kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, **depresiasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **depresiasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **depresiasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-06-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-06",
+    "topicTitle": "Stage 06: Ekonomi, Keuangan & Nilai",
+    "stageId": 6,
+    "stageTitle": "06. Inflasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, inflasi berarti kenaikan harga barang dan jasa secara umum dan terus-menerus dalam suatu periode. ==Kenaikan harga barang dan jasa secara umum dan terus-menerus dalam suatu periode==.\\n\\nDalam konteks kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Bukan kenaikan harga satu barang saja; biasanya menurunkan daya beli uang. kolokasi: konsep inflasi, isu inflasi, atau analisis mengenai inflasi.",
+    "keyPoints": [
+      "Dalam kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, **inflasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **inflasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **inflasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-06-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-06",
+    "topicTitle": "Stage 06: Ekonomi, Keuangan & Nilai",
+    "stageId": 7,
+    "stageTitle": "07. Deflasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, deflasi berarti penurunan tingkat harga barang dan jasa secara umum dan berkelanjutan. ==Penurunan tingkat harga barang dan jasa secara umum dan berkelanjutan==.\\n\\nDalam konteks kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari disinflasi, yaitu perlambatan laju inflasi meskipun harga masih meningkat. kolokasi: konsep deflasi, isu deflasi, atau analisis mengenai deflasi.",
+    "keyPoints": [
+      "Dalam kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, **deflasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **deflasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **deflasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-06-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-06",
+    "topicTitle": "Stage 06: Ekonomi, Keuangan & Nilai",
+    "stageId": 8,
+    "stageTitle": "08. Margin (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, margin berarti selisih atau batas antara dua nilai; dalam bisnis sering berarti selisih pendapatan dan biaya atau rasio keuntungan. ==Selisih atau batas antara dua nilai; dalam bisnis sering berarti selisih pendapatan dan biaya atau rasio keuntungan==.\\n\\nDalam konteks kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Maknanya bergantung pada konteks, misalnya margin laba, margin kontribusi, atau margin pengaman. kolokasi: konsep margin, isu margin, atau analisis mengenai margin.",
+    "keyPoints": [
+      "Dalam kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, **margin** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **margin** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **margin** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-06-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-06",
+    "topicTitle": "Stage 06: Ekonomi, Keuangan & Nilai",
+    "stageId": 9,
+    "stageTitle": "09. Valuasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, valuasi berarti penilaian atau penetapan nilai ekonomi suatu aset, perusahaan, atau investasi. ==Penilaian atau penetapan nilai ekonomi suatu aset, perusahaan, atau investasi==.\\n\\nDalam konteks kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam investasi merujuk pada estimasi nilai wajar, bukan selalu harga transaksi aktual. kolokasi: konsep valuasi, isu valuasi, atau analisis mengenai valuasi.",
+    "keyPoints": [
+      "Dalam kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, **valuasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **valuasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **valuasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-06-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-06",
+    "topicTitle": "Stage 06: Ekonomi, Keuangan & Nilai",
+    "stageId": 10,
+    "stageTitle": "10. Ekuilibrium (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ekuilibrium berarti keadaan seimbang ketika kekuatan atau faktor yang saling berhadapan tidak menghasilkan perubahan bersih. ==Keadaan seimbang ketika kekuatan atau faktor yang saling berhadapan tidak menghasilkan perubahan bersih==.\\n\\nDalam konteks kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam ekonomi dan ilmu alam; keseimbangan dapat berubah ketika kondisi dasarnya berubah. kolokasi: konsep ekuilibrium, isu ekuilibrium, atau analisis mengenai ekuilibrium.",
+    "keyPoints": [
+      "Dalam kondisi keuangan, pergerakan harga, dan ukuran nilai ekonomi, **ekuilibrium** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ekuilibrium** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ekuilibrium** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-07-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-07",
+    "topicTitle": "Stage 07: Psikologi, Perilaku & Relasi Sosial",
+    "stageId": 1,
+    "stageTitle": "01. Persepsi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, persepsi berarti proses seseorang menerima, mengenali, dan menafsirkan informasi melalui pancaindra atau pikirannya. ==Proses seseorang menerima, mengenali, dan menafsirkan informasi melalui pancaindra atau pikirannya==.\\n\\nDalam konteks proses mental, sikap, dan hubungan antarindividu, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan hasil penafsiran subjektif; tidak selalu sama dengan keadaan objektif. kolokasi: konsep persepsi, isu persepsi, atau analisis mengenai persepsi.",
+    "keyPoints": [
+      "Dalam proses mental, sikap, dan hubungan antarindividu, **persepsi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **persepsi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **persepsi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-07-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-07",
+    "topicTitle": "Stage 07: Psikologi, Perilaku & Relasi Sosial",
+    "stageId": 2,
+    "stageTitle": "02. Motivasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, motivasi berarti dorongan yang timbul pada diri seseorang untuk melakukan tindakan atau mencapai tujuan. ==Dorongan yang timbul pada diri seseorang untuk melakukan tindakan atau mencapai tujuan==.\\n\\nDalam konteks proses mental, sikap, dan hubungan antarindividu, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat bersumber dari faktor internal maupun eksternal; berbeda dari kemampuan yang menentukan kapasitas bertindak. kolokasi: konsep motivasi, isu motivasi, atau analisis mengenai motivasi.",
+    "keyPoints": [
+      "Dalam proses mental, sikap, dan hubungan antarindividu, **motivasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **motivasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **motivasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-07-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-07",
+    "topicTitle": "Stage 07: Psikologi, Perilaku & Relasi Sosial",
+    "stageId": 3,
+    "stageTitle": "03. Kognitif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kognitif berarti berkaitan dengan proses memperoleh pengetahuan, berpikir, mengingat, dan memahami. ==Berkaitan dengan proses memperoleh pengetahuan, berpikir, mengingat, dan memahami==.\\n\\nDalam konteks proses mental, sikap, dan hubungan antarindividu, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam psikologi dan pendidikan untuk membahas fungsi mental, bukan perasaan. kolokasi: pendekatan kognitif, karakteristik kognitif, atau sifat yang kognitif.",
+    "keyPoints": [
+      "Dalam proses mental, sikap, dan hubungan antarindividu, pendekatan yang **kognitif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kognitif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kognitif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-07-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-07",
+    "topicTitle": "Stage 07: Psikologi, Perilaku & Relasi Sosial",
+    "stageId": 4,
+    "stageTitle": "04. Afektif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, afektif berarti berkaitan dengan perasaan, emosi, sikap, atau nilai. ==Berkaitan dengan perasaan, emosi, sikap, atau nilai==.\\n\\nDalam konteks proses mental, sikap, dan hubungan antarindividu, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering dipasangkan dengan ranah kognitif dan psikomotorik dalam pendidikan. kolokasi: pendekatan afektif, karakteristik afektif, atau sifat yang afektif.",
+    "keyPoints": [
+      "Dalam proses mental, sikap, dan hubungan antarindividu, pendekatan yang **afektif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **afektif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **afektif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-07-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-07",
+    "topicTitle": "Stage 07: Psikologi, Perilaku & Relasi Sosial",
+    "stageId": 5,
+    "stageTitle": "05. Empati (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, empati berarti kemampuan memahami dan turut merasakan keadaan atau perasaan orang lain. ==Kemampuan memahami dan turut merasakan keadaan atau perasaan orang lain==.\\n\\nDalam konteks proses mental, sikap, dan hubungan antarindividu, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari simpati yang lebih menekankan rasa iba atau kepedulian; empati melibatkan pemahaman perspektif. kolokasi: konsep empati, isu empati, atau analisis mengenai empati.",
+    "keyPoints": [
+      "Dalam proses mental, sikap, dan hubungan antarindividu, **empati** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **empati** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **empati** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-07-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-07",
+    "topicTitle": "Stage 07: Psikologi, Perilaku & Relasi Sosial",
+    "stageId": 6,
+    "stageTitle": "06. Toleransi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, toleransi berarti sikap menghargai atau membiarkan perbedaan pendapat, keyakinan, atau kebiasaan. ==Sikap menghargai atau membiarkan perbedaan pendapat, keyakinan, atau kebiasaan==.\\n\\nDalam konteks proses mental, sikap, dan hubungan antarindividu, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Tidak berarti harus menyetujui semua pandangan, melainkan menghormati hak pihak lain. kolokasi: konsep toleransi, isu toleransi, atau analisis mengenai toleransi.",
+    "keyPoints": [
+      "Dalam proses mental, sikap, dan hubungan antarindividu, **toleransi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **toleransi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **toleransi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-07-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-07",
+    "topicTitle": "Stage 07: Psikologi, Perilaku & Relasi Sosial",
+    "stageId": 7,
+    "stageTitle": "07. Inklusif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, inklusif berarti bersifat merangkul dan memberi ruang bagi berbagai kelompok untuk ikut serta. ==Bersifat merangkul dan memberi ruang bagi berbagai kelompok untuk ikut serta==.\\n\\nDalam konteks proses mental, sikap, dan hubungan antarindividu, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan keterlibatan dan akses; berlawanan dengan eksklusif yang membatasi keanggotaan atau akses. kolokasi: pendekatan inklusif, karakteristik inklusif, atau sifat yang inklusif.",
+    "keyPoints": [
+      "Dalam proses mental, sikap, dan hubungan antarindividu, pendekatan yang **inklusif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **inklusif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **inklusif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-07-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-07",
+    "topicTitle": "Stage 07: Psikologi, Perilaku & Relasi Sosial",
+    "stageId": 8,
+    "stageTitle": "08. Stigma (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, stigma berarti ciri negatif atau cap sosial yang dilekatkan pada seseorang atau kelompok. ==Ciri negatif atau cap sosial yang dilekatkan pada seseorang atau kelompok==.\\n\\nDalam konteks proses mental, sikap, dan hubungan antarindividu, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering menimbulkan pengucilan dan diskriminasi; bukan sekadar penilaian pribadi. kolokasi: konsep stigma, isu stigma, atau analisis mengenai stigma.",
+    "keyPoints": [
+      "Dalam proses mental, sikap, dan hubungan antarindividu, **stigma** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **stigma** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **stigma** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-07-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-07",
+    "topicTitle": "Stage 07: Psikologi, Perilaku & Relasi Sosial",
+    "stageId": 9,
+    "stageTitle": "09. Konformitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konformitas berarti penyesuaian sikap atau perilaku seseorang dengan norma atau tekanan kelompok. ==Penyesuaian sikap atau perilaku seseorang dengan norma atau tekanan kelompok==.\\n\\nDalam konteks proses mental, sikap, dan hubungan antarindividu, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat terjadi demi penerimaan sosial; berbeda dari kepatuhan formal terhadap aturan. kolokasi: konsep konformitas, isu konformitas, atau analisis mengenai konformitas.",
+    "keyPoints": [
+      "Dalam proses mental, sikap, dan hubungan antarindividu, **konformitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konformitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konformitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-07-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-07",
+    "topicTitle": "Stage 07: Psikologi, Perilaku & Relasi Sosial",
+    "stageId": 10,
+    "stageTitle": "10. Ambivalen (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, ambivalen berarti mempunyai dua perasaan, sikap, atau kecenderungan yang bertentangan terhadap hal yang sama. ==Mempunyai dua perasaan, sikap, atau kecenderungan yang bertentangan terhadap hal yang sama==.\\n\\nDalam konteks proses mental, sikap, dan hubungan antarindividu, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Tepat untuk menggambarkan sikap bercampur, bukan sekadar kebingungan atau ketidakpastian. kolokasi: pendekatan ambivalen, karakteristik ambivalen, atau sifat yang ambivalen.",
+    "keyPoints": [
+      "Dalam proses mental, sikap, dan hubungan antarindividu, pendekatan yang **ambivalen** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **ambivalen** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **ambivalen** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-08-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-08",
+    "topicTitle": "Stage 08: Tata Kelola, Kebijakan & Pemerintahan",
+    "stageId": 1,
+    "stageTitle": "01. Regulasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, regulasi berarti peraturan yang dibuat untuk mengendalikan atau mengatur suatu bidang kegiatan. ==Peraturan yang dibuat untuk mengendalikan atau mengatur suatu bidang kegiatan==.\\n\\nDalam konteks aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Umumnya merujuk pada perangkat aturan formal; berbeda dari kebijakan yang dapat berupa arah atau pilihan tindakan. kolokasi: konsep regulasi, isu regulasi, atau analisis mengenai regulasi.",
+    "keyPoints": [
+      "Dalam aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, **regulasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **regulasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **regulasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-08-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-08",
+    "topicTitle": "Stage 08: Tata Kelola, Kebijakan & Pemerintahan",
+    "stageId": 2,
+    "stageTitle": "02. Birokrasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, birokrasi berarti sistem pemerintahan atau organisasi yang dijalankan melalui jenjang jabatan dan prosedur tetap. ==Sistem pemerintahan atau organisasi yang dijalankan melalui jenjang jabatan dan prosedur tetap==.\\n\\nDalam konteks aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat merujuk pada struktur administrasi maupun prosedur yang berbelit, bergantung pada konteks. kolokasi: konsep birokrasi, isu birokrasi, atau analisis mengenai birokrasi.",
+    "keyPoints": [
+      "Dalam aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, **birokrasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **birokrasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **birokrasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-08-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-08",
+    "topicTitle": "Stage 08: Tata Kelola, Kebijakan & Pemerintahan",
+    "stageId": 3,
+    "stageTitle": "03. Transparansi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, transparansi berarti keadaan yang memungkinkan informasi dan proses dapat diketahui atau diperiksa secara terbuka. ==Keadaan yang memungkinkan informasi dan proses dapat diketahui atau diperiksa secara terbuka==.\\n\\nDalam konteks aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Merupakan prinsip keterbukaan; tidak berarti semua informasi rahasia harus dipublikasikan. kolokasi: konsep transparansi, isu transparansi, atau analisis mengenai transparansi.",
+    "keyPoints": [
+      "Dalam aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, **transparansi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **transparansi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **transparansi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-08-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-08",
+    "topicTitle": "Stage 08: Tata Kelola, Kebijakan & Pemerintahan",
+    "stageId": 4,
+    "stageTitle": "04. Integritas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, integritas berarti mutu atau keadaan yang menunjukkan keutuhan moral, kejujuran, dan konsistensi prinsip. ==Mutu atau keadaan yang menunjukkan keutuhan moral, kejujuran, dan konsistensi prinsip==.\\n\\nDalam konteks aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam organisasi berarti bertindak selaras dengan nilai dan aturan meskipun tidak diawasi. kolokasi: konsep integritas, isu integritas, atau analisis mengenai integritas.",
+    "keyPoints": [
+      "Dalam aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, **integritas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **integritas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **integritas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-08-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-08",
+    "topicTitle": "Stage 08: Tata Kelola, Kebijakan & Pemerintahan",
+    "stageId": 5,
+    "stageTitle": "05. Legitimasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, legitimasi berarti keabsahan atau penerimaan terhadap hak, kewenangan, atau tindakan berdasarkan aturan atau pengakuan. ==Keabsahan atau penerimaan terhadap hak, kewenangan, atau tindakan berdasarkan aturan atau pengakuan==.\\n\\nDalam konteks aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat bersumber dari hukum, prosedur, atau penerimaan masyarakat; berbeda dari kekuasaan faktual. kolokasi: konsep legitimasi, isu legitimasi, atau analisis mengenai legitimasi.",
+    "keyPoints": [
+      "Dalam aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, **legitimasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **legitimasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **legitimasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-08-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-08",
+    "topicTitle": "Stage 08: Tata Kelola, Kebijakan & Pemerintahan",
+    "stageId": 6,
+    "stageTitle": "06. Kepatuhan (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kepatuhan berarti keadaan mengikuti atau menaati ketentuan, perintah, atau standar yang berlaku. ==Keadaan mengikuti atau menaati ketentuan, perintah, atau standar yang berlaku==.\\n\\nDalam konteks aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam regulasi sering berarti kesesuaian tindakan dengan kewajiban yang ditetapkan. kolokasi: konsep kepatuhan, isu kepatuhan, atau analisis mengenai kepatuhan.",
+    "keyPoints": [
+      "Dalam aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, **kepatuhan** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kepatuhan** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kepatuhan** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-08-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-08",
+    "topicTitle": "Stage 08: Tata Kelola, Kebijakan & Pemerintahan",
+    "stageId": 7,
+    "stageTitle": "07. Diskresi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, diskresi berarti kebebasan mengambil keputusan atau tindakan menurut pertimbangan sendiri dalam batas kewenangan. ==Kebebasan mengambil keputusan atau tindakan menurut pertimbangan sendiri dalam batas kewenangan==.\\n\\nDalam konteks aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan ketika aturan memberi ruang pertimbangan; bukan kebebasan bertindak tanpa batas hukum. kolokasi: konsep diskresi, isu diskresi, atau analisis mengenai diskresi.",
+    "keyPoints": [
+      "Dalam aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, **diskresi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **diskresi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **diskresi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-08-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-08",
+    "topicTitle": "Stage 08: Tata Kelola, Kebijakan & Pemerintahan",
+    "stageId": 8,
+    "stageTitle": "08. Mandat (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, mandat berarti perintah atau kewenangan yang diberikan kepada seseorang atau lembaga untuk melakukan tugas tertentu. ==Perintah atau kewenangan yang diberikan kepada seseorang atau lembaga untuk melakukan tugas tertentu==.\\n\\nDalam konteks aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan dasar penugasan dan batas kewenangan yang diberikan. kolokasi: konsep mandat, isu mandat, atau analisis mengenai mandat.",
+    "keyPoints": [
+      "Dalam aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, **mandat** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **mandat** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **mandat** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-08-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-08",
+    "topicTitle": "Stage 08: Tata Kelola, Kebijakan & Pemerintahan",
+    "stageId": 9,
+    "stageTitle": "09. Intervensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, intervensi berarti campur tangan dalam suatu urusan, keadaan, atau proses untuk memengaruhi hasilnya. ==Campur tangan dalam suatu urusan, keadaan, atau proses untuk memengaruhi hasilnya==.\\n\\nDalam konteks aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat bersifat membantu atau mengganggu; penilaiannya bergantung pada tujuan dan legitimasi tindakan. kolokasi: konsep intervensi, isu intervensi, atau analisis mengenai intervensi.",
+    "keyPoints": [
+      "Dalam aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, **intervensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **intervensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **intervensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-08-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-08",
+    "topicTitle": "Stage 08: Tata Kelola, Kebijakan & Pemerintahan",
+    "stageId": 10,
+    "stageTitle": "10. Amandemen (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, amandemen berarti perubahan atau penambahan terhadap dokumen, undang-undang, atau perjanjian resmi. ==Perubahan atau penambahan terhadap dokumen, undang-undang, atau perjanjian resmi==.\\n\\nDalam konteks aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjuk perubahan formal pada naskah yang telah berlaku, bukan penyusunan dokumen dari awal. kolokasi: konsep amandemen, isu amandemen, atau analisis mengenai amandemen.",
+    "keyPoints": [
+      "Dalam aturan, kewenangan, pengawasan, dan pelaksanaan kebijakan, **amandemen** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **amandemen** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **amandemen** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-09-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-09",
+    "topicTitle": "Stage 09: Penelitian, Data & Pengukuran",
+    "stageId": 1,
+    "stageTitle": "01. Metodologi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, metodologi berarti ilmu atau uraian mengenai metode yang digunakan dalam suatu bidang atau penelitian. ==Ilmu atau uraian mengenai metode yang digunakan dalam suatu bidang atau penelitian==.\\n\\nDalam konteks perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mencakup alasan pemilihan dan dasar metode; berbeda dari metode yang menunjuk prosedur tertentu. kolokasi: konsep metodologi, isu metodologi, atau analisis mengenai metodologi.",
+    "keyPoints": [
+      "Dalam perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, **metodologi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **metodologi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **metodologi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-09-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-09",
+    "topicTitle": "Stage 09: Penelitian, Data & Pengukuran",
+    "stageId": 2,
+    "stageTitle": "02. Hipotesis (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, hipotesis berarti dugaan atau jawaban sementara terhadap masalah yang masih harus diuji. ==Dugaan atau jawaban sementara terhadap masalah yang masih harus diuji==.\\n\\nDalam konteks perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Harus dapat diperiksa dengan bukti atau prosedur yang sesuai; bukan tebakan tanpa dasar. kolokasi: konsep hipotesis, isu hipotesis, atau analisis mengenai hipotesis.",
+    "keyPoints": [
+      "Dalam perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, **hipotesis** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **hipotesis** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **hipotesis** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-09-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-09",
+    "topicTitle": "Stage 09: Penelitian, Data & Pengukuran",
+    "stageId": 3,
+    "stageTitle": "03. Variabel (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, variabel berarti faktor atau unsur yang nilainya dapat berubah atau berbeda dalam suatu penelitian. ==Faktor atau unsur yang nilainya dapat berubah atau berbeda dalam suatu penelitian==.\\n\\nDalam konteks perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat menjadi variabel bebas, terikat, atau kontrol sesuai rancangan penelitian. kolokasi: konsep variabel, isu variabel, atau analisis mengenai variabel.",
+    "keyPoints": [
+      "Dalam perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, **variabel** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **variabel** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **variabel** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-09-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-09",
+    "topicTitle": "Stage 09: Penelitian, Data & Pengukuran",
+    "stageId": 4,
+    "stageTitle": "04. Indikator (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, indikator berarti sesuatu yang dapat memberikan petunjuk atau menjadi ukuran suatu keadaan. ==Sesuatu yang dapat memberikan petunjuk atau menjadi ukuran suatu keadaan==.\\n\\nDalam konteks perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk mewakili konsep yang tidak selalu dapat diamati secara langsung. kolokasi: konsep indikator, isu indikator, atau analisis mengenai indikator.",
+    "keyPoints": [
+      "Dalam perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, **indikator** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **indikator** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **indikator** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-09-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-09",
+    "topicTitle": "Stage 09: Penelitian, Data & Pengukuran",
+    "stageId": 5,
+    "stageTitle": "05. Validitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, validitas berarti tingkat ketepatan atau kesahihan suatu alat ukur, argumen, atau kesimpulan. ==Tingkat ketepatan atau kesahihan suatu alat ukur, argumen, atau kesimpulan==.\\n\\nDalam konteks perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menilai apakah instrumen atau penalaran benar-benar mengukur atau mendukung hal yang dimaksud. kolokasi: konsep validitas, isu validitas, atau analisis mengenai validitas.",
+    "keyPoints": [
+      "Dalam perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, **validitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **validitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **validitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-09-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-09",
+    "topicTitle": "Stage 09: Penelitian, Data & Pengukuran",
+    "stageId": 6,
+    "stageTitle": "06. Reliabilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, reliabilitas berarti keterandalan atau konsistensi hasil pengukuran ketika prosedur diterapkan dalam kondisi sebanding. ==Keterandalan atau konsistensi hasil pengukuran ketika prosedur diterapkan dalam kondisi sebanding==.\\n\\nDalam konteks perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Hasil yang reliabel belum tentu valid; konsisten tidak otomatis berarti tepat sasaran. kolokasi: konsep reliabilitas, isu reliabilitas, atau analisis mengenai reliabilitas.",
+    "keyPoints": [
+      "Dalam perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, **reliabilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **reliabilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **reliabilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-09-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-09",
+    "topicTitle": "Stage 09: Penelitian, Data & Pengukuran",
+    "stageId": 7,
+    "stageTitle": "07. Observasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, observasi berarti pengamatan yang dilakukan secara cermat untuk memperoleh informasi atau data. ==Pengamatan yang dilakukan secara cermat untuk memperoleh informasi atau data==.\\n\\nDalam konteks perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam penelitian merupakan proses pengumpulan bukti, bukan sekadar melihat secara sepintas. kolokasi: konsep observasi, isu observasi, atau analisis mengenai observasi.",
+    "keyPoints": [
+      "Dalam perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, **observasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **observasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **observasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-09-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-09",
+    "topicTitle": "Stage 09: Penelitian, Data & Pengukuran",
+    "stageId": 8,
+    "stageTitle": "08. Korelasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, korelasi berarti hubungan atau keterkaitan antara dua variabel atau lebih. ==Hubungan atau keterkaitan antara dua variabel atau lebih==.\\n\\nDalam konteks perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan perubahan yang berhubungan, tetapi tidak dengan sendirinya membuktikan sebab-akibat. kolokasi: konsep korelasi, isu korelasi, atau analisis mengenai korelasi.",
+    "keyPoints": [
+      "Dalam perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, **korelasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **korelasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **korelasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-09-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-09",
+    "topicTitle": "Stage 09: Penelitian, Data & Pengukuran",
+    "stageId": 9,
+    "stageTitle": "09. Generalisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, generalisasi berarti penarikan kesimpulan umum dari sejumlah fakta, kasus, atau pengamatan tertentu. ==Penarikan kesimpulan umum dari sejumlah fakta, kasus, atau pengamatan tertentu==.\\n\\nDalam konteks perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Perlu mempertimbangkan kecukupan dan keterwakilan bukti agar tidak tergesa-gesa. kolokasi: konsep generalisasi, isu generalisasi, atau analisis mengenai generalisasi.",
+    "keyPoints": [
+      "Dalam perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, **generalisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **generalisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **generalisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-09-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-09",
+    "topicTitle": "Stage 09: Penelitian, Data & Pengukuran",
+    "stageId": 10,
+    "stageTitle": "10. Operasional (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, operasional berarti berkaitan dengan pelaksanaan atau cara kerja nyata suatu kegiatan. ==Berkaitan dengan pelaksanaan atau cara kerja nyata suatu kegiatan==.\\n\\nDalam konteks perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam penelitian, definisi operasional menjelaskan bagaimana konsep diukur atau dikenali. kolokasi: pendekatan operasional, karakteristik operasional, atau sifat yang operasional.",
+    "keyPoints": [
+      "Dalam perancangan penelitian, pengumpulan bukti, dan penafsiran hasil, pendekatan yang **operasional** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **operasional** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **operasional** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-10-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-10",
+    "topicTitle": "Stage 10: Perubahan, Inovasi & Perkembangan",
+    "stageId": 1,
+    "stageTitle": "01. Transformasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, transformasi berarti perubahan bentuk, sifat, atau susunan secara mendasar. ==Perubahan bentuk, sifat, atau susunan secara mendasar==.\\n\\nDalam konteks pergeseran keadaan, pembaruan, dan proses pertumbuhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjuk perubahan yang menyentuh struktur atau cara kerja, bukan penyesuaian kecil. kolokasi: konsep transformasi, isu transformasi, atau analisis mengenai transformasi.",
+    "keyPoints": [
+      "Dalam pergeseran keadaan, pembaruan, dan proses pertumbuhan, **transformasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **transformasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **transformasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-10-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-10",
+    "topicTitle": "Stage 10: Perubahan, Inovasi & Perkembangan",
+    "stageId": 2,
+    "stageTitle": "02. Transisi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, transisi berarti peralihan dari satu keadaan, tahap, atau sistem ke keadaan lainnya. ==Peralihan dari satu keadaan, tahap, atau sistem ke keadaan lainnya==.\\n\\nDalam konteks pergeseran keadaan, pembaruan, dan proses pertumbuhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan proses peralihan yang dapat berlangsung bertahap. kolokasi: konsep transisi, isu transisi, atau analisis mengenai transisi.",
+    "keyPoints": [
+      "Dalam pergeseran keadaan, pembaruan, dan proses pertumbuhan, **transisi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **transisi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **transisi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-10-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-10",
+    "topicTitle": "Stage 10: Perubahan, Inovasi & Perkembangan",
+    "stageId": 3,
+    "stageTitle": "03. Inovasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, inovasi berarti pemasukan atau pengenalan hal baru yang membawa pembaruan. ==Pemasukan atau pengenalan hal baru yang membawa pembaruan==.\\n\\nDalam konteks pergeseran keadaan, pembaruan, dan proses pertumbuhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat berupa produk, proses, atau cara kerja; kebaruan saja belum tentu bernilai guna. kolokasi: konsep inovasi, isu inovasi, atau analisis mengenai inovasi.",
+    "keyPoints": [
+      "Dalam pergeseran keadaan, pembaruan, dan proses pertumbuhan, **inovasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **inovasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **inovasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-10-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-10",
+    "topicTitle": "Stage 10: Perubahan, Inovasi & Perkembangan",
+    "stageId": 4,
+    "stageTitle": "04. Disrupsi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, disrupsi berarti gangguan atau perubahan besar yang mengubah tatanan atau cara kerja yang telah mapan. ==Gangguan atau perubahan besar yang mengubah tatanan atau cara kerja yang telah mapan==.\\n\\nDalam konteks pergeseran keadaan, pembaruan, dan proses pertumbuhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan untuk perubahan teknologi dan pasar yang menggeser praktik lama. kolokasi: konsep disrupsi, isu disrupsi, atau analisis mengenai disrupsi.",
+    "keyPoints": [
+      "Dalam pergeseran keadaan, pembaruan, dan proses pertumbuhan, **disrupsi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **disrupsi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **disrupsi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-10-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-10",
+    "topicTitle": "Stage 10: Perubahan, Inovasi & Perkembangan",
+    "stageId": 5,
+    "stageTitle": "05. Evolusi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, evolusi berarti perkembangan atau perubahan secara berangsur-angsur. ==Perkembangan atau perubahan secara berangsur-angsur==.\\n\\nDalam konteks pergeseran keadaan, pembaruan, dan proses pertumbuhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan proses bertahap, bukan perubahan mendadak. kolokasi: konsep evolusi, isu evolusi, atau analisis mengenai evolusi.",
+    "keyPoints": [
+      "Dalam pergeseran keadaan, pembaruan, dan proses pertumbuhan, **evolusi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **evolusi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **evolusi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-10-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-10",
+    "topicTitle": "Stage 10: Perubahan, Inovasi & Perkembangan",
+    "stageId": 6,
+    "stageTitle": "06. Revolusi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, revolusi berarti perubahan yang berlangsung cepat dan mendasar dalam suatu bidang atau tatanan. ==Perubahan yang berlangsung cepat dan mendasar dalam suatu bidang atau tatanan==.\\n\\nDalam konteks pergeseran keadaan, pembaruan, dan proses pertumbuhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari evolusi yang bertahap; dapat merujuk pada perubahan politik, sosial, atau teknologi. kolokasi: konsep revolusi, isu revolusi, atau analisis mengenai revolusi.",
+    "keyPoints": [
+      "Dalam pergeseran keadaan, pembaruan, dan proses pertumbuhan, **revolusi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **revolusi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **revolusi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-10-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-10",
+    "topicTitle": "Stage 10: Perubahan, Inovasi & Perkembangan",
+    "stageId": 7,
+    "stageTitle": "07. Akselerasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, akselerasi berarti percepatan atau proses menjadi lebih cepat. ==Percepatan atau proses menjadi lebih cepat==.\\n\\nDalam konteks pergeseran keadaan, pembaruan, dan proses pertumbuhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk laju pertumbuhan, proses, atau perubahan; tidak selalu berarti hasilnya lebih baik. kolokasi: konsep akselerasi, isu akselerasi, atau analisis mengenai akselerasi.",
+    "keyPoints": [
+      "Dalam pergeseran keadaan, pembaruan, dan proses pertumbuhan, **akselerasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **akselerasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **akselerasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-10-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-10",
+    "topicTitle": "Stage 10: Perubahan, Inovasi & Perkembangan",
+    "stageId": 8,
+    "stageTitle": "08. Stagnasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, stagnasi berarti keadaan terhenti atau tidak mengalami perkembangan atau kemajuan. ==Keadaan terhenti atau tidak mengalami perkembangan atau kemajuan==.\\n\\nDalam konteks pergeseran keadaan, pembaruan, dan proses pertumbuhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan kemandekan dalam periode tertentu, bukan penurunan yang pasti. kolokasi: konsep stagnasi, isu stagnasi, atau analisis mengenai stagnasi.",
+    "keyPoints": [
+      "Dalam pergeseran keadaan, pembaruan, dan proses pertumbuhan, **stagnasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **stagnasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **stagnasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-10-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-10",
+    "topicTitle": "Stage 10: Perubahan, Inovasi & Perkembangan",
+    "stageId": 9,
+    "stageTitle": "09. Keberlanjutan (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, keberlanjutan berarti kemampuan untuk terus berlangsung atau dipertahankan dalam jangka panjang. ==Kemampuan untuk terus berlangsung atau dipertahankan dalam jangka panjang==.\\n\\nDalam konteks pergeseran keadaan, pembaruan, dan proses pertumbuhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering mencakup keseimbangan aspek ekonomi, sosial, dan lingkungan. kolokasi: konsep keberlanjutan, isu keberlanjutan, atau analisis mengenai keberlanjutan.",
+    "keyPoints": [
+      "Dalam pergeseran keadaan, pembaruan, dan proses pertumbuhan, **keberlanjutan** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **keberlanjutan** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **keberlanjutan** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-10-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-10",
+    "topicTitle": "Stage 10: Perubahan, Inovasi & Perkembangan",
+    "stageId": 10,
+    "stageTitle": "10. Progresif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, progresif berarti mengarah pada kemajuan atau perubahan ke keadaan yang dianggap lebih baik. ==Mengarah pada kemajuan atau perubahan ke keadaan yang dianggap lebih baik==.\\n\\nDalam konteks pergeseran keadaan, pembaruan, dan proses pertumbuhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Maknanya bergantung pada bidang dan ukuran kemajuan yang digunakan. kolokasi: pendekatan progresif, karakteristik progresif, atau sifat yang progresif.",
+    "keyPoints": [
+      "Dalam pergeseran keadaan, pembaruan, dan proses pertumbuhan, pendekatan yang **progresif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **progresif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **progresif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-11-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-11",
+    "topicTitle": "Stage 11: Nuansa Makna & Ketepatan Bahasa",
+    "stageId": 1,
+    "stageTitle": "01. Implisit (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, implisit berarti terkandung di dalamnya secara tidak langsung dan tidak dinyatakan dengan tegas. ==Terkandung di dalamnya secara tidak langsung dan tidak dinyatakan dengan tegas==.\\n\\nDalam konteks hubungan makna, pilihan kata, dan penafsiran ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Pesan implisit perlu disimpulkan dari konteks; berlawanan dengan eksplisit. kolokasi: pendekatan implisit, karakteristik implisit, atau sifat yang implisit.",
+    "keyPoints": [
+      "Dalam hubungan makna, pilihan kata, dan penafsiran ungkapan, pendekatan yang **implisit** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **implisit** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **implisit** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-11-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-11",
+    "topicTitle": "Stage 11: Nuansa Makna & Ketepatan Bahasa",
+    "stageId": 2,
+    "stageTitle": "02. Eksplisit (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, eksplisit berarti dinyatakan secara jelas, tegas, dan langsung sehingga tidak perlu banyak penafsiran. ==Dinyatakan secara jelas, tegas, dan langsung sehingga tidak perlu banyak penafsiran==.\\n\\nDalam konteks hubungan makna, pilihan kata, dan penafsiran ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berguna untuk ketentuan, instruksi, dan argumen yang menuntut kejelasan. kolokasi: pendekatan eksplisit, karakteristik eksplisit, atau sifat yang eksplisit.",
+    "keyPoints": [
+      "Dalam hubungan makna, pilihan kata, dan penafsiran ungkapan, pendekatan yang **eksplisit** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **eksplisit** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **eksplisit** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-11-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-11",
+    "topicTitle": "Stage 11: Nuansa Makna & Ketepatan Bahasa",
+    "stageId": 3,
+    "stageTitle": "03. Konotasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konotasi berarti tautan makna tambahan atau nilai rasa yang menyertai makna dasar suatu kata. ==Tautan makna tambahan atau nilai rasa yang menyertai makna dasar suatu kata==.\\n\\nDalam konteks hubungan makna, pilihan kata, dan penafsiran ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat bersifat positif, negatif, atau netral; berbeda dari denotasi yang menunjuk makna langsung. kolokasi: konsep konotasi, isu konotasi, atau analisis mengenai konotasi.",
+    "keyPoints": [
+      "Dalam hubungan makna, pilihan kata, dan penafsiran ungkapan, **konotasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konotasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konotasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-11-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-11",
+    "topicTitle": "Stage 11: Nuansa Makna & Ketepatan Bahasa",
+    "stageId": 4,
+    "stageTitle": "04. Denotasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, denotasi berarti makna kata yang sebenarnya atau makna langsung yang disepakati. ==Makna kata yang sebenarnya atau makna langsung yang disepakati==.\\n\\nDalam konteks hubungan makna, pilihan kata, dan penafsiran ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menjadi dasar pembeda dari makna kiasan atau nilai rasa yang menyertainya. kolokasi: konsep denotasi, isu denotasi, atau analisis mengenai denotasi.",
+    "keyPoints": [
+      "Dalam hubungan makna, pilihan kata, dan penafsiran ungkapan, **denotasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **denotasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **denotasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-11-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-11",
+    "topicTitle": "Stage 11: Nuansa Makna & Ketepatan Bahasa",
+    "stageId": 5,
+    "stageTitle": "05. Terminologi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, terminologi berarti peristilahan atau kumpulan istilah khusus yang digunakan dalam bidang tertentu. ==Peristilahan atau kumpulan istilah khusus yang digunakan dalam bidang tertentu==.\\n\\nDalam konteks hubungan makna, pilihan kata, dan penafsiran ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Penting untuk menjaga konsistensi makna dalam tulisan teknis atau akademis. kolokasi: konsep terminologi, isu terminologi, atau analisis mengenai terminologi.",
+    "keyPoints": [
+      "Dalam hubungan makna, pilihan kata, dan penafsiran ungkapan, **terminologi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **terminologi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **terminologi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-11-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-11",
+    "topicTitle": "Stage 11: Nuansa Makna & Ketepatan Bahasa",
+    "stageId": 6,
+    "stageTitle": "06. Diksi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, diksi berarti pilihan kata yang tepat dan selaras dengan maksud atau konteks pemakaian. ==Pilihan kata yang tepat dan selaras dengan maksud atau konteks pemakaian==.\\n\\nDalam konteks hubungan makna, pilihan kata, dan penafsiran ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menilai ketepatan, nuansa, dan kesesuaian kata, bukan hanya keindahan bunyinya. kolokasi: konsep diksi, isu diksi, atau analisis mengenai diksi.",
+    "keyPoints": [
+      "Dalam hubungan makna, pilihan kata, dan penafsiran ungkapan, **diksi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **diksi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **diksi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-11-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-11",
+    "topicTitle": "Stage 11: Nuansa Makna & Ketepatan Bahasa",
+    "stageId": 7,
+    "stageTitle": "07. Literal (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, literal berarti sesuai dengan arti kata yang sebenarnya, bukan kiasan. ==Sesuai dengan arti kata yang sebenarnya, bukan kiasan==.\\n\\nDalam konteks hubungan makna, pilihan kata, dan penafsiran ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menandai penafsiran harfiah; berbeda dari figuratif. kolokasi: pendekatan literal, karakteristik literal, atau sifat yang literal.",
+    "keyPoints": [
+      "Dalam hubungan makna, pilihan kata, dan penafsiran ungkapan, pendekatan yang **literal** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **literal** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **literal** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-11-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-11",
+    "topicTitle": "Stage 11: Nuansa Makna & Ketepatan Bahasa",
+    "stageId": 8,
+    "stageTitle": "08. Figuratif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, figuratif berarti menggunakan kata atau ungkapan secara kiasan untuk menimbulkan gambaran atau kesan tertentu. ==Menggunakan kata atau ungkapan secara kiasan untuk menimbulkan gambaran atau kesan tertentu==.\\n\\nDalam konteks hubungan makna, pilihan kata, dan penafsiran ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Lazim dalam sastra dan retorika; maknanya tidak selalu sama dengan arti harfiah. kolokasi: pendekatan figuratif, karakteristik figuratif, atau sifat yang figuratif.",
+    "keyPoints": [
+      "Dalam hubungan makna, pilihan kata, dan penafsiran ungkapan, pendekatan yang **figuratif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **figuratif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **figuratif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-11-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-11",
+    "topicTitle": "Stage 11: Nuansa Makna & Ketepatan Bahasa",
+    "stageId": 9,
+    "stageTitle": "09. Polisemi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, polisemi berarti keadaan satu kata yang mempunyai beberapa makna yang masih berkaitan. ==Keadaan satu kata yang mempunyai beberapa makna yang masih berkaitan==.\\n\\nDalam konteks hubungan makna, pilihan kata, dan penafsiran ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari homonimi, yaitu bentuk kata sama yang maknanya tidak berkaitan. kolokasi: konsep polisemi, isu polisemi, atau analisis mengenai polisemi.",
+    "keyPoints": [
+      "Dalam hubungan makna, pilihan kata, dan penafsiran ungkapan, **polisemi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **polisemi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **polisemi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-11-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-11",
+    "topicTitle": "Stage 11: Nuansa Makna & Ketepatan Bahasa",
+    "stageId": 10,
+    "stageTitle": "10. Eufemisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, eufemisme berarti ungkapan yang lebih halus untuk menggantikan kata yang dianggap kasar, tabu, atau kurang menyenangkan. ==Ungkapan yang lebih halus untuk menggantikan kata yang dianggap kasar, tabu, atau kurang menyenangkan==.\\n\\nDalam konteks hubungan makna, pilihan kata, dan penafsiran ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat menjaga kesantunan, tetapi juga dapat mengaburkan kenyataan. kolokasi: konsep eufemisme, isu eufemisme, atau analisis mengenai eufemisme.",
+    "keyPoints": [
+      "Dalam hubungan makna, pilihan kata, dan penafsiran ungkapan, **eufemisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **eufemisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **eufemisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-12-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-12",
+    "topicTitle": "Stage 12: Negosiasi, Konflik & Penyelesaian",
+    "stageId": 1,
+    "stageTitle": "01. Kompromi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kompromi berarti persetujuan yang dicapai dengan saling mengurangi tuntutan atau mengalah sebagian. ==Persetujuan yang dicapai dengan saling mengurangi tuntutan atau mengalah sebagian==.\\n\\nDalam konteks perundingan, perbedaan kepentingan, dan pencarian kesepakatan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan jalan tengah; tidak selalu menghasilkan pilihan yang paling ideal bagi tiap pihak. kolokasi: konsep kompromi, isu kompromi, atau analisis mengenai kompromi.",
+    "keyPoints": [
+      "Dalam perundingan, perbedaan kepentingan, dan pencarian kesepakatan, **kompromi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kompromi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kompromi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-12-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-12",
+    "topicTitle": "Stage 12: Negosiasi, Konflik & Penyelesaian",
+    "stageId": 2,
+    "stageTitle": "02. Konsensus (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konsensus berarti kesepakatan bersama yang dicapai melalui persetujuan para pihak. ==Kesepakatan bersama yang dicapai melalui persetujuan para pihak==.\\n\\nDalam konteks perundingan, perbedaan kepentingan, dan pencarian kesepakatan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Tidak harus berarti setiap orang memiliki pandangan identik, tetapi menerima keputusan bersama. kolokasi: konsep konsensus, isu konsensus, atau analisis mengenai konsensus.",
+    "keyPoints": [
+      "Dalam perundingan, perbedaan kepentingan, dan pencarian kesepakatan, **konsensus** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konsensus** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konsensus** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-12-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-12",
+    "topicTitle": "Stage 12: Negosiasi, Konflik & Penyelesaian",
+    "stageId": 3,
+    "stageTitle": "03. Negosiasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, negosiasi berarti proses perundingan antara pihak-pihak yang berkepentingan untuk mencapai kesepakatan. ==Proses perundingan antara pihak-pihak yang berkepentingan untuk mencapai kesepakatan==.\\n\\nDalam konteks perundingan, perbedaan kepentingan, dan pencarian kesepakatan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Melibatkan pertukaran usulan dan penyesuaian posisi; berbeda dari mediasi yang dibantu pihak ketiga. kolokasi: konsep negosiasi, isu negosiasi, atau analisis mengenai negosiasi.",
+    "keyPoints": [
+      "Dalam perundingan, perbedaan kepentingan, dan pencarian kesepakatan, **negosiasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **negosiasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **negosiasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-12-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-12",
+    "topicTitle": "Stage 12: Negosiasi, Konflik & Penyelesaian",
+    "stageId": 4,
+    "stageTitle": "04. Mediasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, mediasi berarti proses penyelesaian perselisihan dengan bantuan pihak ketiga yang netral. ==Proses penyelesaian perselisihan dengan bantuan pihak ketiga yang netral==.\\n\\nDalam konteks perundingan, perbedaan kepentingan, dan pencarian kesepakatan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mediator memfasilitasi komunikasi dan tidak menetapkan putusan yang mengikat seperti arbiter. kolokasi: konsep mediasi, isu mediasi, atau analisis mengenai mediasi.",
+    "keyPoints": [
+      "Dalam perundingan, perbedaan kepentingan, dan pencarian kesepakatan, **mediasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **mediasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **mediasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-12-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-12",
+    "topicTitle": "Stage 12: Negosiasi, Konflik & Penyelesaian",
+    "stageId": 5,
+    "stageTitle": "05. Arbitrase (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, arbitrase berarti cara penyelesaian sengketa di luar pengadilan melalui pihak ketiga yang memberi putusan. ==Cara penyelesaian sengketa di luar pengadilan melalui pihak ketiga yang memberi putusan==.\\n\\nDalam konteks perundingan, perbedaan kepentingan, dan pencarian kesepakatan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari mediasi karena arbiter pada umumnya berwenang memutus sengketa sesuai kesepakatan. kolokasi: konsep arbitrase, isu arbitrase, atau analisis mengenai arbitrase.",
+    "keyPoints": [
+      "Dalam perundingan, perbedaan kepentingan, dan pencarian kesepakatan, **arbitrase** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **arbitrase** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **arbitrase** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-12-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-12",
+    "topicTitle": "Stage 12: Negosiasi, Konflik & Penyelesaian",
+    "stageId": 6,
+    "stageTitle": "06. Konsesi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konsesi berarti pemberian atau pelepasan sebagian tuntutan, hak, atau keuntungan kepada pihak lain. ==Pemberian atau pelepasan sebagian tuntutan, hak, atau keuntungan kepada pihak lain==.\\n\\nDalam konteks perundingan, perbedaan kepentingan, dan pencarian kesepakatan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering menjadi bagian dari perundingan; tidak sama dengan menyerahkan seluruh posisi. kolokasi: konsep konsesi, isu konsesi, atau analisis mengenai konsesi.",
+    "keyPoints": [
+      "Dalam perundingan, perbedaan kepentingan, dan pencarian kesepakatan, **konsesi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konsesi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konsesi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-12-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-12",
+    "topicTitle": "Stage 12: Negosiasi, Konflik & Penyelesaian",
+    "stageId": 7,
+    "stageTitle": "07. Resolusi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, resolusi berarti penyelesaian atau pemecahan masalah; juga dapat berarti ketetapan resmi suatu badan. ==Penyelesaian atau pemecahan masalah; juga dapat berarti ketetapan resmi suatu badan==.\\n\\nDalam konteks perundingan, perbedaan kepentingan, dan pencarian kesepakatan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Konteks menentukan apakah merujuk pada penyelesaian konflik atau keputusan formal. kolokasi: konsep resolusi, isu resolusi, atau analisis mengenai resolusi.",
+    "keyPoints": [
+      "Dalam perundingan, perbedaan kepentingan, dan pencarian kesepakatan, **resolusi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **resolusi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **resolusi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-12-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-12",
+    "topicTitle": "Stage 12: Negosiasi, Konflik & Penyelesaian",
+    "stageId": 8,
+    "stageTitle": "08. Perselisihan (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, perselisihan berarti perbedaan pendapat atau pertentangan antara dua pihak atau lebih. ==Perbedaan pendapat atau pertentangan antara dua pihak atau lebih==.\\n\\nDalam konteks perundingan, perbedaan kepentingan, dan pencarian kesepakatan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan adanya pertikaian pandangan atau kepentingan, tanpa selalu berarti konflik fisik. kolokasi: konsep perselisihan, isu perselisihan, atau analisis mengenai perselisihan.",
+    "keyPoints": [
+      "Dalam perundingan, perbedaan kepentingan, dan pencarian kesepakatan, **perselisihan** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **perselisihan** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **perselisihan** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-12-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-12",
+    "topicTitle": "Stage 12: Negosiasi, Konflik & Penyelesaian",
+    "stageId": 9,
+    "stageTitle": "09. Persuasif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, persuasif berarti bersifat membujuk atau meyakinkan orang lain agar menerima suatu pendapat atau tindakan. ==Bersifat membujuk atau meyakinkan orang lain agar menerima suatu pendapat atau tindakan==.\\n\\nDalam konteks perundingan, perbedaan kepentingan, dan pencarian kesepakatan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mengandalkan alasan, bukti, dan penyajian yang meyakinkan; bukan paksaan. kolokasi: pendekatan persuasif, karakteristik persuasif, atau sifat yang persuasif.",
+    "keyPoints": [
+      "Dalam perundingan, perbedaan kepentingan, dan pencarian kesepakatan, pendekatan yang **persuasif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **persuasif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **persuasif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-12-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-12",
+    "topicTitle": "Stage 12: Negosiasi, Konflik & Penyelesaian",
+    "stageId": 10,
+    "stageTitle": "10. Asertif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, asertif berarti tegas dalam menyatakan pendapat atau hak dengan tetap menghormati pihak lain. ==Tegas dalam menyatakan pendapat atau hak dengan tetap menghormati pihak lain==.\\n\\nDalam konteks perundingan, perbedaan kepentingan, dan pencarian kesepakatan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berada di antara sikap pasif dan agresif; menekankan ketegasan yang proporsional. kolokasi: pendekatan asertif, karakteristik asertif, atau sifat yang asertif.",
+    "keyPoints": [
+      "Dalam perundingan, perbedaan kepentingan, dan pencarian kesepakatan, pendekatan yang **asertif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **asertif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **asertif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-13-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-13",
+    "topicTitle": "Stage 13: Manajemen & Struktur Organisasi",
+    "stageId": 1,
+    "stageTitle": "01. Pengawasan (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, pengawasan berarti proses mengamati dan memeriksa pelaksanaan tugas agar sesuai dengan ketentuan. ==Proses mengamati dan memeriksa pelaksanaan tugas agar sesuai dengan ketentuan==.\\n\\nDalam konteks pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Bertujuan memastikan kepatuhan dan mutu; dapat disertai koreksi bila ditemukan penyimpangan. kolokasi: konsep pengawasan, isu pengawasan, atau analisis mengenai pengawasan.",
+    "keyPoints": [
+      "Dalam pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, **pengawasan** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **pengawasan** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **pengawasan** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-13-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-13",
+    "topicTitle": "Stage 13: Manajemen & Struktur Organisasi",
+    "stageId": 2,
+    "stageTitle": "02. Supervisi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, supervisi berarti pengarahan dan pengawasan terhadap pelaksanaan pekerjaan oleh orang atau unit lain. ==Pengarahan dan pengawasan terhadap pelaksanaan pekerjaan oleh orang atau unit lain==.\\n\\nDalam konteks pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Umumnya mencakup bimbingan dan umpan balik, bukan sekadar pemeriksaan. kolokasi: konsep supervisi, isu supervisi, atau analisis mengenai supervisi.",
+    "keyPoints": [
+      "Dalam pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, **supervisi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **supervisi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **supervisi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-13-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-13",
+    "topicTitle": "Stage 13: Manajemen & Struktur Organisasi",
+    "stageId": 3,
+    "stageTitle": "03. Evaluasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, evaluasi berarti penilaian terhadap mutu, hasil, atau keberhasilan suatu kegiatan berdasarkan kriteria tertentu. ==Penilaian terhadap mutu, hasil, atau keberhasilan suatu kegiatan berdasarkan kriteria tertentu==.\\n\\nDalam konteks pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menilai hasil dan proses untuk menentukan nilai atau perbaikan, bukan hanya mengumpulkan data. kolokasi: konsep evaluasi, isu evaluasi, atau analisis mengenai evaluasi.",
+    "keyPoints": [
+      "Dalam pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, **evaluasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **evaluasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **evaluasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-13-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-13",
+    "topicTitle": "Stage 13: Manajemen & Struktur Organisasi",
+    "stageId": 4,
+    "stageTitle": "04. Pemantauan (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, pemantauan berarti pengamatan berkala terhadap perkembangan atau pelaksanaan suatu kegiatan. ==Pengamatan berkala terhadap perkembangan atau pelaksanaan suatu kegiatan==.\\n\\nDalam konteks pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering dilakukan sepanjang program berjalan; berbeda dari evaluasi yang memberi penilaian lebih menyeluruh. kolokasi: konsep pemantauan, isu pemantauan, atau analisis mengenai pemantauan.",
+    "keyPoints": [
+      "Dalam pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, **pemantauan** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **pemantauan** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **pemantauan** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-13-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-13",
+    "topicTitle": "Stage 13: Manajemen & Struktur Organisasi",
+    "stageId": 5,
+    "stageTitle": "05. Sentralisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sentralisasi berarti pemusatan kewenangan atau pengambilan keputusan pada tingkat pusat. ==Pemusatan kewenangan atau pengambilan keputusan pada tingkat pusat==.\\n\\nDalam konteks pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat meningkatkan keseragaman, tetapi berpotensi memperlambat respons unit lokal. kolokasi: konsep sentralisasi, isu sentralisasi, atau analisis mengenai sentralisasi.",
+    "keyPoints": [
+      "Dalam pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, **sentralisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sentralisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sentralisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-13-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-13",
+    "topicTitle": "Stage 13: Manajemen & Struktur Organisasi",
+    "stageId": 6,
+    "stageTitle": "06. Desentralisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, desentralisasi berarti pelimpahan atau penyebaran kewenangan dari pusat ke tingkat atau unit yang lebih rendah. ==Pelimpahan atau penyebaran kewenangan dari pusat ke tingkat atau unit yang lebih rendah==.\\n\\nDalam konteks pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Memberi ruang keputusan kepada unit lokal; tidak berarti hilangnya koordinasi pusat. kolokasi: konsep desentralisasi, isu desentralisasi, atau analisis mengenai desentralisasi.",
+    "keyPoints": [
+      "Dalam pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, **desentralisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **desentralisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **desentralisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-13-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-13",
+    "topicTitle": "Stage 13: Manajemen & Struktur Organisasi",
+    "stageId": 7,
+    "stageTitle": "07. Hierarki (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, hierarki berarti susunan tingkatan atau jenjang kewenangan dalam organisasi atau sistem. ==Susunan tingkatan atau jenjang kewenangan dalam organisasi atau sistem==.\\n\\nDalam konteks pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan hubungan atas-bawah dan urutan kedudukan. kolokasi: konsep hierarki, isu hierarki, atau analisis mengenai hierarki.",
+    "keyPoints": [
+      "Dalam pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, **hierarki** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **hierarki** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **hierarki** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-13-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-13",
+    "topicTitle": "Stage 13: Manajemen & Struktur Organisasi",
+    "stageId": 8,
+    "stageTitle": "08. Struktural (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, struktural berarti berkaitan dengan susunan atau struktur suatu organisasi, sistem, atau bangunan. ==Berkaitan dengan susunan atau struktur suatu organisasi, sistem, atau bangunan==.\\n\\nDalam konteks pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk masalah yang berasal dari desain sistem, bukan semata-mata kesalahan individu. kolokasi: pendekatan struktural, karakteristik struktural, atau sifat yang struktural.",
+    "keyPoints": [
+      "Dalam pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, pendekatan yang **struktural** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **struktural** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **struktural** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-13-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-13",
+    "topicTitle": "Stage 13: Manajemen & Struktur Organisasi",
+    "stageId": 9,
+    "stageTitle": "09. Fungsional (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, fungsional berarti berkaitan dengan fungsi atau kegunaan suatu bagian atau jabatan. ==Berkaitan dengan fungsi atau kegunaan suatu bagian atau jabatan==.\\n\\nDalam konteks pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan peran dan tugas yang dijalankan, bukan tingkat kedudukan. kolokasi: pendekatan fungsional, karakteristik fungsional, atau sifat yang fungsional.",
+    "keyPoints": [
+      "Dalam pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, pendekatan yang **fungsional** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **fungsional** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **fungsional** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-13-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-13",
+    "topicTitle": "Stage 13: Manajemen & Struktur Organisasi",
+    "stageId": 10,
+    "stageTitle": "10. Delegatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, delegatif berarti bersifat melimpahkan tugas atau kewenangan kepada pihak lain. ==Bersifat melimpahkan tugas atau kewenangan kepada pihak lain==.\\n\\nDalam konteks pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk gaya atau mekanisme kepemimpinan yang memberi ruang tanggung jawab kepada bawahan. kolokasi: pendekatan delegatif, karakteristik delegatif, atau sifat yang delegatif.",
+    "keyPoints": [
+      "Dalam pengendalian kegiatan, susunan kewenangan, dan tata pelaksanaan, pendekatan yang **delegatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **delegatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **delegatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-14-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-14",
+    "topicTitle": "Stage 14: Media, Informasi & Literasi",
+    "stageId": 1,
+    "stageTitle": "01. Kredibel (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kredibel berarti dapat dipercaya karena memiliki dasar, reputasi, atau bukti yang mendukung. ==Dapat dipercaya karena memiliki dasar, reputasi, atau bukti yang mendukung==.\\n\\nDalam konteks kualitas sumber, penyebaran pesan, dan penilaian informasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menilai tingkat kepercayaan terhadap sumber atau informasi; bukan jaminan bahwa setiap pernyataannya benar. kolokasi: pendekatan kredibel, karakteristik kredibel, atau sifat yang kredibel.",
+    "keyPoints": [
+      "Dalam kualitas sumber, penyebaran pesan, dan penilaian informasi, pendekatan yang **kredibel** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kredibel** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kredibel** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-14-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-14",
+    "topicTitle": "Stage 14: Media, Informasi & Literasi",
+    "stageId": 2,
+    "stageTitle": "02. Verifikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, verifikasi berarti pemeriksaan atau pengujian untuk memastikan kebenaran atau ketepatan sesuatu. ==Pemeriksaan atau pengujian untuk memastikan kebenaran atau ketepatan sesuatu==.\\n\\nDalam konteks kualitas sumber, penyebaran pesan, dan penilaian informasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dilakukan dengan membandingkan klaim terhadap bukti atau sumber yang dapat diperiksa. kolokasi: konsep verifikasi, isu verifikasi, atau analisis mengenai verifikasi.",
+    "keyPoints": [
+      "Dalam kualitas sumber, penyebaran pesan, dan penilaian informasi, **verifikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **verifikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **verifikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-14-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-14",
+    "topicTitle": "Stage 14: Media, Informasi & Literasi",
+    "stageId": 3,
+    "stageTitle": "03. Disinformasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, disinformasi berarti informasi keliru yang sengaja dibuat atau disebarkan untuk menyesatkan. ==Informasi keliru yang sengaja dibuat atau disebarkan untuk menyesatkan==.\\n\\nDalam konteks kualitas sumber, penyebaran pesan, dan penilaian informasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mengandung unsur kesengajaan; berbeda dari misinformasi yang dapat tersebar tanpa niat menipu. kolokasi: konsep disinformasi, isu disinformasi, atau analisis mengenai disinformasi.",
+    "keyPoints": [
+      "Dalam kualitas sumber, penyebaran pesan, dan penilaian informasi, **disinformasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **disinformasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **disinformasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-14-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-14",
+    "topicTitle": "Stage 14: Media, Informasi & Literasi",
+    "stageId": 4,
+    "stageTitle": "04. Misinformasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, misinformasi berarti informasi yang salah atau tidak akurat yang disebarkan tanpa harus disertai niat menyesatkan. ==Informasi yang salah atau tidak akurat yang disebarkan tanpa harus disertai niat menyesatkan==.\\n\\nDalam konteks kualitas sumber, penyebaran pesan, dan penilaian informasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Fokus pada ketidakakuratan isi, bukan motif penyebarnya. kolokasi: konsep misinformasi, isu misinformasi, atau analisis mengenai misinformasi.",
+    "keyPoints": [
+      "Dalam kualitas sumber, penyebaran pesan, dan penilaian informasi, **misinformasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **misinformasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **misinformasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-14-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-14",
+    "topicTitle": "Stage 14: Media, Informasi & Literasi",
+    "stageId": 5,
+    "stageTitle": "05. Propaganda (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, propaganda berarti penerangan atau penyebaran gagasan secara sistematis untuk memengaruhi pendapat atau sikap masyarakat. ==Penerangan atau penyebaran gagasan secara sistematis untuk memengaruhi pendapat atau sikap masyarakat==.\\n\\nDalam konteks kualitas sumber, penyebaran pesan, dan penilaian informasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering selektif dan berpihak; tidak setiap kampanye informasi otomatis merupakan propaganda. kolokasi: konsep propaganda, isu propaganda, atau analisis mengenai propaganda.",
+    "keyPoints": [
+      "Dalam kualitas sumber, penyebaran pesan, dan penilaian informasi, **propaganda** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **propaganda** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **propaganda** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-14-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-14",
+    "topicTitle": "Stage 14: Media, Informasi & Literasi",
+    "stageId": 6,
+    "stageTitle": "06. Narasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, narasi berarti cerita atau rangkaian peristiwa; dalam wacana publik, kerangka cerita untuk menafsirkan suatu isu. ==Cerita atau rangkaian peristiwa; dalam wacana publik, kerangka cerita untuk menafsirkan suatu isu==.\\n\\nDalam konteks kualitas sumber, penyebaran pesan, dan penilaian informasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan cara fakta dipilih dan dihubungkan sehingga membentuk pemahaman tertentu. kolokasi: konsep narasi, isu narasi, atau analisis mengenai narasi.",
+    "keyPoints": [
+      "Dalam kualitas sumber, penyebaran pesan, dan penilaian informasi, **narasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **narasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **narasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-14-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-14",
+    "topicTitle": "Stage 14: Media, Informasi & Literasi",
+    "stageId": 7,
+    "stageTitle": "07. Pembingkaian (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, pembingkaian berarti cara membingkai atau menyajikan isu sehingga aspek tertentu lebih menonjol daripada aspek lainnya. ==Cara membingkai atau menyajikan isu sehingga aspek tertentu lebih menonjol daripada aspek lainnya==.\\n\\nDalam konteks kualitas sumber, penyebaran pesan, dan penilaian informasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam kajian media dan komunikasi; pilihan bingkai memengaruhi cara audiens memahami peristiwa. kolokasi: konsep pembingkaian, isu pembingkaian, atau analisis mengenai pembingkaian.",
+    "keyPoints": [
+      "Dalam kualitas sumber, penyebaran pesan, dan penilaian informasi, **pembingkaian** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **pembingkaian** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **pembingkaian** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-14-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-14",
+    "topicTitle": "Stage 14: Media, Informasi & Literasi",
+    "stageId": 8,
+    "stageTitle": "08. Editorial (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, editorial berarti artikel atau pernyataan resmi redaksi yang menyampaikan pandangan media mengenai suatu isu. ==Artikel atau pernyataan resmi redaksi yang menyampaikan pandangan media mengenai suatu isu==.\\n\\nDalam konteks kualitas sumber, penyebaran pesan, dan penilaian informasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari berita langsung yang terutama melaporkan peristiwa. kolokasi: konsep editorial, isu editorial, atau analisis mengenai editorial.",
+    "keyPoints": [
+      "Dalam kualitas sumber, penyebaran pesan, dan penilaian informasi, **editorial** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **editorial** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **editorial** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-14-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-14",
+    "topicTitle": "Stage 14: Media, Informasi & Literasi",
+    "stageId": 9,
+    "stageTitle": "09. Literasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, literasi berarti kemampuan membaca dan menulis; dalam penggunaan luas, kecakapan memahami dan menggunakan informasi dalam bidang tertentu. ==Kemampuan membaca dan menulis; dalam penggunaan luas, kecakapan memahami dan menggunakan informasi dalam bidang tertentu==.\\n\\nDalam konteks kualitas sumber, penyebaran pesan, dan penilaian informasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat merujuk pada literasi digital, keuangan, media, atau data. kolokasi: konsep literasi, isu literasi, atau analisis mengenai literasi.",
+    "keyPoints": [
+      "Dalam kualitas sumber, penyebaran pesan, dan penilaian informasi, **literasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **literasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **literasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-14-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-14",
+    "topicTitle": "Stage 14: Media, Informasi & Literasi",
+    "stageId": 10,
+    "stageTitle": "10. Konfirmasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konfirmasi berarti penegasan atau pembuktian bahwa suatu informasi, dugaan, atau keadaan benar. ==Penegasan atau pembuktian bahwa suatu informasi, dugaan, atau keadaan benar==.\\n\\nDalam konteks kualitas sumber, penyebaran pesan, dan penilaian informasi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat berupa tindakan meminta kepastian atau hasil pemeriksaan yang menguatkan informasi. kolokasi: konsep konfirmasi, isu konfirmasi, atau analisis mengenai konfirmasi.",
+    "keyPoints": [
+      "Dalam kualitas sumber, penyebaran pesan, dan penilaian informasi, **konfirmasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konfirmasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konfirmasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-15-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-15",
+    "topicTitle": "Stage 15: Risiko, Ketidakpastian & Pengendalian",
+    "stageId": 1,
+    "stageTitle": "01. Mitigasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, mitigasi berarti upaya mengurangi dampak buruk atau risiko dari suatu keadaan. ==Upaya mengurangi dampak buruk atau risiko dari suatu keadaan==.\\n\\nDalam konteks pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berfokus pada pengurangan kemungkinan atau dampak; tidak selalu menghilangkan risiko. kolokasi: konsep mitigasi, isu mitigasi, atau analisis mengenai mitigasi.",
+    "keyPoints": [
+      "Dalam pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, **mitigasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **mitigasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **mitigasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-15-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-15",
+    "topicTitle": "Stage 15: Risiko, Ketidakpastian & Pengendalian",
+    "stageId": 2,
+    "stageTitle": "02. Kontingensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kontingensi berarti keadaan atau peristiwa yang mungkin terjadi dan memerlukan kesiapan khusus. ==Keadaan atau peristiwa yang mungkin terjadi dan memerlukan kesiapan khusus==.\\n\\nDalam konteks pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam perencanaan berarti kemungkinan alternatif yang disiapkan untuk menghadapi situasi tak terduga. kolokasi: konsep kontingensi, isu kontingensi, atau analisis mengenai kontingensi.",
+    "keyPoints": [
+      "Dalam pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, **kontingensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kontingensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kontingensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-15-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-15",
+    "topicTitle": "Stage 15: Risiko, Ketidakpastian & Pengendalian",
+    "stageId": 3,
+    "stageTitle": "03. Kerentanan (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kerentanan berarti keadaan mudah terkena gangguan, serangan, kerusakan, atau pengaruh buruk. ==Keadaan mudah terkena gangguan, serangan, kerusakan, atau pengaruh buruk==.\\n\\nDalam konteks pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan titik lemah yang dapat dieksploitasi atau terdampak. kolokasi: konsep kerentanan, isu kerentanan, atau analisis mengenai kerentanan.",
+    "keyPoints": [
+      "Dalam pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, **kerentanan** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kerentanan** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kerentanan** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-15-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-15",
+    "topicTitle": "Stage 15: Risiko, Ketidakpastian & Pengendalian",
+    "stageId": 4,
+    "stageTitle": "04. Paparan (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, paparan berarti keadaan terkena atau terbuka terhadap pengaruh, risiko, atau sesuatu. ==Keadaan terkena atau terbuka terhadap pengaruh, risiko, atau sesuatu==.\\n\\nDalam konteks pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam manajemen risiko merujuk pada besarnya keterlibatan terhadap sumber risiko. kolokasi: konsep paparan, isu paparan, atau analisis mengenai paparan.",
+    "keyPoints": [
+      "Dalam pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, **paparan** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **paparan** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **paparan** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-15-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-15",
+    "topicTitle": "Stage 15: Risiko, Ketidakpastian & Pengendalian",
+    "stageId": 5,
+    "stageTitle": "05. Probabilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, probabilitas berarti kemungkinan terjadinya suatu peristiwa yang dinyatakan secara kualitatif atau kuantitatif. ==Kemungkinan terjadinya suatu peristiwa yang dinyatakan secara kualitatif atau kuantitatif==.\\n\\nDalam konteks pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam matematika dapat dinyatakan pada rentang nol hingga satu. kolokasi: konsep probabilitas, isu probabilitas, atau analisis mengenai probabilitas.",
+    "keyPoints": [
+      "Dalam pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, **probabilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **probabilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **probabilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-15-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-15",
+    "topicTitle": "Stage 15: Risiko, Ketidakpastian & Pengendalian",
+    "stageId": 6,
+    "stageTitle": "06. Konsekuensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konsekuensi berarti akibat atau hasil yang timbul dari suatu tindakan, keadaan, atau keputusan. ==Akibat atau hasil yang timbul dari suatu tindakan, keadaan, atau keputusan==.\\n\\nDalam konteks pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjuk dampak lanjutan, baik yang direncanakan maupun tidak. kolokasi: konsep konsekuensi, isu konsekuensi, atau analisis mengenai konsekuensi.",
+    "keyPoints": [
+      "Dalam pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, **konsekuensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konsekuensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konsekuensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-15-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-15",
+    "topicTitle": "Stage 15: Risiko, Ketidakpastian & Pengendalian",
+    "stageId": 7,
+    "stageTitle": "07. Preventif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, preventif berarti bersifat mencegah agar masalah atau kejadian buruk tidak terjadi. ==Bersifat mencegah agar masalah atau kejadian buruk tidak terjadi==.\\n\\nDalam konteks pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan tindakan sebelum kejadian; berbeda dari korektif yang dilakukan setelah masalah ditemukan. kolokasi: pendekatan preventif, karakteristik preventif, atau sifat yang preventif.",
+    "keyPoints": [
+      "Dalam pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, pendekatan yang **preventif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **preventif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **preventif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-15-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-15",
+    "topicTitle": "Stage 15: Risiko, Ketidakpastian & Pengendalian",
+    "stageId": 8,
+    "stageTitle": "08. Korektif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, korektif berarti bersifat memperbaiki kesalahan, kekurangan, atau penyimpangan yang telah terjadi. ==Bersifat memperbaiki kesalahan, kekurangan, atau penyimpangan yang telah terjadi==.\\n\\nDalam konteks pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk tindakan perbaikan setelah identifikasi masalah. kolokasi: pendekatan korektif, karakteristik korektif, atau sifat yang korektif.",
+    "keyPoints": [
+      "Dalam pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, pendekatan yang **korektif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **korektif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **korektif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-15-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-15",
+    "topicTitle": "Stage 15: Risiko, Ketidakpastian & Pengendalian",
+    "stageId": 9,
+    "stageTitle": "09. Pemulihan (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, pemulihan berarti proses mengembalikan keadaan atau fungsi setelah mengalami gangguan atau kerusakan. ==Proses mengembalikan keadaan atau fungsi setelah mengalami gangguan atau kerusakan==.\\n\\nDalam konteks pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam ketahanan organisasi merujuk pada pengembalian layanan atau operasi ke kondisi yang dapat diterima. kolokasi: konsep pemulihan, isu pemulihan, atau analisis mengenai pemulihan.",
+    "keyPoints": [
+      "Dalam pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, **pemulihan** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **pemulihan** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **pemulihan** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-15-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-15",
+    "topicTitle": "Stage 15: Risiko, Ketidakpastian & Pengendalian",
+    "stageId": 10,
+    "stageTitle": "10. Eskalasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, eskalasi berarti peningkatan atau pelonjakan tingkat intensitas, besaran, atau keseriusan. ==Peningkatan atau pelonjakan tingkat intensitas, besaran, atau keseriusan==.\\n\\nDalam konteks pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan untuk konflik, biaya, risiko, atau masalah yang semakin besar. kolokasi: konsep eskalasi, isu eskalasi, atau analisis mengenai eskalasi.",
+    "keyPoints": [
+      "Dalam pengenalan ancaman, pengukuran dampak, dan tindakan pencegahan, **eskalasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **eskalasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **eskalasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-16-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-16",
+    "topicTitle": "Stage 16: Kinerja, Target & Hasil",
+    "stageId": 1,
+    "stageTitle": "01. Capaian (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, capaian berarti hasil yang telah diperoleh melalui usaha atau pelaksanaan kegiatan. ==Hasil yang telah diperoleh melalui usaha atau pelaksanaan kegiatan==.\\n\\nDalam konteks pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat dibandingkan dengan target, standar, atau periode sebelumnya. kolokasi: konsep capaian, isu capaian, atau analisis mengenai capaian.",
+    "keyPoints": [
+      "Dalam pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, **capaian** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **capaian** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **capaian** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-16-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-16",
+    "topicTitle": "Stage 16: Kinerja, Target & Hasil",
+    "stageId": 2,
+    "stageTitle": "02. Parameter (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, parameter berarti ukuran atau patokan yang digunakan untuk menilai atau menentukan sesuatu. ==Ukuran atau patokan yang digunakan untuk menilai atau menentukan sesuatu==.\\n\\nDalam konteks pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menjadi acuan analisis; tidak selalu sama dengan indikator yang merepresentasikan keadaan tertentu. kolokasi: konsep parameter, isu parameter, atau analisis mengenai parameter.",
+    "keyPoints": [
+      "Dalam pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, **parameter** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **parameter** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **parameter** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-16-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-16",
+    "topicTitle": "Stage 16: Kinerja, Target & Hasil",
+    "stageId": 3,
+    "stageTitle": "03. Target (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, target berarti sasaran atau hasil yang ditetapkan untuk dicapai dalam jangka waktu tertentu. ==Sasaran atau hasil yang ditetapkan untuk dicapai dalam jangka waktu tertentu==.\\n\\nDalam konteks pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Biasanya memiliki ukuran dan tenggat yang dapat dipantau. kolokasi: konsep target, isu target, atau analisis mengenai target.",
+    "keyPoints": [
+      "Dalam pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, **target** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **target** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **target** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-16-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-16",
+    "topicTitle": "Stage 16: Kinerja, Target & Hasil",
+    "stageId": 4,
+    "stageTitle": "04. Sasaran (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sasaran berarti hasil atau keadaan yang hendak dicapai melalui suatu usaha. ==Hasil atau keadaan yang hendak dicapai melalui suatu usaha==.\\n\\nDalam konteks pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat bersifat umum atau khusus; sasaran yang baik dijabarkan menjadi ukuran operasional. kolokasi: konsep sasaran, isu sasaran, atau analisis mengenai sasaran.",
+    "keyPoints": [
+      "Dalam pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, **sasaran** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sasaran** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sasaran** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-16-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-16",
+    "topicTitle": "Stage 16: Kinerja, Target & Hasil",
+    "stageId": 5,
+    "stageTitle": "05. Keluaran (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, keluaran berarti hasil langsung dari suatu proses, kegiatan, atau produksi. ==Hasil langsung dari suatu proses, kegiatan, atau produksi==.\\n\\nDalam konteks pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam evaluasi program setara dengan output; berbeda dari dampak jangka panjang. kolokasi: konsep keluaran, isu keluaran, atau analisis mengenai keluaran.",
+    "keyPoints": [
+      "Dalam pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, **keluaran** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **keluaran** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **keluaran** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-16-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-16",
+    "topicTitle": "Stage 16: Kinerja, Target & Hasil",
+    "stageId": 6,
+    "stageTitle": "06. Hasil (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, hasil berarti sesuatu yang diperoleh dari suatu usaha, proses, atau kejadian. ==Sesuatu yang diperoleh dari suatu usaha, proses, atau kejadian==.\\n\\nDalam konteks pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Maknanya luas; dalam evaluasi perlu dibedakan dari keluaran dan dampak. kolokasi: konsep hasil, isu hasil, atau analisis mengenai hasil.",
+    "keyPoints": [
+      "Dalam pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, **hasil** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **hasil** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **hasil** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-16-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-16",
+    "topicTitle": "Stage 16: Kinerja, Target & Hasil",
+    "stageId": 7,
+    "stageTitle": "07. Dampak (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, dampak berarti pengaruh kuat atau akibat yang timbul dari suatu tindakan, kebijakan, atau peristiwa. ==Pengaruh kuat atau akibat yang timbul dari suatu tindakan, kebijakan, atau peristiwa==.\\n\\nDalam konteks pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat muncul dalam jangka pendek atau panjang dan dapat bersifat langsung maupun tidak langsung. kolokasi: konsep dampak, isu dampak, atau analisis mengenai dampak.",
+    "keyPoints": [
+      "Dalam pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, **dampak** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **dampak** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **dampak** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-16-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-16",
+    "topicTitle": "Stage 16: Kinerja, Target & Hasil",
+    "stageId": 8,
+    "stageTitle": "08. Konsisten (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, konsisten berarti tetap atau taat asas dalam sikap, tindakan, atau hasil dari waktu ke waktu. ==Tetap atau taat asas dalam sikap, tindakan, atau hasil dari waktu ke waktu==.\\n\\nDalam konteks pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan keselarasan; tidak selalu berarti tidak pernah berubah, karena perubahan dapat konsisten dengan prinsip. kolokasi: pendekatan konsisten, karakteristik konsisten, atau sifat yang konsisten.",
+    "keyPoints": [
+      "Dalam pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, pendekatan yang **konsisten** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **konsisten** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **konsisten** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-16-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-16",
+    "topicTitle": "Stage 16: Kinerja, Target & Hasil",
+    "stageId": 9,
+    "stageTitle": "09. Terukur (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, terukur berarti dapat dinilai atau dihitung dengan ukuran atau kriteria tertentu. ==Dapat dinilai atau dihitung dengan ukuran atau kriteria tertentu==.\\n\\nDalam konteks pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Penting untuk sasaran dan indikator agar kemajuan dapat diperiksa. kolokasi: pendekatan terukur, karakteristik terukur, atau sifat yang terukur.",
+    "keyPoints": [
+      "Dalam pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, pendekatan yang **terukur** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **terukur** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **terukur** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-16-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-16",
+    "topicTitle": "Stage 16: Kinerja, Target & Hasil",
+    "stageId": 10,
+    "stageTitle": "10. Akumulatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, akumulatif berarti bertambah atau terkumpul secara bertahap dari waktu ke waktu. ==Bertambah atau terkumpul secara bertahap dari waktu ke waktu==.\\n\\nDalam konteks pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk efek, biaya, pengalaman, atau data yang bertambah melalui penumpukan. kolokasi: pendekatan akumulatif, karakteristik akumulatif, atau sifat yang akumulatif.",
+    "keyPoints": [
+      "Dalam pengukuran capaian, hasil kegiatan, dan mutu pelaksanaan, pendekatan yang **akumulatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **akumulatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **akumulatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-17-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-17",
+    "topicTitle": "Stage 17: Teknologi, Sistem Digital & Data",
+    "stageId": 1,
+    "stageTitle": "01. Algoritma (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, algoritma berarti urutan langkah yang logis dan terhingga untuk menyelesaikan masalah atau menjalankan perhitungan. ==Urutan langkah yang logis dan terhingga untuk menyelesaikan masalah atau menjalankan perhitungan==.\\n\\nDalam konteks arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat diterapkan dalam pemrograman, analisis data, dan pengambilan keputusan otomatis. kolokasi: konsep algoritma, isu algoritma, atau analisis mengenai algoritma.",
+    "keyPoints": [
+      "Dalam arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, **algoritma** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **algoritma** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **algoritma** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-17-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-17",
+    "topicTitle": "Stage 17: Teknologi, Sistem Digital & Data",
+    "stageId": 2,
+    "stageTitle": "02. Otomatisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, otomatisasi berarti penggunaan sistem atau teknologi untuk menjalankan proses dengan sedikit campur tangan manusia. ==Penggunaan sistem atau teknologi untuk menjalankan proses dengan sedikit campur tangan manusia==.\\n\\nDalam konteks arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Bertujuan meningkatkan kecepatan atau konsistensi, tetapi tetap memerlukan pengawasan. kolokasi: konsep otomatisasi, isu otomatisasi, atau analisis mengenai otomatisasi.",
+    "keyPoints": [
+      "Dalam arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, **otomatisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **otomatisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **otomatisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-17-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-17",
+    "topicTitle": "Stage 17: Teknologi, Sistem Digital & Data",
+    "stageId": 3,
+    "stageTitle": "03. Integrasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, integrasi berarti pembauran atau penggabungan beberapa unsur menjadi satu kesatuan yang berfungsi. ==Pembauran atau penggabungan beberapa unsur menjadi satu kesatuan yang berfungsi==.\\n\\nDalam konteks arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam sistem digital dapat berarti menghubungkan aplikasi, data, atau proses kerja. kolokasi: konsep integrasi, isu integrasi, atau analisis mengenai integrasi.",
+    "keyPoints": [
+      "Dalam arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, **integrasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **integrasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **integrasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-17-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-17",
+    "topicTitle": "Stage 17: Teknologi, Sistem Digital & Data",
+    "stageId": 4,
+    "stageTitle": "04. Interoperabilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, interoperabilitas berarti kemampuan berbagai sistem atau perangkat untuk bertukar dan menggunakan informasi satu sama lain. ==Kemampuan berbagai sistem atau perangkat untuk bertukar dan menggunakan informasi satu sama lain==.\\n\\nDalam konteks arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Lebih spesifik daripada integrasi; menekankan kemampuan bekerja bersama meskipun sistem berbeda. kolokasi: konsep interoperabilitas, isu interoperabilitas, atau analisis mengenai interoperabilitas.",
+    "keyPoints": [
+      "Dalam arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, **interoperabilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **interoperabilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **interoperabilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-17-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-17",
+    "topicTitle": "Stage 17: Teknologi, Sistem Digital & Data",
+    "stageId": 5,
+    "stageTitle": "05. Enkripsi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, enkripsi berarti proses mengubah informasi menjadi bentuk tersandi agar tidak dapat dibaca pihak yang tidak berwenang. ==Proses mengubah informasi menjadi bentuk tersandi agar tidak dapat dibaca pihak yang tidak berwenang==.\\n\\nDalam konteks arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Merupakan teknik perlindungan kerahasiaan data; berbeda dari autentikasi yang memeriksa identitas. kolokasi: konsep enkripsi, isu enkripsi, atau analisis mengenai enkripsi.",
+    "keyPoints": [
+      "Dalam arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, **enkripsi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **enkripsi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **enkripsi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-17-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-17",
+    "topicTitle": "Stage 17: Teknologi, Sistem Digital & Data",
+    "stageId": 6,
+    "stageTitle": "06. Autentikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, autentikasi berarti proses memeriksa atau memastikan identitas pengguna, perangkat, atau sistem. ==Proses memeriksa atau memastikan identitas pengguna, perangkat, atau sistem==.\\n\\nDalam konteks arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam keamanan digital untuk memastikan pihak yang mengakses adalah pihak yang sah. kolokasi: konsep autentikasi, isu autentikasi, atau analisis mengenai autentikasi.",
+    "keyPoints": [
+      "Dalam arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, **autentikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **autentikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **autentikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-17-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-17",
+    "topicTitle": "Stage 17: Teknologi, Sistem Digital & Data",
+    "stageId": 7,
+    "stageTitle": "07. Digitalisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, digitalisasi berarti proses mengubah informasi atau proses ke bentuk digital. ==Proses mengubah informasi atau proses ke bentuk digital==.\\n\\nDalam konteks arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat merujuk pada konversi dokumen atau penerapan sistem digital dalam kegiatan. kolokasi: konsep digitalisasi, isu digitalisasi, atau analisis mengenai digitalisasi.",
+    "keyPoints": [
+      "Dalam arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, **digitalisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **digitalisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **digitalisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-17-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-17",
+    "topicTitle": "Stage 17: Teknologi, Sistem Digital & Data",
+    "stageId": 8,
+    "stageTitle": "08. Komputasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, komputasi berarti proses pengolahan data atau pelaksanaan perhitungan oleh perangkat atau sistem. ==Proses pengolahan data atau pelaksanaan perhitungan oleh perangkat atau sistem==.\\n\\nDalam konteks arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menjelaskan kemampuan dan proses pengolahan informasi secara mekanis atau elektronik. kolokasi: konsep komputasi, isu komputasi, atau analisis mengenai komputasi.",
+    "keyPoints": [
+      "Dalam arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, **komputasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **komputasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **komputasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-17-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-17",
+    "topicTitle": "Stage 17: Teknologi, Sistem Digital & Data",
+    "stageId": 9,
+    "stageTitle": "09. Sistemik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, sistemik berarti berkaitan dengan sistem secara keseluruhan atau timbul dari susunan sistem itu sendiri. ==Berkaitan dengan sistem secara keseluruhan atau timbul dari susunan sistem itu sendiri==.\\n\\nDalam konteks arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk masalah yang melibatkan banyak bagian dan hubungan, bukan satu unsur terisolasi. kolokasi: pendekatan sistemik, karakteristik sistemik, atau sifat yang sistemik.",
+    "keyPoints": [
+      "Dalam arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, pendekatan yang **sistemik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **sistemik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **sistemik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-17-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-17",
+    "topicTitle": "Stage 17: Teknologi, Sistem Digital & Data",
+    "stageId": 10,
+    "stageTitle": "10. Kompatibel (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kompatibel berarti dapat digunakan bersama atau sesuai tanpa menimbulkan pertentangan atau gangguan. ==Dapat digunakan bersama atau sesuai tanpa menimbulkan pertentangan atau gangguan==.\\n\\nDalam konteks arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menilai kecocokan perangkat, format, aturan, atau gagasan. kolokasi: pendekatan kompatibel, karakteristik kompatibel, atau sifat yang kompatibel.",
+    "keyPoints": [
+      "Dalam arsitektur teknologi, pemrosesan informasi, dan hubungan antarsistem, pendekatan yang **kompatibel** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kompatibel** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kompatibel** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-18-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-18",
+    "topicTitle": "Stage 18: Hukum, Hak & Ketentuan",
+    "stageId": 1,
+    "stageTitle": "01. Yuridis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, yuridis berarti berkaitan dengan hukum atau ditinjau dari segi hukum. ==Berkaitan dengan hukum atau ditinjau dari segi hukum==.\\n\\nDalam konteks aturan formal, proses hukum, dan akibat pelanggaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menilai dasar, akibat, atau kedudukan hukum suatu tindakan. kolokasi: pendekatan yuridis, karakteristik yuridis, atau sifat yang yuridis.",
+    "keyPoints": [
+      "Dalam aturan formal, proses hukum, dan akibat pelanggaran, pendekatan yang **yuridis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **yuridis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **yuridis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-18-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-18",
+    "topicTitle": "Stage 18: Hukum, Hak & Ketentuan",
+    "stageId": 2,
+    "stageTitle": "02. Normatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, normatif berarti berkenaan dengan norma atau kaidah yang menjadi pedoman; dalam kajian hukum, berdasarkan aturan yang berlaku. ==Berkenaan dengan norma atau kaidah yang menjadi pedoman; dalam kajian hukum, berdasarkan aturan yang berlaku==.\\n\\nDalam konteks aturan formal, proses hukum, dan akibat pelanggaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat berarti menguraikan apa yang seharusnya menurut norma, bukan semata-mata keadaan faktual. kolokasi: pendekatan normatif, karakteristik normatif, atau sifat yang normatif.",
+    "keyPoints": [
+      "Dalam aturan formal, proses hukum, dan akibat pelanggaran, pendekatan yang **normatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **normatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **normatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-18-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-18",
+    "topicTitle": "Stage 18: Hukum, Hak & Ketentuan",
+    "stageId": 3,
+    "stageTitle": "03. Litigasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, litigasi berarti proses penyelesaian perkara melalui pengadilan. ==Proses penyelesaian perkara melalui pengadilan==.\\n\\nDalam konteks aturan formal, proses hukum, dan akibat pelanggaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari penyelesaian di luar pengadilan seperti mediasi atau arbitrase. kolokasi: konsep litigasi, isu litigasi, atau analisis mengenai litigasi.",
+    "keyPoints": [
+      "Dalam aturan formal, proses hukum, dan akibat pelanggaran, **litigasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **litigasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **litigasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-18-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-18",
+    "topicTitle": "Stage 18: Hukum, Hak & Ketentuan",
+    "stageId": 4,
+    "stageTitle": "04. Preseden (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, preseden berarti putusan atau peristiwa terdahulu yang dijadikan contoh atau dasar pertimbangan untuk perkara berikutnya. ==Putusan atau peristiwa terdahulu yang dijadikan contoh atau dasar pertimbangan untuk perkara berikutnya==.\\n\\nDalam konteks aturan formal, proses hukum, dan akibat pelanggaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Penting dalam sistem hukum tertentu dan dalam penalaran berbasis kasus. kolokasi: konsep preseden, isu preseden, atau analisis mengenai preseden.",
+    "keyPoints": [
+      "Dalam aturan formal, proses hukum, dan akibat pelanggaran, **preseden** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **preseden** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **preseden** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-18-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-18",
+    "topicTitle": "Stage 18: Hukum, Hak & Ketentuan",
+    "stageId": 5,
+    "stageTitle": "05. Yurisdiksi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, yurisdiksi berarti kekuasaan atau kewenangan hukum suatu lembaga atau negara atas orang, perkara, atau wilayah tertentu. ==Kekuasaan atau kewenangan hukum suatu lembaga atau negara atas orang, perkara, atau wilayah tertentu==.\\n\\nDalam konteks aturan formal, proses hukum, dan akibat pelanggaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menentukan batas ruang lingkup kewenangan, bukan isi putusan. kolokasi: konsep yurisdiksi, isu yurisdiksi, atau analisis mengenai yurisdiksi.",
+    "keyPoints": [
+      "Dalam aturan formal, proses hukum, dan akibat pelanggaran, **yurisdiksi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **yurisdiksi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **yurisdiksi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-18-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-18",
+    "topicTitle": "Stage 18: Hukum, Hak & Ketentuan",
+    "stageId": 6,
+    "stageTitle": "06. Klausul (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, klausul berarti ketentuan atau bagian khusus dalam perjanjian atau dokumen resmi. ==Ketentuan atau bagian khusus dalam perjanjian atau dokumen resmi==.\\n\\nDalam konteks aturan formal, proses hukum, dan akibat pelanggaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menetapkan hak, kewajiban, syarat, atau pembatasan tertentu. kolokasi: konsep klausul, isu klausul, atau analisis mengenai klausul.",
+    "keyPoints": [
+      "Dalam aturan formal, proses hukum, dan akibat pelanggaran, **klausul** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **klausul** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **klausul** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-18-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-18",
+    "topicTitle": "Stage 18: Hukum, Hak & Ketentuan",
+    "stageId": 7,
+    "stageTitle": "07. Sengketa (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sengketa berarti perselisihan atau pertentangan yang menimbulkan tuntutan atau klaim antara pihak-pihak. ==Perselisihan atau pertentangan yang menimbulkan tuntutan atau klaim antara pihak-pihak==.\\n\\nDalam konteks aturan formal, proses hukum, dan akibat pelanggaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan dalam konteks hukum, tanah, kontrak, dan hubungan industrial. kolokasi: konsep sengketa, isu sengketa, atau analisis mengenai sengketa.",
+    "keyPoints": [
+      "Dalam aturan formal, proses hukum, dan akibat pelanggaran, **sengketa** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sengketa** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sengketa** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-18-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-18",
+    "topicTitle": "Stage 18: Hukum, Hak & Ketentuan",
+    "stageId": 8,
+    "stageTitle": "08. Sanksi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sanksi berarti tanggungan atau tindakan hukuman yang dikenakan karena pelanggaran aturan. ==Tanggungan atau tindakan hukuman yang dikenakan karena pelanggaran aturan==.\\n\\nDalam konteks aturan formal, proses hukum, dan akibat pelanggaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat bersifat administratif, perdata, atau pidana sesuai ketentuan. kolokasi: konsep sanksi, isu sanksi, atau analisis mengenai sanksi.",
+    "keyPoints": [
+      "Dalam aturan formal, proses hukum, dan akibat pelanggaran, **sanksi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sanksi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sanksi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-18-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-18",
+    "topicTitle": "Stage 18: Hukum, Hak & Ketentuan",
+    "stageId": 9,
+    "stageTitle": "09. Legalitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, legalitas berarti keadaan sah menurut hukum atau kesesuaian dengan ketentuan hukum. ==Keadaan sah menurut hukum atau kesesuaian dengan ketentuan hukum==.\\n\\nDalam konteks aturan formal, proses hukum, dan akibat pelanggaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berkaitan dengan status sah suatu tindakan, bukan semata-mata penerimaan sosial. kolokasi: konsep legalitas, isu legalitas, atau analisis mengenai legalitas.",
+    "keyPoints": [
+      "Dalam aturan formal, proses hukum, dan akibat pelanggaran, **legalitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **legalitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **legalitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-18-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-18",
+    "topicTitle": "Stage 18: Hukum, Hak & Ketentuan",
+    "stageId": 10,
+    "stageTitle": "10. Preskriptif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, preskriptif berarti bersifat memberi petunjuk, ketentuan, atau norma tentang apa yang seharusnya dilakukan. ==Bersifat memberi petunjuk, ketentuan, atau norma tentang apa yang seharusnya dilakukan==.\\n\\nDalam konteks aturan formal, proses hukum, dan akibat pelanggaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berlawanan dengan deskriptif yang menggambarkan keadaan sebagaimana adanya. kolokasi: pendekatan preskriptif, karakteristik preskriptif, atau sifat yang preskriptif.",
+    "keyPoints": [
+      "Dalam aturan formal, proses hukum, dan akibat pelanggaran, pendekatan yang **preskriptif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **preskriptif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **preskriptif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-19-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-19",
+    "topicTitle": "Stage 19: Pendidikan, Budaya & Pembelajaran",
+    "stageId": 1,
+    "stageTitle": "01. Pedagogi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, pedagogi berarti ilmu atau seni mengajar dan mendidik. ==Ilmu atau seni mengajar dan mendidik==.\\n\\nDalam konteks proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mencakup prinsip, pendekatan, dan praktik pembelajaran; tidak hanya teknik menyampaikan materi. kolokasi: konsep pedagogi, isu pedagogi, atau analisis mengenai pedagogi.",
+    "keyPoints": [
+      "Dalam proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, **pedagogi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **pedagogi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **pedagogi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-19-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-19",
+    "topicTitle": "Stage 19: Pendidikan, Budaya & Pembelajaran",
+    "stageId": 2,
+    "stageTitle": "02. Kurikulum (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kurikulum berarti rencana atau susunan mata pelajaran dan pengalaman belajar yang menjadi pedoman pendidikan. ==Rencana atau susunan mata pelajaran dan pengalaman belajar yang menjadi pedoman pendidikan==.\\n\\nDalam konteks proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mengatur tujuan, materi, dan proses pembelajaran. kolokasi: konsep kurikulum, isu kurikulum, atau analisis mengenai kurikulum.",
+    "keyPoints": [
+      "Dalam proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, **kurikulum** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kurikulum** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kurikulum** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-19-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-19",
+    "topicTitle": "Stage 19: Pendidikan, Budaya & Pembelajaran",
+    "stageId": 3,
+    "stageTitle": "03. Penghayatan (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, penghayatan berarti proses atau hasil memahami dan merasakan secara mendalam nilai atau makna sesuatu. ==Proses atau hasil memahami dan merasakan secara mendalam nilai atau makna sesuatu==.\\n\\nDalam konteks proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan keterlibatan pemahaman dan perasaan, bukan sekadar mengetahui atau menyukai. kolokasi: konsep penghayatan, isu penghayatan, atau analisis mengenai penghayatan.",
+    "keyPoints": [
+      "Dalam proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, **penghayatan** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **penghayatan** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **penghayatan** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-19-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-19",
+    "topicTitle": "Stage 19: Pendidikan, Budaya & Pembelajaran",
+    "stageId": 4,
+    "stageTitle": "04. Akulturasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, akulturasi berarti percampuran dua kebudayaan atau lebih yang terjadi melalui hubungan dan kontak, tanpa menghilangkan seluruh unsur budaya asal. ==Percampuran dua kebudayaan atau lebih yang terjadi melalui hubungan dan kontak, tanpa menghilangkan seluruh unsur budaya asal==.\\n\\nDalam konteks proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari asimilasi yang dapat mengarah pada peleburan unsur budaya. kolokasi: konsep akulturasi, isu akulturasi, atau analisis mengenai akulturasi.",
+    "keyPoints": [
+      "Dalam proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, **akulturasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **akulturasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **akulturasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-19-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-19",
+    "topicTitle": "Stage 19: Pendidikan, Budaya & Pembelajaran",
+    "stageId": 5,
+    "stageTitle": "05. Asimilasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, asimilasi berarti pembauran dua kebudayaan atau lebih sehingga ciri khas masing-masing dapat berkurang atau melebur. ==Pembauran dua kebudayaan atau lebih sehingga ciri khas masing-masing dapat berkurang atau melebur==.\\n\\nDalam konteks proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan proses penyerapan atau peleburan, bukan sekadar perjumpaan budaya. kolokasi: konsep asimilasi, isu asimilasi, atau analisis mengenai asimilasi.",
+    "keyPoints": [
+      "Dalam proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, **asimilasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **asimilasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **asimilasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-19-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-19",
+    "topicTitle": "Stage 19: Pendidikan, Budaya & Pembelajaran",
+    "stageId": 6,
+    "stageTitle": "06. Pluralisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, pluralisme berarti keadaan masyarakat yang terdiri atas beragam kelompok, keyakinan, atau kebudayaan yang hidup berdampingan. ==Keadaan masyarakat yang terdiri atas beragam kelompok, keyakinan, atau kebudayaan yang hidup berdampingan==.\\n\\nDalam konteks proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam gagasan sosial juga menekankan pengakuan terhadap kemajemukan. kolokasi: konsep pluralisme, isu pluralisme, atau analisis mengenai pluralisme.",
+    "keyPoints": [
+      "Dalam proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, **pluralisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **pluralisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **pluralisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-19-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-19",
+    "topicTitle": "Stage 19: Pendidikan, Budaya & Pembelajaran",
+    "stageId": 7,
+    "stageTitle": "07. Konservasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konservasi berarti pemeliharaan dan perlindungan sesuatu secara teratur untuk mencegah kerusakan atau kehilangan. ==Pemeliharaan dan perlindungan sesuatu secara teratur untuk mencegah kerusakan atau kehilangan==.\\n\\nDalam konteks proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat merujuk pada alam, warisan budaya, atau sumber daya. kolokasi: konsep konservasi, isu konservasi, atau analisis mengenai konservasi.",
+    "keyPoints": [
+      "Dalam proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, **konservasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konservasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konservasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-19-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-19",
+    "topicTitle": "Stage 19: Pendidikan, Budaya & Pembelajaran",
+    "stageId": 8,
+    "stageTitle": "08. Warisan (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, warisan berarti sesuatu yang diwariskan dari generasi atau pihak sebelumnya. ==Sesuatu yang diwariskan dari generasi atau pihak sebelumnya==.\\n\\nDalam konteks proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat berupa benda, nilai, tradisi, pengetahuan, atau tanggung jawab. kolokasi: konsep warisan, isu warisan, atau analisis mengenai warisan.",
+    "keyPoints": [
+      "Dalam proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, **warisan** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **warisan** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **warisan** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-19-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-19",
+    "topicTitle": "Stage 19: Pendidikan, Budaya & Pembelajaran",
+    "stageId": 9,
+    "stageTitle": "09. Kurikuler (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kurikuler berarti berkaitan dengan kurikulum atau kegiatan pembelajaran yang menjadi bagian dari kurikulum. ==Berkaitan dengan kurikulum atau kegiatan pembelajaran yang menjadi bagian dari kurikulum==.\\n\\nDalam konteks proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari ekstrakurikuler yang berlangsung di luar kegiatan kurikuler utama. kolokasi: pendekatan kurikuler, karakteristik kurikuler, atau sifat yang kurikuler.",
+    "keyPoints": [
+      "Dalam proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, pendekatan yang **kurikuler** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kurikuler** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kurikuler** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-19-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-19",
+    "topicTitle": "Stage 19: Pendidikan, Budaya & Pembelajaran",
+    "stageId": 10,
+    "stageTitle": "10. Interpretatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, interpretatif berarti bersifat menafsirkan atau menjelaskan makna suatu hal. ==Bersifat menafsirkan atau menjelaskan makna suatu hal==.\\n\\nDalam konteks proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk pendekatan yang memberi perhatian pada penafsiran konteks dan pengalaman. kolokasi: pendekatan interpretatif, karakteristik interpretatif, atau sifat yang interpretatif.",
+    "keyPoints": [
+      "Dalam proses pendidikan, pewarisan nilai, dan perkembangan kebudayaan, pendekatan yang **interpretatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **interpretatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **interpretatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-20-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-20",
+    "topicTitle": "Stage 20: Lingkungan & Keberlanjutan",
+    "stageId": 1,
+    "stageTitle": "01. Ekosistem (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ekosistem berarti kesatuan komunitas makhluk hidup dan lingkungan fisiknya yang saling berinteraksi. ==Kesatuan komunitas makhluk hidup dan lingkungan fisiknya yang saling berinteraksi==.\\n\\nDalam konteks hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan hubungan timbal balik antara organisme dan lingkungan, bukan hanya kumpulan spesies. kolokasi: konsep ekosistem, isu ekosistem, atau analisis mengenai ekosistem.",
+    "keyPoints": [
+      "Dalam hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, **ekosistem** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ekosistem** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ekosistem** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-20-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-20",
+    "topicTitle": "Stage 20: Lingkungan & Keberlanjutan",
+    "stageId": 2,
+    "stageTitle": "02. Emisi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, emisi berarti zat, energi, atau partikel yang dilepaskan ke lingkungan; sering merujuk pada gas pencemar. ==Zat, energi, atau partikel yang dilepaskan ke lingkungan; sering merujuk pada gas pencemar==.\\n\\nDalam konteks hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam isu iklim biasanya membahas pelepasan gas rumah kaca dari aktivitas manusia. kolokasi: konsep emisi, isu emisi, atau analisis mengenai emisi.",
+    "keyPoints": [
+      "Dalam hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, **emisi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **emisi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **emisi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-20-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-20",
+    "topicTitle": "Stage 20: Lingkungan & Keberlanjutan",
+    "stageId": 3,
+    "stageTitle": "03. Dekarbonisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, dekarbonisasi berarti proses mengurangi atau menghilangkan ketergantungan pada sumber energi dan kegiatan yang menghasilkan karbon. ==Proses mengurangi atau menghilangkan ketergantungan pada sumber energi dan kegiatan yang menghasilkan karbon==.\\n\\nDalam konteks hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam transisi energi dan kebijakan iklim. kolokasi: konsep dekarbonisasi, isu dekarbonisasi, atau analisis mengenai dekarbonisasi.",
+    "keyPoints": [
+      "Dalam hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, **dekarbonisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **dekarbonisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **dekarbonisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-20-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-20",
+    "topicTitle": "Stage 20: Lingkungan & Keberlanjutan",
+    "stageId": 4,
+    "stageTitle": "04. Restorasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, restorasi berarti pemulihan sesuatu ke keadaan atau fungsi yang lebih mendekati kondisi semula. ==Pemulihan sesuatu ke keadaan atau fungsi yang lebih mendekati kondisi semula==.\\n\\nDalam konteks hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam lingkungan merujuk pada pemulihan ekosistem yang rusak. kolokasi: konsep restorasi, isu restorasi, atau analisis mengenai restorasi.",
+    "keyPoints": [
+      "Dalam hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, **restorasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **restorasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **restorasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-20-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-20",
+    "topicTitle": "Stage 20: Lingkungan & Keberlanjutan",
+    "stageId": 5,
+    "stageTitle": "05. Biodiversitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, biodiversitas berarti keanekaragaman bentuk kehidupan yang mencakup variasi gen, spesies, dan ekosistem. ==Keanekaragaman bentuk kehidupan yang mencakup variasi gen, spesies, dan ekosistem==.\\n\\nDalam konteks hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menjadi ukuran penting kesehatan dan ketahanan lingkungan. kolokasi: konsep biodiversitas, isu biodiversitas, atau analisis mengenai biodiversitas.",
+    "keyPoints": [
+      "Dalam hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, **biodiversitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **biodiversitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **biodiversitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-20-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-20",
+    "topicTitle": "Stage 20: Lingkungan & Keberlanjutan",
+    "stageId": 6,
+    "stageTitle": "06. Ekologis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, ekologis berarti berkaitan dengan hubungan makhluk hidup dengan lingkungannya. ==Berkaitan dengan hubungan makhluk hidup dengan lingkungannya==.\\n\\nDalam konteks hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk dampak, keseimbangan, atau pendekatan yang mempertimbangkan lingkungan. kolokasi: pendekatan ekologis, karakteristik ekologis, atau sifat yang ekologis.",
+    "keyPoints": [
+      "Dalam hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, pendekatan yang **ekologis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **ekologis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **ekologis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-20-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-20",
+    "topicTitle": "Stage 20: Lingkungan & Keberlanjutan",
+    "stageId": 7,
+    "stageTitle": "07. Konservatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, konservatif berarti cenderung mempertahankan keadaan, tradisi, atau nilai yang telah ada dan menghindari perubahan besar. ==Cenderung mempertahankan keadaan, tradisi, atau nilai yang telah ada dan menghindari perubahan besar==.\\n\\nDalam konteks hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Maknanya dapat bersifat politik, sosial, atau umum; tidak selalu sama dengan konservasi lingkungan. kolokasi: pendekatan konservatif, karakteristik konservatif, atau sifat yang konservatif.",
+    "keyPoints": [
+      "Dalam hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, pendekatan yang **konservatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **konservatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **konservatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-20-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-20",
+    "topicTitle": "Stage 20: Lingkungan & Keberlanjutan",
+    "stageId": 8,
+    "stageTitle": "08. Eksploitasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, eksploitasi berarti pemanfaatan secara berlebihan atau tidak patut untuk memperoleh keuntungan. ==Pemanfaatan secara berlebihan atau tidak patut untuk memperoleh keuntungan==.\\n\\nDalam konteks hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam konteks sumber daya sering mengandung makna pemerasan atau penggunaan yang merusak. kolokasi: konsep eksploitasi, isu eksploitasi, atau analisis mengenai eksploitasi.",
+    "keyPoints": [
+      "Dalam hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, **eksploitasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **eksploitasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **eksploitasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-20-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-20",
+    "topicTitle": "Stage 20: Lingkungan & Keberlanjutan",
+    "stageId": 9,
+    "stageTitle": "09. Regenerasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, regenerasi berarti pembaruan atau pembentukan kembali bagian, kelompok, atau sumber daya yang berkurang. ==Pembaruan atau pembentukan kembali bagian, kelompok, atau sumber daya yang berkurang==.\\n\\nDalam konteks hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan pada pemulihan alam, pergantian generasi, dan pembaruan organisasi. kolokasi: konsep regenerasi, isu regenerasi, atau analisis mengenai regenerasi.",
+    "keyPoints": [
+      "Dalam hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, **regenerasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **regenerasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **regenerasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-20-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-20",
+    "topicTitle": "Stage 20: Lingkungan & Keberlanjutan",
+    "stageId": 10,
+    "stageTitle": "10. Ekoregion (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ekoregion berarti wilayah geografis yang memiliki kesamaan ciri ekologi, seperti iklim, tanah, dan komunitas makhluk hidup. ==Wilayah geografis yang memiliki kesamaan ciri ekologi, seperti iklim, tanah, dan komunitas makhluk hidup==.\\n\\nDalam konteks hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam perencanaan konservasi yang mempertimbangkan karakter lingkungan suatu wilayah. kolokasi: konsep ekoregion, isu ekoregion, atau analisis mengenai ekoregion.",
+    "keyPoints": [
+      "Dalam hubungan makhluk hidup, sumber daya, dan dampak aktivitas manusia, **ekoregion** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ekoregion** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ekoregion** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-21-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-21",
+    "topicTitle": "Stage 21: Logika Dasar & Struktur Penalaran",
+    "stageId": 1,
+    "stageTitle": "01. Premis (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, premis berarti pernyataan dasar yang digunakan sebagai landasan untuk menarik kesimpulan. ==Pernyataan dasar yang digunakan sebagai landasan untuk menarik kesimpulan==.\\n\\nDalam konteks dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam argumen, mutu kesimpulan bergantung pada kebenaran dan hubungan logis premis. kolokasi: konsep premis, isu premis, atau analisis mengenai premis.",
+    "keyPoints": [
+      "Dalam dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, **premis** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **premis** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **premis** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-21-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-21",
+    "topicTitle": "Stage 21: Logika Dasar & Struktur Penalaran",
+    "stageId": 2,
+    "stageTitle": "02. Inferensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, inferensi berarti proses atau hasil penarikan kesimpulan berdasarkan bukti, fakta, atau pernyataan yang tersedia. ==Proses atau hasil penarikan kesimpulan berdasarkan bukti, fakta, atau pernyataan yang tersedia==.\\n\\nDalam konteks dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Lebih luas daripada deduksi; dapat menggunakan berbagai pola penalaran. kolokasi: konsep inferensi, isu inferensi, atau analisis mengenai inferensi.",
+    "keyPoints": [
+      "Dalam dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, **inferensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **inferensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **inferensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-21-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-21",
+    "topicTitle": "Stage 21: Logika Dasar & Struktur Penalaran",
+    "stageId": 3,
+    "stageTitle": "03. Deduksi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, deduksi berarti penarikan kesimpulan khusus dari prinsip atau pernyataan yang lebih umum. ==Penarikan kesimpulan khusus dari prinsip atau pernyataan yang lebih umum==.\\n\\nDalam konteks dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Kesimpulan mengikuti premis secara logis jika bentuk penalarannya sah. kolokasi: konsep deduksi, isu deduksi, atau analisis mengenai deduksi.",
+    "keyPoints": [
+      "Dalam dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, **deduksi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **deduksi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **deduksi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-21-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-21",
+    "topicTitle": "Stage 21: Logika Dasar & Struktur Penalaran",
+    "stageId": 4,
+    "stageTitle": "04. Induksi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, induksi berarti penarikan kesimpulan umum berdasarkan sejumlah pengamatan atau kasus khusus. ==Penarikan kesimpulan umum berdasarkan sejumlah pengamatan atau kasus khusus==.\\n\\nDalam konteks dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Kesimpulannya bersifat kemungkinan dan dapat direvisi ketika bukti baru muncul. kolokasi: konsep induksi, isu induksi, atau analisis mengenai induksi.",
+    "keyPoints": [
+      "Dalam dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, **induksi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **induksi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **induksi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-21-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-21",
+    "topicTitle": "Stage 21: Logika Dasar & Struktur Penalaran",
+    "stageId": 5,
+    "stageTitle": "05. Asumsi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, asumsi berarti anggapan yang diterima sebagai dasar berpikir atau bertindak tanpa selalu dibuktikan terlebih dahulu. ==Anggapan yang diterima sebagai dasar berpikir atau bertindak tanpa selalu dibuktikan terlebih dahulu==.\\n\\nDalam konteks dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Perlu dinyatakan dan diuji karena asumsi tersembunyi dapat mengarahkan kesimpulan. kolokasi: konsep asumsi, isu asumsi, atau analisis mengenai asumsi.",
+    "keyPoints": [
+      "Dalam dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, **asumsi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **asumsi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **asumsi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-21-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-21",
+    "topicTitle": "Stage 21: Logika Dasar & Struktur Penalaran",
+    "stageId": 6,
+    "stageTitle": "06. Postulat (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, postulat berarti pernyataan dasar yang diterima sebagai landasan suatu sistem pemikiran atau teori. ==Pernyataan dasar yang diterima sebagai landasan suatu sistem pemikiran atau teori==.\\n\\nDalam konteks dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan dalam matematika dan filsafat sebagai titik awal penalaran. kolokasi: konsep postulat, isu postulat, atau analisis mengenai postulat.",
+    "keyPoints": [
+      "Dalam dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, **postulat** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **postulat** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **postulat** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-21-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-21",
+    "topicTitle": "Stage 21: Logika Dasar & Struktur Penalaran",
+    "stageId": 7,
+    "stageTitle": "07. Implikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, implikasi berarti akibat atau konsekuensi yang terkandung atau mengikuti dari suatu tindakan, keadaan, atau pernyataan. ==Akibat atau konsekuensi yang terkandung atau mengikuti dari suatu tindakan, keadaan, atau pernyataan==.\\n\\nDalam konteks dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat berarti dampak praktis maupun hubungan logis; konteks harus diperjelas. kolokasi: konsep implikasi, isu implikasi, atau analisis mengenai implikasi.",
+    "keyPoints": [
+      "Dalam dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, **implikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **implikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **implikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-21-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-21",
+    "topicTitle": "Stage 21: Logika Dasar & Struktur Penalaran",
+    "stageId": 8,
+    "stageTitle": "08. Silogisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, silogisme berarti bentuk penalaran deduktif yang menarik kesimpulan dari dua premis yang berhubungan. ==Bentuk penalaran deduktif yang menarik kesimpulan dari dua premis yang berhubungan==.\\n\\nDalam konteks dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Ketepatan bentuk tidak otomatis menjamin premisnya benar. kolokasi: konsep silogisme, isu silogisme, atau analisis mengenai silogisme.",
+    "keyPoints": [
+      "Dalam dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, **silogisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **silogisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **silogisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-21-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-21",
+    "topicTitle": "Stage 21: Logika Dasar & Struktur Penalaran",
+    "stageId": 9,
+    "stageTitle": "09. Kontradiksi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kontradiksi berarti pertentangan antara dua pernyataan atau keadaan yang tidak dapat sama-sama benar dalam pengertian dan kondisi yang sama. ==Pertentangan antara dua pernyataan atau keadaan yang tidak dapat sama-sama benar dalam pengertian dan kondisi yang sama==.\\n\\nDalam konteks dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menunjukkan ketidakselarasan logis yang nyata, bukan sekadar perbedaan pendapat. kolokasi: konsep kontradiksi, isu kontradiksi, atau analisis mengenai kontradiksi.",
+    "keyPoints": [
+      "Dalam dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, **kontradiksi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kontradiksi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kontradiksi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-21-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-21",
+    "topicTitle": "Stage 21: Logika Dasar & Struktur Penalaran",
+    "stageId": 10,
+    "stageTitle": "10. Tautologi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, tautologi berarti pernyataan yang selalu benar berdasarkan bentuk logisnya; dalam penggunaan umum, pengulangan gagasan yang sama. ==Pernyataan yang selalu benar berdasarkan bentuk logisnya; dalam penggunaan umum, pengulangan gagasan yang sama==.\\n\\nDalam konteks dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Makna teknis logika berbeda dari penggunaan retoris yang berarti pengulangan tidak perlu. kolokasi: konsep tautologi, isu tautologi, atau analisis mengenai tautologi.",
+    "keyPoints": [
+      "Dalam dasar pemikiran, alur kesimpulan, dan hubungan antarpernyataan, **tautologi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **tautologi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **tautologi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-22-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-22",
+    "topicTitle": "Stage 22: Epistemologi & Filsafat Pengetahuan",
+    "stageId": 1,
+    "stageTitle": "01. Epistemologi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, epistemologi berarti cabang filsafat yang membahas hakikat, sumber, batas, dan keabsahan pengetahuan. ==Cabang filsafat yang membahas hakikat, sumber, batas, dan keabsahan pengetahuan==.\\n\\nDalam konteks asal, dasar, batas, dan pembenaran pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menelaah bagaimana sesuatu dapat diketahui dan dibenarkan. kolokasi: konsep epistemologi, isu epistemologi, atau analisis mengenai epistemologi.",
+    "keyPoints": [
+      "Dalam asal, dasar, batas, dan pembenaran pengetahuan, **epistemologi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **epistemologi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **epistemologi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-22-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-22",
+    "topicTitle": "Stage 22: Epistemologi & Filsafat Pengetahuan",
+    "stageId": 2,
+    "stageTitle": "02. Ontologi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ontologi berarti cabang filsafat yang mengkaji hakikat keberadaan atau apa yang ada. ==Cabang filsafat yang mengkaji hakikat keberadaan atau apa yang ada==.\\n\\nDalam konteks asal, dasar, batas, dan pembenaran pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari epistemologi yang membahas pengetahuan tentang keberadaan. kolokasi: konsep ontologi, isu ontologi, atau analisis mengenai ontologi.",
+    "keyPoints": [
+      "Dalam asal, dasar, batas, dan pembenaran pengetahuan, **ontologi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ontologi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ontologi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-22-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-22",
+    "topicTitle": "Stage 22: Epistemologi & Filsafat Pengetahuan",
+    "stageId": 3,
+    "stageTitle": "03. Aksiologi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, aksiologi berarti cabang filsafat yang membahas nilai, termasuk nilai etis dan estetis. ==Cabang filsafat yang membahas nilai, termasuk nilai etis dan estetis==.\\n\\nDalam konteks asal, dasar, batas, dan pembenaran pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mengkaji apa yang dianggap bernilai dan bagaimana nilai memengaruhi tindakan atau pengetahuan. kolokasi: konsep aksiologi, isu aksiologi, atau analisis mengenai aksiologi.",
+    "keyPoints": [
+      "Dalam asal, dasar, batas, dan pembenaran pengetahuan, **aksiologi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **aksiologi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **aksiologi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-22-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-22",
+    "topicTitle": "Stage 22: Epistemologi & Filsafat Pengetahuan",
+    "stageId": 4,
+    "stageTitle": "04. Heuristik (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, heuristik berarti kaidah atau cara praktis yang membantu menemukan atau memecahkan masalah. ==Kaidah atau cara praktis yang membantu menemukan atau memecahkan masalah==.\\n\\nDalam konteks asal, dasar, batas, dan pembenaran pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berguna sebagai strategi pencarian, tetapi tidak selalu menjamin jawaban yang benar. kolokasi: konsep heuristik, isu heuristik, atau analisis mengenai heuristik.",
+    "keyPoints": [
+      "Dalam asal, dasar, batas, dan pembenaran pengetahuan, **heuristik** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **heuristik** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **heuristik** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-22-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-22",
+    "topicTitle": "Stage 22: Epistemologi & Filsafat Pengetahuan",
+    "stageId": 5,
+    "stageTitle": "05. Hermeneutika (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, hermeneutika berarti ilmu atau metode penafsiran, terutama terhadap teks, simbol, dan makna. ==Ilmu atau metode penafsiran, terutama terhadap teks, simbol, dan makna==.\\n\\nDalam konteks asal, dasar, batas, dan pembenaran pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Memperhatikan bahasa, konteks, sejarah, serta posisi penafsir. kolokasi: konsep hermeneutika, isu hermeneutika, atau analisis mengenai hermeneutika.",
+    "keyPoints": [
+      "Dalam asal, dasar, batas, dan pembenaran pengetahuan, **hermeneutika** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **hermeneutika** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **hermeneutika** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-22-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-22",
+    "topicTitle": "Stage 22: Epistemologi & Filsafat Pengetahuan",
+    "stageId": 6,
+    "stageTitle": "06. Falsifiabilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, falsifiabilitas berarti sifat suatu teori atau pernyataan yang memungkinkan teori itu diuji dan berpotensi dibuktikan keliru. ==Sifat suatu teori atau pernyataan yang memungkinkan teori itu diuji dan berpotensi dibuktikan keliru==.\\n\\nDalam konteks asal, dasar, batas, dan pembenaran pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Penting dalam filsafat ilmu; teori yang tidak mungkin diuji secara empiris memiliki keterbatasan sebagai teori ilmiah. kolokasi: konsep falsifiabilitas, isu falsifiabilitas, atau analisis mengenai falsifiabilitas.",
+    "keyPoints": [
+      "Dalam asal, dasar, batas, dan pembenaran pengetahuan, **falsifiabilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **falsifiabilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **falsifiabilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-22-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-22",
+    "topicTitle": "Stage 22: Epistemologi & Filsafat Pengetahuan",
+    "stageId": 7,
+    "stageTitle": "07. Epistemik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, epistemik berarti berkaitan dengan pengetahuan, pembenaran, atau cara mengetahui. ==Berkaitan dengan pengetahuan, pembenaran, atau cara mengetahui==.\\n\\nDalam konteks asal, dasar, batas, dan pembenaran pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam istilah seperti otoritas epistemik dan ketidakadilan epistemik. kolokasi: pendekatan epistemik, karakteristik epistemik, atau sifat yang epistemik.",
+    "keyPoints": [
+      "Dalam asal, dasar, batas, dan pembenaran pengetahuan, pendekatan yang **epistemik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **epistemik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **epistemik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-22-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-22",
+    "topicTitle": "Stage 22: Epistemologi & Filsafat Pengetahuan",
+    "stageId": 8,
+    "stageTitle": "08. Empiris (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, empiris berarti berdasarkan pengamatan, pengalaman, atau bukti yang dapat diperiksa. ==Berdasarkan pengamatan, pengalaman, atau bukti yang dapat diperiksa==.\\n\\nDalam konteks asal, dasar, batas, dan pembenaran pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari spekulatif yang belum ditopang pengamatan memadai. kolokasi: pendekatan empiris, karakteristik empiris, atau sifat yang empiris.",
+    "keyPoints": [
+      "Dalam asal, dasar, batas, dan pembenaran pengetahuan, pendekatan yang **empiris** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **empiris** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **empiris** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-22-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-22",
+    "topicTitle": "Stage 22: Epistemologi & Filsafat Pengetahuan",
+    "stageId": 9,
+    "stageTitle": "09. Apriori (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, apriori berarti diperoleh atau dianggap benar tanpa bergantung pada pengalaman indrawi tertentu. ==Diperoleh atau dianggap benar tanpa bergantung pada pengalaman indrawi tertentu==.\\n\\nDalam konteks asal, dasar, batas, dan pembenaran pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam filsafat dibedakan dari aposteriori yang bergantung pada pengalaman. kolokasi: pendekatan apriori, karakteristik apriori, atau sifat yang apriori.",
+    "keyPoints": [
+      "Dalam asal, dasar, batas, dan pembenaran pengetahuan, pendekatan yang **apriori** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **apriori** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **apriori** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-22-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-22",
+    "topicTitle": "Stage 22: Epistemologi & Filsafat Pengetahuan",
+    "stageId": 10,
+    "stageTitle": "10. Aposteriori (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, aposteriori berarti diperoleh atau diketahui berdasarkan pengalaman atau pengamatan. ==Diperoleh atau diketahui berdasarkan pengalaman atau pengamatan==.\\n\\nDalam konteks asal, dasar, batas, dan pembenaran pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk pengetahuan yang memerlukan bukti pengalaman, bukan semata penalaran. kolokasi: pendekatan aposteriori, karakteristik aposteriori, atau sifat yang aposteriori.",
+    "keyPoints": [
+      "Dalam asal, dasar, batas, dan pembenaran pengetahuan, pendekatan yang **aposteriori** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **aposteriori** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **aposteriori** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-23-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-23",
+    "topicTitle": "Stage 23: Logika Lanjut & Kekeliruan Berpikir",
+    "stageId": 1,
+    "stageTitle": "01. Dikotomi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, dikotomi berarti pembagian menjadi dua kelompok atau bagian yang dipertentangkan. ==Pembagian menjadi dua kelompok atau bagian yang dipertentangkan==.\\n\\nDalam konteks konsistensi, validitas argumen, dan pola penalaran yang keliru, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berguna untuk membedakan dua kategori, tetapi dapat menyederhanakan persoalan jika pilihan sebenarnya lebih beragam. kolokasi: konsep dikotomi, isu dikotomi, atau analisis mengenai dikotomi.",
+    "keyPoints": [
+      "Dalam konsistensi, validitas argumen, dan pola penalaran yang keliru, **dikotomi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **dikotomi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **dikotomi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-23-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-23",
+    "topicTitle": "Stage 23: Logika Lanjut & Kekeliruan Berpikir",
+    "stageId": 2,
+    "stageTitle": "02. Inkonsistensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, inkonsistensi berarti ketidakkonsistenan atau keadaan tidak selaras antara pernyataan, tindakan, atau prinsip. ==Ketidakkonsistenan atau keadaan tidak selaras antara pernyataan, tindakan, atau prinsip==.\\n\\nDalam konteks konsistensi, validitas argumen, dan pola penalaran yang keliru, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan pertentangan internal dalam satu rangkaian gagasan atau perilaku. kolokasi: konsep inkonsistensi, isu inkonsistensi, atau analisis mengenai inkonsistensi.",
+    "keyPoints": [
+      "Dalam konsistensi, validitas argumen, dan pola penalaran yang keliru, **inkonsistensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **inkonsistensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **inkonsistensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-23-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-23",
+    "topicTitle": "Stage 23: Logika Lanjut & Kekeliruan Berpikir",
+    "stageId": 3,
+    "stageTitle": "03. Koherensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, koherensi berarti keterpaduan hubungan logis antarbagian sehingga membentuk keseluruhan yang masuk akal. ==Keterpaduan hubungan logis antarbagian sehingga membentuk keseluruhan yang masuk akal==.\\n\\nDalam konteks konsistensi, validitas argumen, dan pola penalaran yang keliru, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari konsistensi yang menekankan ketiadaan pertentangan; koherensi juga menuntut keterhubungan. kolokasi: konsep koherensi, isu koherensi, atau analisis mengenai koherensi.",
+    "keyPoints": [
+      "Dalam konsistensi, validitas argumen, dan pola penalaran yang keliru, **koherensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **koherensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **koherensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-23-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-23",
+    "topicTitle": "Stage 23: Logika Lanjut & Kekeliruan Berpikir",
+    "stageId": 4,
+    "stageTitle": "04. Konsistensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konsistensi berarti ketetapan atau kesesuaian yang tidak saling bertentangan dalam prinsip, tindakan, atau pernyataan. ==Ketetapan atau kesesuaian yang tidak saling bertentangan dalam prinsip, tindakan, atau pernyataan==.\\n\\nDalam konteks konsistensi, validitas argumen, dan pola penalaran yang keliru, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan keselarasan dari satu bagian ke bagian lain atau dari waktu ke waktu. kolokasi: konsep konsistensi, isu konsistensi, atau analisis mengenai konsistensi.",
+    "keyPoints": [
+      "Dalam konsistensi, validitas argumen, dan pola penalaran yang keliru, **konsistensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konsistensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konsistensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-23-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-23",
+    "topicTitle": "Stage 23: Logika Lanjut & Kekeliruan Berpikir",
+    "stageId": 5,
+    "stageTitle": "05. Kesesatan Nalar (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kesesatan nalar berarti kekeliruan dalam penalaran yang membuat argumen tampak meyakinkan tetapi tidak sah atau lemah. ==Kekeliruan dalam penalaran yang membuat argumen tampak meyakinkan tetapi tidak sah atau lemah==.\\n\\nDalam konteks konsistensi, validitas argumen, dan pola penalaran yang keliru, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat terjadi karena bentuk logis yang salah atau penggunaan bukti yang menyesatkan. kolokasi: konsep kesesatan nalar, isu kesesatan nalar, atau analisis mengenai kesesatan nalar.",
+    "keyPoints": [
+      "Dalam konsistensi, validitas argumen, dan pola penalaran yang keliru, **kesesatan nalar** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kesesatan nalar** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kesesatan nalar** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-23-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-23",
+    "topicTitle": "Stage 23: Logika Lanjut & Kekeliruan Berpikir",
+    "stageId": 6,
+    "stageTitle": "06. Sofisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sofisme berarti cara berargumentasi yang tampak masuk akal tetapi mengandung kekeliruan dan sering digunakan untuk menyesatkan. ==Cara berargumentasi yang tampak masuk akal tetapi mengandung kekeliruan dan sering digunakan untuk menyesatkan==.\\n\\nDalam konteks konsistensi, validitas argumen, dan pola penalaran yang keliru, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Lebih menekankan argumen menipu atau kecerdikan semu daripada kesalahan yang tidak disengaja. kolokasi: konsep sofisme, isu sofisme, atau analisis mengenai sofisme.",
+    "keyPoints": [
+      "Dalam konsistensi, validitas argumen, dan pola penalaran yang keliru, **sofisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sofisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sofisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-23-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-23",
+    "topicTitle": "Stage 23: Logika Lanjut & Kekeliruan Berpikir",
+    "stageId": 7,
+    "stageTitle": "07. Ekuivokasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ekuivokasi berarti penggunaan satu kata atau ungkapan dengan makna berbeda dalam satu penalaran sehingga menimbulkan kekeliruan. ==Penggunaan satu kata atau ungkapan dengan makna berbeda dalam satu penalaran sehingga menimbulkan kekeliruan==.\\n\\nDalam konteks konsistensi, validitas argumen, dan pola penalaran yang keliru, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering menjadi sumber ambiguitas dan kesimpulan yang tidak sah. kolokasi: konsep ekuivokasi, isu ekuivokasi, atau analisis mengenai ekuivokasi.",
+    "keyPoints": [
+      "Dalam konsistensi, validitas argumen, dan pola penalaran yang keliru, **ekuivokasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ekuivokasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ekuivokasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-23-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-23",
+    "topicTitle": "Stage 23: Logika Lanjut & Kekeliruan Berpikir",
+    "stageId": 8,
+    "stageTitle": "08. Reduksionis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, reduksionis berarti cenderung menjelaskan persoalan kompleks dengan mereduksinya menjadi satu atau sedikit faktor. ==Cenderung menjelaskan persoalan kompleks dengan mereduksinya menjadi satu atau sedikit faktor==.\\n\\nDalam konteks konsistensi, validitas argumen, dan pola penalaran yang keliru, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat membantu menyederhanakan analisis, tetapi berisiko mengabaikan hubungan dan konteks penting. kolokasi: pendekatan reduksionis, karakteristik reduksionis, atau sifat yang reduksionis.",
+    "keyPoints": [
+      "Dalam konsistensi, validitas argumen, dan pola penalaran yang keliru, pendekatan yang **reduksionis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **reduksionis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **reduksionis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-23-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-23",
+    "topicTitle": "Stage 23: Logika Lanjut & Kekeliruan Berpikir",
+    "stageId": 9,
+    "stageTitle": "09. Lompatan Logika (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, lompatan logika berarti penarikan kesimpulan yang tidak mengikuti secara logis dari alasan atau premis sebelumnya. ==Penarikan kesimpulan yang tidak mengikuti secara logis dari alasan atau premis sebelumnya==.\\n\\nDalam konteks konsistensi, validitas argumen, dan pola penalaran yang keliru, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk mengkritik kesimpulan yang tidak didukung hubungan logis yang memadai. kolokasi: konsep lompatan logika, isu lompatan logika, atau analisis mengenai lompatan logika.",
+    "keyPoints": [
+      "Dalam konsistensi, validitas argumen, dan pola penalaran yang keliru, **lompatan logika** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **lompatan logika** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **lompatan logika** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-23-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-23",
+    "topicTitle": "Stage 23: Logika Lanjut & Kekeliruan Berpikir",
+    "stageId": 10,
+    "stageTitle": "10. Presuposisi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, presuposisi berarti anggapan awal yang tersirat dan dianggap telah diterima dalam suatu pernyataan atau wacana. ==Anggapan awal yang tersirat dan dianggap telah diterima dalam suatu pernyataan atau wacana==.\\n\\nDalam konteks konsistensi, validitas argumen, dan pola penalaran yang keliru, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat memengaruhi arah diskusi meskipun tidak dinyatakan secara terbuka. kolokasi: konsep presuposisi, isu presuposisi, atau analisis mengenai presuposisi.",
+    "keyPoints": [
+      "Dalam konsistensi, validitas argumen, dan pola penalaran yang keliru, **presuposisi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **presuposisi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **presuposisi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-24-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-24",
+    "topicTitle": "Stage 24: Filsafat, Hakikat & Keberadaan",
+    "stageId": 1,
+    "stageTitle": "01. Eksistensial (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, eksistensial berarti berkaitan dengan keberadaan atau pengalaman manusia sebagai individu yang hidup dan memilih. ==Berkaitan dengan keberadaan atau pengalaman manusia sebagai individu yang hidup dan memilih==.\\n\\nDalam konteks konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan dalam pembahasan makna hidup, kebebasan, dan tanggung jawab. kolokasi: pendekatan eksistensial, karakteristik eksistensial, atau sifat yang eksistensial.",
+    "keyPoints": [
+      "Dalam konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, pendekatan yang **eksistensial** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **eksistensial** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **eksistensial** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-24-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-24",
+    "topicTitle": "Stage 24: Filsafat, Hakikat & Keberadaan",
+    "stageId": 2,
+    "stageTitle": "02. Ontologis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, ontologis berarti berhubungan dengan hakikat keberadaan atau struktur dasar realitas. ==Berhubungan dengan hakikat keberadaan atau struktur dasar realitas==.\\n\\nDalam konteks konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk pertanyaan tentang apa yang sungguh-sungguh ada. kolokasi: pendekatan ontologis, karakteristik ontologis, atau sifat yang ontologis.",
+    "keyPoints": [
+      "Dalam konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, pendekatan yang **ontologis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **ontologis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **ontologis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-24-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-24",
+    "topicTitle": "Stage 24: Filsafat, Hakikat & Keberadaan",
+    "stageId": 3,
+    "stageTitle": "03. Teleologis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, teleologis berarti berkaitan dengan tujuan akhir atau maksud yang dianggap mengarahkan suatu proses. ==Berkaitan dengan tujuan akhir atau maksud yang dianggap mengarahkan suatu proses==.\\n\\nDalam konteks konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan ketika menjelaskan sesuatu berdasarkan tujuan atau hasil akhirnya. kolokasi: pendekatan teleologis, karakteristik teleologis, atau sifat yang teleologis.",
+    "keyPoints": [
+      "Dalam konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, pendekatan yang **teleologis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **teleologis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **teleologis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-24-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-24",
+    "topicTitle": "Stage 24: Filsafat, Hakikat & Keberadaan",
+    "stageId": 4,
+    "stageTitle": "04. Esensial (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, esensial berarti mendasar atau sangat penting sehingga menjadi bagian hakiki dari sesuatu. ==Mendasar atau sangat penting sehingga menjadi bagian hakiki dari sesuatu==.\\n\\nDalam konteks konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan unsur inti; berbeda dari tambahan atau pelengkap. kolokasi: pendekatan esensial, karakteristik esensial, atau sifat yang esensial.",
+    "keyPoints": [
+      "Dalam konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, pendekatan yang **esensial** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **esensial** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **esensial** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-24-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-24",
+    "topicTitle": "Stage 24: Filsafat, Hakikat & Keberadaan",
+    "stageId": 5,
+    "stageTitle": "05. Substansial (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, substansial berarti bersifat pokok, penting, atau cukup besar; berkaitan dengan substansi. ==Bersifat pokok, penting, atau cukup besar; berkaitan dengan substansi==.\\n\\nDalam konteks konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk perubahan atau perbedaan yang nyata, bukan sekadar kosmetik. kolokasi: pendekatan substansial, karakteristik substansial, atau sifat yang substansial.",
+    "keyPoints": [
+      "Dalam konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, pendekatan yang **substansial** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **substansial** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **substansial** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-24-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-24",
+    "topicTitle": "Stage 24: Filsafat, Hakikat & Keberadaan",
+    "stageId": 6,
+    "stageTitle": "06. Kontingen (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kontingen berarti bergantung pada keadaan tertentu dan dapat terjadi atau tidak terjadi. ==Bergantung pada keadaan tertentu dan dapat terjadi atau tidak terjadi==.\\n\\nDalam konteks konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam filsafat dibedakan dari sesuatu yang niscaya atau harus ada. kolokasi: pendekatan kontingen, karakteristik kontingen, atau sifat yang kontingen.",
+    "keyPoints": [
+      "Dalam konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, pendekatan yang **kontingen** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kontingen** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kontingen** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-24-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-24",
+    "topicTitle": "Stage 24: Filsafat, Hakikat & Keberadaan",
+    "stageId": 7,
+    "stageTitle": "07. Universal (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, universal berarti berlaku atau mencakup seluruh orang, benda, atau keadaan dalam lingkup tertentu. ==Berlaku atau mencakup seluruh orang, benda, atau keadaan dalam lingkup tertentu==.\\n\\nDalam konteks konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Perlu menyebut lingkupnya agar klaim universal tidak terlalu luas. kolokasi: pendekatan universal, karakteristik universal, atau sifat yang universal.",
+    "keyPoints": [
+      "Dalam konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, pendekatan yang **universal** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **universal** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **universal** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-24-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-24",
+    "topicTitle": "Stage 24: Filsafat, Hakikat & Keberadaan",
+    "stageId": 8,
+    "stageTitle": "08. Partikular (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, partikular berarti bersifat khusus atau terbatas pada bagian, individu, atau keadaan tertentu. ==Bersifat khusus atau terbatas pada bagian, individu, atau keadaan tertentu==.\\n\\nDalam konteks konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berlawanan dengan universal; menekankan kekhususan kasus. kolokasi: pendekatan partikular, karakteristik partikular, atau sifat yang partikular.",
+    "keyPoints": [
+      "Dalam konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, pendekatan yang **partikular** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **partikular** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **partikular** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-24-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-24",
+    "topicTitle": "Stage 24: Filsafat, Hakikat & Keberadaan",
+    "stageId": 9,
+    "stageTitle": "09. Relativisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, relativisme berarti pandangan bahwa kebenaran atau nilai bergantung pada kerangka, budaya, atau sudut pandang tertentu. ==Pandangan bahwa kebenaran atau nilai bergantung pada kerangka, budaya, atau sudut pandang tertentu==.\\n\\nDalam konteks konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Tidak selalu berarti semua pandangan sama benarnya; versi dan bidang penerapannya perlu dibedakan. kolokasi: konsep relativisme, isu relativisme, atau analisis mengenai relativisme.",
+    "keyPoints": [
+      "Dalam konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, **relativisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **relativisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **relativisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-24-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-24",
+    "topicTitle": "Stage 24: Filsafat, Hakikat & Keberadaan",
+    "stageId": 10,
+    "stageTitle": "10. Absolutisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, absolutisme berarti pandangan bahwa prinsip atau nilai tertentu berlaku mutlak dan tidak bergantung pada keadaan. ==Pandangan bahwa prinsip atau nilai tertentu berlaku mutlak dan tidak bergantung pada keadaan==.\\n\\nDalam konteks konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berlawanan dengan relativisme dalam sejumlah perdebatan filsafat dan etika. kolokasi: konsep absolutisme, isu absolutisme, atau analisis mengenai absolutisme.",
+    "keyPoints": [
+      "Dalam konsep tentang realitas, esensi, tujuan, dan sifat keberadaan, **absolutisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **absolutisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **absolutisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-25-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-25",
+    "topicTitle": "Stage 25: Teori Sosial & Relasi Kekuasaan",
+    "stageId": 1,
+    "stageTitle": "01. Hegemoni (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, hegemoni berarti pengaruh atau dominasi suatu kelompok atas kelompok lain yang dapat diterima sebagai sesuatu yang wajar. ==Pengaruh atau dominasi suatu kelompok atas kelompok lain yang dapat diterima sebagai sesuatu yang wajar==.\\n\\nDalam konteks struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam teori sosial sering bekerja melalui persetujuan, budaya, dan gagasan, bukan hanya paksaan. kolokasi: konsep hegemoni, isu hegemoni, atau analisis mengenai hegemoni.",
+    "keyPoints": [
+      "Dalam struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, **hegemoni** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **hegemoni** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **hegemoni** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-25-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-25",
+    "topicTitle": "Stage 25: Teori Sosial & Relasi Kekuasaan",
+    "stageId": 2,
+    "stageTitle": "02. Dominasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, dominasi berarti penguasaan atau pengaruh yang sangat kuat terhadap pihak atau keadaan lain. ==Penguasaan atau pengaruh yang sangat kuat terhadap pihak atau keadaan lain==.\\n\\nDalam konteks struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat bersifat politik, ekonomi, sosial, atau budaya. kolokasi: konsep dominasi, isu dominasi, atau analisis mengenai dominasi.",
+    "keyPoints": [
+      "Dalam struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, **dominasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **dominasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **dominasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-25-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-25",
+    "topicTitle": "Stage 25: Teori Sosial & Relasi Kekuasaan",
+    "stageId": 3,
+    "stageTitle": "03. Subordinasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, subordinasi berarti penempatan seseorang atau kelompok pada kedudukan yang lebih rendah atau berada di bawah kuasa pihak lain. ==Penempatan seseorang atau kelompok pada kedudukan yang lebih rendah atau berada di bawah kuasa pihak lain==.\\n\\nDalam konteks struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk membahas hubungan bertingkat dan ketimpangan kewenangan. kolokasi: konsep subordinasi, isu subordinasi, atau analisis mengenai subordinasi.",
+    "keyPoints": [
+      "Dalam struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, **subordinasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **subordinasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **subordinasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-25-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-25",
+    "topicTitle": "Stage 25: Teori Sosial & Relasi Kekuasaan",
+    "stageId": 4,
+    "stageTitle": "04. Marginalisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, marginalisasi berarti proses menempatkan individu atau kelompok ke posisi pinggir sehingga akses dan pengaruhnya berkurang. ==Proses menempatkan individu atau kelompok ke posisi pinggir sehingga akses dan pengaruhnya berkurang==.\\n\\nDalam konteks struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering berkaitan dengan ketidaksetaraan dalam ekonomi, politik, dan budaya. kolokasi: konsep marginalisasi, isu marginalisasi, atau analisis mengenai marginalisasi.",
+    "keyPoints": [
+      "Dalam struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, **marginalisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **marginalisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **marginalisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-25-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-25",
+    "topicTitle": "Stage 25: Teori Sosial & Relasi Kekuasaan",
+    "stageId": 5,
+    "stageTitle": "05. Segregasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, segregasi berarti pemisahan kelompok masyarakat berdasarkan ciri tertentu seperti ras, agama, atau status sosial. ==Pemisahan kelompok masyarakat berdasarkan ciri tertentu seperti ras, agama, atau status sosial==.\\n\\nDalam konteks struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat berlangsung secara formal maupun informal dan membatasi interaksi atau akses. kolokasi: konsep segregasi, isu segregasi, atau analisis mengenai segregasi.",
+    "keyPoints": [
+      "Dalam struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, **segregasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **segregasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **segregasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-25-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-25",
+    "topicTitle": "Stage 25: Teori Sosial & Relasi Kekuasaan",
+    "stageId": 6,
+    "stageTitle": "06. Alienasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, alienasi berarti keadaan terasing atau terpisah dari lingkungan, hasil kerja, diri sendiri, atau masyarakat. ==Keadaan terasing atau terpisah dari lingkungan, hasil kerja, diri sendiri, atau masyarakat==.\\n\\nDalam konteks struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam teori sosial dapat menggambarkan keterasingan akibat struktur kerja atau hubungan sosial. kolokasi: konsep alienasi, isu alienasi, atau analisis mengenai alienasi.",
+    "keyPoints": [
+      "Dalam struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, **alienasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **alienasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **alienasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-25-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-25",
+    "topicTitle": "Stage 25: Teori Sosial & Relasi Kekuasaan",
+    "stageId": 7,
+    "stageTitle": "07. Emansipasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, emansipasi berarti pembebasan dari keadaan terikat, tertindas, atau tidak memiliki hak yang setara. ==Pembebasan dari keadaan terikat, tertindas, atau tidak memiliki hak yang setara==.\\n\\nDalam konteks struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan proses memperoleh kebebasan dan kesetaraan. kolokasi: konsep emansipasi, isu emansipasi, atau analisis mengenai emansipasi.",
+    "keyPoints": [
+      "Dalam struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, **emansipasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **emansipasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **emansipasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-25-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-25",
+    "topicTitle": "Stage 25: Teori Sosial & Relasi Kekuasaan",
+    "stageId": 8,
+    "stageTitle": "08. Egaliter (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, egaliter berarti menganggap atau memperlakukan orang-orang sebagai setara. ==Menganggap atau memperlakukan orang-orang sebagai setara==.\\n\\nDalam konteks struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk struktur atau sikap yang menolak hierarki yang tidak beralasan. kolokasi: pendekatan egaliter, karakteristik egaliter, atau sifat yang egaliter.",
+    "keyPoints": [
+      "Dalam struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, pendekatan yang **egaliter** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **egaliter** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **egaliter** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-25-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-25",
+    "topicTitle": "Stage 25: Teori Sosial & Relasi Kekuasaan",
+    "stageId": 9,
+    "stageTitle": "09. Kolektivisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kolektivisme berarti paham yang mengutamakan kepentingan atau tujuan kelompok daripada kepentingan individu. ==Paham yang mengutamakan kepentingan atau tujuan kelompok daripada kepentingan individu==.\\n\\nDalam konteks struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari individualisme yang menempatkan individu sebagai pusat pertimbangan. kolokasi: konsep kolektivisme, isu kolektivisme, atau analisis mengenai kolektivisme.",
+    "keyPoints": [
+      "Dalam struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, **kolektivisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kolektivisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kolektivisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-25-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-25",
+    "topicTitle": "Stage 25: Teori Sosial & Relasi Kekuasaan",
+    "stageId": 10,
+    "stageTitle": "10. Individualisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, individualisme berarti paham yang menekankan kebebasan, hak, atau kepentingan individu. ==Paham yang menekankan kebebasan, hak, atau kepentingan individu==.\\n\\nDalam konteks struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam bentuk tertentu dapat berjalan bersama tanggung jawab sosial, bukan selalu berarti egoisme. kolokasi: konsep individualisme, isu individualisme, atau analisis mengenai individualisme.",
+    "keyPoints": [
+      "Dalam struktur masyarakat, ketimpangan, dominasi, dan perubahan sosial, **individualisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **individualisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **individualisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-26-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-26",
+    "topicTitle": "Stage 26: Sistem Politik & Bentuk Kekuasaan",
+    "stageId": 1,
+    "stageTitle": "01. Oligarki (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, oligarki berarti bentuk kekuasaan yang berada di tangan kelompok kecil yang memiliki pengaruh besar. ==Bentuk kekuasaan yang berada di tangan kelompok kecil yang memiliki pengaruh besar==.\\n\\nDalam konteks tipe pemerintahan, distribusi kuasa, dan partisipasi politik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan pemusatan kuasa pada segelintir pihak, sering karena kekayaan atau jaringan. kolokasi: konsep oligarki, isu oligarki, atau analisis mengenai oligarki.",
+    "keyPoints": [
+      "Dalam tipe pemerintahan, distribusi kuasa, dan partisipasi politik, **oligarki** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **oligarki** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **oligarki** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-26-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-26",
+    "topicTitle": "Stage 26: Sistem Politik & Bentuk Kekuasaan",
+    "stageId": 2,
+    "stageTitle": "02. Plutokrasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, plutokrasi berarti sistem kekuasaan yang didominasi oleh orang-orang kaya. ==Sistem kekuasaan yang didominasi oleh orang-orang kaya==.\\n\\nDalam konteks tipe pemerintahan, distribusi kuasa, dan partisipasi politik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan pengaruh kekayaan terhadap kendali politik. kolokasi: konsep plutokrasi, isu plutokrasi, atau analisis mengenai plutokrasi.",
+    "keyPoints": [
+      "Dalam tipe pemerintahan, distribusi kuasa, dan partisipasi politik, **plutokrasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **plutokrasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **plutokrasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-26-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-26",
+    "topicTitle": "Stage 26: Sistem Politik & Bentuk Kekuasaan",
+    "stageId": 3,
+    "stageTitle": "03. Meritokrasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, meritokrasi berarti sistem yang memberikan kedudukan atau penghargaan berdasarkan kemampuan dan prestasi. ==Sistem yang memberikan kedudukan atau penghargaan berdasarkan kemampuan dan prestasi==.\\n\\nDalam konteks tipe pemerintahan, distribusi kuasa, dan partisipasi politik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Idealnya menggunakan ukuran yang adil; praktiknya perlu diperiksa apakah akses kesempatan setara. kolokasi: konsep meritokrasi, isu meritokrasi, atau analisis mengenai meritokrasi.",
+    "keyPoints": [
+      "Dalam tipe pemerintahan, distribusi kuasa, dan partisipasi politik, **meritokrasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **meritokrasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **meritokrasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-26-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-26",
+    "topicTitle": "Stage 26: Sistem Politik & Bentuk Kekuasaan",
+    "stageId": 4,
+    "stageTitle": "04. Demokrasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, demokrasi berarti bentuk pemerintahan yang menempatkan kedaulatan atau kekuasaan politik pada rakyat. ==Bentuk pemerintahan yang menempatkan kedaulatan atau kekuasaan politik pada rakyat==.\\n\\nDalam konteks tipe pemerintahan, distribusi kuasa, dan partisipasi politik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat diwujudkan melalui perwakilan, partisipasi langsung, dan mekanisme akuntabilitas. kolokasi: konsep demokrasi, isu demokrasi, atau analisis mengenai demokrasi.",
+    "keyPoints": [
+      "Dalam tipe pemerintahan, distribusi kuasa, dan partisipasi politik, **demokrasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **demokrasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **demokrasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-26-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-26",
+    "topicTitle": "Stage 26: Sistem Politik & Bentuk Kekuasaan",
+    "stageId": 5,
+    "stageTitle": "05. Otoritarian (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, otoritarian berarti bersifat memusatkan kekuasaan dan membatasi kebebasan atau partisipasi politik. ==Bersifat memusatkan kekuasaan dan membatasi kebebasan atau partisipasi politik==.\\n\\nDalam konteks tipe pemerintahan, distribusi kuasa, dan partisipasi politik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk rezim atau gaya pemerintahan yang menekankan kendali dari atas. kolokasi: pendekatan otoritarian, karakteristik otoritarian, atau sifat yang otoritarian.",
+    "keyPoints": [
+      "Dalam tipe pemerintahan, distribusi kuasa, dan partisipasi politik, pendekatan yang **otoritarian** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **otoritarian** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **otoritarian** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-26-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-26",
+    "topicTitle": "Stage 26: Sistem Politik & Bentuk Kekuasaan",
+    "stageId": 6,
+    "stageTitle": "06. Populisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, populisme berarti pendekatan politik yang mengklaim mewakili rakyat biasa dalam pertentangan dengan elite. ==Pendekatan politik yang mengklaim mewakili rakyat biasa dalam pertentangan dengan elite==.\\n\\nDalam konteks tipe pemerintahan, distribusi kuasa, dan partisipasi politik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat muncul dalam spektrum ideologi berbeda; tidak otomatis sama dengan demokrasi langsung. kolokasi: konsep populisme, isu populisme, atau analisis mengenai populisme.",
+    "keyPoints": [
+      "Dalam tipe pemerintahan, distribusi kuasa, dan partisipasi politik, **populisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **populisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **populisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-26-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-26",
+    "topicTitle": "Stage 26: Sistem Politik & Bentuk Kekuasaan",
+    "stageId": 7,
+    "stageTitle": "07. Representasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, representasi berarti perbuatan atau keadaan mewakili seseorang, kelompok, atau kepentingan. ==Perbuatan atau keadaan mewakili seseorang, kelompok, atau kepentingan==.\\n\\nDalam konteks tipe pemerintahan, distribusi kuasa, dan partisipasi politik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam politik berkaitan dengan siapa yang berbicara dan bertindak atas nama masyarakat. kolokasi: konsep representasi, isu representasi, atau analisis mengenai representasi.",
+    "keyPoints": [
+      "Dalam tipe pemerintahan, distribusi kuasa, dan partisipasi politik, **representasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **representasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **representasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-26-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-26",
+    "topicTitle": "Stage 26: Sistem Politik & Bentuk Kekuasaan",
+    "stageId": 8,
+    "stageTitle": "08. Partisipasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, partisipasi berarti keikutsertaan seseorang atau kelompok dalam suatu kegiatan atau proses. ==Keikutsertaan seseorang atau kelompok dalam suatu kegiatan atau proses==.\\n\\nDalam konteks tipe pemerintahan, distribusi kuasa, dan partisipasi politik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam politik mencakup keterlibatan dalam keputusan, pemilihan, dan pengawasan. kolokasi: konsep partisipasi, isu partisipasi, atau analisis mengenai partisipasi.",
+    "keyPoints": [
+      "Dalam tipe pemerintahan, distribusi kuasa, dan partisipasi politik, **partisipasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **partisipasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **partisipasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-26-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-26",
+    "topicTitle": "Stage 26: Sistem Politik & Bentuk Kekuasaan",
+    "stageId": 9,
+    "stageTitle": "09. Deliberatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, deliberatif berarti berkaitan dengan pertimbangan atau pembahasan bersama secara cermat sebelum mengambil keputusan. ==Berkaitan dengan pertimbangan atau pembahasan bersama secara cermat sebelum mengambil keputusan==.\\n\\nDalam konteks tipe pemerintahan, distribusi kuasa, dan partisipasi politik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam demokrasi menekankan pertukaran alasan dan diskusi publik, bukan sekadar pemungutan suara. kolokasi: pendekatan deliberatif, karakteristik deliberatif, atau sifat yang deliberatif.",
+    "keyPoints": [
+      "Dalam tipe pemerintahan, distribusi kuasa, dan partisipasi politik, pendekatan yang **deliberatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **deliberatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **deliberatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-26-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-26",
+    "topicTitle": "Stage 26: Sistem Politik & Bentuk Kekuasaan",
+    "stageId": 10,
+    "stageTitle": "10. Elektabilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, elektabilitas berarti tingkat keterpilihan seseorang atau calon dalam pemilihan. ==Tingkat keterpilihan seseorang atau calon dalam pemilihan==.\\n\\nDalam konteks tipe pemerintahan, distribusi kuasa, dan partisipasi politik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering diperkirakan melalui survei; berbeda dari popularitas yang mengukur tingkat dikenal atau disukai. kolokasi: konsep elektabilitas, isu elektabilitas, atau analisis mengenai elektabilitas.",
+    "keyPoints": [
+      "Dalam tipe pemerintahan, distribusi kuasa, dan partisipasi politik, **elektabilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **elektabilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **elektabilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-27-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-27",
+    "topicTitle": "Stage 27: Ekonomi Mikro & Mekanisme Pasar",
+    "stageId": 1,
+    "stageTitle": "01. Eksternalitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, eksternalitas berarti dampak kegiatan ekonomi terhadap pihak lain yang tidak sepenuhnya tercermin dalam harga pasar. ==Dampak kegiatan ekonomi terhadap pihak lain yang tidak sepenuhnya tercermin dalam harga pasar==.\\n\\nDalam konteks insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat berupa biaya atau manfaat yang ditanggung pihak di luar transaksi. kolokasi: konsep eksternalitas, isu eksternalitas, atau analisis mengenai eksternalitas.",
+    "keyPoints": [
+      "Dalam insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, **eksternalitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **eksternalitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **eksternalitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-27-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-27",
+    "topicTitle": "Stage 27: Ekonomi Mikro & Mekanisme Pasar",
+    "stageId": 2,
+    "stageTitle": "02. Elastisitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, elastisitas berarti ukuran kepekaan perubahan suatu variabel terhadap perubahan variabel lain. ==Ukuran kepekaan perubahan suatu variabel terhadap perubahan variabel lain==.\\n\\nDalam konteks insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam ekonomi sering mengukur respons permintaan atau penawaran terhadap harga atau pendapatan. kolokasi: konsep elastisitas, isu elastisitas, atau analisis mengenai elastisitas.",
+    "keyPoints": [
+      "Dalam insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, **elastisitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **elastisitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **elastisitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-27-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-27",
+    "topicTitle": "Stage 27: Ekonomi Mikro & Mekanisme Pasar",
+    "stageId": 3,
+    "stageTitle": "03. Utilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, utilitas berarti tingkat kepuasan atau manfaat yang diperoleh seseorang dari konsumsi barang atau jasa. ==Tingkat kepuasan atau manfaat yang diperoleh seseorang dari konsumsi barang atau jasa==.\\n\\nDalam konteks insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Konsep ekonomi untuk menjelaskan preferensi dan pilihan, bukan ukuran kebahagiaan universal. kolokasi: konsep utilitas, isu utilitas, atau analisis mengenai utilitas.",
+    "keyPoints": [
+      "Dalam insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, **utilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **utilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **utilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-27-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-27",
+    "topicTitle": "Stage 27: Ekonomi Mikro & Mekanisme Pasar",
+    "stageId": 4,
+    "stageTitle": "04. Surplus (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, surplus berarti kelebihan jumlah, nilai, atau hasil dibandingkan kebutuhan atau kewajiban. ==Kelebihan jumlah, nilai, atau hasil dibandingkan kebutuhan atau kewajiban==.\\n\\nDalam konteks insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam ekonomi dapat berarti surplus konsumen, produsen, perdagangan, atau anggaran. kolokasi: konsep surplus, isu surplus, atau analisis mengenai surplus.",
+    "keyPoints": [
+      "Dalam insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, **surplus** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **surplus** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **surplus** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-27-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-27",
+    "topicTitle": "Stage 27: Ekonomi Mikro & Mekanisme Pasar",
+    "stageId": 5,
+    "stageTitle": "05. Defisit (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, defisit berarti kekurangan atau keadaan ketika pengeluaran atau kewajiban melebihi penerimaan atau sumber yang tersedia. ==Kekurangan atau keadaan ketika pengeluaran atau kewajiban melebihi penerimaan atau sumber yang tersedia==.\\n\\nDalam konteks insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Maknanya bergantung pada konteks seperti anggaran, perdagangan, atau neraca. kolokasi: konsep defisit, isu defisit, atau analisis mengenai defisit.",
+    "keyPoints": [
+      "Dalam insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, **defisit** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **defisit** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **defisit** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-27-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-27",
+    "topicTitle": "Stage 27: Ekonomi Mikro & Mekanisme Pasar",
+    "stageId": 6,
+    "stageTitle": "06. Insentif (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, insentif berarti dorongan atau rangsangan yang diberikan untuk memengaruhi tindakan atau pilihan. ==Dorongan atau rangsangan yang diberikan untuk memengaruhi tindakan atau pilihan==.\\n\\nDalam konteks insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat berbentuk uang, fasilitas, pengakuan, atau pengurangan biaya. kolokasi: konsep insentif, isu insentif, atau analisis mengenai insentif.",
+    "keyPoints": [
+      "Dalam insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, **insentif** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **insentif** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **insentif** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-27-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-27",
+    "topicTitle": "Stage 27: Ekonomi Mikro & Mekanisme Pasar",
+    "stageId": 7,
+    "stageTitle": "07. Disinsentif (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, disinsentif berarti faktor atau kebijakan yang mengurangi dorongan seseorang untuk melakukan suatu tindakan. ==Faktor atau kebijakan yang mengurangi dorongan seseorang untuk melakukan suatu tindakan==.\\n\\nDalam konteks insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan untuk mengendalikan perilaku yang tidak diinginkan. kolokasi: konsep disinsentif, isu disinsentif, atau analisis mengenai disinsentif.",
+    "keyPoints": [
+      "Dalam insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, **disinsentif** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **disinsentif** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **disinsentif** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-27-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-27",
+    "topicTitle": "Stage 27: Ekonomi Mikro & Mekanisme Pasar",
+    "stageId": 8,
+    "stageTitle": "08. Substitusi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, substitusi berarti penggantian suatu barang, unsur, atau tindakan dengan yang lain yang dapat menjalankan fungsi serupa. ==Penggantian suatu barang, unsur, atau tindakan dengan yang lain yang dapat menjalankan fungsi serupa==.\\n\\nDalam konteks insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam ekonomi barang substitusi dapat saling menggantikan menurut pilihan konsumen. kolokasi: konsep substitusi, isu substitusi, atau analisis mengenai substitusi.",
+    "keyPoints": [
+      "Dalam insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, **substitusi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **substitusi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **substitusi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-27-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-27",
+    "topicTitle": "Stage 27: Ekonomi Mikro & Mekanisme Pasar",
+    "stageId": 9,
+    "stageTitle": "09. Komplementer (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, komplementer berarti bersifat saling melengkapi sehingga keberadaan satu unsur meningkatkan kegunaan unsur lain. ==Bersifat saling melengkapi sehingga keberadaan satu unsur meningkatkan kegunaan unsur lain==.\\n\\nDalam konteks insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam ekonomi digunakan untuk barang yang biasanya dikonsumsi atau digunakan bersama. kolokasi: pendekatan komplementer, karakteristik komplementer, atau sifat yang komplementer.",
+    "keyPoints": [
+      "Dalam insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, pendekatan yang **komplementer** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **komplementer** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **komplementer** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-27-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-27",
+    "topicTitle": "Stage 27: Ekonomi Mikro & Mekanisme Pasar",
+    "stageId": 10,
+    "stageTitle": "10. Monopsoni (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, monopsoni berarti keadaan pasar ketika terdapat satu pembeli utama atau dominan untuk suatu barang atau jasa. ==Keadaan pasar ketika terdapat satu pembeli utama atau dominan untuk suatu barang atau jasa==.\\n\\nDalam konteks insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari monopoli yang menempatkan satu penjual dominan. kolokasi: konsep monopsoni, isu monopsoni, atau analisis mengenai monopsoni.",
+    "keyPoints": [
+      "Dalam insentif, pilihan konsumen, kelangkaan, dan interaksi pasar, **monopsoni** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **monopsoni** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **monopsoni** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-28-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-28",
+    "topicTitle": "Stage 28: Psikologi Lanjut & Dinamika Diri",
+    "stageId": 1,
+    "stageTitle": "01. Disonansi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, disonansi berarti keadaan tidak selaras atau bertentangan antara unsur-unsur yang seharusnya sejalan. ==Keadaan tidak selaras atau bertentangan antara unsur-unsur yang seharusnya sejalan==.\\n\\nDalam konteks konflik batin, pembentukan perilaku, dan mekanisme psikologis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam psikologi kognitif merujuk pada ketegangan akibat pertentangan keyakinan, sikap, atau tindakan. kolokasi: konsep disonansi, isu disonansi, atau analisis mengenai disonansi.",
+    "keyPoints": [
+      "Dalam konflik batin, pembentukan perilaku, dan mekanisme psikologis, **disonansi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **disonansi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **disonansi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-28-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-28",
+    "topicTitle": "Stage 28: Psikologi Lanjut & Dinamika Diri",
+    "stageId": 2,
+    "stageTitle": "02. Kognisi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kognisi berarti proses mental yang berkaitan dengan memperoleh, mengolah, menyimpan, dan menggunakan pengetahuan. ==Proses mental yang berkaitan dengan memperoleh, mengolah, menyimpan, dan menggunakan pengetahuan==.\\n\\nDalam konteks konflik batin, pembentukan perilaku, dan mekanisme psikologis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mencakup perhatian, ingatan, penalaran, dan pemecahan masalah. kolokasi: konsep kognisi, isu kognisi, atau analisis mengenai kognisi.",
+    "keyPoints": [
+      "Dalam konflik batin, pembentukan perilaku, dan mekanisme psikologis, **kognisi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kognisi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kognisi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-28-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-28",
+    "topicTitle": "Stage 28: Psikologi Lanjut & Dinamika Diri",
+    "stageId": 3,
+    "stageTitle": "03. Afeksi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, afeksi berarti perasaan atau keadaan emosional yang menyertai pengalaman seseorang. ==Perasaan atau keadaan emosional yang menyertai pengalaman seseorang==.\\n\\nDalam konteks konflik batin, pembentukan perilaku, dan mekanisme psikologis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari kognisi yang berkaitan dengan proses berpikir dan pengetahuan. kolokasi: konsep afeksi, isu afeksi, atau analisis mengenai afeksi.",
+    "keyPoints": [
+      "Dalam konflik batin, pembentukan perilaku, dan mekanisme psikologis, **afeksi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **afeksi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **afeksi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-28-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-28",
+    "topicTitle": "Stage 28: Psikologi Lanjut & Dinamika Diri",
+    "stageId": 4,
+    "stageTitle": "04. Atribusi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, atribusi berarti penafsiran mengenai sebab atau alasan terjadinya perilaku atau peristiwa. ==Penafsiran mengenai sebab atau alasan terjadinya perilaku atau peristiwa==.\\n\\nDalam konteks konflik batin, pembentukan perilaku, dan mekanisme psikologis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam psikologi sosial mengkaji bagaimana orang menjelaskan tindakan diri sendiri dan orang lain. kolokasi: konsep atribusi, isu atribusi, atau analisis mengenai atribusi.",
+    "keyPoints": [
+      "Dalam konflik batin, pembentukan perilaku, dan mekanisme psikologis, **atribusi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **atribusi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **atribusi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-28-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-28",
+    "topicTitle": "Stage 28: Psikologi Lanjut & Dinamika Diri",
+    "stageId": 5,
+    "stageTitle": "05. Impulsif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, impulsif berarti cenderung bertindak secara spontan tanpa pertimbangan yang cukup. ==Cenderung bertindak secara spontan tanpa pertimbangan yang cukup==.\\n\\nDalam konteks konflik batin, pembentukan perilaku, dan mekanisme psikologis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan tindakan yang didorong dorongan sesaat; tidak selalu sama dengan keberanian. kolokasi: pendekatan impulsif, karakteristik impulsif, atau sifat yang impulsif.",
+    "keyPoints": [
+      "Dalam konflik batin, pembentukan perilaku, dan mekanisme psikologis, pendekatan yang **impulsif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **impulsif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **impulsif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-28-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-28",
+    "topicTitle": "Stage 28: Psikologi Lanjut & Dinamika Diri",
+    "stageId": 6,
+    "stageTitle": "06. Kompulsif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kompulsif berarti didorong oleh dorongan kuat yang sulit dikendalikan sehingga dilakukan berulang. ==Didorong oleh dorongan kuat yang sulit dikendalikan sehingga dilakukan berulang==.\\n\\nDalam konteks konflik batin, pembentukan perilaku, dan mekanisme psikologis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam psikologi dapat merujuk pada pola perilaku berulang yang menekan; jangan digunakan sebagai sinonim sekadar rajin. kolokasi: pendekatan kompulsif, karakteristik kompulsif, atau sifat yang kompulsif.",
+    "keyPoints": [
+      "Dalam konflik batin, pembentukan perilaku, dan mekanisme psikologis, pendekatan yang **kompulsif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kompulsif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kompulsif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-28-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-28",
+    "topicTitle": "Stage 28: Psikologi Lanjut & Dinamika Diri",
+    "stageId": 7,
+    "stageTitle": "07. Habituasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, habituasi berarti proses menjadi terbiasa terhadap rangsangan atau keadaan karena paparan berulang. ==Proses menjadi terbiasa terhadap rangsangan atau keadaan karena paparan berulang==.\\n\\nDalam konteks konflik batin, pembentukan perilaku, dan mekanisme psikologis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam psikologi dapat membuat respons terhadap rangsangan yang sama berkurang. kolokasi: konsep habituasi, isu habituasi, atau analisis mengenai habituasi.",
+    "keyPoints": [
+      "Dalam konflik batin, pembentukan perilaku, dan mekanisme psikologis, **habituasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **habituasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **habituasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-28-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-28",
+    "topicTitle": "Stage 28: Psikologi Lanjut & Dinamika Diri",
+    "stageId": 8,
+    "stageTitle": "08. Sugesti (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sugesti berarti pengaruh atau anjuran yang dapat membentuk pikiran, keyakinan, atau tindakan seseorang. ==Pengaruh atau anjuran yang dapat membentuk pikiran, keyakinan, atau tindakan seseorang==.\\n\\nDalam konteks konflik batin, pembentukan perilaku, dan mekanisme psikologis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering terjadi tanpa penilaian kritis penuh; berbeda dari argumentasi yang menawarkan alasan. kolokasi: konsep sugesti, isu sugesti, atau analisis mengenai sugesti.",
+    "keyPoints": [
+      "Dalam konflik batin, pembentukan perilaku, dan mekanisme psikologis, **sugesti** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sugesti** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sugesti** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-28-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-28",
+    "topicTitle": "Stage 28: Psikologi Lanjut & Dinamika Diri",
+    "stageId": 9,
+    "stageTitle": "09. Sublimasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sublimasi berarti pengalihan dorongan atau energi psikologis ke kegiatan yang dapat diterima atau bernilai sosial. ==Pengalihan dorongan atau energi psikologis ke kegiatan yang dapat diterima atau bernilai sosial==.\\n\\nDalam konteks konflik batin, pembentukan perilaku, dan mekanisme psikologis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam psikoanalisis merupakan konsep khusus, bukan sekadar peningkatan kualitas. kolokasi: konsep sublimasi, isu sublimasi, atau analisis mengenai sublimasi.",
+    "keyPoints": [
+      "Dalam konflik batin, pembentukan perilaku, dan mekanisme psikologis, **sublimasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sublimasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sublimasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-28-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-28",
+    "topicTitle": "Stage 28: Psikologi Lanjut & Dinamika Diri",
+    "stageId": 10,
+    "stageTitle": "10. Ambiguitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ambiguitas berarti keadaan yang mengandung lebih dari satu kemungkinan makna atau penafsiran. ==Keadaan yang mengandung lebih dari satu kemungkinan makna atau penafsiran==.\\n\\nDalam konteks konflik batin, pembentukan perilaku, dan mekanisme psikologis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat muncul pada bahasa, situasi, atau informasi; tidak selalu berarti kesalahan komunikasi. kolokasi: konsep ambiguitas, isu ambiguitas, atau analisis mengenai ambiguitas.",
+    "keyPoints": [
+      "Dalam konflik batin, pembentukan perilaku, dan mekanisme psikologis, **ambiguitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ambiguitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ambiguitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-29-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-29",
+    "topicTitle": "Stage 29: Linguistik, Semantik & Gaya Bahasa",
+    "stageId": 1,
+    "stageTitle": "01. Semantik (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, semantik berarti cabang linguistik yang mempelajari makna kata, frasa, dan kalimat. ==Cabang linguistik yang mempelajari makna kata, frasa, dan kalimat==.\\n\\nDalam konteks struktur bahasa, pembentukan makna, dan penggunaan ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berfokus pada makna bahasa; berbeda dari pragmatik yang menelaah makna dalam konteks penggunaan. kolokasi: konsep semantik, isu semantik, atau analisis mengenai semantik.",
+    "keyPoints": [
+      "Dalam struktur bahasa, pembentukan makna, dan penggunaan ungkapan, **semantik** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **semantik** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **semantik** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-29-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-29",
+    "topicTitle": "Stage 29: Linguistik, Semantik & Gaya Bahasa",
+    "stageId": 2,
+    "stageTitle": "02. Pragmatik (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, pragmatik berarti cabang linguistik yang mengkaji makna ujaran berdasarkan konteks pemakaiannya. ==Cabang linguistik yang mengkaji makna ujaran berdasarkan konteks pemakaiannya==.\\n\\nDalam konteks struktur bahasa, pembentukan makna, dan penggunaan ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Memperhatikan maksud penutur, hubungan antarpartisipan, dan situasi komunikasi. kolokasi: konsep pragmatik, isu pragmatik, atau analisis mengenai pragmatik.",
+    "keyPoints": [
+      "Dalam struktur bahasa, pembentukan makna, dan penggunaan ungkapan, **pragmatik** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **pragmatik** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **pragmatik** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-29-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-29",
+    "topicTitle": "Stage 29: Linguistik, Semantik & Gaya Bahasa",
+    "stageId": 3,
+    "stageTitle": "03. Sintaksis (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sintaksis berarti cabang linguistik yang mempelajari susunan kata menjadi frasa dan kalimat. ==Cabang linguistik yang mempelajari susunan kata menjadi frasa dan kalimat==.\\n\\nDalam konteks struktur bahasa, pembentukan makna, dan penggunaan ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menilai hubungan dan urutan unsur pembentuk kalimat. kolokasi: konsep sintaksis, isu sintaksis, atau analisis mengenai sintaksis.",
+    "keyPoints": [
+      "Dalam struktur bahasa, pembentukan makna, dan penggunaan ungkapan, **sintaksis** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sintaksis** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sintaksis** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-29-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-29",
+    "topicTitle": "Stage 29: Linguistik, Semantik & Gaya Bahasa",
+    "stageId": 4,
+    "stageTitle": "04. Morfologi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, morfologi berarti cabang linguistik yang mempelajari bentuk kata dan proses pembentukannya. ==Cabang linguistik yang mempelajari bentuk kata dan proses pembentukannya==.\\n\\nDalam konteks struktur bahasa, pembentukan makna, dan penggunaan ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mengkaji imbuhan, pengulangan, pemajemukan, dan perubahan bentuk kata. kolokasi: konsep morfologi, isu morfologi, atau analisis mengenai morfologi.",
+    "keyPoints": [
+      "Dalam struktur bahasa, pembentukan makna, dan penggunaan ungkapan, **morfologi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **morfologi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **morfologi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-29-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-29",
+    "topicTitle": "Stage 29: Linguistik, Semantik & Gaya Bahasa",
+    "stageId": 5,
+    "stageTitle": "05. Fonologi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, fonologi berarti cabang linguistik yang mempelajari sistem bunyi bahasa dan fungsinya. ==Cabang linguistik yang mempelajari sistem bunyi bahasa dan fungsinya==.\\n\\nDalam konteks struktur bahasa, pembentukan makna, dan penggunaan ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari fonetik yang meneliti bunyi dari sisi fisik dan cara pengucapan. kolokasi: konsep fonologi, isu fonologi, atau analisis mengenai fonologi.",
+    "keyPoints": [
+      "Dalam struktur bahasa, pembentukan makna, dan penggunaan ungkapan, **fonologi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **fonologi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **fonologi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-29-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-29",
+    "topicTitle": "Stage 29: Linguistik, Semantik & Gaya Bahasa",
+    "stageId": 6,
+    "stageTitle": "06. Metafora (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, metafora berarti pemakaian kata atau ungkapan untuk menyatakan sesuatu dengan membandingkannya secara tidak langsung dengan hal lain. ==Pemakaian kata atau ungkapan untuk menyatakan sesuatu dengan membandingkannya secara tidak langsung dengan hal lain==.\\n\\nDalam konteks struktur bahasa, pembentukan makna, dan penggunaan ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Membentuk makna kiasan berdasarkan kemiripan atau hubungan tertentu. kolokasi: konsep metafora, isu metafora, atau analisis mengenai metafora.",
+    "keyPoints": [
+      "Dalam struktur bahasa, pembentukan makna, dan penggunaan ungkapan, **metafora** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **metafora** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **metafora** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-29-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-29",
+    "topicTitle": "Stage 29: Linguistik, Semantik & Gaya Bahasa",
+    "stageId": 7,
+    "stageTitle": "07. Metonimia (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, metonimia berarti pemakaian nama sesuatu untuk menyebut hal lain yang berkaitan erat dengannya. ==Pemakaian nama sesuatu untuk menyebut hal lain yang berkaitan erat dengannya==.\\n\\nDalam konteks struktur bahasa, pembentukan makna, dan penggunaan ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Misalnya menyebut merek untuk merujuk pada produk sejenis; hubungan maknanya bersifat kedekatan. kolokasi: konsep metonimia, isu metonimia, atau analisis mengenai metonimia.",
+    "keyPoints": [
+      "Dalam struktur bahasa, pembentukan makna, dan penggunaan ungkapan, **metonimia** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **metonimia** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **metonimia** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-29-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-29",
+    "topicTitle": "Stage 29: Linguistik, Semantik & Gaya Bahasa",
+    "stageId": 8,
+    "stageTitle": "08. Hiperbola (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, hiperbola berarti ungkapan yang melebih-lebihkan sesuatu untuk memberi penekanan atau efek tertentu. ==Ungkapan yang melebih-lebihkan sesuatu untuk memberi penekanan atau efek tertentu==.\\n\\nDalam konteks struktur bahasa, pembentukan makna, dan penggunaan ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan dalam retorika dan sastra; tidak dimaksudkan sebagai pernyataan harfiah. kolokasi: konsep hiperbola, isu hiperbola, atau analisis mengenai hiperbola.",
+    "keyPoints": [
+      "Dalam struktur bahasa, pembentukan makna, dan penggunaan ungkapan, **hiperbola** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **hiperbola** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **hiperbola** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-29-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-29",
+    "topicTitle": "Stage 29: Linguistik, Semantik & Gaya Bahasa",
+    "stageId": 9,
+    "stageTitle": "09. Ironi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ironi berarti ungkapan yang maknanya berlawanan atau berbeda dari maksud yang sebenarnya, sering untuk menyindir. ==Ungkapan yang maknanya berlawanan atau berbeda dari maksud yang sebenarnya, sering untuk menyindir==.\\n\\nDalam konteks struktur bahasa, pembentukan makna, dan penggunaan ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Perlu dibaca melalui konteks dan nada; tidak sama dengan kebohongan biasa. kolokasi: konsep ironi, isu ironi, atau analisis mengenai ironi.",
+    "keyPoints": [
+      "Dalam struktur bahasa, pembentukan makna, dan penggunaan ungkapan, **ironi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ironi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ironi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-29-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-29",
+    "topicTitle": "Stage 29: Linguistik, Semantik & Gaya Bahasa",
+    "stageId": 10,
+    "stageTitle": "10. Paradoks (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, paradoks berarti pernyataan atau keadaan yang tampak bertentangan dengan akal sehat tetapi dapat mengandung kebenaran. ==Pernyataan atau keadaan yang tampak bertentangan dengan akal sehat tetapi dapat mengandung kebenaran==.\\n\\nDalam konteks struktur bahasa, pembentukan makna, dan penggunaan ungkapan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menunjukkan ketegangan gagasan yang memancing pemikiran lebih dalam. kolokasi: konsep paradoks, isu paradoks, atau analisis mengenai paradoks.",
+    "keyPoints": [
+      "Dalam struktur bahasa, pembentukan makna, dan penggunaan ungkapan, **paradoks** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **paradoks** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **paradoks** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-30-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-30",
+    "topicTitle": "Stage 30: Metode Kuantitatif & Desain Riset",
+    "stageId": 1,
+    "stageTitle": "01. Triangulasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, triangulasi berarti penggunaan beberapa metode, sumber, peneliti, atau teori untuk memeriksa suatu temuan. ==Penggunaan beberapa metode, sumber, peneliti, atau teori untuk memeriksa suatu temuan==.\\n\\nDalam konteks teknik pengambilan sampel, pengujian, dan analisis data, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Bertujuan memperkuat kredibilitas melalui perbandingan bukti dari sudut berbeda. kolokasi: konsep triangulasi, isu triangulasi, atau analisis mengenai triangulasi.",
+    "keyPoints": [
+      "Dalam teknik pengambilan sampel, pengujian, dan analisis data, **triangulasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **triangulasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **triangulasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-30-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-30",
+    "topicTitle": "Stage 30: Metode Kuantitatif & Desain Riset",
+    "stageId": 2,
+    "stageTitle": "02. Penyampelan (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, penyampelan berarti proses memilih sebagian anggota populasi untuk dijadikan sampel penelitian. ==Proses memilih sebagian anggota populasi untuk dijadikan sampel penelitian==.\\n\\nDalam konteks teknik pengambilan sampel, pengujian, dan analisis data, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Hasilnya bergantung pada rancangan dan keterwakilan sampel. kolokasi: konsep penyampelan, isu penyampelan, atau analisis mengenai penyampelan.",
+    "keyPoints": [
+      "Dalam teknik pengambilan sampel, pengujian, dan analisis data, **penyampelan** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **penyampelan** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **penyampelan** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-30-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-30",
+    "topicTitle": "Stage 30: Metode Kuantitatif & Desain Riset",
+    "stageId": 3,
+    "stageTitle": "03. Randomisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, randomisasi berarti proses penentuan atau pembagian secara acak. ==Proses penentuan atau pembagian secara acak==.\\n\\nDalam konteks teknik pengambilan sampel, pengujian, dan analisis data, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam eksperimen membantu mengurangi bias pemilihan dan menyebarkan faktor pengganggu. kolokasi: konsep randomisasi, isu randomisasi, atau analisis mengenai randomisasi.",
+    "keyPoints": [
+      "Dalam teknik pengambilan sampel, pengujian, dan analisis data, **randomisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **randomisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **randomisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-30-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-30",
+    "topicTitle": "Stage 30: Metode Kuantitatif & Desain Riset",
+    "stageId": 4,
+    "stageTitle": "04. Regresi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, regresi berarti metode statistik untuk memodelkan hubungan antara variabel terikat dan satu atau lebih variabel penjelas. ==Metode statistik untuk memodelkan hubungan antara variabel terikat dan satu atau lebih variabel penjelas==.\\n\\nDalam konteks teknik pengambilan sampel, pengujian, dan analisis data, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat digunakan untuk estimasi atau prediksi; hubungan regresi tidak otomatis membuktikan kausalitas. kolokasi: konsep regresi, isu regresi, atau analisis mengenai regresi.",
+    "keyPoints": [
+      "Dalam teknik pengambilan sampel, pengujian, dan analisis data, **regresi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **regresi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **regresi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-30-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-30",
+    "topicTitle": "Stage 30: Metode Kuantitatif & Desain Riset",
+    "stageId": 5,
+    "stageTitle": "05. Estimasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, estimasi berarti perkiraan nilai atau ukuran berdasarkan data, model, atau informasi yang tersedia. ==Perkiraan nilai atau ukuran berdasarkan data, model, atau informasi yang tersedia==.\\n\\nDalam konteks teknik pengambilan sampel, pengujian, dan analisis data, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam statistik memiliki ketidakpastian dan sering disertai galat atau interval kepercayaan. kolokasi: konsep estimasi, isu estimasi, atau analisis mengenai estimasi.",
+    "keyPoints": [
+      "Dalam teknik pengambilan sampel, pengujian, dan analisis data, **estimasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **estimasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **estimasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-30-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-30",
+    "topicTitle": "Stage 30: Metode Kuantitatif & Desain Riset",
+    "stageId": 6,
+    "stageTitle": "06. Inferensial (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, inferensial berarti berkaitan dengan penarikan kesimpulan tentang populasi berdasarkan data sampel. ==Berkaitan dengan penarikan kesimpulan tentang populasi berdasarkan data sampel==.\\n\\nDalam konteks teknik pengambilan sampel, pengujian, dan analisis data, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk membedakan analisis inferensial dari statistik deskriptif. kolokasi: pendekatan inferensial, karakteristik inferensial, atau sifat yang inferensial.",
+    "keyPoints": [
+      "Dalam teknik pengambilan sampel, pengujian, dan analisis data, pendekatan yang **inferensial** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **inferensial** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **inferensial** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-30-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-30",
+    "topicTitle": "Stage 30: Metode Kuantitatif & Desain Riset",
+    "stageId": 7,
+    "stageTitle": "07. Deskriptif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, deskriptif berarti bersifat menggambarkan atau memaparkan keadaan sebagaimana terlihat dari data atau pengamatan. ==Bersifat menggambarkan atau memaparkan keadaan sebagaimana terlihat dari data atau pengamatan==.\\n\\nDalam konteks teknik pengambilan sampel, pengujian, dan analisis data, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Tidak dengan sendirinya menjelaskan sebab atau menguji teori. kolokasi: pendekatan deskriptif, karakteristik deskriptif, atau sifat yang deskriptif.",
+    "keyPoints": [
+      "Dalam teknik pengambilan sampel, pengujian, dan analisis data, pendekatan yang **deskriptif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **deskriptif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **deskriptif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-30-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-30",
+    "topicTitle": "Stage 30: Metode Kuantitatif & Desain Riset",
+    "stageId": 8,
+    "stageTitle": "08. Longitudinal (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, longitudinal berarti berkaitan dengan pengamatan terhadap subjek atau keadaan yang sama selama periode waktu tertentu. ==Berkaitan dengan pengamatan terhadap subjek atau keadaan yang sama selama periode waktu tertentu==.\\n\\nDalam konteks teknik pengambilan sampel, pengujian, dan analisis data, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Memungkinkan analisis perubahan dari waktu ke waktu. kolokasi: pendekatan longitudinal, karakteristik longitudinal, atau sifat yang longitudinal.",
+    "keyPoints": [
+      "Dalam teknik pengambilan sampel, pengujian, dan analisis data, pendekatan yang **longitudinal** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **longitudinal** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **longitudinal** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-30-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-30",
+    "topicTitle": "Stage 30: Metode Kuantitatif & Desain Riset",
+    "stageId": 9,
+    "stageTitle": "09. Eksperimental (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, eksperimental berarti berkaitan dengan percobaan yang melibatkan pengaturan atau manipulasi kondisi tertentu. ==Berkaitan dengan percobaan yang melibatkan pengaturan atau manipulasi kondisi tertentu==.\\n\\nDalam konteks teknik pengambilan sampel, pengujian, dan analisis data, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menguji pengaruh perlakuan dengan rancangan yang terkontrol. kolokasi: pendekatan eksperimental, karakteristik eksperimental, atau sifat yang eksperimental.",
+    "keyPoints": [
+      "Dalam teknik pengambilan sampel, pengujian, dan analisis data, pendekatan yang **eksperimental** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **eksperimental** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **eksperimental** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-30-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-30",
+    "topicTitle": "Stage 30: Metode Kuantitatif & Desain Riset",
+    "stageId": 10,
+    "stageTitle": "10. Replikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, replikasi berarti pengulangan penelitian atau prosedur untuk memeriksa apakah hasil serupa dapat diperoleh kembali. ==Pengulangan penelitian atau prosedur untuk memeriksa apakah hasil serupa dapat diperoleh kembali==.\\n\\nDalam konteks teknik pengambilan sampel, pengujian, dan analisis data, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Penting untuk menguji keterandalan temuan ilmiah. kolokasi: konsep replikasi, isu replikasi, atau analisis mengenai replikasi.",
+    "keyPoints": [
+      "Dalam teknik pengambilan sampel, pengujian, dan analisis data, **replikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **replikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **replikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-31-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-31",
+    "topicTitle": "Stage 31: Retorika & Kekuatan Argumentasi",
+    "stageId": 1,
+    "stageTitle": "01. Retorika (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, retorika berarti keterampilan atau seni menggunakan bahasa secara efektif untuk memengaruhi atau meyakinkan. ==Keterampilan atau seni menggunakan bahasa secara efektif untuk memengaruhi atau meyakinkan==.\\n\\nDalam konteks penyusunan alasan, pengembangan klaim, dan tanggapan kritis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat menjadi sarana argumentasi yang bertanggung jawab maupun hiasan persuasif yang manipulatif. kolokasi: konsep retorika, isu retorika, atau analisis mengenai retorika.",
+    "keyPoints": [
+      "Dalam penyusunan alasan, pengembangan klaim, dan tanggapan kritis, **retorika** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **retorika** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **retorika** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-31-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-31",
+    "topicTitle": "Stage 31: Retorika & Kekuatan Argumentasi",
+    "stageId": 2,
+    "stageTitle": "02. Argumentatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, argumentatif berarti bersifat mengandung alasan atau berusaha membuktikan suatu pendapat. ==Bersifat mengandung alasan atau berusaha membuktikan suatu pendapat==.\\n\\nDalam konteks penyusunan alasan, pengembangan klaim, dan tanggapan kritis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan struktur klaim dan dukungan, bukan sekadar nada berdebat. kolokasi: pendekatan argumentatif, karakteristik argumentatif, atau sifat yang argumentatif.",
+    "keyPoints": [
+      "Dalam penyusunan alasan, pengembangan klaim, dan tanggapan kritis, pendekatan yang **argumentatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **argumentatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **argumentatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-31-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-31",
+    "topicTitle": "Stage 31: Retorika & Kekuatan Argumentasi",
+    "stageId": 3,
+    "stageTitle": "03. Sanggahan (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sanggahan berarti pendapat atau alasan yang dikemukakan untuk membantah pernyataan atau argumen pihak lain. ==Pendapat atau alasan yang dikemukakan untuk membantah pernyataan atau argumen pihak lain==.\\n\\nDalam konteks penyusunan alasan, pengembangan klaim, dan tanggapan kritis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sanggahan yang kuat menanggapi inti alasan, bukan menyerang pribadi pembicara. kolokasi: konsep sanggahan, isu sanggahan, atau analisis mengenai sanggahan.",
+    "keyPoints": [
+      "Dalam penyusunan alasan, pengembangan klaim, dan tanggapan kritis, **sanggahan** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sanggahan** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sanggahan** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-31-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-31",
+    "topicTitle": "Stage 31: Retorika & Kekuatan Argumentasi",
+    "stageId": 4,
+    "stageTitle": "04. Analogi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, analogi berarti persamaan atau perbandingan antara dua hal yang berbeda untuk menjelaskan suatu gagasan. ==Persamaan atau perbandingan antara dua hal yang berbeda untuk menjelaskan suatu gagasan==.\\n\\nDalam konteks penyusunan alasan, pengembangan klaim, dan tanggapan kritis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berguna untuk memahami konsep, tetapi kekuatan kesimpulannya bergantung pada relevansi kemiripan. kolokasi: konsep analogi, isu analogi, atau analisis mengenai analogi.",
+    "keyPoints": [
+      "Dalam penyusunan alasan, pengembangan klaim, dan tanggapan kritis, **analogi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **analogi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **analogi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-31-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-31",
+    "topicTitle": "Stage 31: Retorika & Kekuatan Argumentasi",
+    "stageId": 5,
+    "stageTitle": "05. Kualifikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kualifikasi berarti pembatasan atau penjelasan mengenai syarat, cakupan, atau tingkat berlakunya suatu pernyataan. ==Pembatasan atau penjelasan mengenai syarat, cakupan, atau tingkat berlakunya suatu pernyataan==.\\n\\nDalam konteks penyusunan alasan, pengembangan klaim, dan tanggapan kritis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mencegah klaim terlalu luas dengan menyatakan kondisi dan pengecualian. kolokasi: konsep kualifikasi, isu kualifikasi, atau analisis mengenai kualifikasi.",
+    "keyPoints": [
+      "Dalam penyusunan alasan, pengembangan klaim, dan tanggapan kritis, **kualifikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kualifikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kualifikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-31-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-31",
+    "topicTitle": "Stage 31: Retorika & Kekuatan Argumentasi",
+    "stageId": 6,
+    "stageTitle": "06. Generik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, generik berarti bersifat umum atau tidak menunjukkan ciri khusus. ==Bersifat umum atau tidak menunjukkan ciri khusus==.\\n\\nDalam konteks penyusunan alasan, pengembangan klaim, dan tanggapan kritis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk hal yang berlaku luas atau tidak dibedakan berdasarkan merek atau kekhususan. kolokasi: pendekatan generik, karakteristik generik, atau sifat yang generik.",
+    "keyPoints": [
+      "Dalam penyusunan alasan, pengembangan klaim, dan tanggapan kritis, pendekatan yang **generik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **generik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **generik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-31-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-31",
+    "topicTitle": "Stage 31: Retorika & Kekuatan Argumentasi",
+    "stageId": 7,
+    "stageTitle": "07. Elaboratif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, elaboratif berarti bersifat mengembangkan atau menguraikan gagasan dengan rincian tambahan. ==Bersifat mengembangkan atau menguraikan gagasan dengan rincian tambahan==.\\n\\nDalam konteks penyusunan alasan, pengembangan klaim, dan tanggapan kritis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menggambarkan penjelasan yang diperluas melalui alasan, contoh, atau bukti. kolokasi: pendekatan elaboratif, karakteristik elaboratif, atau sifat yang elaboratif.",
+    "keyPoints": [
+      "Dalam penyusunan alasan, pengembangan klaim, dan tanggapan kritis, pendekatan yang **elaboratif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **elaboratif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **elaboratif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-31-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-31",
+    "topicTitle": "Stage 31: Retorika & Kekuatan Argumentasi",
+    "stageId": 8,
+    "stageTitle": "08. Dialektis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, dialektis berarti berkaitan dengan proses berpikir atau pembahasan melalui pertentangan dan hubungan antargagasan. ==Berkaitan dengan proses berpikir atau pembahasan melalui pertentangan dan hubungan antargagasan==.\\n\\nDalam konteks penyusunan alasan, pengembangan klaim, dan tanggapan kritis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan perkembangan pemahaman melalui dialog atau ketegangan gagasan. kolokasi: pendekatan dialektis, karakteristik dialektis, atau sifat yang dialektis.",
+    "keyPoints": [
+      "Dalam penyusunan alasan, pengembangan klaim, dan tanggapan kritis, pendekatan yang **dialektis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **dialektis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **dialektis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-31-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-31",
+    "topicTitle": "Stage 31: Retorika & Kekuatan Argumentasi",
+    "stageId": 9,
+    "stageTitle": "09. Konklusif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, konklusif berarti bersifat mengakhiri pembahasan atau memberikan kesimpulan yang tegas. ==Bersifat mengakhiri pembahasan atau memberikan kesimpulan yang tegas==.\\n\\nDalam konteks penyusunan alasan, pengembangan klaim, dan tanggapan kritis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk bukti atau pernyataan yang cukup kuat untuk mendukung simpulan, dengan tetap memperhatikan batas bukti. kolokasi: pendekatan konklusif, karakteristik konklusif, atau sifat yang konklusif.",
+    "keyPoints": [
+      "Dalam penyusunan alasan, pengembangan klaim, dan tanggapan kritis, pendekatan yang **konklusif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **konklusif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **konklusif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-31-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-31",
+    "topicTitle": "Stage 31: Retorika & Kekuatan Argumentasi",
+    "stageId": 10,
+    "stageTitle": "10. Presisi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, presisi berarti ketepatan atau kecermatan dalam ukuran, pengungkapan, atau pelaksanaan. ==Ketepatan atau kecermatan dalam ukuran, pengungkapan, atau pelaksanaan==.\\n\\nDalam konteks penyusunan alasan, pengembangan klaim, dan tanggapan kritis, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan tingkat kerincian dan konsistensi; perlu dibedakan dari akurasi yang menilai kedekatan dengan nilai benar. kolokasi: konsep presisi, isu presisi, atau analisis mengenai presisi.",
+    "keyPoints": [
+      "Dalam penyusunan alasan, pengembangan klaim, dan tanggapan kritis, **presisi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **presisi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **presisi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-32-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-32",
+    "topicTitle": "Stage 32: Estetika, Seni & Representasi",
+    "stageId": 1,
+    "stageTitle": "01. Estetika (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, estetika berarti cabang filsafat yang membahas keindahan, seni, dan pengalaman rasa. ==Cabang filsafat yang membahas keindahan, seni, dan pengalaman rasa==.\\n\\nDalam konteks penilaian keindahan, gaya artistik, dan bentuk penggambaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Juga digunakan untuk menyebut nilai atau kualitas keindahan suatu karya. kolokasi: konsep estetika, isu estetika, atau analisis mengenai estetika.",
+    "keyPoints": [
+      "Dalam penilaian keindahan, gaya artistik, dan bentuk penggambaran, **estetika** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **estetika** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **estetika** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-32-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-32",
+    "topicTitle": "Stage 32: Estetika, Seni & Representasi",
+    "stageId": 2,
+    "stageTitle": "02. Sublim (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, sublim berarti agung atau luhur sehingga menimbulkan rasa kagum yang mendalam. ==Agung atau luhur sehingga menimbulkan rasa kagum yang mendalam==.\\n\\nDalam konteks penilaian keindahan, gaya artistik, dan bentuk penggambaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam estetika dapat merujuk pada pengalaman yang melampaui keindahan biasa. kolokasi: pendekatan sublim, karakteristik sublim, atau sifat yang sublim.",
+    "keyPoints": [
+      "Dalam penilaian keindahan, gaya artistik, dan bentuk penggambaran, pendekatan yang **sublim** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **sublim** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **sublim** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-32-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-32",
+    "topicTitle": "Stage 32: Estetika, Seni & Representasi",
+    "stageId": 3,
+    "stageTitle": "03. Grotesk (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, grotesk berarti aneh, ganjil, atau menyimpang dari bentuk lazim, sering dengan kesan mengerikan atau lucu sekaligus. ==Aneh, ganjil, atau menyimpang dari bentuk lazim, sering dengan kesan mengerikan atau lucu sekaligus==.\\n\\nDalam konteks penilaian keindahan, gaya artistik, dan bentuk penggambaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk gaya artistik yang mencampurkan unsur ganjil, berlebihan, dan tidak nyaman. kolokasi: pendekatan grotesk, karakteristik grotesk, atau sifat yang grotesk.",
+    "keyPoints": [
+      "Dalam penilaian keindahan, gaya artistik, dan bentuk penggambaran, pendekatan yang **grotesk** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **grotesk** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **grotesk** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-32-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-32",
+    "topicTitle": "Stage 32: Estetika, Seni & Representasi",
+    "stageId": 4,
+    "stageTitle": "04. Banal (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, banal berarti biasa, dangkal, atau kurang memiliki keistimewaan karena terlalu sering ditemukan. ==Biasa, dangkal, atau kurang memiliki keistimewaan karena terlalu sering ditemukan==.\\n\\nDalam konteks penilaian keindahan, gaya artistik, dan bentuk penggambaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan sebagai kritik terhadap gagasan atau karya yang klise. kolokasi: pendekatan banal, karakteristik banal, atau sifat yang banal.",
+    "keyPoints": [
+      "Dalam penilaian keindahan, gaya artistik, dan bentuk penggambaran, pendekatan yang **banal** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **banal** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **banal** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-32-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-32",
+    "topicTitle": "Stage 32: Estetika, Seni & Representasi",
+    "stageId": 5,
+    "stageTitle": "05. Simbolik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, simbolik berarti mengandung atau menggunakan lambang untuk mewakili makna tertentu. ==Mengandung atau menggunakan lambang untuk mewakili makna tertentu==.\\n\\nDalam konteks penilaian keindahan, gaya artistik, dan bentuk penggambaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Maknanya bergantung pada konvensi dan konteks, tidak selalu dinyatakan secara langsung. kolokasi: pendekatan simbolik, karakteristik simbolik, atau sifat yang simbolik.",
+    "keyPoints": [
+      "Dalam penilaian keindahan, gaya artistik, dan bentuk penggambaran, pendekatan yang **simbolik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **simbolik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **simbolik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-32-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-32",
+    "topicTitle": "Stage 32: Estetika, Seni & Representasi",
+    "stageId": 6,
+    "stageTitle": "06. Alegoris (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, alegoris berarti menggunakan tokoh, peristiwa, atau gambaran sebagai lambang bagi gagasan lain. ==Menggunakan tokoh, peristiwa, atau gambaran sebagai lambang bagi gagasan lain==.\\n\\nDalam konteks penilaian keindahan, gaya artistik, dan bentuk penggambaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berkaitan dengan alegori, yaitu pengungkapan makna abstrak melalui cerita atau gambaran konkret. kolokasi: pendekatan alegoris, karakteristik alegoris, atau sifat yang alegoris.",
+    "keyPoints": [
+      "Dalam penilaian keindahan, gaya artistik, dan bentuk penggambaran, pendekatan yang **alegoris** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **alegoris** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **alegoris** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-32-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-32",
+    "topicTitle": "Stage 32: Estetika, Seni & Representasi",
+    "stageId": 7,
+    "stageTitle": "07. Surealis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, surealis berarti berkaitan dengan surealisme atau penggambaran yang melampaui logika realitas sehari-hari. ==Berkaitan dengan surealisme atau penggambaran yang melampaui logika realitas sehari-hari==.\\n\\nDalam konteks penilaian keindahan, gaya artistik, dan bentuk penggambaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering memadukan mimpi, imajinasi, dan kejutan visual. kolokasi: pendekatan surealis, karakteristik surealis, atau sifat yang surealis.",
+    "keyPoints": [
+      "Dalam penilaian keindahan, gaya artistik, dan bentuk penggambaran, pendekatan yang **surealis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **surealis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **surealis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-32-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-32",
+    "topicTitle": "Stage 32: Estetika, Seni & Representasi",
+    "stageId": 8,
+    "stageTitle": "08. Abstrak (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, abstrak berarti tidak berwujud konkret atau tidak menggambarkan objek nyata secara langsung. ==Tidak berwujud konkret atau tidak menggambarkan objek nyata secara langsung==.\\n\\nDalam konteks penilaian keindahan, gaya artistik, dan bentuk penggambaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam seni dapat merujuk pada bentuk yang mengutamakan garis, warna, dan susunan nonrepresentasional. kolokasi: pendekatan abstrak, karakteristik abstrak, atau sifat yang abstrak.",
+    "keyPoints": [
+      "Dalam penilaian keindahan, gaya artistik, dan bentuk penggambaran, pendekatan yang **abstrak** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **abstrak** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **abstrak** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-32-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-32",
+    "topicTitle": "Stage 32: Estetika, Seni & Representasi",
+    "stageId": 9,
+    "stageTitle": "09. Ekspresif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, ekspresif berarti mampu atau bertujuan mengungkapkan perasaan, pikiran, atau suasana dengan kuat. ==Mampu atau bertujuan mengungkapkan perasaan, pikiran, atau suasana dengan kuat==.\\n\\nDalam konteks penilaian keindahan, gaya artistik, dan bentuk penggambaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menilai daya ungkap karya, bahasa, atau penampilan. kolokasi: pendekatan ekspresif, karakteristik ekspresif, atau sifat yang ekspresif.",
+    "keyPoints": [
+      "Dalam penilaian keindahan, gaya artistik, dan bentuk penggambaran, pendekatan yang **ekspresif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **ekspresif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **ekspresif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-32-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-32",
+    "topicTitle": "Stage 32: Estetika, Seni & Representasi",
+    "stageId": 10,
+    "stageTitle": "10. Ikonoklasme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ikonoklasme berarti sikap atau gerakan yang menentang dan merusak ikon, simbol, atau tradisi yang dihormati. ==Sikap atau gerakan yang menentang dan merusak ikon, simbol, atau tradisi yang dihormati==.\\n\\nDalam konteks penilaian keindahan, gaya artistik, dan bentuk penggambaran, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam penggunaan luas dapat merujuk pada penolakan radikal terhadap gagasan atau otoritas mapan. kolokasi: konsep ikonoklasme, isu ikonoklasme, atau analisis mengenai ikonoklasme.",
+    "keyPoints": [
+      "Dalam penilaian keindahan, gaya artistik, dan bentuk penggambaran, **ikonoklasme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ikonoklasme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ikonoklasme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-33-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-33",
+    "topicTitle": "Stage 33: Hukum Tata Negara & Kerangka Normatif",
+    "stageId": 1,
+    "stageTitle": "01. Konstitusional (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, konstitusional berarti sesuai dengan atau berdasarkan konstitusi. ==Sesuai dengan atau berdasarkan konstitusi==.\\n\\nDalam konteks konstitusi, keabsahan aturan, dan pembentukan norma hukum, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menilai tindakan, aturan, atau kewenangan menurut hukum dasar negara. kolokasi: pendekatan konstitusional, karakteristik konstitusional, atau sifat yang konstitusional.",
+    "keyPoints": [
+      "Dalam konstitusi, keabsahan aturan, dan pembentukan norma hukum, pendekatan yang **konstitusional** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **konstitusional** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **konstitusional** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-33-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-33",
+    "topicTitle": "Stage 33: Hukum Tata Negara & Kerangka Normatif",
+    "stageId": 2,
+    "stageTitle": "02. Inkonstitusional (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, inkonstitusional berarti bertentangan dengan ketentuan konstitusi. ==Bertentangan dengan ketentuan konstitusi==.\\n\\nDalam konteks konstitusi, keabsahan aturan, dan pembentukan norma hukum, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan ketidaksesuaian dengan hukum dasar, bukan sekadar ketidakpopuleran kebijakan. kolokasi: pendekatan inkonstitusional, karakteristik inkonstitusional, atau sifat yang inkonstitusional.",
+    "keyPoints": [
+      "Dalam konstitusi, keabsahan aturan, dan pembentukan norma hukum, pendekatan yang **inkonstitusional** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **inkonstitusional** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **inkonstitusional** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-33-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-33",
+    "topicTitle": "Stage 33: Hukum Tata Negara & Kerangka Normatif",
+    "stageId": 3,
+    "stageTitle": "03. Yurisprudensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, yurisprudensi berarti ajaran atau kumpulan putusan hakim yang menjadi rujukan dalam penerapan hukum. ==Ajaran atau kumpulan putusan hakim yang menjadi rujukan dalam penerapan hukum==.\\n\\nDalam konteks konstitusi, keabsahan aturan, dan pembentukan norma hukum, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Fungsi dan kekuatan mengikatnya bergantung pada sistem hukum yang berlaku. kolokasi: konsep yurisprudensi, isu yurisprudensi, atau analisis mengenai yurisprudensi.",
+    "keyPoints": [
+      "Dalam konstitusi, keabsahan aturan, dan pembentukan norma hukum, **yurisprudensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **yurisprudensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **yurisprudensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-33-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-33",
+    "topicTitle": "Stage 33: Hukum Tata Negara & Kerangka Normatif",
+    "stageId": 4,
+    "stageTitle": "04. Proporsionalitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, proporsionalitas berarti keadaan seimbang atau sebanding antara tujuan, tindakan, dan dampak yang ditimbulkan. ==Keadaan seimbang atau sebanding antara tujuan, tindakan, dan dampak yang ditimbulkan==.\\n\\nDalam konteks konstitusi, keabsahan aturan, dan pembentukan norma hukum, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam hukum digunakan untuk menilai apakah pembatasan hak atau tindakan negara tidak berlebihan. kolokasi: konsep proporsionalitas, isu proporsionalitas, atau analisis mengenai proporsionalitas.",
+    "keyPoints": [
+      "Dalam konstitusi, keabsahan aturan, dan pembentukan norma hukum, **proporsionalitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **proporsionalitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **proporsionalitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-33-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-33",
+    "topicTitle": "Stage 33: Hukum Tata Negara & Kerangka Normatif",
+    "stageId": 5,
+    "stageTitle": "05. Derogasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, derogasi berarti pengurangan atau penyimpangan terbatas dari kewajiban atau ketentuan tertentu dalam keadaan yang dibenarkan. ==Pengurangan atau penyimpangan terbatas dari kewajiban atau ketentuan tertentu dalam keadaan yang dibenarkan==.\\n\\nDalam konteks konstitusi, keabsahan aturan, dan pembentukan norma hukum, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam hukum internasional memiliki arti khusus dan umumnya dibatasi syarat ketat. kolokasi: konsep derogasi, isu derogasi, atau analisis mengenai derogasi.",
+    "keyPoints": [
+      "Dalam konstitusi, keabsahan aturan, dan pembentukan norma hukum, **derogasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **derogasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **derogasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-33-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-33",
+    "topicTitle": "Stage 33: Hukum Tata Negara & Kerangka Normatif",
+    "stageId": 6,
+    "stageTitle": "06. Kodifikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kodifikasi berarti penghimpunan dan penyusunan aturan hukum secara sistematis dalam suatu kitab atau kumpulan. ==Penghimpunan dan penyusunan aturan hukum secara sistematis dalam suatu kitab atau kumpulan==.\\n\\nDalam konteks konstitusi, keabsahan aturan, dan pembentukan norma hukum, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Bertujuan membuat aturan lebih teratur dan mudah dirujuk. kolokasi: konsep kodifikasi, isu kodifikasi, atau analisis mengenai kodifikasi.",
+    "keyPoints": [
+      "Dalam konstitusi, keabsahan aturan, dan pembentukan norma hukum, **kodifikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kodifikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kodifikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-33-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-33",
+    "topicTitle": "Stage 33: Hukum Tata Negara & Kerangka Normatif",
+    "stageId": 7,
+    "stageTitle": "07. Ratifikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ratifikasi berarti pengesahan resmi suatu perjanjian atau tindakan oleh pihak yang berwenang. ==Pengesahan resmi suatu perjanjian atau tindakan oleh pihak yang berwenang==.\\n\\nDalam konteks konstitusi, keabsahan aturan, dan pembentukan norma hukum, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam perjanjian internasional menandai persetujuan formal negara untuk terikat. kolokasi: konsep ratifikasi, isu ratifikasi, atau analisis mengenai ratifikasi.",
+    "keyPoints": [
+      "Dalam konstitusi, keabsahan aturan, dan pembentukan norma hukum, **ratifikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ratifikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ratifikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-33-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-33",
+    "topicTitle": "Stage 33: Hukum Tata Negara & Kerangka Normatif",
+    "stageId": 8,
+    "stageTitle": "08. Harmonisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, harmonisasi berarti upaya menyelaraskan aturan, kebijakan, atau unsur yang berbeda agar tidak bertentangan. ==Upaya menyelaraskan aturan, kebijakan, atau unsur yang berbeda agar tidak bertentangan==.\\n\\nDalam konteks konstitusi, keabsahan aturan, dan pembentukan norma hukum, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan ketika beberapa ketentuan perlu dibuat konsisten satu sama lain. kolokasi: konsep harmonisasi, isu harmonisasi, atau analisis mengenai harmonisasi.",
+    "keyPoints": [
+      "Dalam konstitusi, keabsahan aturan, dan pembentukan norma hukum, **harmonisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **harmonisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **harmonisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-33-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-33",
+    "topicTitle": "Stage 33: Hukum Tata Negara & Kerangka Normatif",
+    "stageId": 9,
+    "stageTitle": "09. Konstituen (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konstituen berarti orang atau kelompok yang diwakili oleh pejabat atau wakil dalam suatu lembaga. ==Orang atau kelompok yang diwakili oleh pejabat atau wakil dalam suatu lembaga==.\\n\\nDalam konteks konstitusi, keabsahan aturan, dan pembentukan norma hukum, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam politik menunjuk pihak yang memberikan mandat representasi. kolokasi: konsep konstituen, isu konstituen, atau analisis mengenai konstituen.",
+    "keyPoints": [
+      "Dalam konstitusi, keabsahan aturan, dan pembentukan norma hukum, **konstituen** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konstituen** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konstituen** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-33-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-33",
+    "topicTitle": "Stage 33: Hukum Tata Negara & Kerangka Normatif",
+    "stageId": 10,
+    "stageTitle": "10. Legislatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, legislatif berarti berkaitan dengan badan atau proses pembentukan undang-undang. ==Berkaitan dengan badan atau proses pembentukan undang-undang==.\\n\\nDalam konteks konstitusi, keabsahan aturan, dan pembentukan norma hukum, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat juga menjadi nomina untuk menyebut lembaga pembentuk undang-undang. kolokasi: pendekatan legislatif, karakteristik legislatif, atau sifat yang legislatif.",
+    "keyPoints": [
+      "Dalam konstitusi, keabsahan aturan, dan pembentukan norma hukum, pendekatan yang **legislatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **legislatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **legislatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-34-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-34",
+    "topicTitle": "Stage 34: Etika, Moralitas & Tanggung Jawab",
+    "stageId": 1,
+    "stageTitle": "01. Etis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, etis berarti sesuai dengan prinsip atau norma moral yang berlaku. ==Sesuai dengan prinsip atau norma moral yang berlaku==.\\n\\nDalam konteks penilaian baik-buruk, kewajiban, dan pertimbangan moral, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menilai tindakan berdasarkan kepatutan moral, bukan hanya legalitas. kolokasi: pendekatan etis, karakteristik etis, atau sifat yang etis.",
+    "keyPoints": [
+      "Dalam penilaian baik-buruk, kewajiban, dan pertimbangan moral, pendekatan yang **etis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **etis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **etis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-34-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-34",
+    "topicTitle": "Stage 34: Etika, Moralitas & Tanggung Jawab",
+    "stageId": 2,
+    "stageTitle": "02. Moralitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, moralitas berarti ajaran, ukuran, atau kualitas mengenai baik dan buruknya perbuatan. ==Ajaran, ukuran, atau kualitas mengenai baik dan buruknya perbuatan==.\\n\\nDalam konteks penilaian baik-buruk, kewajiban, dan pertimbangan moral, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat merujuk pada prinsip pribadi maupun norma yang dianut masyarakat. kolokasi: konsep moralitas, isu moralitas, atau analisis mengenai moralitas.",
+    "keyPoints": [
+      "Dalam penilaian baik-buruk, kewajiban, dan pertimbangan moral, **moralitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **moralitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **moralitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-34-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-34",
+    "topicTitle": "Stage 34: Etika, Moralitas & Tanggung Jawab",
+    "stageId": 3,
+    "stageTitle": "03. Deontologi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, deontologi berarti teori etika yang menilai tindakan berdasarkan kewajiban atau aturan moral. ==Teori etika yang menilai tindakan berdasarkan kewajiban atau aturan moral==.\\n\\nDalam konteks penilaian baik-buruk, kewajiban, dan pertimbangan moral, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan kewajiban, bukan hanya akibat yang dihasilkan. kolokasi: konsep deontologi, isu deontologi, atau analisis mengenai deontologi.",
+    "keyPoints": [
+      "Dalam penilaian baik-buruk, kewajiban, dan pertimbangan moral, **deontologi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **deontologi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **deontologi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-34-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-34",
+    "topicTitle": "Stage 34: Etika, Moralitas & Tanggung Jawab",
+    "stageId": 4,
+    "stageTitle": "04. Konsekuensialisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konsekuensialisme berarti pandangan etika yang menilai benar-salah tindakan berdasarkan akibat atau konsekuensinya. ==Pandangan etika yang menilai benar-salah tindakan berdasarkan akibat atau konsekuensinya==.\\n\\nDalam konteks penilaian baik-buruk, kewajiban, dan pertimbangan moral, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari deontologi yang memberi bobot utama pada kewajiban atau prinsip. kolokasi: konsep konsekuensialisme, isu konsekuensialisme, atau analisis mengenai konsekuensialisme.",
+    "keyPoints": [
+      "Dalam penilaian baik-buruk, kewajiban, dan pertimbangan moral, **konsekuensialisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konsekuensialisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konsekuensialisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-34-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-34",
+    "topicTitle": "Stage 34: Etika, Moralitas & Tanggung Jawab",
+    "stageId": 5,
+    "stageTitle": "05. Utilitarian (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, utilitarian berarti berkaitan dengan paham yang menilai tindakan berdasarkan manfaat atau kebahagiaan terbesar bagi sebanyak mungkin pihak. ==Berkaitan dengan paham yang menilai tindakan berdasarkan manfaat atau kebahagiaan terbesar bagi sebanyak mungkin pihak==.\\n\\nDalam konteks penilaian baik-buruk, kewajiban, dan pertimbangan moral, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Merupakan bentuk pemikiran konsekuensialis; perlu memperhatikan distribusi manfaat dan kerugian. kolokasi: pendekatan utilitarian, karakteristik utilitarian, atau sifat yang utilitarian.",
+    "keyPoints": [
+      "Dalam penilaian baik-buruk, kewajiban, dan pertimbangan moral, pendekatan yang **utilitarian** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **utilitarian** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **utilitarian** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-34-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-34",
+    "topicTitle": "Stage 34: Etika, Moralitas & Tanggung Jawab",
+    "stageId": 6,
+    "stageTitle": "06. Altruistik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, altruistik berarti bersifat mengutamakan kepentingan atau kesejahteraan orang lain. ==Bersifat mengutamakan kepentingan atau kesejahteraan orang lain==.\\n\\nDalam konteks penilaian baik-buruk, kewajiban, dan pertimbangan moral, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari tindakan yang terutama didorong keuntungan pribadi. kolokasi: pendekatan altruistik, karakteristik altruistik, atau sifat yang altruistik.",
+    "keyPoints": [
+      "Dalam penilaian baik-buruk, kewajiban, dan pertimbangan moral, pendekatan yang **altruistik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **altruistik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **altruistik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-34-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-34",
+    "topicTitle": "Stage 34: Etika, Moralitas & Tanggung Jawab",
+    "stageId": 7,
+    "stageTitle": "07. Paternalistik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, paternalistik berarti bersifat mengatur atau membatasi seseorang dengan alasan melindungi kepentingannya, seperti tindakan orang tua terhadap anak. ==Bersifat mengatur atau membatasi seseorang dengan alasan melindungi kepentingannya, seperti tindakan orang tua terhadap anak==.\\n\\nDalam konteks penilaian baik-buruk, kewajiban, dan pertimbangan moral, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat dipersoalkan ketika perlindungan mengurangi otonomi pihak yang diatur. kolokasi: pendekatan paternalistik, karakteristik paternalistik, atau sifat yang paternalistik.",
+    "keyPoints": [
+      "Dalam penilaian baik-buruk, kewajiban, dan pertimbangan moral, pendekatan yang **paternalistik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **paternalistik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **paternalistik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-34-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-34",
+    "topicTitle": "Stage 34: Etika, Moralitas & Tanggung Jawab",
+    "stageId": 8,
+    "stageTitle": "08. Pragmatis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, pragmatis berarti berorientasi pada manfaat dan hasil praktis dalam menghadapi persoalan. ==Berorientasi pada manfaat dan hasil praktis dalam menghadapi persoalan==.\\n\\nDalam konteks penilaian baik-buruk, kewajiban, dan pertimbangan moral, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Tidak selalu berarti mengabaikan prinsip; maknanya bergantung pada konteks. kolokasi: pendekatan pragmatis, karakteristik pragmatis, atau sifat yang pragmatis.",
+    "keyPoints": [
+      "Dalam penilaian baik-buruk, kewajiban, dan pertimbangan moral, pendekatan yang **pragmatis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **pragmatis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **pragmatis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-34-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-34",
+    "topicTitle": "Stage 34: Etika, Moralitas & Tanggung Jawab",
+    "stageId": 9,
+    "stageTitle": "09. Dilematis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, dilematis berarti berada dalam keadaan sulit karena harus memilih di antara beberapa pilihan yang sama-sama bermasalah. ==Berada dalam keadaan sulit karena harus memilih di antara beberapa pilihan yang sama-sama bermasalah==.\\n\\nDalam konteks penilaian baik-buruk, kewajiban, dan pertimbangan moral, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan benturan kepentingan atau nilai, bukan sekadar pilihan yang banyak. kolokasi: pendekatan dilematis, karakteristik dilematis, atau sifat yang dilematis.",
+    "keyPoints": [
+      "Dalam penilaian baik-buruk, kewajiban, dan pertimbangan moral, pendekatan yang **dilematis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **dilematis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **dilematis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-34-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-34",
+    "topicTitle": "Stage 34: Etika, Moralitas & Tanggung Jawab",
+    "stageId": 10,
+    "stageTitle": "10. Otonomi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, otonomi berarti keadaan atau hak untuk mengatur dan menentukan tindakan sendiri tanpa dikendalikan pihak lain. ==Keadaan atau hak untuk mengatur dan menentukan tindakan sendiri tanpa dikendalikan pihak lain==.\\n\\nDalam konteks penilaian baik-buruk, kewajiban, dan pertimbangan moral, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam etika menekankan kemampuan mengambil keputusan secara mandiri dan bertanggung jawab. kolokasi: konsep otonomi, isu otonomi, atau analisis mengenai otonomi.",
+    "keyPoints": [
+      "Dalam penilaian baik-buruk, kewajiban, dan pertimbangan moral, **otonomi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **otonomi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **otonomi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-35-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-35",
+    "topicTitle": "Stage 35: Ideologi, Hegemoni & Kritik Kekuasaan",
+    "stageId": 1,
+    "stageTitle": "01. Ideologi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ideologi berarti kumpulan gagasan, nilai, dan keyakinan yang menjadi dasar pandangan atau tindakan suatu kelompok. ==Kumpulan gagasan, nilai, dan keyakinan yang menjadi dasar pandangan atau tindakan suatu kelompok==.\\n\\nDalam konteks pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat membentuk cara masyarakat memahami kepentingan, kekuasaan, dan tatanan sosial. kolokasi: konsep ideologi, isu ideologi, atau analisis mengenai ideologi.",
+    "keyPoints": [
+      "Dalam pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, **ideologi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ideologi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ideologi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-35-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-35",
+    "topicTitle": "Stage 35: Ideologi, Hegemoni & Kritik Kekuasaan",
+    "stageId": 2,
+    "stageTitle": "02. Dogmatis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, dogmatis berarti bersifat mengikuti ajaran atau pendirian tertentu secara kaku dan tidak terbuka pada kritik. ==Bersifat mengikuti ajaran atau pendirian tertentu secara kaku dan tidak terbuka pada kritik==.\\n\\nDalam konteks pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk sikap yang menerima keyakinan tanpa pemeriksaan kritis. kolokasi: pendekatan dogmatis, karakteristik dogmatis, atau sifat yang dogmatis.",
+    "keyPoints": [
+      "Dalam pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, pendekatan yang **dogmatis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **dogmatis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **dogmatis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-35-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-35",
+    "topicTitle": "Stage 35: Ideologi, Hegemoni & Kritik Kekuasaan",
+    "stageId": 3,
+    "stageTitle": "03. Ortodoksi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ortodoksi berarti ajaran atau pandangan yang dianggap benar dan resmi menurut suatu tradisi atau kelompok. ==Ajaran atau pandangan yang dianggap benar dan resmi menurut suatu tradisi atau kelompok==.\\n\\nDalam konteks pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjuk kerangka keyakinan yang mapan dan diterima sebagai standar. kolokasi: konsep ortodoksi, isu ortodoksi, atau analisis mengenai ortodoksi.",
+    "keyPoints": [
+      "Dalam pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, **ortodoksi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ortodoksi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ortodoksi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-35-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-35",
+    "topicTitle": "Stage 35: Ideologi, Hegemoni & Kritik Kekuasaan",
+    "stageId": 4,
+    "stageTitle": "04. Heterodoksi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, heterodoksi berarti pandangan atau ajaran yang berbeda dari doktrin atau pendapat resmi yang lazim diterima. ==Pandangan atau ajaran yang berbeda dari doktrin atau pendapat resmi yang lazim diterima==.\\n\\nDalam konteks pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering muncul dalam perdebatan intelektual dan keagamaan. kolokasi: konsep heterodoksi, isu heterodoksi, atau analisis mengenai heterodoksi.",
+    "keyPoints": [
+      "Dalam pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, **heterodoksi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **heterodoksi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **heterodoksi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-35-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-35",
+    "topicTitle": "Stage 35: Ideologi, Hegemoni & Kritik Kekuasaan",
+    "stageId": 5,
+    "stageTitle": "05. Kooptasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kooptasi berarti penerimaan atau penarikan seseorang atau kelompok ke dalam suatu organisasi atau struktur kekuasaan, sering untuk mengendalikan atau meredam oposisi. ==Penerimaan atau penarikan seseorang atau kelompok ke dalam suatu organisasi atau struktur kekuasaan, sering untuk mengendalikan atau meredam oposisi==.\\n\\nDalam konteks pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam analisis politik dapat merujuk pada strategi menyerap pihak penentang ke dalam sistem. kolokasi: konsep kooptasi, isu kooptasi, atau analisis mengenai kooptasi.",
+    "keyPoints": [
+      "Dalam pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, **kooptasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kooptasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kooptasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-35-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-35",
+    "topicTitle": "Stage 35: Ideologi, Hegemoni & Kritik Kekuasaan",
+    "stageId": 6,
+    "stageTitle": "06. Resistensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, resistensi berarti perlawanan atau kemampuan bertahan terhadap tekanan, pengaruh, atau perubahan. ==Perlawanan atau kemampuan bertahan terhadap tekanan, pengaruh, atau perubahan==.\\n\\nDalam konteks pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat merujuk pada penolakan aktif maupun daya tahan suatu sistem. kolokasi: konsep resistensi, isu resistensi, atau analisis mengenai resistensi.",
+    "keyPoints": [
+      "Dalam pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, **resistensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **resistensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **resistensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-35-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-35",
+    "topicTitle": "Stage 35: Ideologi, Hegemoni & Kritik Kekuasaan",
+    "stageId": 7,
+    "stageTitle": "07. Reifikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, reifikasi berarti proses memperlakukan konsep atau hubungan abstrak seolah-olah merupakan benda atau kenyataan yang berdiri sendiri. ==Proses memperlakukan konsep atau hubungan abstrak seolah-olah merupakan benda atau kenyataan yang berdiri sendiri==.\\n\\nDalam konteks pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam kritik sosial dapat mengaburkan bahwa suatu keadaan dibentuk oleh tindakan manusia. kolokasi: konsep reifikasi, isu reifikasi, atau analisis mengenai reifikasi.",
+    "keyPoints": [
+      "Dalam pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, **reifikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **reifikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **reifikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-35-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-35",
+    "topicTitle": "Stage 35: Ideologi, Hegemoni & Kritik Kekuasaan",
+    "stageId": 8,
+    "stageTitle": "08. Esensialisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, esensialisasi berarti proses menganggap ciri tertentu sebagai hakikat tetap suatu kelompok atau hal. ==Proses menganggap ciri tertentu sebagai hakikat tetap suatu kelompok atau hal==.\\n\\nDalam konteks pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat menyederhanakan keragaman dengan menganggap identitas bersifat alamiah dan tidak berubah. kolokasi: konsep esensialisasi, isu esensialisasi, atau analisis mengenai esensialisasi.",
+    "keyPoints": [
+      "Dalam pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, **esensialisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **esensialisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **esensialisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-35-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-35",
+    "topicTitle": "Stage 35: Ideologi, Hegemoni & Kritik Kekuasaan",
+    "stageId": 9,
+    "stageTitle": "09. Problematisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, problematisasi berarti proses menjadikan sesuatu sebagai persoalan yang perlu dipertanyakan atau dianalisis. ==Proses menjadikan sesuatu sebagai persoalan yang perlu dipertanyakan atau dianalisis==.\\n\\nDalam konteks pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Bukan sekadar menyatakan sesuatu bermasalah, tetapi membuka asumsi dan cara pembentukannya. kolokasi: konsep problematisasi, isu problematisasi, atau analisis mengenai problematisasi.",
+    "keyPoints": [
+      "Dalam pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, **problematisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **problematisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **problematisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-35-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-35",
+    "topicTitle": "Stage 35: Ideologi, Hegemoni & Kritik Kekuasaan",
+    "stageId": 10,
+    "stageTitle": "10. Dekonstruksi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, dekonstruksi berarti cara membaca atau menganalisis yang membongkar oposisi, asumsi, dan ketegangan dalam suatu teks atau gagasan. ==Cara membaca atau menganalisis yang membongkar oposisi, asumsi, dan ketegangan dalam suatu teks atau gagasan==.\\n\\nDalam konteks pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Tidak sama dengan penghancuran; bertujuan menunjukkan kerumitan makna dan struktur. kolokasi: konsep dekonstruksi, isu dekonstruksi, atau analisis mengenai dekonstruksi.",
+    "keyPoints": [
+      "Dalam pembentukan keyakinan kolektif dan mekanisme pengaruh sosial, **dekonstruksi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **dekonstruksi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **dekonstruksi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-36-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-36",
+    "topicTitle": "Stage 36: Sistem, Kompleksitas & Hubungan Antarelemen",
+    "stageId": 1,
+    "stageTitle": "01. Emergensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, emergensi berarti munculnya sifat atau pola baru pada tingkat keseluruhan yang tidak tampak dari unsur-unsurnya secara terpisah. ==Munculnya sifat atau pola baru pada tingkat keseluruhan yang tidak tampak dari unsur-unsurnya secara terpisah==.\\n\\nDalam konteks sifat sistem, interaksi unsur, dan perilaku keseluruhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam teori sistem kompleks untuk menjelaskan pola hasil interaksi banyak komponen. kolokasi: konsep emergensi, isu emergensi, atau analisis mengenai emergensi.",
+    "keyPoints": [
+      "Dalam sifat sistem, interaksi unsur, dan perilaku keseluruhan, **emergensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **emergensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **emergensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-36-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-36",
+    "topicTitle": "Stage 36: Sistem, Kompleksitas & Hubungan Antarelemen",
+    "stageId": 2,
+    "stageTitle": "02. Sinergi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sinergi berarti kerja sama beberapa unsur yang menghasilkan pengaruh gabungan lebih besar atau berbeda daripada jika bekerja sendiri. ==Kerja sama beberapa unsur yang menghasilkan pengaruh gabungan lebih besar atau berbeda daripada jika bekerja sendiri==.\\n\\nDalam konteks sifat sistem, interaksi unsur, dan perilaku keseluruhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan nilai tambah dari hubungan antarkomponen. kolokasi: konsep sinergi, isu sinergi, atau analisis mengenai sinergi.",
+    "keyPoints": [
+      "Dalam sifat sistem, interaksi unsur, dan perilaku keseluruhan, **sinergi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sinergi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sinergi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-36-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-36",
+    "topicTitle": "Stage 36: Sistem, Kompleksitas & Hubungan Antarelemen",
+    "stageId": 3,
+    "stageTitle": "03. Holistik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, holistik berarti menyeluruh dengan memperhatikan hubungan antarbagian dalam satu kesatuan. ==Menyeluruh dengan memperhatikan hubungan antarbagian dalam satu kesatuan==.\\n\\nDalam konteks sifat sistem, interaksi unsur, dan perilaku keseluruhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari pendekatan yang hanya menilai satu unsur secara terpisah. kolokasi: pendekatan holistik, karakteristik holistik, atau sifat yang holistik.",
+    "keyPoints": [
+      "Dalam sifat sistem, interaksi unsur, dan perilaku keseluruhan, pendekatan yang **holistik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **holistik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **holistik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-36-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-36",
+    "topicTitle": "Stage 36: Sistem, Kompleksitas & Hubungan Antarelemen",
+    "stageId": 4,
+    "stageTitle": "04. Linearitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, linearitas berarti keadaan atau sifat hubungan yang mengikuti pola garis lurus atau perubahan yang sebanding. ==Keadaan atau sifat hubungan yang mengikuti pola garis lurus atau perubahan yang sebanding==.\\n\\nDalam konteks sifat sistem, interaksi unsur, dan perilaku keseluruhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam analisis menandakan hubungan yang dapat didekati dengan model linear. kolokasi: konsep linearitas, isu linearitas, atau analisis mengenai linearitas.",
+    "keyPoints": [
+      "Dalam sifat sistem, interaksi unsur, dan perilaku keseluruhan, **linearitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **linearitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **linearitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-36-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-36",
+    "topicTitle": "Stage 36: Sistem, Kompleksitas & Hubungan Antarelemen",
+    "stageId": 5,
+    "stageTitle": "05. Nonlinier (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, nonlinier berarti tidak mengikuti hubungan garis lurus atau perubahan yang sebanding. ==Tidak mengikuti hubungan garis lurus atau perubahan yang sebanding==.\\n\\nDalam konteks sifat sistem, interaksi unsur, dan perilaku keseluruhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Perubahan kecil pada satu faktor dapat menghasilkan dampak yang tidak sebanding dalam sistem tertentu. kolokasi: pendekatan nonlinier, karakteristik nonlinier, atau sifat yang nonlinier.",
+    "keyPoints": [
+      "Dalam sifat sistem, interaksi unsur, dan perilaku keseluruhan, pendekatan yang **nonlinier** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **nonlinier** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **nonlinier** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-36-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-36",
+    "topicTitle": "Stage 36: Sistem, Kompleksitas & Hubungan Antarelemen",
+    "stageId": 6,
+    "stageTitle": "06. Interdependensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, interdependensi berarti keadaan saling bergantung antara dua pihak atau lebih. ==Keadaan saling bergantung antara dua pihak atau lebih==.\\n\\nDalam konteks sifat sistem, interaksi unsur, dan perilaku keseluruhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan bahwa perubahan pada satu unsur dapat memengaruhi unsur lain. kolokasi: konsep interdependensi, isu interdependensi, atau analisis mengenai interdependensi.",
+    "keyPoints": [
+      "Dalam sifat sistem, interaksi unsur, dan perilaku keseluruhan, **interdependensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **interdependensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **interdependensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-36-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-36",
+    "topicTitle": "Stage 36: Sistem, Kompleksitas & Hubungan Antarelemen",
+    "stageId": 7,
+    "stageTitle": "07. Entropi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, entropi berarti ukuran ketidakteraturan atau penyebaran energi dalam sistem; dalam teori informasi, ukuran ketidakpastian. ==Ukuran ketidakteraturan atau penyebaran energi dalam sistem; dalam teori informasi, ukuran ketidakpastian==.\\n\\nDalam konteks sifat sistem, interaksi unsur, dan perilaku keseluruhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Makna teknisnya berbeda menurut bidang fisika atau teori informasi. kolokasi: konsep entropi, isu entropi, atau analisis mengenai entropi.",
+    "keyPoints": [
+      "Dalam sifat sistem, interaksi unsur, dan perilaku keseluruhan, **entropi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **entropi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **entropi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-36-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-36",
+    "topicTitle": "Stage 36: Sistem, Kompleksitas & Hubungan Antarelemen",
+    "stageId": 8,
+    "stageTitle": "08. Sistematis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, sistematis berarti dilakukan menurut sistem, urutan, atau rencana yang teratur. ==Dilakukan menurut sistem, urutan, atau rencana yang teratur==.\\n\\nDalam konteks sifat sistem, interaksi unsur, dan perilaku keseluruhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan tata cara yang konsisten, bukan cakupan keseluruhan seperti holistik. kolokasi: pendekatan sistematis, karakteristik sistematis, atau sifat yang sistematis.",
+    "keyPoints": [
+      "Dalam sifat sistem, interaksi unsur, dan perilaku keseluruhan, pendekatan yang **sistematis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **sistematis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **sistematis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-36-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-36",
+    "topicTitle": "Stage 36: Sistem, Kompleksitas & Hubungan Antarelemen",
+    "stageId": 9,
+    "stageTitle": "09. Sibernetika (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sibernetika berarti bidang kajian mengenai sistem kendali, komunikasi, dan umpan balik pada makhluk hidup maupun mesin. ==Bidang kajian mengenai sistem kendali, komunikasi, dan umpan balik pada makhluk hidup maupun mesin==.\\n\\nDalam konteks sifat sistem, interaksi unsur, dan perilaku keseluruhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk memahami bagaimana sistem mengatur perilaku dan menyesuaikan diri melalui informasi. kolokasi: konsep sibernetika, isu sibernetika, atau analisis mengenai sibernetika.",
+    "keyPoints": [
+      "Dalam sifat sistem, interaksi unsur, dan perilaku keseluruhan, **sibernetika** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sibernetika** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sibernetika** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-36-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-36",
+    "topicTitle": "Stage 36: Sistem, Kompleksitas & Hubungan Antarelemen",
+    "stageId": 10,
+    "stageTitle": "10. Kompleksitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kompleksitas berarti keadaan yang terdiri atas banyak unsur, hubungan, atau tingkat yang saling memengaruhi. ==Keadaan yang terdiri atas banyak unsur, hubungan, atau tingkat yang saling memengaruhi==.\\n\\nDalam konteks sifat sistem, interaksi unsur, dan perilaku keseluruhan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Lebih dari sekadar kerumitan; dapat mencakup sifat yang sulit diprediksi karena interaksi. kolokasi: konsep kompleksitas, isu kompleksitas, atau analisis mengenai kompleksitas.",
+    "keyPoints": [
+      "Dalam sifat sistem, interaksi unsur, dan perilaku keseluruhan, **kompleksitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kompleksitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kompleksitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-37-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-37",
+    "topicTitle": "Stage 37: Kausalitas & Model Hubungan",
+    "stageId": 1,
+    "stageTitle": "01. Kausal (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kausal berarti berkaitan dengan sebab atau hubungan sebab-akibat. ==Berkaitan dengan sebab atau hubungan sebab-akibat==.\\n\\nDalam konteks sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk hubungan yang menyatakan satu faktor memengaruhi terjadinya faktor lain. kolokasi: pendekatan kausal, karakteristik kausal, atau sifat yang kausal.",
+    "keyPoints": [
+      "Dalam sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, pendekatan yang **kausal** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kausal** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kausal** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-37-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-37",
+    "topicTitle": "Stage 37: Kausalitas & Model Hubungan",
+    "stageId": 2,
+    "stageTitle": "02. Korelatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, korelatif berarti menunjukkan adanya hubungan atau keterkaitan antara dua hal. ==Menunjukkan adanya hubungan atau keterkaitan antara dua hal==.\\n\\nDalam konteks sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Tidak dengan sendirinya menyatakan bahwa satu hal menyebabkan yang lain. kolokasi: pendekatan korelatif, karakteristik korelatif, atau sifat yang korelatif.",
+    "keyPoints": [
+      "Dalam sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, pendekatan yang **korelatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **korelatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **korelatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-37-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-37",
+    "topicTitle": "Stage 37: Kausalitas & Model Hubungan",
+    "stageId": 3,
+    "stageTitle": "03. Deterministik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, deterministik berarti menganggap atau menunjukkan bahwa hasil ditentukan secara pasti oleh kondisi atau hukum tertentu. ==Menganggap atau menunjukkan bahwa hasil ditentukan secara pasti oleh kondisi atau hukum tertentu==.\\n\\nDalam konteks sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari probabilistik yang menyatakan hasil dalam bentuk kemungkinan. kolokasi: pendekatan deterministik, karakteristik deterministik, atau sifat yang deterministik.",
+    "keyPoints": [
+      "Dalam sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, pendekatan yang **deterministik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **deterministik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **deterministik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-37-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-37",
+    "topicTitle": "Stage 37: Kausalitas & Model Hubungan",
+    "stageId": 4,
+    "stageTitle": "04. Probabilistik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, probabilistik berarti berdasarkan peluang atau kemungkinan, bukan kepastian mutlak. ==Berdasarkan peluang atau kemungkinan, bukan kepastian mutlak==.\\n\\nDalam konteks sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk model yang memperhitungkan ketidakpastian hasil. kolokasi: pendekatan probabilistik, karakteristik probabilistik, atau sifat yang probabilistik.",
+    "keyPoints": [
+      "Dalam sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, pendekatan yang **probabilistik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **probabilistik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **probabilistik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-37-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-37",
+    "topicTitle": "Stage 37: Kausalitas & Model Hubungan",
+    "stageId": 5,
+    "stageTitle": "05. Endogen (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, endogen berarti berasal atau ditentukan dari dalam sistem yang sedang dianalisis. ==Berasal atau ditentukan dari dalam sistem yang sedang dianalisis==.\\n\\nDalam konteks sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam model ekonomi atau statistik, variabel endogen dijelaskan oleh hubungan di dalam model. kolokasi: pendekatan endogen, karakteristik endogen, atau sifat yang endogen.",
+    "keyPoints": [
+      "Dalam sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, pendekatan yang **endogen** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **endogen** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **endogen** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-37-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-37",
+    "topicTitle": "Stage 37: Kausalitas & Model Hubungan",
+    "stageId": 6,
+    "stageTitle": "06. Eksogen (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, eksogen berarti berasal dari luar sistem atau model yang sedang dianalisis. ==Berasal dari luar sistem atau model yang sedang dianalisis==.\\n\\nDalam konteks sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk faktor yang memengaruhi sistem tetapi ditentukan di luar model. kolokasi: pendekatan eksogen, karakteristik eksogen, atau sifat yang eksogen.",
+    "keyPoints": [
+      "Dalam sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, pendekatan yang **eksogen** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **eksogen** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **eksogen** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-37-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-37",
+    "topicTitle": "Stage 37: Kausalitas & Model Hubungan",
+    "stageId": 7,
+    "stageTitle": "07. Transmisi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, transmisi berarti proses penerusan atau pemindahan sesuatu dari satu pihak, tempat, atau unsur ke pihak atau unsur lain. ==Proses penerusan atau pemindahan sesuatu dari satu pihak, tempat, atau unsur ke pihak atau unsur lain==.\\n\\nDalam konteks sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam model hubungan dapat menjelaskan jalur penyebaran pengaruh atau informasi. kolokasi: konsep transmisi, isu transmisi, atau analisis mengenai transmisi.",
+    "keyPoints": [
+      "Dalam sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, **transmisi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **transmisi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **transmisi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-37-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-37",
+    "topicTitle": "Stage 37: Kausalitas & Model Hubungan",
+    "stageId": 8,
+    "stageTitle": "08. Moderasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, moderasi berarti proses atau hubungan ketika kekuatan atau arah pengaruh satu variabel bergantung pada variabel lain. ==Proses atau hubungan ketika kekuatan atau arah pengaruh satu variabel bergantung pada variabel lain==.\\n\\nDalam konteks sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam analisis statistik, moderator mengubah hubungan antara variabel penjelas dan hasil. kolokasi: konsep moderasi, isu moderasi, atau analisis mengenai moderasi.",
+    "keyPoints": [
+      "Dalam sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, **moderasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **moderasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **moderasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-37-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-37",
+    "topicTitle": "Stage 37: Kausalitas & Model Hubungan",
+    "stageId": 9,
+    "stageTitle": "09. Konvergensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konvergensi berarti keadaan menuju titik, arah, atau kesimpulan yang sama. ==Keadaan menuju titik, arah, atau kesimpulan yang sama==.\\n\\nDalam konteks sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menyebut penyatuan tren, pendapat, atau nilai. kolokasi: konsep konvergensi, isu konvergensi, atau analisis mengenai konvergensi.",
+    "keyPoints": [
+      "Dalam sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, **konvergensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konvergensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konvergensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-37-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-37",
+    "topicTitle": "Stage 37: Kausalitas & Model Hubungan",
+    "stageId": 10,
+    "stageTitle": "10. Divergensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, divergensi berarti keadaan bergerak atau berkembang ke arah yang semakin berbeda. ==Keadaan bergerak atau berkembang ke arah yang semakin berbeda==.\\n\\nDalam konteks sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat menggambarkan pelebaran perbedaan antarwilayah, teori, atau hasil. kolokasi: konsep divergensi, isu divergensi, atau analisis mengenai divergensi.",
+    "keyPoints": [
+      "Dalam sebab-akibat, faktor penjelas, dan struktur hubungan antarvariabel, **divergensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **divergensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **divergensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-38-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-38",
+    "topicTitle": "Stage 38: Ketidakpastian, Bias & Distorsi",
+    "stageId": 1,
+    "stageTitle": "01. Spekulatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, spekulatif berarti berdasarkan dugaan atau perkiraan yang belum didukung bukti memadai. ==Berdasarkan dugaan atau perkiraan yang belum didukung bukti memadai==.\\n\\nDalam konteks keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat digunakan untuk hipotesis awal, tetapi perlu dibedakan dari kesimpulan yang telah teruji. kolokasi: pendekatan spekulatif, karakteristik spekulatif, atau sifat yang spekulatif.",
+    "keyPoints": [
+      "Dalam keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, pendekatan yang **spekulatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **spekulatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **spekulatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-38-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-38",
+    "topicTitle": "Stage 38: Ketidakpastian, Bias & Distorsi",
+    "stageId": 2,
+    "stageTitle": "02. Volatil (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, volatil berarti mudah berubah atau bergejolak dalam waktu relatif singkat. ==Mudah berubah atau bergejolak dalam waktu relatif singkat==.\\n\\nDalam konteks keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan untuk harga, pasar, dan kondisi yang tidak stabil. kolokasi: pendekatan volatil, karakteristik volatil, atau sifat yang volatil.",
+    "keyPoints": [
+      "Dalam keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, pendekatan yang **volatil** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **volatil** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **volatil** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-38-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-38",
+    "topicTitle": "Stage 38: Ketidakpastian, Bias & Distorsi",
+    "stageId": 3,
+    "stageTitle": "03. Asimetris (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, asimetris berarti tidak seimbang atau tidak sama antara dua sisi atau pihak. ==Tidak seimbang atau tidak sama antara dua sisi atau pihak==.\\n\\nDalam konteks keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam ekonomi dan informasi dapat menunjukkan distribusi atau akses yang tidak setara. kolokasi: pendekatan asimetris, karakteristik asimetris, atau sifat yang asimetris.",
+    "keyPoints": [
+      "Dalam keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, pendekatan yang **asimetris** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **asimetris** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **asimetris** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-38-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-38",
+    "topicTitle": "Stage 38: Ketidakpastian, Bias & Distorsi",
+    "stageId": 4,
+    "stageTitle": "04. Distorsi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, distorsi berarti perubahan atau penyimpangan bentuk, informasi, atau keadaan dari bentuk yang dianggap sebenarnya. ==Perubahan atau penyimpangan bentuk, informasi, atau keadaan dari bentuk yang dianggap sebenarnya==.\\n\\nDalam konteks keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat terjadi akibat bias, tekanan, kesalahan pengukuran, atau cara penyajian. kolokasi: konsep distorsi, isu distorsi, atau analisis mengenai distorsi.",
+    "keyPoints": [
+      "Dalam keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, **distorsi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **distorsi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **distorsi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-38-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-38",
+    "topicTitle": "Stage 38: Ketidakpastian, Bias & Distorsi",
+    "stageId": 5,
+    "stageTitle": "05. Bias (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, bias berarti kecenderungan memihak atau penyimpangan sistematis yang memengaruhi penilaian atau hasil. ==Kecenderungan memihak atau penyimpangan sistematis yang memengaruhi penilaian atau hasil==.\\n\\nDalam konteks keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam penelitian dapat berasal dari sampel, alat ukur, peneliti, atau proses analisis. kolokasi: konsep bias, isu bias, atau analisis mengenai bias.",
+    "keyPoints": [
+      "Dalam keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, **bias** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **bias** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **bias** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-38-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-38",
+    "topicTitle": "Stage 38: Ketidakpastian, Bias & Distorsi",
+    "stageId": 6,
+    "stageTitle": "06. Arbitrer (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, arbitrer berarti ditentukan berdasarkan kehendak atau pilihan sepihak, tanpa dasar atau alasan yang jelas. ==Ditentukan berdasarkan kehendak atau pilihan sepihak, tanpa dasar atau alasan yang jelas==.\\n\\nDalam konteks keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk keputusan atau pembagian yang tidak mengikuti kriteria yang dapat dipertanggungjawabkan. kolokasi: pendekatan arbitrer, karakteristik arbitrer, atau sifat yang arbitrer.",
+    "keyPoints": [
+      "Dalam keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, pendekatan yang **arbitrer** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **arbitrer** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **arbitrer** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-38-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-38",
+    "topicTitle": "Stage 38: Ketidakpastian, Bias & Distorsi",
+    "stageId": 7,
+    "stageTitle": "07. Kontroversial (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kontroversial berarti menimbulkan perdebatan atau pertentangan pendapat. ==Menimbulkan perdebatan atau pertentangan pendapat==.\\n\\nDalam konteks keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Tidak otomatis berarti salah; menunjukkan adanya perbedaan pandangan yang tajam. kolokasi: pendekatan kontroversial, karakteristik kontroversial, atau sifat yang kontroversial.",
+    "keyPoints": [
+      "Dalam keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, pendekatan yang **kontroversial** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kontroversial** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kontroversial** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-38-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-38",
+    "topicTitle": "Stage 38: Ketidakpastian, Bias & Distorsi",
+    "stageId": 8,
+    "stageTitle": "08. Rentan (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, rentan berarti mudah terkena pengaruh, gangguan, atau kerugian. ==Mudah terkena pengaruh, gangguan, atau kerugian==.\\n\\nDalam konteks keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan tingkat keterpaparan atau lemahnya perlindungan. kolokasi: pendekatan rentan, karakteristik rentan, atau sifat yang rentan.",
+    "keyPoints": [
+      "Dalam keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, pendekatan yang **rentan** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **rentan** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **rentan** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-38-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-38",
+    "topicTitle": "Stage 38: Ketidakpastian, Bias & Distorsi",
+    "stageId": 9,
+    "stageTitle": "09. Inkremental (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, inkremental berarti bertambah atau berubah secara sedikit demi sedikit. ==Bertambah atau berubah secara sedikit demi sedikit==.\\n\\nDalam konteks keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan untuk perbaikan bertahap, bukan perubahan menyeluruh. kolokasi: pendekatan inkremental, karakteristik inkremental, atau sifat yang inkremental.",
+    "keyPoints": [
+      "Dalam keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, pendekatan yang **inkremental** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **inkremental** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **inkremental** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-38-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-38",
+    "topicTitle": "Stage 38: Ketidakpastian, Bias & Distorsi",
+    "stageId": 10,
+    "stageTitle": "10. Anomali (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, anomali berarti keadaan atau hal yang menyimpang dari pola, aturan, atau keadaan yang lazim. ==Keadaan atau hal yang menyimpang dari pola, aturan, atau keadaan yang lazim==.\\n\\nDalam konteks keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam data menunjukkan pengamatan yang tidak sesuai pola; perlu diperiksa sebelum dianggap kesalahan. kolokasi: konsep anomali, isu anomali, atau analisis mengenai anomali.",
+    "keyPoints": [
+      "Dalam keterbatasan informasi, kecenderungan penilaian, dan perubahan persepsi, **anomali** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **anomali** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **anomali** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-39-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-39",
+    "topicTitle": "Stage 39: Wacana Publik & Perdebatan Intelektual",
+    "stageId": 1,
+    "stageTitle": "01. Polemik (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, polemik berarti perdebatan atau pertentangan pendapat yang terbuka mengenai suatu persoalan. ==Perdebatan atau pertentangan pendapat yang terbuka mengenai suatu persoalan==.\\n\\nDalam konteks pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Biasanya melibatkan argumen yang saling berlawanan dan berlangsung di ruang publik. kolokasi: konsep polemik, isu polemik, atau analisis mengenai polemik.",
+    "keyPoints": [
+      "Dalam pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, **polemik** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **polemik** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **polemik** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-39-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-39",
+    "topicTitle": "Stage 39: Wacana Publik & Perdebatan Intelektual",
+    "stageId": 2,
+    "stageTitle": "02. Wacana (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, wacana berarti komunikasi lisan atau tulisan; juga keseluruhan gagasan yang berkembang mengenai suatu topik. ==Komunikasi lisan atau tulisan; juga keseluruhan gagasan yang berkembang mengenai suatu topik==.\\n\\nDalam konteks pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam kajian sosial dapat berarti cara suatu isu dibicarakan dan diberi makna. kolokasi: konsep wacana, isu wacana, atau analisis mengenai wacana.",
+    "keyPoints": [
+      "Dalam pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, **wacana** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **wacana** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **wacana** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-39-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-39",
+    "topicTitle": "Stage 39: Wacana Publik & Perdebatan Intelektual",
+    "stageId": 3,
+    "stageTitle": "03. Diskursus (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, diskursus berarti pembahasan atau pertukaran gagasan secara sistematis dalam suatu bidang. ==Pembahasan atau pertukaran gagasan secara sistematis dalam suatu bidang==.\\n\\nDalam konteks pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan dalam tulisan akademis untuk menunjuk struktur pembicaraan dan pengetahuan. kolokasi: konsep diskursus, isu diskursus, atau analisis mengenai diskursus.",
+    "keyPoints": [
+      "Dalam pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, **diskursus** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **diskursus** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **diskursus** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-39-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-39",
+    "topicTitle": "Stage 39: Wacana Publik & Perdebatan Intelektual",
+    "stageId": 4,
+    "stageTitle": "04. Polemis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, polemis berarti bersifat menentang atau mengundang perdebatan tajam. ==Bersifat menentang atau mengundang perdebatan tajam==.\\n\\nDalam konteks pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk tulisan atau pernyataan yang secara sengaja mengambil posisi dalam perdebatan. kolokasi: pendekatan polemis, karakteristik polemis, atau sifat yang polemis.",
+    "keyPoints": [
+      "Dalam pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, pendekatan yang **polemis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **polemis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **polemis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-39-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-39",
+    "topicTitle": "Stage 39: Wacana Publik & Perdebatan Intelektual",
+    "stageId": 5,
+    "stageTitle": "05. Tendensius (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, tendensius berarti menunjukkan kecenderungan atau keberpihakan tertentu sehingga tidak netral. ==Menunjukkan kecenderungan atau keberpihakan tertentu sehingga tidak netral==.\\n\\nDalam konteks pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan untuk menilai pemberitaan, argumen, atau penafsiran yang memihak. kolokasi: pendekatan tendensius, karakteristik tendensius, atau sifat yang tendensius.",
+    "keyPoints": [
+      "Dalam pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, pendekatan yang **tendensius** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **tendensius** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **tendensius** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-39-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-39",
+    "topicTitle": "Stage 39: Wacana Publik & Perdebatan Intelektual",
+    "stageId": 6,
+    "stageTitle": "06. Provokatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, provokatif berarti bersifat membangkitkan reaksi kuat, kemarahan, atau perdebatan. ==Bersifat membangkitkan reaksi kuat, kemarahan, atau perdebatan==.\\n\\nDalam konteks pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat digunakan untuk menggugah pemikiran, tetapi juga dapat memancing konflik. kolokasi: pendekatan provokatif, karakteristik provokatif, atau sifat yang provokatif.",
+    "keyPoints": [
+      "Dalam pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, pendekatan yang **provokatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **provokatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **provokatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-39-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-39",
+    "topicTitle": "Stage 39: Wacana Publik & Perdebatan Intelektual",
+    "stageId": 7,
+    "stageTitle": "07. Artikulasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, artikulasi berarti pengucapan atau pengungkapan gagasan secara jelas; juga perumusan kepentingan atau tuntutan. ==Pengucapan atau pengungkapan gagasan secara jelas; juga perumusan kepentingan atau tuntutan==.\\n\\nDalam konteks pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam ilmu sosial dapat merujuk pada cara kepentingan dinyatakan dan dihubungkan dengan wacana. kolokasi: konsep artikulasi, isu artikulasi, atau analisis mengenai artikulasi.",
+    "keyPoints": [
+      "Dalam pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, **artikulasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **artikulasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **artikulasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-39-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-39",
+    "topicTitle": "Stage 39: Wacana Publik & Perdebatan Intelektual",
+    "stageId": 8,
+    "stageTitle": "08. Polarisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, polarisasi berarti proses atau keadaan terbelah menjadi dua kelompok atau kutub yang berlawanan. ==Proses atau keadaan terbelah menjadi dua kelompok atau kutub yang berlawanan==.\\n\\nDalam konteks pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering menggambarkan meningkatnya jarak dan pertentangan antarposisi. kolokasi: konsep polarisasi, isu polarisasi, atau analisis mengenai polarisasi.",
+    "keyPoints": [
+      "Dalam pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, **polarisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **polarisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **polarisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-39-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-39",
+    "topicTitle": "Stage 39: Wacana Publik & Perdebatan Intelektual",
+    "stageId": 9,
+    "stageTitle": "09. Retoris (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, retoris berarti berkaitan dengan retorika; dalam pertanyaan, tidak selalu memerlukan jawaban karena bertujuan menegaskan sesuatu. ==Berkaitan dengan retorika; dalam pertanyaan, tidak selalu memerlukan jawaban karena bertujuan menegaskan sesuatu==.\\n\\nDalam konteks pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Perlu dibedakan dari pertanyaan informatif yang benar-benar meminta jawaban. kolokasi: pendekatan retoris, karakteristik retoris, atau sifat yang retoris.",
+    "keyPoints": [
+      "Dalam pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, pendekatan yang **retoris** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **retoris** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **retoris** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-39-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-39",
+    "topicTitle": "Stage 39: Wacana Publik & Perdebatan Intelektual",
+    "stageId": 10,
+    "stageTitle": "10. Kontestasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kontestasi berarti persaingan atau pertarungan untuk memperoleh pengaruh, kekuasaan, atau pengakuan. ==Persaingan atau pertarungan untuk memperoleh pengaruh, kekuasaan, atau pengakuan==.\\n\\nDalam konteks pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk proses perebutan posisi dan makna dalam ruang sosial atau politik. kolokasi: konsep kontestasi, isu kontestasi, atau analisis mengenai kontestasi.",
+    "keyPoints": [
+      "Dalam pembentukan isu, pertentangan gagasan, dan bahasa dalam ruang publik, **kontestasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kontestasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kontestasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-40-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-40",
+    "topicTitle": "Stage 40: Sejarah, Waktu & Perubahan Peradaban",
+    "stageId": 1,
+    "stageTitle": "01. Arkais (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, arkais berarti berkaitan dengan masa lampau atau bentuk lama yang sudah jarang digunakan. ==Berkaitan dengan masa lampau atau bentuk lama yang sudah jarang digunakan==.\\n\\nDalam konteks penempatan peristiwa dalam waktu serta kesinambungan sejarah, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam bahasa dapat merujuk pada kata lama yang tidak lazim dalam pemakaian sekarang. kolokasi: pendekatan arkais, karakteristik arkais, atau sifat yang arkais.",
+    "keyPoints": [
+      "Dalam penempatan peristiwa dalam waktu serta kesinambungan sejarah, pendekatan yang **arkais** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **arkais** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **arkais** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-40-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-40",
+    "topicTitle": "Stage 40: Sejarah, Waktu & Perubahan Peradaban",
+    "stageId": 2,
+    "stageTitle": "02. Anakronistis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, anakronistis berarti tidak sesuai dengan zaman atau masa ketika sesuatu ditempatkan. ==Tidak sesuai dengan zaman atau masa ketika sesuatu ditempatkan==.\\n\\nDalam konteks penempatan peristiwa dalam waktu serta kesinambungan sejarah, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk unsur yang keliru secara kronologis atau tidak cocok dengan konteks zamannya. kolokasi: pendekatan anakronistis, karakteristik anakronistis, atau sifat yang anakronistis.",
+    "keyPoints": [
+      "Dalam penempatan peristiwa dalam waktu serta kesinambungan sejarah, pendekatan yang **anakronistis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **anakronistis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **anakronistis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-40-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-40",
+    "topicTitle": "Stage 40: Sejarah, Waktu & Perubahan Peradaban",
+    "stageId": 3,
+    "stageTitle": "03. Kronologis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kronologis berarti disusun atau berlangsung menurut urutan waktu. ==Disusun atau berlangsung menurut urutan waktu==.\\n\\nDalam konteks penempatan peristiwa dalam waktu serta kesinambungan sejarah, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berguna untuk menjelaskan rangkaian peristiwa dari awal hingga akhir. kolokasi: pendekatan kronologis, karakteristik kronologis, atau sifat yang kronologis.",
+    "keyPoints": [
+      "Dalam penempatan peristiwa dalam waktu serta kesinambungan sejarah, pendekatan yang **kronologis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kronologis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kronologis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-40-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-40",
+    "topicTitle": "Stage 40: Sejarah, Waktu & Perubahan Peradaban",
+    "stageId": 4,
+    "stageTitle": "04. Periodisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, periodisasi berarti pembagian sejarah atau perkembangan menjadi beberapa periode berdasarkan ciri tertentu. ==Pembagian sejarah atau perkembangan menjadi beberapa periode berdasarkan ciri tertentu==.\\n\\nDalam konteks penempatan peristiwa dalam waktu serta kesinambungan sejarah, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Merupakan alat analisis; batas periode dapat berbeda menurut kerangka penelitian. kolokasi: konsep periodisasi, isu periodisasi, atau analisis mengenai periodisasi.",
+    "keyPoints": [
+      "Dalam penempatan peristiwa dalam waktu serta kesinambungan sejarah, **periodisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **periodisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **periodisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-40-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-40",
+    "topicTitle": "Stage 40: Sejarah, Waktu & Perubahan Peradaban",
+    "stageId": 5,
+    "stageTitle": "05. Transhistoris (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, transhistoris berarti melampaui batas satu periode sejarah atau berlaku dalam rentang sejarah yang luas. ==Melampaui batas satu periode sejarah atau berlaku dalam rentang sejarah yang luas==.\\n\\nDalam konteks penempatan peristiwa dalam waktu serta kesinambungan sejarah, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk gagasan atau pola yang ditelusuri lintas zaman. kolokasi: pendekatan transhistoris, karakteristik transhistoris, atau sifat yang transhistoris.",
+    "keyPoints": [
+      "Dalam penempatan peristiwa dalam waktu serta kesinambungan sejarah, pendekatan yang **transhistoris** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **transhistoris** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **transhistoris** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-40-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-40",
+    "topicTitle": "Stage 40: Sejarah, Waktu & Perubahan Peradaban",
+    "stageId": 6,
+    "stageTitle": "06. Genealogis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, genealogis berarti berkaitan dengan asal-usul, garis keturunan, atau penelusuran sejarah terbentuknya sesuatu. ==Berkaitan dengan asal-usul, garis keturunan, atau penelusuran sejarah terbentuknya sesuatu==.\\n\\nDalam konteks penempatan peristiwa dalam waktu serta kesinambungan sejarah, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam kajian gagasan menelusuri bagaimana konsep muncul dan berubah. kolokasi: pendekatan genealogis, karakteristik genealogis, atau sifat yang genealogis.",
+    "keyPoints": [
+      "Dalam penempatan peristiwa dalam waktu serta kesinambungan sejarah, pendekatan yang **genealogis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **genealogis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **genealogis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-40-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-40",
+    "topicTitle": "Stage 40: Sejarah, Waktu & Perubahan Peradaban",
+    "stageId": 7,
+    "stageTitle": "07. Sinkronis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, sinkronis berarti mengkaji suatu keadaan pada satu masa tertentu tanpa terutama menelusuri perkembangannya sepanjang waktu. ==Mengkaji suatu keadaan pada satu masa tertentu tanpa terutama menelusuri perkembangannya sepanjang waktu==.\\n\\nDalam konteks penempatan peristiwa dalam waktu serta kesinambungan sejarah, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari diakronis yang mengamati perubahan lintas waktu. kolokasi: pendekatan sinkronis, karakteristik sinkronis, atau sifat yang sinkronis.",
+    "keyPoints": [
+      "Dalam penempatan peristiwa dalam waktu serta kesinambungan sejarah, pendekatan yang **sinkronis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **sinkronis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **sinkronis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-40-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-40",
+    "topicTitle": "Stage 40: Sejarah, Waktu & Perubahan Peradaban",
+    "stageId": 8,
+    "stageTitle": "08. Diakronis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, diakronis berarti mengkaji perkembangan atau perubahan suatu hal dari waktu ke waktu. ==Mengkaji perkembangan atau perubahan suatu hal dari waktu ke waktu==.\\n\\nDalam konteks penempatan peristiwa dalam waktu serta kesinambungan sejarah, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam sejarah dan linguistik untuk menelusuri proses perubahan. kolokasi: pendekatan diakronis, karakteristik diakronis, atau sifat yang diakronis.",
+    "keyPoints": [
+      "Dalam penempatan peristiwa dalam waktu serta kesinambungan sejarah, pendekatan yang **diakronis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **diakronis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **diakronis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-40-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-40",
+    "topicTitle": "Stage 40: Sejarah, Waktu & Perubahan Peradaban",
+    "stageId": 9,
+    "stageTitle": "09. Kontinuitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kontinuitas berarti kesinambungan atau keadaan berlangsung tanpa terputus. ==Kesinambungan atau keadaan berlangsung tanpa terputus==.\\n\\nDalam konteks penempatan peristiwa dalam waktu serta kesinambungan sejarah, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan unsur yang tetap bertahan di tengah perubahan. kolokasi: konsep kontinuitas, isu kontinuitas, atau analisis mengenai kontinuitas.",
+    "keyPoints": [
+      "Dalam penempatan peristiwa dalam waktu serta kesinambungan sejarah, **kontinuitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kontinuitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kontinuitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-40-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-40",
+    "topicTitle": "Stage 40: Sejarah, Waktu & Perubahan Peradaban",
+    "stageId": 10,
+    "stageTitle": "10. Ruptur (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ruptur berarti keretakan atau putusnya kesinambungan yang menandai perubahan mendasar. ==Keretakan atau putusnya kesinambungan yang menandai perubahan mendasar==.\\n\\nDalam konteks penempatan peristiwa dalam waktu serta kesinambungan sejarah, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam kajian sejarah dan teori sosial menunjuk momen pemutusan dari tatanan sebelumnya. kolokasi: konsep ruptur, isu ruptur, atau analisis mengenai ruptur.",
+    "keyPoints": [
+      "Dalam penempatan peristiwa dalam waktu serta kesinambungan sejarah, **ruptur** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ruptur** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ruptur** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-41-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-41",
+    "topicTitle": "Stage 41: Demokrasi, Partisipasi & Desain Kelembagaan",
+    "stageId": 1,
+    "stageTitle": "01. Deliberasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, deliberasi berarti pertimbangan atau pembahasan secara cermat sebelum mengambil keputusan. ==Pertimbangan atau pembahasan secara cermat sebelum mengambil keputusan==.\\n\\nDalam konteks mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan pertukaran alasan dan pemeriksaan pilihan, bukan sekadar diskusi tanpa arah. kolokasi: konsep deliberasi, isu deliberasi, atau analisis mengenai deliberasi.",
+    "keyPoints": [
+      "Dalam mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, **deliberasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **deliberasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **deliberasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-41-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-41",
+    "topicTitle": "Stage 41: Demokrasi, Partisipasi & Desain Kelembagaan",
+    "stageId": 2,
+    "stageTitle": "02. Subsidiaritas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, subsidiaritas berarti prinsip bahwa keputusan sebaiknya diambil oleh tingkat pemerintahan atau organisasi terdekat yang mampu menanganinya. ==Prinsip bahwa keputusan sebaiknya diambil oleh tingkat pemerintahan atau organisasi terdekat yang mampu menanganinya==.\\n\\nDalam konteks mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Bertujuan menjaga keputusan tetap dekat dengan pihak terdampak sambil mempertahankan kapasitas tingkat lebih tinggi. kolokasi: konsep subsidiaritas, isu subsidiaritas, atau analisis mengenai subsidiaritas.",
+    "keyPoints": [
+      "Dalam mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, **subsidiaritas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **subsidiaritas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **subsidiaritas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-41-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-41",
+    "topicTitle": "Stage 41: Demokrasi, Partisipasi & Desain Kelembagaan",
+    "stageId": 3,
+    "stageTitle": "03. Federalisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, federalisme berarti sistem pemerintahan yang membagi kekuasaan antara pemerintah pusat dan unit-unit politik yang memiliki kewenangan sendiri. ==Sistem pemerintahan yang membagi kekuasaan antara pemerintah pusat dan unit-unit politik yang memiliki kewenangan sendiri==.\\n\\nDalam konteks mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari negara kesatuan yang menempatkan kedaulatan pada satu struktur negara. kolokasi: konsep federalisme, isu federalisme, atau analisis mengenai federalisme.",
+    "keyPoints": [
+      "Dalam mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, **federalisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **federalisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **federalisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-41-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-41",
+    "topicTitle": "Stage 41: Demokrasi, Partisipasi & Desain Kelembagaan",
+    "stageId": 4,
+    "stageTitle": "04. Partisipatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, partisipatif berarti melibatkan keikutsertaan pihak-pihak terkait dalam proses atau pengambilan keputusan. ==Melibatkan keikutsertaan pihak-pihak terkait dalam proses atau pengambilan keputusan==.\\n\\nDalam konteks mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan keterlibatan aktif, bukan sekadar penerimaan informasi. kolokasi: pendekatan partisipatif, karakteristik partisipatif, atau sifat yang partisipatif.",
+    "keyPoints": [
+      "Dalam mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, pendekatan yang **partisipatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **partisipatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **partisipatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-41-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-41",
+    "topicTitle": "Stage 41: Demokrasi, Partisipasi & Desain Kelembagaan",
+    "stageId": 5,
+    "stageTitle": "05. Akuntabel (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, akuntabel berarti dapat dimintai penjelasan dan pertanggungjawaban atas tindakan atau keputusan. ==Dapat dimintai penjelasan dan pertanggungjawaban atas tindakan atau keputusan==.\\n\\nDalam konteks mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menggambarkan lembaga atau proses yang memiliki mekanisme pertanggungjawaban. kolokasi: pendekatan akuntabel, karakteristik akuntabel, atau sifat yang akuntabel.",
+    "keyPoints": [
+      "Dalam mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, pendekatan yang **akuntabel** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **akuntabel** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **akuntabel** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-41-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-41",
+    "topicTitle": "Stage 41: Demokrasi, Partisipasi & Desain Kelembagaan",
+    "stageId": 6,
+    "stageTitle": "06. Representatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, representatif berarti mampu mewakili atau mencerminkan ciri dan kepentingan kelompok yang lebih luas. ==Mampu mewakili atau mencerminkan ciri dan kepentingan kelompok yang lebih luas==.\\n\\nDalam konteks mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam penelitian juga berarti sampel mencerminkan populasi secara memadai. kolokasi: pendekatan representatif, karakteristik representatif, atau sifat yang representatif.",
+    "keyPoints": [
+      "Dalam mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, pendekatan yang **representatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **representatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **representatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-41-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-41",
+    "topicTitle": "Stage 41: Demokrasi, Partisipasi & Desain Kelembagaan",
+    "stageId": 7,
+    "stageTitle": "07. Konstituensi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konstituensi berarti wilayah atau kelompok pemilih yang diwakili oleh seorang wakil politik. ==Wilayah atau kelompok pemilih yang diwakili oleh seorang wakil politik==.\\n\\nDalam konteks mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjuk basis representasi dalam sistem perwakilan. kolokasi: konsep konstituensi, isu konstituensi, atau analisis mengenai konstituensi.",
+    "keyPoints": [
+      "Dalam mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, **konstituensi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konstituensi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konstituensi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-41-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-41",
+    "topicTitle": "Stage 41: Demokrasi, Partisipasi & Desain Kelembagaan",
+    "stageId": 8,
+    "stageTitle": "08. Ombudsman (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ombudsman berarti lembaga atau pejabat independen yang menerima dan memeriksa pengaduan mengenai pelayanan atau tindakan administrasi. ==Lembaga atau pejabat independen yang menerima dan memeriksa pengaduan mengenai pelayanan atau tindakan administrasi==.\\n\\nDalam konteks mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berfungsi mengawasi maladministrasi sesuai kewenangan yang diberikan. kolokasi: konsep ombudsman, isu ombudsman, atau analisis mengenai ombudsman.",
+    "keyPoints": [
+      "Dalam mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, **ombudsman** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ombudsman** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ombudsman** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-41-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-41",
+    "topicTitle": "Stage 41: Demokrasi, Partisipasi & Desain Kelembagaan",
+    "stageId": 9,
+    "stageTitle": "09. Bipartit (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, bipartit berarti terdiri atas atau melibatkan dua pihak. ==Terdiri atas atau melibatkan dua pihak==.\\n\\nDalam konteks mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan dalam hubungan industrial untuk perundingan antara pekerja dan pemberi kerja. kolokasi: pendekatan bipartit, karakteristik bipartit, atau sifat yang bipartit.",
+    "keyPoints": [
+      "Dalam mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, pendekatan yang **bipartit** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **bipartit** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **bipartit** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-41-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-41",
+    "topicTitle": "Stage 41: Demokrasi, Partisipasi & Desain Kelembagaan",
+    "stageId": 10,
+    "stageTitle": "10. Tripartit (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, tripartit berarti terdiri atas atau melibatkan tiga pihak. ==Terdiri atas atau melibatkan tiga pihak==.\\n\\nDalam konteks mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam hubungan industrial biasanya melibatkan pekerja, pengusaha, dan pemerintah. kolokasi: pendekatan tripartit, karakteristik tripartit, atau sifat yang tripartit.",
+    "keyPoints": [
+      "Dalam mutu proses pengambilan keputusan dan pembagian tanggung jawab publik, pendekatan yang **tripartit** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **tripartit** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **tripartit** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-42-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-42",
+    "topicTitle": "Stage 42: Keuangan Makro & Instrumen Pasar",
+    "stageId": 1,
+    "stageTitle": "01. Moneter (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, moneter berarti berkaitan dengan uang, peredaran uang, suku bunga, atau kebijakan bank sentral. ==Berkaitan dengan uang, peredaran uang, suku bunga, atau kebijakan bank sentral==.\\n\\nDalam konteks kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk membedakan kebijakan moneter dari kebijakan fiskal. kolokasi: pendekatan moneter, karakteristik moneter, atau sifat yang moneter.",
+    "keyPoints": [
+      "Dalam kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, pendekatan yang **moneter** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **moneter** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **moneter** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-42-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-42",
+    "topicTitle": "Stage 42: Keuangan Makro & Instrumen Pasar",
+    "stageId": 2,
+    "stageTitle": "02. Fiskal (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, fiskal berarti berkaitan dengan pendapatan dan pengeluaran pemerintah, terutama pajak dan belanja negara. ==Berkaitan dengan pendapatan dan pengeluaran pemerintah, terutama pajak dan belanja negara==.\\n\\nDalam konteks kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menjelaskan instrumen anggaran pemerintah untuk memengaruhi perekonomian. kolokasi: pendekatan fiskal, karakteristik fiskal, atau sifat yang fiskal.",
+    "keyPoints": [
+      "Dalam kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, pendekatan yang **fiskal** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **fiskal** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **fiskal** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-42-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-42",
+    "topicTitle": "Stage 42: Keuangan Makro & Instrumen Pasar",
+    "stageId": 3,
+    "stageTitle": "03. Stagflasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, stagflasi berarti keadaan ketika inflasi tinggi terjadi bersamaan dengan pertumbuhan ekonomi yang lemah atau stagnasi. ==Keadaan ketika inflasi tinggi terjadi bersamaan dengan pertumbuhan ekonomi yang lemah atau stagnasi==.\\n\\nDalam konteks kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Merupakan kombinasi yang menyulitkan karena pengendalian inflasi dapat menekan pertumbuhan. kolokasi: konsep stagflasi, isu stagflasi, atau analisis mengenai stagflasi.",
+    "keyPoints": [
+      "Dalam kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, **stagflasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **stagflasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **stagflasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-42-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-42",
+    "topicTitle": "Stage 42: Keuangan Makro & Instrumen Pasar",
+    "stageId": 4,
+    "stageTitle": "04. Sekuritisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sekuritisasi berarti proses mengubah kumpulan aset atau piutang menjadi surat berharga yang dapat diperdagangkan. ==Proses mengubah kumpulan aset atau piutang menjadi surat berharga yang dapat diperdagangkan==.\\n\\nDalam konteks kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam pembiayaan untuk mengalihkan atau menyebarkan risiko dan memperoleh dana. kolokasi: konsep sekuritisasi, isu sekuritisasi, atau analisis mengenai sekuritisasi.",
+    "keyPoints": [
+      "Dalam kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, **sekuritisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sekuritisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sekuritisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-42-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-42",
+    "topicTitle": "Stage 42: Keuangan Makro & Instrumen Pasar",
+    "stageId": 5,
+    "stageTitle": "05. Ekuitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, ekuitas berarti hak atau kepentingan pemilik atas suatu entitas setelah dikurangi seluruh kewajibannya. ==Hak atau kepentingan pemilik atas suatu entitas setelah dikurangi seluruh kewajibannya==.\\n\\nDalam konteks kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam laporan keuangan menunjukkan bagian kekayaan bersih yang menjadi hak pemilik. kolokasi: konsep ekuitas, isu ekuitas, atau analisis mengenai ekuitas.",
+    "keyPoints": [
+      "Dalam kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, **ekuitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **ekuitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **ekuitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-42-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-42",
+    "topicTitle": "Stage 42: Keuangan Makro & Instrumen Pasar",
+    "stageId": 6,
+    "stageTitle": "06. Daya Ungkit (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, daya ungkit berarti penggunaan dana pinjaman atau sumber daya tambahan untuk memperbesar potensi hasil maupun risiko. ==Penggunaan dana pinjaman atau sumber daya tambahan untuk memperbesar potensi hasil maupun risiko==.\\n\\nDalam konteks kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam keuangan meningkatkan eksposur; keuntungan dan kerugian dapat sama-sama membesar. kolokasi: konsep daya ungkit, isu daya ungkit, atau analisis mengenai daya ungkit.",
+    "keyPoints": [
+      "Dalam kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, **daya ungkit** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **daya ungkit** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **daya ungkit** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-42-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-42",
+    "topicTitle": "Stage 42: Keuangan Makro & Instrumen Pasar",
+    "stageId": 7,
+    "stageTitle": "07. Oligopoli (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, oligopoli berarti struktur pasar yang dikuasai oleh sejumlah kecil penjual atau produsen. ==Struktur pasar yang dikuasai oleh sejumlah kecil penjual atau produsen==.\\n\\nDalam konteks kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Keputusan satu pelaku dapat memengaruhi strategi pelaku lain. kolokasi: konsep oligopoli, isu oligopoli, atau analisis mengenai oligopoli.",
+    "keyPoints": [
+      "Dalam kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, **oligopoli** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **oligopoli** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **oligopoli** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-42-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-42",
+    "topicTitle": "Stage 42: Keuangan Makro & Instrumen Pasar",
+    "stageId": 8,
+    "stageTitle": "08. Likuid (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, likuid berarti mudah dicairkan menjadi uang tunai atau mudah diperdagangkan tanpa perubahan nilai yang besar. ==Mudah dicairkan menjadi uang tunai atau mudah diperdagangkan tanpa perubahan nilai yang besar==.\\n\\nDalam konteks kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk aset atau pasar yang memiliki kemudahan transaksi tinggi. kolokasi: pendekatan likuid, karakteristik likuid, atau sifat yang likuid.",
+    "keyPoints": [
+      "Dalam kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, pendekatan yang **likuid** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **likuid** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **likuid** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-42-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-42",
+    "topicTitle": "Stage 42: Keuangan Makro & Instrumen Pasar",
+    "stageId": 9,
+    "stageTitle": "09. Ekspansif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, ekspansif berarti bersifat meluas atau mendorong peningkatan kegiatan ekonomi atau organisasi. ==Bersifat meluas atau mendorong peningkatan kegiatan ekonomi atau organisasi==.\\n\\nDalam konteks kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam kebijakan ekonomi dapat merujuk pada kebijakan yang mendorong permintaan dan aktivitas. kolokasi: pendekatan ekspansif, karakteristik ekspansif, atau sifat yang ekspansif.",
+    "keyPoints": [
+      "Dalam kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, pendekatan yang **ekspansif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **ekspansif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **ekspansif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-42-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-42",
+    "topicTitle": "Stage 42: Keuangan Makro & Instrumen Pasar",
+    "stageId": 10,
+    "stageTitle": "10. Kontraktif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kontraktif berarti bersifat menyusutkan atau menahan pertumbuhan kegiatan atau jumlah tertentu. ==Bersifat menyusutkan atau menahan pertumbuhan kegiatan atau jumlah tertentu==.\\n\\nDalam konteks kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam kebijakan moneter dan fiskal merujuk pada langkah untuk mengurangi tekanan permintaan atau inflasi. kolokasi: pendekatan kontraktif, karakteristik kontraktif, atau sifat yang kontraktif.",
+    "keyPoints": [
+      "Dalam kebijakan moneter, pembiayaan, dan struktur instrumen keuangan, pendekatan yang **kontraktif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kontraktif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kontraktif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-43-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-43",
+    "topicTitle": "Stage 43: Stratifikasi, Identitas & Struktur Masyarakat",
+    "stageId": 1,
+    "stageTitle": "01. Stratifikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, stratifikasi berarti pembagian masyarakat ke dalam lapisan berdasarkan kedudukan atau ukuran tertentu. ==Pembagian masyarakat ke dalam lapisan berdasarkan kedudukan atau ukuran tertentu==.\\n\\nDalam konteks lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat didasarkan pada kelas ekonomi, pendidikan, pekerjaan, atau prestise. kolokasi: konsep stratifikasi, isu stratifikasi, atau analisis mengenai stratifikasi.",
+    "keyPoints": [
+      "Dalam lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, **stratifikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **stratifikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **stratifikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-43-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-43",
+    "topicTitle": "Stage 43: Stratifikasi, Identitas & Struktur Masyarakat",
+    "stageId": 2,
+    "stageTitle": "02. Mobilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, mobilitas berarti pergerakan atau perpindahan dari satu kedudukan, keadaan, atau tempat ke yang lain. ==Pergerakan atau perpindahan dari satu kedudukan, keadaan, atau tempat ke yang lain==.\\n\\nDalam konteks lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam sosiologi sering merujuk pada perubahan posisi sosial seseorang atau kelompok. kolokasi: konsep mobilitas, isu mobilitas, atau analisis mengenai mobilitas.",
+    "keyPoints": [
+      "Dalam lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, **mobilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **mobilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **mobilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-43-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-43",
+    "topicTitle": "Stage 43: Stratifikasi, Identitas & Struktur Masyarakat",
+    "stageId": 3,
+    "stageTitle": "03. Primordialisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, primordialisme berarti pandangan atau sikap yang mengutamakan ikatan asal-usul seperti suku, agama, atau kekerabatan. ==Pandangan atau sikap yang mengutamakan ikatan asal-usul seperti suku, agama, atau kekerabatan==.\\n\\nDalam konteks lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat memperkuat solidaritas kelompok, tetapi berpotensi menimbulkan eksklusivitas. kolokasi: konsep primordialisme, isu primordialisme, atau analisis mengenai primordialisme.",
+    "keyPoints": [
+      "Dalam lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, **primordialisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **primordialisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **primordialisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-43-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-43",
+    "topicTitle": "Stage 43: Stratifikasi, Identitas & Struktur Masyarakat",
+    "stageId": 4,
+    "stageTitle": "04. Sektarianisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sektarianisme berarti paham atau sikap yang mengutamakan kelompok atau sekte sendiri secara sempit dan sering memusuhi kelompok lain. ==Paham atau sikap yang mengutamakan kelompok atau sekte sendiri secara sempit dan sering memusuhi kelompok lain==.\\n\\nDalam konteks lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menjelaskan perpecahan berbasis afiliasi tertentu. kolokasi: konsep sektarianisme, isu sektarianisme, atau analisis mengenai sektarianisme.",
+    "keyPoints": [
+      "Dalam lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, **sektarianisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sektarianisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sektarianisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-43-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-43",
+    "topicTitle": "Stage 43: Stratifikasi, Identitas & Struktur Masyarakat",
+    "stageId": 5,
+    "stageTitle": "05. Etnosentrisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, etnosentrisme berarti sikap menilai kebudayaan lain berdasarkan ukuran dan nilai kebudayaan sendiri. ==Sikap menilai kebudayaan lain berdasarkan ukuran dan nilai kebudayaan sendiri==.\\n\\nDalam konteks lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat menghambat pemahaman lintas budaya dan mendorong prasangka. kolokasi: konsep etnosentrisme, isu etnosentrisme, atau analisis mengenai etnosentrisme.",
+    "keyPoints": [
+      "Dalam lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, **etnosentrisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **etnosentrisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **etnosentrisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-43-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-43",
+    "topicTitle": "Stage 43: Stratifikasi, Identitas & Struktur Masyarakat",
+    "stageId": 6,
+    "stageTitle": "06. Kosmopolitan (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kosmopolitan berarti memiliki wawasan atau sikap yang terbuka terhadap berbagai bangsa dan kebudayaan. ==Memiliki wawasan atau sikap yang terbuka terhadap berbagai bangsa dan kebudayaan==.\\n\\nDalam konteks lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan orientasi lintas batas, bukan keterikatan pada satu lingkungan lokal saja. kolokasi: pendekatan kosmopolitan, karakteristik kosmopolitan, atau sifat yang kosmopolitan.",
+    "keyPoints": [
+      "Dalam lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, pendekatan yang **kosmopolitan** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kosmopolitan** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kosmopolitan** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-43-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-43",
+    "topicTitle": "Stage 43: Stratifikasi, Identitas & Struktur Masyarakat",
+    "stageId": 7,
+    "stageTitle": "07. Diaspora (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, diaspora berarti penyebaran kelompok masyarakat dari tanah asal ke berbagai wilayah lain. ==Penyebaran kelompok masyarakat dari tanah asal ke berbagai wilayah lain==.\\n\\nDalam konteks lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat tetap mempertahankan ikatan budaya, sosial, atau ekonomi dengan daerah asal. kolokasi: konsep diaspora, isu diaspora, atau analisis mengenai diaspora.",
+    "keyPoints": [
+      "Dalam lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, **diaspora** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **diaspora** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **diaspora** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-43-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-43",
+    "topicTitle": "Stage 43: Stratifikasi, Identitas & Struktur Masyarakat",
+    "stageId": 8,
+    "stageTitle": "08. Komunal (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, komunal berarti berkaitan dengan kelompok atau masyarakat sebagai satu kesatuan. ==Berkaitan dengan kelompok atau masyarakat sebagai satu kesatuan==.\\n\\nDalam konteks lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan kepentingan dan kehidupan bersama, bukan individu secara terpisah. kolokasi: pendekatan komunal, karakteristik komunal, atau sifat yang komunal.",
+    "keyPoints": [
+      "Dalam lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, pendekatan yang **komunal** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **komunal** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **komunal** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-43-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-43",
+    "topicTitle": "Stage 43: Stratifikasi, Identitas & Struktur Masyarakat",
+    "stageId": 9,
+    "stageTitle": "09. Patronase (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, patronase berarti dukungan atau perlindungan yang diberikan oleh pihak berkuasa kepada pihak lain, sering disertai hubungan timbal balik yang tidak setara. ==Dukungan atau perlindungan yang diberikan oleh pihak berkuasa kepada pihak lain, sering disertai hubungan timbal balik yang tidak setara==.\\n\\nDalam konteks lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam politik dapat menjadi jaringan pertukaran dukungan dan sumber daya. kolokasi: konsep patronase, isu patronase, atau analisis mengenai patronase.",
+    "keyPoints": [
+      "Dalam lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, **patronase** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **patronase** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **patronase** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-43-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-43",
+    "topicTitle": "Stage 43: Stratifikasi, Identitas & Struktur Masyarakat",
+    "stageId": 10,
+    "stageTitle": "10. Eksklusi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, eksklusi berarti tindakan atau proses mengeluarkan seseorang atau kelompok dari keikutsertaan atau akses. ==Tindakan atau proses mengeluarkan seseorang atau kelompok dari keikutsertaan atau akses==.\\n\\nDalam konteks lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berlawanan dengan inklusi; dapat terjadi melalui aturan, praktik, atau hambatan sosial. kolokasi: konsep eksklusi, isu eksklusi, atau analisis mengenai eksklusi.",
+    "keyPoints": [
+      "Dalam lapisan sosial, keanggotaan kelompok, dan pembentukan identitas, **eksklusi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **eksklusi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **eksklusi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-44-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-44",
+    "topicTitle": "Stage 44: Filsafat Ilmu & Praktik Ilmiah",
+    "stageId": 1,
+    "stageTitle": "01. Teoretis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, teoretis berarti berdasarkan teori atau berkaitan dengan penyusunan konsep dan prinsip. ==Berdasarkan teori atau berkaitan dengan penyusunan konsep dan prinsip==.\\n\\nDalam konteks pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari praktis atau empiris, meskipun teori yang baik dapat diuji melalui pengalaman. kolokasi: pendekatan teoretis, karakteristik teoretis, atau sifat yang teoretis.",
+    "keyPoints": [
+      "Dalam pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, pendekatan yang **teoretis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **teoretis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **teoretis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-44-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-44",
+    "topicTitle": "Stage 44: Filsafat Ilmu & Praktik Ilmiah",
+    "stageId": 2,
+    "stageTitle": "02. Paradigma (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, paradigma berarti kerangka berpikir atau model dasar yang digunakan untuk memahami dan meneliti suatu bidang. ==Kerangka berpikir atau model dasar yang digunakan untuk memahami dan meneliti suatu bidang==.\\n\\nDalam konteks pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Memengaruhi pertanyaan, metode, serta penafsiran bukti. kolokasi: konsep paradigma, isu paradigma, atau analisis mengenai paradigma.",
+    "keyPoints": [
+      "Dalam pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, **paradigma** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **paradigma** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **paradigma** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-44-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-44",
+    "topicTitle": "Stage 44: Filsafat Ilmu & Praktik Ilmiah",
+    "stageId": 3,
+    "stageTitle": "03. Falsifikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, falsifikasi berarti pengujian suatu pernyataan atau teori dengan berusaha menunjukkan bahwa pernyataan itu keliru. ==Pengujian suatu pernyataan atau teori dengan berusaha menunjukkan bahwa pernyataan itu keliru==.\\n\\nDalam konteks pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam filsafat ilmu menjadi cara menguji teori melalui kemungkinan bantahan empiris. kolokasi: konsep falsifikasi, isu falsifikasi, atau analisis mengenai falsifikasi.",
+    "keyPoints": [
+      "Dalam pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, **falsifikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **falsifikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **falsifikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-44-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-44",
+    "topicTitle": "Stage 44: Filsafat Ilmu & Praktik Ilmiah",
+    "stageId": 4,
+    "stageTitle": "04. Aksiomatik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, aksiomatik berarti berkaitan dengan aksioma atau prinsip dasar yang diterima sebagai landasan penalaran. ==Berkaitan dengan aksioma atau prinsip dasar yang diterima sebagai landasan penalaran==.\\n\\nDalam konteks pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk sistem yang dibangun dari seperangkat pernyataan dasar dan aturan penurunan. kolokasi: pendekatan aksiomatik, karakteristik aksiomatik, atau sifat yang aksiomatik.",
+    "keyPoints": [
+      "Dalam pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, pendekatan yang **aksiomatik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **aksiomatik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **aksiomatik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-44-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-44",
+    "topicTitle": "Stage 44: Filsafat Ilmu & Praktik Ilmiah",
+    "stageId": 5,
+    "stageTitle": "05. Reproduktibilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, reproduktibilitas berarti kemampuan memperoleh hasil yang sama atau sebanding ketika prosedur dan data yang relevan digunakan kembali. ==Kemampuan memperoleh hasil yang sama atau sebanding ketika prosedur dan data yang relevan digunakan kembali==.\\n\\nDalam konteks pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Penting untuk menilai keterbukaan dan keterandalan penelitian. kolokasi: konsep reproduktibilitas, isu reproduktibilitas, atau analisis mengenai reproduktibilitas.",
+    "keyPoints": [
+      "Dalam pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, **reproduktibilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **reproduktibilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **reproduktibilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-44-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-44",
+    "topicTitle": "Stage 44: Filsafat Ilmu & Praktik Ilmiah",
+    "stageId": 6,
+    "stageTitle": "06. Konjektur (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konjektur berarti dugaan atau pernyataan yang diajukan berdasarkan alasan tetapi belum dibuktikan. ==Dugaan atau pernyataan yang diajukan berdasarkan alasan tetapi belum dibuktikan==.\\n\\nDalam konteks pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering menjadi titik awal pembuktian atau penelitian lebih lanjut. kolokasi: konsep konjektur, isu konjektur, atau analisis mengenai konjektur.",
+    "keyPoints": [
+      "Dalam pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, **konjektur** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konjektur** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konjektur** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-44-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-44",
+    "topicTitle": "Stage 44: Filsafat Ilmu & Praktik Ilmiah",
+    "stageId": 7,
+    "stageTitle": "07. Abduktif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, abduktif berarti berkaitan dengan penalaran yang mencari penjelasan paling masuk akal bagi suatu pengamatan. ==Berkaitan dengan penalaran yang mencari penjelasan paling masuk akal bagi suatu pengamatan==.\\n\\nDalam konteks pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan ketika menyusun dugaan penjelas terbaik dari bukti yang belum lengkap. kolokasi: pendekatan abduktif, karakteristik abduktif, atau sifat yang abduktif.",
+    "keyPoints": [
+      "Dalam pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, pendekatan yang **abduktif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **abduktif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **abduktif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-44-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-44",
+    "topicTitle": "Stage 44: Filsafat Ilmu & Praktik Ilmiah",
+    "stageId": 8,
+    "stageTitle": "08. Paradigmatik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, paradigmatik berarti berkaitan dengan paradigma atau kerangka dasar suatu bidang. ==Berkaitan dengan paradigma atau kerangka dasar suatu bidang==.\\n\\nDalam konteks pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk perubahan yang mengubah cara pandang atau struktur konseptual. kolokasi: pendekatan paradigmatik, karakteristik paradigmatik, atau sifat yang paradigmatik.",
+    "keyPoints": [
+      "Dalam pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, pendekatan yang **paradigmatik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **paradigmatik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **paradigmatik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-44-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-44",
+    "topicTitle": "Stage 44: Filsafat Ilmu & Praktik Ilmiah",
+    "stageId": 9,
+    "stageTitle": "09. Replikatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, replikatif berarti bersifat mengulang atau dapat diulang dengan prosedur yang sebanding. ==Bersifat mengulang atau dapat diulang dengan prosedur yang sebanding==.\\n\\nDalam konteks pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk desain penelitian dan pemeriksaan hasil. kolokasi: pendekatan replikatif, karakteristik replikatif, atau sifat yang replikatif.",
+    "keyPoints": [
+      "Dalam pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, pendekatan yang **replikatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **replikatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **replikatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-44-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-44",
+    "topicTitle": "Stage 44: Filsafat Ilmu & Praktik Ilmiah",
+    "stageId": 10,
+    "stageTitle": "10. Tentatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, tentatif berarti belum pasti atau masih dapat berubah karena menunggu bukti atau pertimbangan lebih lanjut. ==Belum pasti atau masih dapat berubah karena menunggu bukti atau pertimbangan lebih lanjut==.\\n\\nDalam konteks pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Tepat untuk kesimpulan sementara yang tidak boleh diperlakukan sebagai kepastian. kolokasi: pendekatan tentatif, karakteristik tentatif, atau sifat yang tentatif.",
+    "keyPoints": [
+      "Dalam pembentukan teori, pengujian bukti, dan perkembangan pengetahuan, pendekatan yang **tentatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **tentatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **tentatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-45-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-45",
+    "topicTitle": "Stage 45: Kritik Konseptual & Pembacaan Kritis",
+    "stageId": 1,
+    "stageTitle": "01. Rekontekstualisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, rekontekstualisasi berarti proses menempatkan kembali gagasan, teks, atau peristiwa ke dalam konteks baru. ==Proses menempatkan kembali gagasan, teks, atau peristiwa ke dalam konteks baru==.\\n\\nDalam konteks pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat mengubah penafsiran karena latar sosial dan tujuan penggunaannya berbeda. kolokasi: konsep rekontekstualisasi, isu rekontekstualisasi, atau analisis mengenai rekontekstualisasi.",
+    "keyPoints": [
+      "Dalam pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, **rekontekstualisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **rekontekstualisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **rekontekstualisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-45-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-45",
+    "topicTitle": "Stage 45: Kritik Konseptual & Pembacaan Kritis",
+    "stageId": 2,
+    "stageTitle": "02. Relativisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, relativisasi berarti proses menempatkan sesuatu dalam hubungan dengan kondisi atau sudut pandang tertentu sehingga sifat mutlaknya dibatasi. ==Proses menempatkan sesuatu dalam hubungan dengan kondisi atau sudut pandang tertentu sehingga sifat mutlaknya dibatasi==.\\n\\nDalam konteks pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menunjukkan bahwa suatu klaim bergantung pada konteks tertentu. kolokasi: konsep relativisasi, isu relativisasi, atau analisis mengenai relativisasi.",
+    "keyPoints": [
+      "Dalam pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, **relativisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **relativisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **relativisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-45-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-45",
+    "topicTitle": "Stage 45: Kritik Konseptual & Pembacaan Kritis",
+    "stageId": 3,
+    "stageTitle": "03. Eklektik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, eklektik berarti memilih dan menggabungkan unsur dari berbagai sumber, aliran, atau sistem pemikiran. ==Memilih dan menggabungkan unsur dari berbagai sumber, aliran, atau sistem pemikiran==.\\n\\nDalam konteks pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat produktif jika pemilihan memiliki dasar; tanpa dasar dapat menjadi campuran yang tidak padu. kolokasi: pendekatan eklektik, karakteristik eklektik, atau sifat yang eklektik.",
+    "keyPoints": [
+      "Dalam pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, pendekatan yang **eklektik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **eklektik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **eklektik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-45-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-45",
+    "topicTitle": "Stage 45: Kritik Konseptual & Pembacaan Kritis",
+    "stageId": 4,
+    "stageTitle": "04. Dialektika (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, dialektika berarti cara berpikir atau pembahasan yang menelaah pertentangan dan hubungan antargagasan untuk memperoleh pemahaman. ==Cara berpikir atau pembahasan yang menelaah pertentangan dan hubungan antargagasan untuk memperoleh pemahaman==.\\n\\nDalam konteks pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Maknanya bervariasi dalam tradisi filsafat; umumnya menekankan gerak melalui ketegangan atau dialog. kolokasi: konsep dialektika, isu dialektika, atau analisis mengenai dialektika.",
+    "keyPoints": [
+      "Dalam pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, **dialektika** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **dialektika** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **dialektika** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-45-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-45",
+    "topicTitle": "Stage 45: Kritik Konseptual & Pembacaan Kritis",
+    "stageId": 5,
+    "stageTitle": "05. Rekonstruksi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, rekonstruksi berarti penyusunan kembali sesuatu berdasarkan bagian, bukti, atau informasi yang tersedia. ==Penyusunan kembali sesuatu berdasarkan bagian, bukti, atau informasi yang tersedia==.\\n\\nDalam konteks pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk membangun kembali peristiwa, argumen, atau struktur yang tidak lagi utuh. kolokasi: konsep rekonstruksi, isu rekonstruksi, atau analisis mengenai rekonstruksi.",
+    "keyPoints": [
+      "Dalam pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, **rekonstruksi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **rekonstruksi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **rekonstruksi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-45-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-45",
+    "topicTitle": "Stage 45: Kritik Konseptual & Pembacaan Kritis",
+    "stageId": 6,
+    "stageTitle": "06. Kategorisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kategorisasi berarti proses mengelompokkan sesuatu ke dalam kategori berdasarkan ciri tertentu. ==Proses mengelompokkan sesuatu ke dalam kategori berdasarkan ciri tertentu==.\\n\\nDalam konteks pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Membantu analisis, tetapi batas kategori perlu dijelaskan agar tidak sewenang-wenang. kolokasi: konsep kategorisasi, isu kategorisasi, atau analisis mengenai kategorisasi.",
+    "keyPoints": [
+      "Dalam pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, **kategorisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kategorisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kategorisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-45-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-45",
+    "topicTitle": "Stage 45: Kritik Konseptual & Pembacaan Kritis",
+    "stageId": 7,
+    "stageTitle": "07. Distingsi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, distingsi berarti pembedaan antara dua hal atau lebih berdasarkan ciri yang dianggap penting. ==Pembedaan antara dua hal atau lebih berdasarkan ciri yang dianggap penting==.\\n\\nDalam konteks pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berguna untuk memperjelas konsep yang sekilas tampak serupa. kolokasi: konsep distingsi, isu distingsi, atau analisis mengenai distingsi.",
+    "keyPoints": [
+      "Dalam pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, **distingsi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **distingsi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **distingsi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-45-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-45",
+    "topicTitle": "Stage 45: Kritik Konseptual & Pembacaan Kritis",
+    "stageId": 8,
+    "stageTitle": "08. Esensialisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, esensialisme berarti pandangan bahwa suatu hal atau kelompok memiliki hakikat tetap yang menentukan ciri dasarnya. ==Pandangan bahwa suatu hal atau kelompok memiliki hakikat tetap yang menentukan ciri dasarnya==.\\n\\nDalam konteks pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Perlu dikritisi ketika mengabaikan perubahan dan keragaman internal. kolokasi: konsep esensialisme, isu esensialisme, atau analisis mengenai esensialisme.",
+    "keyPoints": [
+      "Dalam pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, **esensialisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **esensialisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **esensialisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-45-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-45",
+    "topicTitle": "Stage 45: Kritik Konseptual & Pembacaan Kritis",
+    "stageId": 9,
+    "stageTitle": "09. Konstruktivisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, konstruktivisme berarti pandangan bahwa pengetahuan atau makna dibentuk melalui proses dan interaksi, bukan hanya diterima secara pasif. ==Pandangan bahwa pengetahuan atau makna dibentuk melalui proses dan interaksi, bukan hanya diterima secara pasif==.\\n\\nDalam konteks pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam filsafat, pendidikan, dan ilmu sosial dengan variasi penekanan. kolokasi: konsep konstruktivisme, isu konstruktivisme, atau analisis mengenai konstruktivisme.",
+    "keyPoints": [
+      "Dalam pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, **konstruktivisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **konstruktivisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **konstruktivisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-45-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-45",
+    "topicTitle": "Stage 45: Kritik Konseptual & Pembacaan Kritis",
+    "stageId": 10,
+    "stageTitle": "10. Dekonstruktif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, dekonstruktif berarti bersifat mengurai struktur, asumsi, atau oposisi yang membentuk suatu teks atau gagasan. ==Bersifat mengurai struktur, asumsi, atau oposisi yang membentuk suatu teks atau gagasan==.\\n\\nDalam konteks pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menggambarkan pendekatan analitis yang menyingkap ketegangan dalam makna. kolokasi: pendekatan dekonstruktif, karakteristik dekonstruktif, atau sifat yang dekonstruktif.",
+    "keyPoints": [
+      "Dalam pemeriksaan asumsi, pembentukan kategori, dan penataan ulang makna, pendekatan yang **dekonstruktif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **dekonstruktif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **dekonstruktif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-46-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-46",
+    "topicTitle": "Stage 46: Penulisan Akademis & Pengembangan Analisis",
+    "stageId": 1,
+    "stageTitle": "01. Spesifikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, spesifikasi berarti perincian atau penetapan ciri, syarat, atau ukuran secara khusus. ==Perincian atau penetapan ciri, syarat, atau ukuran secara khusus==.\\n\\nDalam konteks penataan bukti, perincian klaim, dan penyusunan kesimpulan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Membuat kebutuhan atau klaim lebih jelas dan dapat diperiksa. kolokasi: konsep spesifikasi, isu spesifikasi, atau analisis mengenai spesifikasi.",
+    "keyPoints": [
+      "Dalam penataan bukti, perincian klaim, dan penyusunan kesimpulan, **spesifikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **spesifikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **spesifikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-46-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-46",
+    "topicTitle": "Stage 46: Penulisan Akademis & Pengembangan Analisis",
+    "stageId": 2,
+    "stageTitle": "02. Taksonomi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, taksonomi berarti sistem pengelompokan atau klasifikasi berdasarkan prinsip tertentu. ==Sistem pengelompokan atau klasifikasi berdasarkan prinsip tertentu==.\\n\\nDalam konteks penataan bukti, perincian klaim, dan penyusunan kesimpulan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menyusun objek atau konsep ke dalam kategori bertingkat. kolokasi: konsep taksonomi, isu taksonomi, atau analisis mengenai taksonomi.",
+    "keyPoints": [
+      "Dalam penataan bukti, perincian klaim, dan penyusunan kesimpulan, **taksonomi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **taksonomi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **taksonomi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-46-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-46",
+    "topicTitle": "Stage 46: Penulisan Akademis & Pengembangan Analisis",
+    "stageId": 3,
+    "stageTitle": "03. Tipologi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, tipologi berarti kajian atau susunan tipe berdasarkan kesamaan ciri tertentu. ==Kajian atau susunan tipe berdasarkan kesamaan ciri tertentu==.\\n\\nDalam konteks penataan bukti, perincian klaim, dan penyusunan kesimpulan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Membantu membandingkan pola, bukan menetapkan urutan mutu secara otomatis. kolokasi: konsep tipologi, isu tipologi, atau analisis mengenai tipologi.",
+    "keyPoints": [
+      "Dalam penataan bukti, perincian klaim, dan penyusunan kesimpulan, **tipologi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **tipologi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **tipologi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-46-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-46",
+    "topicTitle": "Stage 46: Penulisan Akademis & Pengembangan Analisis",
+    "stageId": 4,
+    "stageTitle": "04. Komparasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, komparasi berarti perbandingan antara dua hal atau lebih untuk mengetahui persamaan dan perbedaannya. ==Perbandingan antara dua hal atau lebih untuk mengetahui persamaan dan perbedaannya==.\\n\\nDalam konteks penataan bukti, perincian klaim, dan penyusunan kesimpulan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat bersifat deskriptif atau analitis; dasar pembanding harus setara. kolokasi: konsep komparasi, isu komparasi, atau analisis mengenai komparasi.",
+    "keyPoints": [
+      "Dalam penataan bukti, perincian klaim, dan penyusunan kesimpulan, **komparasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **komparasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **komparasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-46-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-46",
+    "topicTitle": "Stage 46: Penulisan Akademis & Pengembangan Analisis",
+    "stageId": 5,
+    "stageTitle": "05. Komensurabel (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, komensurabel berarti dapat diukur atau dibandingkan dengan ukuran atau standar yang sama. ==Dapat diukur atau dibandingkan dengan ukuran atau standar yang sama==.\\n\\nDalam konteks penataan bukti, perincian klaim, dan penyusunan kesimpulan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan ketika dua nilai atau konsep memiliki dasar perbandingan yang sepadan. kolokasi: pendekatan komensurabel, karakteristik komensurabel, atau sifat yang komensurabel.",
+    "keyPoints": [
+      "Dalam penataan bukti, perincian klaim, dan penyusunan kesimpulan, pendekatan yang **komensurabel** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **komensurabel** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **komensurabel** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-46-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-46",
+    "topicTitle": "Stage 46: Penulisan Akademis & Pengembangan Analisis",
+    "stageId": 6,
+    "stageTitle": "06. Inkommensurabilitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, inkommensurabilitas berarti keadaan ketika dua kerangka, ukuran, atau paradigma tidak dapat dibandingkan secara langsung dengan satu standar yang sama. ==Keadaan ketika dua kerangka, ukuran, atau paradigma tidak dapat dibandingkan secara langsung dengan satu standar yang sama==.\\n\\nDalam konteks penataan bukti, perincian klaim, dan penyusunan kesimpulan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Tidak selalu berarti sama sekali tidak dapat dipahami satu sama lain. kolokasi: konsep inkommensurabilitas, isu inkommensurabilitas, atau analisis mengenai inkommensurabilitas.",
+    "keyPoints": [
+      "Dalam penataan bukti, perincian klaim, dan penyusunan kesimpulan, **inkommensurabilitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **inkommensurabilitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **inkommensurabilitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-46-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-46",
+    "topicTitle": "Stage 46: Penulisan Akademis & Pengembangan Analisis",
+    "stageId": 7,
+    "stageTitle": "07. Proporsi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, proporsi berarti perbandingan antara bagian dan keseluruhan atau antara dua besaran. ==Perbandingan antara bagian dan keseluruhan atau antara dua besaran==.\\n\\nDalam konteks penataan bukti, perincian klaim, dan penyusunan kesimpulan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menyatakan ukuran relatif, bukan jumlah mutlak. kolokasi: konsep proporsi, isu proporsi, atau analisis mengenai proporsi.",
+    "keyPoints": [
+      "Dalam penataan bukti, perincian klaim, dan penyusunan kesimpulan, **proporsi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **proporsi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **proporsi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-46-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-46",
+    "topicTitle": "Stage 46: Penulisan Akademis & Pengembangan Analisis",
+    "stageId": 8,
+    "stageTitle": "08. Sintesis (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sintesis berarti penggabungan berbagai unsur, gagasan, atau hasil analisis menjadi kesatuan yang lebih utuh. ==Penggabungan berbagai unsur, gagasan, atau hasil analisis menjadi kesatuan yang lebih utuh==.\\n\\nDalam konteks penataan bukti, perincian klaim, dan penyusunan kesimpulan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Bukan sekadar ringkasan; sintesis menunjukkan hubungan dan pemaduan antargagasan. kolokasi: konsep sintesis, isu sintesis, atau analisis mengenai sintesis.",
+    "keyPoints": [
+      "Dalam penataan bukti, perincian klaim, dan penyusunan kesimpulan, **sintesis** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sintesis** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sintesis** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-46-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-46",
+    "topicTitle": "Stage 46: Penulisan Akademis & Pengembangan Analisis",
+    "stageId": 9,
+    "stageTitle": "09. Kualitatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kualitatif berarti berkaitan dengan mutu, sifat, atau makna yang tidak terutama dinyatakan sebagai angka. ==Berkaitan dengan mutu, sifat, atau makna yang tidak terutama dinyatakan sebagai angka==.\\n\\nDalam konteks penataan bukti, perincian klaim, dan penyusunan kesimpulan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan untuk pendekatan penelitian yang menelaah pengalaman dan konteks. kolokasi: pendekatan kualitatif, karakteristik kualitatif, atau sifat yang kualitatif.",
+    "keyPoints": [
+      "Dalam penataan bukti, perincian klaim, dan penyusunan kesimpulan, pendekatan yang **kualitatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kualitatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kualitatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-46-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-46",
+    "topicTitle": "Stage 46: Penulisan Akademis & Pengembangan Analisis",
+    "stageId": 10,
+    "stageTitle": "10. Kuantitatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kuantitatif berarti berkaitan dengan jumlah atau ukuran yang dapat dinyatakan secara numerik. ==Berkaitan dengan jumlah atau ukuran yang dapat dinyatakan secara numerik==.\\n\\nDalam konteks penataan bukti, perincian klaim, dan penyusunan kesimpulan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk data dan metode yang mengandalkan pengukuran angka. kolokasi: pendekatan kuantitatif, karakteristik kuantitatif, atau sifat yang kuantitatif.",
+    "keyPoints": [
+      "Dalam penataan bukti, perincian klaim, dan penyusunan kesimpulan, pendekatan yang **kuantitatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kuantitatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kuantitatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-47-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-47",
+    "topicTitle": "Stage 47: Budaya, Tradisi & Perubahan Makna",
+    "stageId": 1,
+    "stageTitle": "01. Sinkretisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, sinkretisme berarti percampuran atau penyelarasan unsur dari berbagai kepercayaan atau kebudayaan. ==Percampuran atau penyelarasan unsur dari berbagai kepercayaan atau kebudayaan==.\\n\\nDalam konteks perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat menghasilkan praktik atau sistem baru yang memuat unsur asal berbeda. kolokasi: konsep sinkretisme, isu sinkretisme, atau analisis mengenai sinkretisme.",
+    "keyPoints": [
+      "Dalam perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, **sinkretisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **sinkretisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **sinkretisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-47-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-47",
+    "topicTitle": "Stage 47: Budaya, Tradisi & Perubahan Makna",
+    "stageId": 2,
+    "stageTitle": "02. Hibriditas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, hibriditas berarti keadaan atau proses terbentuknya sesuatu dari perpaduan unsur yang berbeda. ==Keadaan atau proses terbentuknya sesuatu dari perpaduan unsur yang berbeda==.\\n\\nDalam konteks perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam kajian budaya menunjuk bentuk identitas atau praktik campuran. kolokasi: konsep hibriditas, isu hibriditas, atau analisis mengenai hibriditas.",
+    "keyPoints": [
+      "Dalam perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, **hibriditas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **hibriditas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **hibriditas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-47-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-47",
+    "topicTitle": "Stage 47: Budaya, Tradisi & Perubahan Makna",
+    "stageId": 3,
+    "stageTitle": "03. Autentisitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, autentisitas berarti keaslian atau keadaan yang dianggap sesuai dengan asal, sifat, atau identitas sebenarnya. ==Keaslian atau keadaan yang dianggap sesuai dengan asal, sifat, atau identitas sebenarnya==.\\n\\nDalam konteks perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering diperdebatkan karena standar keaslian dapat berubah menurut konteks. kolokasi: konsep autentisitas, isu autentisitas, atau analisis mengenai autentisitas.",
+    "keyPoints": [
+      "Dalam perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, **autentisitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **autentisitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **autentisitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-47-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-47",
+    "topicTitle": "Stage 47: Budaya, Tradisi & Perubahan Makna",
+    "stageId": 4,
+    "stageTitle": "04. Kanon (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, kanon berarti kumpulan karya atau aturan yang diakui sebagai standar atau rujukan utama dalam bidang tertentu. ==Kumpulan karya atau aturan yang diakui sebagai standar atau rujukan utama dalam bidang tertentu==.\\n\\nDalam konteks perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam sastra dan seni menunjukkan karya yang dianggap penting atau representatif. kolokasi: konsep kanon, isu kanon, atau analisis mengenai kanon.",
+    "keyPoints": [
+      "Dalam perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, **kanon** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **kanon** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **kanon** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-47-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-47",
+    "topicTitle": "Stage 47: Budaya, Tradisi & Perubahan Makna",
+    "stageId": 5,
+    "stageTitle": "05. Kanonis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kanonis berarti diakui atau ditetapkan sebagai bagian dari kanon atau kumpulan karya resmi. ==Diakui atau ditetapkan sebagai bagian dari kanon atau kumpulan karya resmi==.\\n\\nDalam konteks perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk karya, teks, atau aturan yang mendapat kedudukan baku. kolokasi: pendekatan kanonis, karakteristik kanonis, atau sifat yang kanonis.",
+    "keyPoints": [
+      "Dalam perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, pendekatan yang **kanonis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kanonis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kanonis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-47-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-47",
+    "topicTitle": "Stage 47: Budaya, Tradisi & Perubahan Makna",
+    "stageId": 6,
+    "stageTitle": "06. Folklor (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, folklor berarti adat, cerita, kepercayaan, dan tradisi yang diwariskan dalam kehidupan masyarakat. ==Adat, cerita, kepercayaan, dan tradisi yang diwariskan dalam kehidupan masyarakat==.\\n\\nDalam konteks perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mencakup legenda, mite, ungkapan, musik, dan praktik tradisional. kolokasi: konsep folklor, isu folklor, atau analisis mengenai folklor.",
+    "keyPoints": [
+      "Dalam perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, **folklor** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **folklor** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **folklor** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-47-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-47",
+    "topicTitle": "Stage 47: Budaya, Tradisi & Perubahan Makna",
+    "stageId": 7,
+    "stageTitle": "07. Estetisasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, estetisasi berarti proses menjadikan sesuatu sebagai objek atau pengalaman yang diberi nilai estetis. ==Proses menjadikan sesuatu sebagai objek atau pengalaman yang diberi nilai estetis==.\\n\\nDalam konteks perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat mengubah cara suatu isu sosial atau pengalaman dipresentasikan. kolokasi: konsep estetisasi, isu estetisasi, atau analisis mengenai estetisasi.",
+    "keyPoints": [
+      "Dalam perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, **estetisasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **estetisasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **estetisasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-47-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-47",
+    "topicTitle": "Stage 47: Budaya, Tradisi & Perubahan Makna",
+    "stageId": 8,
+    "stageTitle": "08. Representasional (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, representasional berarti berkaitan dengan cara sesuatu dihadirkan atau digambarkan sebagai wakil dari kenyataan. ==Berkaitan dengan cara sesuatu dihadirkan atau digambarkan sebagai wakil dari kenyataan==.\\n\\nDalam konteks perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam kajian seni, media, dan budaya untuk membahas bentuk penggambaran. kolokasi: pendekatan representasional, karakteristik representasional, atau sifat yang representasional.",
+    "keyPoints": [
+      "Dalam perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, pendekatan yang **representasional** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **representasional** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **representasional** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-47-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-47",
+    "topicTitle": "Stage 47: Budaya, Tradisi & Perubahan Makna",
+    "stageId": 9,
+    "stageTitle": "09. Ikonik (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, ikonik berarti sangat dikenal atau menjadi lambang yang mewakili suatu hal. ==Sangat dikenal atau menjadi lambang yang mewakili suatu hal==.\\n\\nDalam konteks perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari ikonis dalam kajian tanda yang berkaitan dengan kemiripan antara tanda dan objek. kolokasi: pendekatan ikonik, karakteristik ikonik, atau sifat yang ikonik.",
+    "keyPoints": [
+      "Dalam perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, pendekatan yang **ikonik** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **ikonik** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **ikonik** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-47-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-47",
+    "topicTitle": "Stage 47: Budaya, Tradisi & Perubahan Makna",
+    "stageId": 10,
+    "stageTitle": "10. Eksperimentalisme (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, eksperimentalisme berarti kecenderungan atau pendekatan yang mengutamakan percobaan dan pembaruan bentuk, terutama dalam seni. ==Kecenderungan atau pendekatan yang mengutamakan percobaan dan pembaruan bentuk, terutama dalam seni==.\\n\\nDalam konteks perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk membahas gerakan atau sikap artistik yang menantang konvensi melalui percobaan. kolokasi: konsep eksperimentalisme, isu eksperimentalisme, atau analisis mengenai eksperimentalisme.",
+    "keyPoints": [
+      "Dalam perjumpaan budaya, pembentukan kanon, dan transformasi tradisi, **eksperimentalisme** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **eksperimentalisme** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **eksperimentalisme** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-48-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-48",
+    "topicTitle": "Stage 48: Identitas, Subjektivitas & Relasi",
+    "stageId": 1,
+    "stageTitle": "01. Subjektivitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, subjektivitas berarti keadaan atau sifat yang dipengaruhi sudut pandang, pengalaman, atau perasaan subjek. ==Keadaan atau sifat yang dipengaruhi sudut pandang, pengalaman, atau perasaan subjek==.\\n\\nDalam konteks pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan peran pengalaman pribadi dalam penilaian; tidak selalu berarti tidak dapat dipertanggungjawabkan. kolokasi: konsep subjektivitas, isu subjektivitas, atau analisis mengenai subjektivitas.",
+    "keyPoints": [
+      "Dalam pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, **subjektivitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **subjektivitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **subjektivitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-48-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-48",
+    "topicTitle": "Stage 48: Identitas, Subjektivitas & Relasi",
+    "stageId": 2,
+    "stageTitle": "02. Objektivitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, objektivitas berarti keadaan menilai sesuatu berdasarkan fakta dan kriteria yang tidak semata-mata bergantung pada kepentingan pribadi. ==Keadaan menilai sesuatu berdasarkan fakta dan kriteria yang tidak semata-mata bergantung pada kepentingan pribadi==.\\n\\nDalam konteks pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menuntut prosedur yang terbuka dan dapat diperiksa, bukan ketiadaan perspektif secara mutlak. kolokasi: konsep objektivitas, isu objektivitas, atau analisis mengenai objektivitas.",
+    "keyPoints": [
+      "Dalam pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, **objektivitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **objektivitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **objektivitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-48-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-48",
+    "topicTitle": "Stage 48: Identitas, Subjektivitas & Relasi",
+    "stageId": 3,
+    "stageTitle": "03. Alteritas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, alteritas berarti keadaan atau kualitas sebagai pihak lain yang berbeda dari diri atau kelompok sendiri. ==Keadaan atau kualitas sebagai pihak lain yang berbeda dari diri atau kelompok sendiri==.\\n\\nDalam konteks pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam filsafat dan teori sosial untuk membahas hubungan dengan keberlainan. kolokasi: konsep alteritas, isu alteritas, atau analisis mengenai alteritas.",
+    "keyPoints": [
+      "Dalam pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, **alteritas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **alteritas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **alteritas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-48-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-48",
+    "topicTitle": "Stage 48: Identitas, Subjektivitas & Relasi",
+    "stageId": 4,
+    "stageTitle": "04. Intersubjektif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, intersubjektif berarti berlangsung atau terbentuk melalui hubungan dan pemahaman bersama antar-subjek. ==Berlangsung atau terbentuk melalui hubungan dan pemahaman bersama antar-subjek==.\\n\\nDalam konteks pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan makna atau pengetahuan yang dibangun melalui interaksi sosial. kolokasi: pendekatan intersubjektif, karakteristik intersubjektif, atau sifat yang intersubjektif.",
+    "keyPoints": [
+      "Dalam pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, pendekatan yang **intersubjektif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **intersubjektif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **intersubjektif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-48-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-48",
+    "topicTitle": "Stage 48: Identitas, Subjektivitas & Relasi",
+    "stageId": 5,
+    "stageTitle": "05. Kolektif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kolektif berarti dilakukan atau dimiliki bersama oleh suatu kelompok. ==Dilakukan atau dimiliki bersama oleh suatu kelompok==.\\n\\nDalam konteks pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berfokus pada tindakan atau kepentingan bersama, bukan individu tunggal. kolokasi: pendekatan kolektif, karakteristik kolektif, atau sifat yang kolektif.",
+    "keyPoints": [
+      "Dalam pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, pendekatan yang **kolektif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kolektif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kolektif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-48-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-48",
+    "topicTitle": "Stage 48: Identitas, Subjektivitas & Relasi",
+    "stageId": 6,
+    "stageTitle": "06. Individualitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, individualitas berarti ciri atau sifat khas yang membedakan seseorang dari orang lain. ==Ciri atau sifat khas yang membedakan seseorang dari orang lain==.\\n\\nDalam konteks pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan keunikan individu tanpa harus menolak kehidupan sosial. kolokasi: konsep individualitas, isu individualitas, atau analisis mengenai individualitas.",
+    "keyPoints": [
+      "Dalam pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, **individualitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **individualitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **individualitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-48-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-48",
+    "topicTitle": "Stage 48: Identitas, Subjektivitas & Relasi",
+    "stageId": 7,
+    "stageTitle": "07. Pluralitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, pluralitas berarti keadaan yang menunjukkan adanya kemajemukan atau keberagaman. ==Keadaan yang menunjukkan adanya kemajemukan atau keberagaman==.\\n\\nDalam konteks pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat menunjuk ragam identitas, pandangan, atau bentuk kehidupan dalam satu masyarakat. kolokasi: konsep pluralitas, isu pluralitas, atau analisis mengenai pluralitas.",
+    "keyPoints": [
+      "Dalam pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, **pluralitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **pluralitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **pluralitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-48-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-48",
+    "topicTitle": "Stage 48: Identitas, Subjektivitas & Relasi",
+    "stageId": 8,
+    "stageTitle": "08. Partikularitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, partikularitas berarti sifat khusus yang melekat pada individu, kelompok, atau keadaan tertentu. ==Sifat khusus yang melekat pada individu, kelompok, atau keadaan tertentu==.\\n\\nDalam konteks pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menekankan konteks dan kekhasan yang tidak selalu dapat digeneralisasi. kolokasi: konsep partikularitas, isu partikularitas, atau analisis mengenai partikularitas.",
+    "keyPoints": [
+      "Dalam pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, **partikularitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **partikularitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **partikularitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-48-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-48",
+    "topicTitle": "Stage 48: Identitas, Subjektivitas & Relasi",
+    "stageId": 9,
+    "stageTitle": "09. Universalitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, universalitas berarti keadaan atau sifat berlaku umum bagi semua anggota dalam lingkup tertentu. ==Keadaan atau sifat berlaku umum bagi semua anggota dalam lingkup tertentu==.\\n\\nDalam konteks pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Perlu diuji apakah klaim umum benar-benar berlaku lintas konteks. kolokasi: konsep universalitas, isu universalitas, atau analisis mengenai universalitas.",
+    "keyPoints": [
+      "Dalam pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, **universalitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **universalitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **universalitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-48-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-48",
+    "topicTitle": "Stage 48: Identitas, Subjektivitas & Relasi",
+    "stageId": 10,
+    "stageTitle": "10. Intersubjektivitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, intersubjektivitas berarti keadaan pemahaman atau makna yang terbentuk dan dibagikan di antara beberapa subjek. ==Keadaan pemahaman atau makna yang terbentuk dan dibagikan di antara beberapa subjek==.\\n\\nDalam konteks pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Penting dalam pembentukan norma, kepercayaan, dan pengetahuan sosial. kolokasi: konsep intersubjektivitas, isu intersubjektivitas, atau analisis mengenai intersubjektivitas.",
+    "keyPoints": [
+      "Dalam pembentukan diri, sudut pandang, dan hubungan antara individu dan masyarakat, **intersubjektivitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **intersubjektivitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **intersubjektivitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-49-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-49",
+    "topicTitle": "Stage 49: Analisis, Klasifikasi & Perbandingan",
+    "stageId": 1,
+    "stageTitle": "01. Taksonomis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, taksonomis berarti berkaitan dengan taksonomi atau sistem pengelompokan berdasarkan ciri tertentu. ==Berkaitan dengan taksonomi atau sistem pengelompokan berdasarkan ciri tertentu==.\\n\\nDalam konteks pembedaan konsep, susunan kategori, dan evaluasi hubungan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk pendekatan yang mengatur objek ke dalam kelas atau tingkat. kolokasi: pendekatan taksonomis, karakteristik taksonomis, atau sifat yang taksonomis.",
+    "keyPoints": [
+      "Dalam pembedaan konsep, susunan kategori, dan evaluasi hubungan, pendekatan yang **taksonomis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **taksonomis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **taksonomis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-49-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-49",
+    "topicTitle": "Stage 49: Analisis, Klasifikasi & Perbandingan",
+    "stageId": 2,
+    "stageTitle": "02. Kategoris (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, kategoris berarti bersifat tegas atau mutlak dalam menyatakan sesuatu; juga berkaitan dengan kategori. ==Bersifat tegas atau mutlak dalam menyatakan sesuatu; juga berkaitan dengan kategori==.\\n\\nDalam konteks pembedaan konsep, susunan kategori, dan evaluasi hubungan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam penggunaan umum dapat berarti tidak memberi ruang pengecualian; konteks perlu diperhatikan. kolokasi: pendekatan kategoris, karakteristik kategoris, atau sifat yang kategoris.",
+    "keyPoints": [
+      "Dalam pembedaan konsep, susunan kategori, dan evaluasi hubungan, pendekatan yang **kategoris** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **kategoris** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **kategoris** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-49-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-49",
+    "topicTitle": "Stage 49: Analisis, Klasifikasi & Perbandingan",
+    "stageId": 3,
+    "stageTitle": "03. Asimetri (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, asimetri berarti ketidakseimbangan atau ketidaksamaan antara dua sisi, pihak, atau unsur. ==Ketidakseimbangan atau ketidaksamaan antara dua sisi, pihak, atau unsur==.\\n\\nDalam konteks pembedaan konsep, susunan kategori, dan evaluasi hubungan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dapat menyangkut informasi, kekuasaan, risiko, atau distribusi sumber daya. kolokasi: konsep asimetri, isu asimetri, atau analisis mengenai asimetri.",
+    "keyPoints": [
+      "Dalam pembedaan konsep, susunan kategori, dan evaluasi hubungan, **asimetri** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **asimetri** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **asimetri** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-49-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-49",
+    "topicTitle": "Stage 49: Analisis, Klasifikasi & Perbandingan",
+    "stageId": 4,
+    "stageTitle": "04. Komplementaritas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, komplementaritas berarti keadaan saling melengkapi antara dua unsur yang berbeda. ==Keadaan saling melengkapi antara dua unsur yang berbeda==.\\n\\nDalam konteks pembedaan konsep, susunan kategori, dan evaluasi hubungan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menunjukkan bahwa perbedaan dapat menghasilkan fungsi yang saling menunjang. kolokasi: konsep komplementaritas, isu komplementaritas, atau analisis mengenai komplementaritas.",
+    "keyPoints": [
+      "Dalam pembedaan konsep, susunan kategori, dan evaluasi hubungan, **komplementaritas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **komplementaritas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **komplementaritas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-49-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-49",
+    "topicTitle": "Stage 49: Analisis, Klasifikasi & Perbandingan",
+    "stageId": 5,
+    "stageTitle": "05. Granularitas (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, granularitas berarti tingkat kerincian atau ukuran unit dalam suatu pengelompokan atau analisis. ==Tingkat kerincian atau ukuran unit dalam suatu pengelompokan atau analisis==.\\n\\nDalam konteks pembedaan konsep, susunan kategori, dan evaluasi hubungan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Granularitas tinggi berarti data atau kategori lebih terperinci. kolokasi: konsep granularitas, isu granularitas, atau analisis mengenai granularitas.",
+    "keyPoints": [
+      "Dalam pembedaan konsep, susunan kategori, dan evaluasi hubungan, **granularitas** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **granularitas** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **granularitas** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-49-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-49",
+    "topicTitle": "Stage 49: Analisis, Klasifikasi & Perbandingan",
+    "stageId": 6,
+    "stageTitle": "06. Akurasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, akurasi berarti ketepatan atau kedekatan hasil pengukuran dengan nilai yang benar atau acuan. ==Ketepatan atau kedekatan hasil pengukuran dengan nilai yang benar atau acuan==.\\n\\nDalam konteks pembedaan konsep, susunan kategori, dan evaluasi hubungan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari presisi yang menekankan konsistensi atau tingkat kerincian pengukuran. kolokasi: konsep akurasi, isu akurasi, atau analisis mengenai akurasi.",
+    "keyPoints": [
+      "Dalam pembedaan konsep, susunan kategori, dan evaluasi hubungan, **akurasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **akurasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **akurasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-49-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-49",
+    "topicTitle": "Stage 49: Analisis, Klasifikasi & Perbandingan",
+    "stageId": 7,
+    "stageTitle": "07. Klasifikasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, klasifikasi berarti pengelompokan sesuatu berdasarkan ciri atau kriteria tertentu. ==Pengelompokan sesuatu berdasarkan ciri atau kriteria tertentu==.\\n\\nDalam konteks pembedaan konsep, susunan kategori, dan evaluasi hubungan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk menyusun objek secara teratur agar mudah dianalisis. kolokasi: konsep klasifikasi, isu klasifikasi, atau analisis mengenai klasifikasi.",
+    "keyPoints": [
+      "Dalam pembedaan konsep, susunan kategori, dan evaluasi hubungan, **klasifikasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **klasifikasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **klasifikasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-49-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-49",
+    "topicTitle": "Stage 49: Analisis, Klasifikasi & Perbandingan",
+    "stageId": 8,
+    "stageTitle": "08. Tipologis (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, tipologis berarti berkaitan dengan pengelompokan berdasarkan tipe atau pola ciri. ==Berkaitan dengan pengelompokan berdasarkan tipe atau pola ciri==.\\n\\nDalam konteks pembedaan konsep, susunan kategori, dan evaluasi hubungan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berguna untuk membandingkan jenis fenomena berdasarkan karakteristiknya. kolokasi: pendekatan tipologis, karakteristik tipologis, atau sifat yang tipologis.",
+    "keyPoints": [
+      "Dalam pembedaan konsep, susunan kategori, dan evaluasi hubungan, pendekatan yang **tipologis** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **tipologis** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **tipologis** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-49-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-49",
+    "topicTitle": "Stage 49: Analisis, Klasifikasi & Perbandingan",
+    "stageId": 9,
+    "stageTitle": "09. Komparatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, komparatif berarti bersifat membandingkan dua hal atau lebih. ==Bersifat membandingkan dua hal atau lebih==.\\n\\nDalam konteks pembedaan konsep, susunan kategori, dan evaluasi hubungan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Menuntut kriteria pembanding yang konsisten agar hasilnya bermakna. kolokasi: pendekatan komparatif, karakteristik komparatif, atau sifat yang komparatif.",
+    "keyPoints": [
+      "Dalam pembedaan konsep, susunan kategori, dan evaluasi hubungan, pendekatan yang **komparatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **komparatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **komparatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-49-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-49",
+    "topicTitle": "Stage 49: Analisis, Klasifikasi & Perbandingan",
+    "stageId": 10,
+    "stageTitle": "10. Diferensiasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, diferensiasi berarti proses atau tindakan membuat sesuatu menjadi berbeda atau menunjukkan perbedaan. ==Proses atau tindakan membuat sesuatu menjadi berbeda atau menunjukkan perbedaan==.\\n\\nDalam konteks pembedaan konsep, susunan kategori, dan evaluasi hubungan, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Dalam bisnis dapat merujuk pada pembeda produk; dalam sosial pada pembentukan perbedaan peran atau status. kolokasi: konsep diferensiasi, isu diferensiasi, atau analisis mengenai diferensiasi.",
+    "keyPoints": [
+      "Dalam pembedaan konsep, susunan kategori, dan evaluasi hubungan, **diferensiasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **diferensiasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **diferensiasi** dari sudut kepentingan yang berbeda."
+    ]
+  },
+  {
+    "id": "id-stage-50-s1",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-50",
+    "topicTitle": "Stage 50: Ketepatan Konseptual & Diksi Lanjutan",
+    "stageId": 1,
+    "stageTitle": "01. Inheren (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, inheren berarti melekat secara alami atau menjadi bagian yang tidak terpisahkan dari sesuatu. ==Melekat secara alami atau menjadi bagian yang tidak terpisahkan dari sesuatu==.\\n\\nDalam konteks sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Mirip dengan intrinsik, tetapi sering menekankan sifat bawaan atau konsekuensi yang melekat. kolokasi: pendekatan inheren, karakteristik inheren, atau sifat yang inheren.",
+    "keyPoints": [
+      "Dalam sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, pendekatan yang **inheren** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **inheren** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **inheren** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-50-s2",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-50",
+    "topicTitle": "Stage 50: Ketepatan Konseptual & Diksi Lanjutan",
+    "stageId": 2,
+    "stageTitle": "02. Tersurat (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, tersurat berarti dinyatakan secara jelas dan tertulis atau diungkapkan secara langsung. ==Dinyatakan secara jelas dan tertulis atau diungkapkan secara langsung==.\\n\\nDalam konteks sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Berbeda dari tersirat yang maknanya perlu disimpulkan dari konteks. kolokasi: pendekatan tersurat, karakteristik tersurat, atau sifat yang tersurat.",
+    "keyPoints": [
+      "Dalam sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, pendekatan yang **tersurat** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **tersurat** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **tersurat** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-50-s3",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-50",
+    "topicTitle": "Stage 50: Ketepatan Konseptual & Diksi Lanjutan",
+    "stageId": 3,
+    "stageTitle": "03. Tersirat (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, tersirat berarti terkandung atau dimaksudkan secara tidak langsung dan tidak dinyatakan dengan tegas. ==Terkandung atau dimaksudkan secara tidak langsung dan tidak dinyatakan dengan tegas==.\\n\\nDalam konteks sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk pesan atau makna yang harus ditafsirkan dari petunjuk konteks. kolokasi: pendekatan tersirat, karakteristik tersirat, atau sifat yang tersirat.",
+    "keyPoints": [
+      "Dalam sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, pendekatan yang **tersirat** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **tersirat** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **tersirat** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-50-s4",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-50",
+    "topicTitle": "Stage 50: Ketepatan Konseptual & Diksi Lanjutan",
+    "stageId": 4,
+    "stageTitle": "04. Konstitutif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, konstitutif berarti bersifat membentuk atau menjadi unsur penting yang menentukan keberadaan sesuatu. ==Bersifat membentuk atau menjadi unsur penting yang menentukan keberadaan sesuatu==.\\n\\nDalam konteks sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk unsur yang bukan sekadar tambahan, melainkan ikut membentuk hakikat atau struktur. kolokasi: pendekatan konstitutif, karakteristik konstitutif, atau sifat yang konstitutif.",
+    "keyPoints": [
+      "Dalam sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, pendekatan yang **konstitutif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **konstitutif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **konstitutif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-50-s5",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-50",
+    "topicTitle": "Stage 50: Ketepatan Konseptual & Diksi Lanjutan",
+    "stageId": 5,
+    "stageTitle": "05. Derivatif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, derivatif berarti diturunkan atau berasal dari sesuatu yang lebih dasar; dalam keuangan, nilainya bergantung pada aset acuan. ==Diturunkan atau berasal dari sesuatu yang lebih dasar; dalam keuangan, nilainya bergantung pada aset acuan==.\\n\\nDalam konteks sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Maknanya bergantung pada bidang, sehingga konteks perlu disebutkan. kolokasi: pendekatan derivatif, karakteristik derivatif, atau sifat yang derivatif.",
+    "keyPoints": [
+      "Dalam sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, pendekatan yang **derivatif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **derivatif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **derivatif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-50-s6",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-50",
+    "topicTitle": "Stage 50: Ketepatan Konseptual & Diksi Lanjutan",
+    "stageId": 6,
+    "stageTitle": "06. Niscaya (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, niscaya berarti pasti terjadi atau tidak dapat dielakkan. ==Pasti terjadi atau tidak dapat dielakkan==.\\n\\nDalam konteks sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Lebih kuat daripada mungkin; digunakan untuk menyatakan kepastian atau keniscayaan. kolokasi: pendekatan niscaya, karakteristik niscaya, atau sifat yang niscaya.",
+    "keyPoints": [
+      "Dalam sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, pendekatan yang **niscaya** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **niscaya** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **niscaya** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-50-s7",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-50",
+    "topicTitle": "Stage 50: Ketepatan Konseptual & Diksi Lanjutan",
+    "stageId": 7,
+    "stageTitle": "07. Mendasar (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, mendasar berarti berkenaan dengan dasar atau hal pokok yang menjadi landasan. ==Berkenaan dengan dasar atau hal pokok yang menjadi landasan==.\\n\\nDalam konteks sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk perubahan, persoalan, atau prinsip yang menyentuh akar masalah. kolokasi: pendekatan mendasar, karakteristik mendasar, atau sifat yang mendasar.",
+    "keyPoints": [
+      "Dalam sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, pendekatan yang **mendasar** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **mendasar** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **mendasar** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-50-s8",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-50",
+    "topicTitle": "Stage 50: Ketepatan Konseptual & Diksi Lanjutan",
+    "stageId": 8,
+    "stageTitle": "08. Fundamental (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, fundamental berarti bersifat sangat mendasar atau menjadi dasar utama bagi sesuatu. ==Bersifat sangat mendasar atau menjadi dasar utama bagi sesuatu==.\\n\\nDalam konteks sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Sering digunakan dalam ekonomi, ilmu, dan analisis untuk faktor inti yang menentukan. kolokasi: pendekatan fundamental, karakteristik fundamental, atau sifat yang fundamental.",
+    "keyPoints": [
+      "Dalam sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, pendekatan yang **fundamental** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **fundamental** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **fundamental** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-50-s9",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-50",
+    "topicTitle": "Stage 50: Ketepatan Konseptual & Diksi Lanjutan",
+    "stageId": 9,
+    "stageTitle": "09. Substantif (Adjektiva)",
+    "content": "Dalam pemakaian bahasa baku, substantif berarti berkenaan dengan isi atau pokok persoalan, bukan hanya bentuk luar. ==Berkenaan dengan isi atau pokok persoalan, bukan hanya bentuk luar==.\\n\\nDalam konteks sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan untuk perubahan atau perbedaan yang benar-benar menyentuh isi. kolokasi: pendekatan substantif, karakteristik substantif, atau sifat yang substantif.",
+    "keyPoints": [
+      "Dalam sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, pendekatan yang **substantif** dipilih karena sesuai dengan karakter persoalan yang dihadapi.",
+      "Tim menilai bahwa karakteristik tersebut **substantif** untuk memahami hasil evaluasi secara utuh.",
+      "Laporan itu menempatkan aspek yang **substantif** sebagai salah satu pertimbangan dalam penyusunan rekomendasi."
+    ]
+  },
+  {
+    "id": "id-stage-50-s10",
+    "branchId": "kosa-kata-indonesia",
+    "branchTitle": "Kosa Kata Indonesia",
+    "topicId": "id-stage-50",
+    "topicTitle": "Stage 50: Ketepatan Konseptual & Diksi Lanjutan",
+    "stageId": 10,
+    "stageTitle": "10. Aproksimasi (Nomina)",
+    "content": "Dalam pemakaian bahasa baku, aproksimasi berarti nilai atau cara yang mendekati nilai sebenarnya ketika hasil tepat sulit diperoleh. ==Nilai atau cara yang mendekati nilai sebenarnya ketika hasil tepat sulit diperoleh==.\\n\\nDalam konteks sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, kata ini tepat digunakan ketika pembahasan membutuhkan istilah yang spesifik. Digunakan dalam matematika, sains, dan analisis untuk penyederhanaan yang terukur. kolokasi: konsep aproksimasi, isu aproksimasi, atau analisis mengenai aproksimasi.",
+    "keyPoints": [
+      "Dalam sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep, **aproksimasi** menjadi salah satu aspek yang perlu diperiksa sebelum keputusan ditetapkan.",
+      "Laporan tersebut membahas **aproksimasi** secara terukur agar pembaca memahami dasar rekomendasinya.",
+      "Perbedaan pandangan muncul ketika para pemangku kepentingan menilai **aproksimasi** dari sudut kepentingan yang berbeda."
     ]
   }
 ];

@@ -113,7 +113,7 @@ export const CommandSidebar: React.FC<CommandSidebarProps> = ({
         </div>
 
         {/* Navigation list */}
-        <nav className="space-y-1.5">
+        <nav className="space-y-1.5 overflow-y-auto max-h-[calc(100vh-220px)] pr-1">
           {isEnglishBranch ? (
             navItems.map((item) => {
               const isActive = currentMode === item.id;
