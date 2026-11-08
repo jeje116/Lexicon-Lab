@@ -122,7 +122,16 @@ function setupDatabase() {
   // C. Inisialisasi Tab KnowledgeTopics
   setupKnowledgeTopics();
 
-  Logger.log("Database setup selesai! Tab 'Vocabulary', 'UserProgress', dan 'KnowledgeTopics' telah siap digunakan.");
+  // D. Bersihkan Tab Nyasar dari Project Lain (Ternak Duit / Sheet1)
+  var straySheets = ['BrokerSummary', 'BrokerAnalysis', 'ScrapeLog', 'IngestionJobs', 'Sheet1'];
+  for (var s = 0; s < straySheets.length; s++) {
+    var stray = ss.getSheetByName(straySheets[s]);
+    if (stray && ss.getSheets().length > 1) {
+      ss.deleteSheet(stray);
+    }
+  }
+
+  Logger.log("Database setup & cleanup selesai! Tab 'Vocabulary', 'UserProgress', dan 'KnowledgeTopics' siap digunakan, dan tab Ternak Duit telah dihapus.");
 }
 
 /**
@@ -447,7 +456,38 @@ function doPost(e) {
       });
     }
 
-    // B. Mode Default: Simpan Progres Belajar (UserProgress)
+    // B. Mode Bulk Sync KnowledgeTopics (action === 'syncTopics')
+    if (parsed && parsed.action === 'syncTopics') {
+      var topicSheet = setupKnowledgeTopics();
+      if (topicSheet.getLastRow() > 1) {
+        topicSheet.getRange(2, 1, topicSheet.getLastRow() - 1, 8).clearContent();
+      }
+      var incomingTopics = Array.isArray(parsed.topics) ? parsed.topics : [];
+      var topicRows = [];
+      for (var k = 0; k < incomingTopics.length; k++) {
+        var tItem = incomingTopics[k];
+        topicRows.push([
+          String(tItem.branchId || tItem.branch_id || 'psychology'),
+          String(tItem.branchTitle || tItem.branch_title || 'Psychology & Life'),
+          String(tItem.topicId || tItem.topic_id || 'psy-read-people'),
+          String(tItem.topicTitle || tItem.topic_title || ''),
+          Number(tItem.stageId || tItem.stage_id || (k + 1)),
+          String(tItem.stageTitle || tItem.stage_title || ''),
+          String(tItem.content || ''),
+          Array.isArray(tItem.keyPoints) ? tItem.keyPoints.join(' | ') : String(tItem.key_points || '')
+        ]);
+      }
+      if (topicRows.length > 0) {
+        topicSheet.getRange(2, 1, topicRows.length, 8).setValues(topicRows);
+      }
+      return createJsonResponse({
+        status: 'success',
+        message: topicRows.length + ' bagian KnowledgeTopics berhasil disinkronkan.',
+        totalTopicsInSheet: topicRows.length
+      });
+    }
+
+    // C. Mode Default: Simpan Progres Belajar (UserProgress)
     var progressSheet = ss.getSheetByName('UserProgress');
     if (!progressSheet) {
       progressSheet = ss.insertSheet('UserProgress');
