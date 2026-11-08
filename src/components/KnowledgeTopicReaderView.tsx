@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   ChevronLeft, 
   ChevronRight, 
@@ -18,6 +18,7 @@ interface KnowledgeTopicReaderViewProps {
   onToggleReadStage: (stageId: number) => void;
   onBackToOverview?: () => void;
   soundEnabled: boolean;
+  activeBranchId?: string;
 }
 
 /**
@@ -91,9 +92,28 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
   readStageIds,
   onToggleReadStage,
   onBackToOverview,
-  soundEnabled
+  soundEnabled,
+  activeBranchId
 }) => {
   const [currentStageIndex, setCurrentStageIndex] = useState(0);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  // Ambang batas ketat swipe mobile (mencegah salah picu saat scroll vertikal)
+  const MIN_SWIPE_DISTANCE = 105;
+  const HORIZONTAL_DOMINANCE_RATIO = 2.0;
+
+  // Deteksi cabang Kosa Kata Indonesia
+  const isIndonesianVocabBranch = Boolean(
+    activeBranchId === 'kosa-kata-indonesia' ||
+    (stages[0]?.branchTitle && stages[0].branchTitle.toLowerCase().includes('indonesia')) ||
+    (activeBranchId && activeBranchId.toLowerCase().includes('indonesia'))
+  );
+
+  const stageUnitLabel = isIndonesianVocabBranch ? 'Kata' : 'Bagian';
+  const stageUnitUpper = isIndonesianVocabBranch ? 'KATA' : 'BAGIAN';
+  const keyPointsTitle = isIndonesianVocabBranch 
+    ? 'CONTOH PENGGUNAAN KALIMAT' 
+    : 'POIN KUNCI & RINGKASAN PRAKTIS';
 
   // Fallback aman jika stages kosong
   if (!stages || stages.length === 0) {
@@ -138,6 +158,40 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
     onToggleReadStage(currentStage.stageId);
   };
 
+  // Touch Swipe Handlers for Mobile (Ketat: Min 105px & Rasio Horizontal 2.0x terhadap Vertikal)
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length > 0) {
+      touchStartRef.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      };
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStartRef.current || e.changedTouches.length === 0) return;
+    const touchEnd = {
+      x: e.changedTouches[0].clientX,
+      y: e.changedTouches[0].clientY
+    };
+
+    const deltaX = touchStartRef.current.x - touchEnd.x;
+    const deltaY = touchStartRef.current.y - touchEnd.y;
+    const absX = Math.abs(deltaX);
+    const absY = Math.abs(deltaY);
+
+    // Mencegah picu jika geseran kurang dari 105px atau lebih condong ke scroll vertikal
+    if (absX >= MIN_SWIPE_DISTANCE && absX > absY * HORIZONTAL_DOMINANCE_RATIO) {
+      if (deltaX > 0) {
+        handleNextStage();
+      } else {
+        handlePrevStage();
+      }
+    }
+
+    touchStartRef.current = null;
+  };
+
   // Keyboard Navigation: Panah Kiri dan Kanan
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -157,7 +211,11 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
   }, [currentStageIndex, stages.length, soundEnabled]);
 
   return (
-    <div className="flex-1 flex flex-col p-3 sm:p-6 lg:p-8 max-w-3xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-36">
+    <div 
+      className="flex-1 flex flex-col p-3 sm:p-6 lg:p-8 max-w-3xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-36"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       
       {/* 1. Header Navigation & Top Stage Selector Strip */}
       <div className="bg-white border border-slate-200/80 rounded-2xl p-3 sm:p-4 shadow-sm space-y-3">
@@ -177,13 +235,13 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
                 {topicTitle}
               </h1>
               <p className="text-[11px] font-mono text-slate-500 font-medium">
-                {readStageIds.length} dari {stages.length} bagian selesai dibaca ({Math.round((readStageIds.length / stages.length) * 100)}%)
+                {readStageIds.length} dari {stages.length} {stageUnitLabel.toLowerCase()} selesai dibaca ({Math.round((readStageIds.length / stages.length) * 100)}%)
               </p>
             </div>
           </div>
 
           <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-700 font-mono text-xs font-bold shrink-0">
-            <span>Bagian {String(currentStage.stageId).padStart(2, '0')} / {stages.length}</span>
+            <span>{stageUnitLabel} {String(currentStage.stageId).padStart(2, '0')} / {stages.length}</span>
           </div>
         </div>
 
@@ -209,7 +267,7 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
                 }`}
               >
                 {isRead && <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />}
-                <span>Bagian {String(stg.stageId).padStart(2, '0')}</span>
+                <span>{stageUnitLabel} {String(stg.stageId).padStart(2, '0')}</span>
               </button>
             );
           })}
@@ -227,7 +285,7 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
             </span>
           </div>
           <div className="font-mono text-xs font-bold text-slate-500">
-            BAGIAN {String(currentStage.stageId).padStart(2, '0')} DARI {stages.length}
+            {stageUnitUpper} {String(currentStage.stageId).padStart(2, '0')} DARI {stages.length}
           </div>
         </div>
 
@@ -246,7 +304,7 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
           <div className="mt-8 rounded-2xl bg-indigo-50/70 border border-indigo-100/90 p-5 sm:p-6 space-y-3.5 shadow-xs">
             <div className="flex items-center gap-2 text-indigo-900 font-mono text-xs uppercase tracking-wider font-bold">
               <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />
-              <span>POIN KUNCI & RINGKASAN PRAKTIS</span>
+              <span>{keyPointsTitle}</span>
             </div>
             <ul className="space-y-2.5">
               {currentStage.keyPoints.map((point, idx) => (
@@ -271,7 +329,7 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
             onClick={handlePrevStage}
             disabled={currentStageIndex === 0}
             className="p-3 rounded-xl hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent text-slate-700 transition-colors cursor-pointer disabled:cursor-not-allowed flex items-center justify-center shrink-0 min-w-[44px] min-h-[44px]"
-            title="Bagian Sebelumnya (Panah Kiri)"
+            title={`${stageUnitLabel} Sebelumnya (Panah Kiri)`}
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -288,7 +346,7 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
             {isCurrentRead ? (
               <>
                 <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                <span className="truncate">BAGIAN {String(currentStage.stageId).padStart(2, '0')} · SUDAH DIBACA</span>
+                <span className="truncate">{stageUnitUpper} {String(currentStage.stageId).padStart(2, '0')} · SUDAH DIBACA</span>
               </>
             ) : (
               <>
@@ -303,7 +361,7 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
             onClick={handleNextStage}
             disabled={currentStageIndex === stages.length - 1}
             className="p-3 rounded-xl hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent text-slate-700 transition-colors cursor-pointer disabled:cursor-not-allowed flex items-center justify-center shrink-0 min-w-[44px] min-h-[44px]"
-            title="Bagian Selanjutnya (Panah Kanan)"
+            title={`${stageUnitLabel} Selanjutnya (Panah Kanan)`}
           >
             <ChevronRight className="w-5 h-5" />
           </button>

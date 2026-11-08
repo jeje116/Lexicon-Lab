@@ -85,7 +85,11 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
   } | null>(null);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const touchStartXRef = useRef<number | null>(null);
+  const touchStartRef = useRef<{ x: number; y: number } | null>(null);
+
+  // Ambang batas ketat swipe mobile (mencegah salah picu saat scroll vertikal)
+  const MIN_SWIPE_DISTANCE = 105;
+  const HORIZONTAL_DOMINANCE_RATIO = 2.0;
 
   // Efek getar & flash merah saat salah (Zero-Tolerance)
   const [screenShake, setScreenShake] = useState(false);
@@ -192,24 +196,38 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
     setTimeout(() => setIsPlayingAudio(false), 1200);
   };
 
-  // Touch Swipe Handlers for Mobile
+  // Touch Swipe Handlers for Mobile (Ketat: Min 105px & Rasio Horizontal 2.0x terhadap Vertikal)
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartXRef.current = e.touches[0].clientX;
+    if (e.touches.length > 0) {
+      touchStartRef.current = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY
+      };
+    }
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartXRef.current === null) return;
-    const touchEndX = e.changedTouches[0].clientX;
-    const diff = touchStartXRef.current - touchEndX;
+    if (!touchStartRef.current || e.changedTouches.length === 0) return;
+    const touchEnd = {
+      x: e.changedTouches[0].clientX,
+      y: e.changedTouches[0].clientY
+    };
 
-    if (Math.abs(diff) > 40) {
-      if (diff > 0) {
+    const deltaX = touchStartRef.current.x - touchEnd.x;
+    const deltaY = touchStartRef.current.y - touchEnd.y;
+    const absX = Math.abs(deltaX);
+    const absY = Math.abs(deltaY);
+
+    // Mencegah picu jika geseran kurang dari 105px atau lebih condong ke scroll vertikal
+    if (absX >= MIN_SWIPE_DISTANCE && absX > absY * HORIZONTAL_DOMINANCE_RATIO) {
+      if (deltaX > 0) {
         handleDeckNext();
       } else {
         handleDeckPrev();
       }
     }
-    touchStartXRef.current = null;
+
+    touchStartRef.current = null;
   };
 
   // Memulai Kuis Eliminasi Stage (20 Soal Acak Total)

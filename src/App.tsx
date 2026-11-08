@@ -423,6 +423,7 @@ export default function App() {
               readStageIds={userData.readTopicStages?.[selectedTopicId] || []}
               onToggleReadStage={handleToggleReadStage}
               soundEnabled={userData.soundEnabled}
+              activeBranchId={activeBranchId}
             />
           ) : (
             <>
