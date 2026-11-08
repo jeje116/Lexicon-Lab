@@ -341,8 +341,8 @@ test('Retention pool strictly enforces gatekeeper when clearedStages is empty', 
 // =========================================================================
 console.log('\n--- Test Suite 8: Multi-Branch Knowledge & Content Parser ---');
 
-test('MOCK_KNOWLEDGE_TOPICS contains 524 stages across Psychology (20), Statistics (4), and Kosa Kata Indonesia (500)', () => {
-  assertEqual(MOCK_KNOWLEDGE_TOPICS.length, 524, 'Total stages in mock knowledge topics must be 524');
+test('MOCK_KNOWLEDGE_TOPICS contains 539 stages across Psychology (20), Statistics (4), Kosa Kata Indonesia (500), and Economics (15)', () => {
+  assertEqual(MOCK_KNOWLEDGE_TOPICS.length, 539, 'Total stages in mock knowledge topics must be 539');
 
   const psyStages = MOCK_KNOWLEDGE_TOPICS.filter((t) => t.topicId === 'psy-read-people');
   assertEqual(psyStages.length, 20, 'Read People Like a Book must have exactly 20 stages');
@@ -361,6 +361,14 @@ test('MOCK_KNOWLEDGE_TOPICS contains 524 stages across Psychology (20), Statisti
   
   const indoTopics = new Set(indoStages.map(s => s.topicId));
   assertEqual(indoTopics.size, 50, 'Kosa Kata Indonesia must span exactly 50 stage topics');
+
+  const econStages = MOCK_KNOWLEDGE_TOPICS.filter((t) => t.branchId === 'economics');
+  assertEqual(econStages.length, 15, 'Economics branch must have exactly 15 stages');
+  assertEqual(econStages[0].topicId, 'econ-understand-money-p1', 'Economics topicId must match');
+  assertEqual(econStages[0].branchTitle, 'Economics & Finance', 'Branch title must be Economics & Finance');
+  econStages.slice(1).forEach((s) => {
+    assertTrue(s.content.includes('🔗'), `Stage ${s.stageId} of Economics must include correlation bridge 🔗`);
+  });
 
   // Verify ID format `${topicId}-s${stageId}`
   MOCK_KNOWLEDGE_TOPICS.forEach((item) => {

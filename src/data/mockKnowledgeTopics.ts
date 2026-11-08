@@ -1,11 +1,5 @@
 import { KnowledgeStageItem } from "../types/lexicon";
 
-/**
- * Dataset materi konsep / topik pengetahuan multi-cabang (Fallback & Seed).
- * - Cabang 1: Psychology & Life (Read People Like a Book - Patrick King - 20 bagian terhubung)
- * - Cabang 2: Statistics & Data (K-Means Clustering - 4 bagian)
- * - Cabang 3: Kosa Kata Indonesia (50 Stage / 500 Kosa Kata)
- */
 export const MOCK_KNOWLEDGE_TOPICS: KnowledgeStageItem[] = [
   {
     "id": "psy-read-people-s1",
@@ -7868,6 +7862,231 @@ export const MOCK_KNOWLEDGE_TOPICS: KnowledgeStageItem[] = [
       "Fenomena **aproksimasi** mencerminkan nilai atau cara yang mendekati nilai sebenarnya ketika hasil tepat sulit diperoleh yang kerap muncul dalam dinamika sifat melekat, kedudukan unsur, dan ketelitian dalam menyatakan konsep.",
       "Sejumlah studi kasus mendemonstrasikan bahwa perubahan pada tingkat **aproksimasi** selalu membawa konsekuensi berantai bagi sistem di sekitarnya.",
       "Oleh sebab itu, setiap analisis strategis wajib memasukkan variabel **aproksimasi** ke dalam kerangka evaluasinya."
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s1",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 1,
+    "stageTitle": "01. Gambaran Besar: Uang Adalah Sistem Kepercayaan, Bukan Kekayaan Itu Sendiri",
+    "content": "**Gagasan Utama:** Banyak orang mengira uang adalah kekayaan itu sendiri yang harus dikumpulkan dan ditimbun. Padahal, ==uang bukanlah kekayaan itu sendiri, melainkan sistem kepercayaan dan kesepakatan sosial yang digunakan untuk mengukur, menyimpan, dan memindahkan nilai ekonomi.==\\n\\n**Alur Peta Pemahaman (6 Bab Evolusi & Mekanisme Uang):** Pembahasan dalam materi ini mengalir secara berurutan dan saling mengunci: **(1) Hakikat & Asal-Usul Uang** (mengapa uang bekerja karena kesepakatan dan berawal dari catatan utang, bukan barter) $\\rightarrow$ **(2) Uang sebagai Alat Ukur & Jangkar Emas** $\\rightarrow$ **(3) Lahirnya Uang Kertas & Perbankan Awal** (Dinasti Song, *Goldsmith*, hingga *Bank of England*) $\\rightarrow$ **(4) Runtuhnya Standar Emas & Lahirnya Uang Fiat** (*Bretton Woods* & *Nixon Shock 1971*) $\\rightarrow$ **(5) Mekanisme Penciptaan Uang Bank Modern, Kredit, & Inflasi** $\\rightarrow$ hingga **(6) Siapa yang Diuntungkan Inflasi & Evaluasi Kritis**.",
+    "keyPoints": [
+      "Uang hanyalah alat ukur dan perantara nilai, sedangkan kekayaan sejati mencakup aset produktif, keterampilan, dan kapasitas menghasilkan sesuatu",
+      "Sistem moneter berevolusi dari catatan utang dan komoditas fisik menuju uang kertas dan uang digital yang diciptakan melalui kredit perbankan",
+      "Inflasi secara bertahap menggerus daya beli penabung uang tunai, sementara pihak yang memegang utang berbunga tetap dapat diuntungkan oleh penurunan nilai riil uang"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s2",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 2,
+    "stageTitle": "02. [Bab 1: Hakikat Uang] Kisah Pulau Yap & Kepercayaan Kolektif (Social Agreement)",
+    "content": "**🔗 Korelasi Alur:** Untuk membuktikan gagasan di Bagian 01 bahwa uang bukanlah benda fisiknya melainkan kesepakatan sosial, mari kita lihat bukti nyata paling ekstrem dalam sejarah manusia: sistem uang batu di **Pulau Yap** (Samudra Pasifik).\\n\\n**Studi Kasus Pulau Yap:** Penduduk Pulau Yap menggunakan batu kapur raksasa (*Rai stones*) yang beratnya mencapai beberapa ton sebagai alat pembayaran. Karena sangat berat, **batu tersebut tidak perlu dipindahkan ketika transaksi terjadi**—kepemilikannya cukup berpindah berdasarkan kesepakatan lisan masyarakat. Bahkan, ketika ada sebuah batu raksasa yang tenggelam ke dasar laut saat diangkut, masyarakat tetap mengakui kepemilikan batu yang tak terlihat itu dan tetap menggunakannya sebagai alat transaksi.\\n\\n**Hubungannya dengan Uang Modern:** Prinsip Pulau Yap sebenarnya sama persis dengan uang kita hari ini. Kertas tidak memiliki nilai intrinsik sebesar angka yang tercetak di atasnya, dan saldo di aplikasi bank bukanlah tumpukan uang fisik di brankas. Keduanya berfungsi semata-mata karena **kepercayaan kolektif (*social agreement*)** bahwa masyarakat dan institusi menerima nilainya.\\n\\n**Intinya:** ==Nilai uang tidak berasal dari wujud fisiknya, melainkan dari kepercayaan kolektif masyarakat bahwa suatu benda atau catatan mewakili hak kepemilikan tertentu.==",
+    "keyPoints": [
+      "Di Pulau Yap, batu seberat beberapa ton (bahkan yang sudah tenggelam di laut) tetap sah menjadi uang karena seluruh komunitas sepakat mengakui kepemilikannya",
+      "Uang kertas dan saldo rekening bank bekerja dengan prinsip yang sama: tidak punya nilai fisik setara nominalnya, tetapi hidup dari kesepakatan sosial (social agreement)",
+      "Begitu kepercayaan kolektif terhadap suatu mata uang runtuh, benda atau angka tersebut kehilangan fungsinya sebagai uang"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s3",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 3,
+    "stageTitle": "03. [Bab 1: Sejarah Uang] Mengapa Uang Berawal dari Catatan Utang, Bukan Barter",
+    "content": "**🔗 Korelasi dengan Kesepakatan Sosial:** Jika uang pada hakikatnya adalah kesepakatan sosial dan klaim kepemilikan (Bagian 02), lalu bagaimana uang pertama kali muncul dalam peradaban manusia? Ekonomi konvensional sering mengajarkan **Teori Barter**: manusia awalnya menukar barang secara langsung (misal ikan dengan roti), lalu terhambat oleh *double coincidence of wants* (pemilik roti belum tentu butuh ikan), sehingga diciptakanlah uang.\\n\\n**Kritik Antropologis & Bukti Sejarah:** Mengutip penelitian antropolog **Caroline Humphrey**, tidak ditemukan bukti historis adanya masyarakat yang murni mengandalkan barter sebagai fondasi awal ekonominya. Sebaliknya, **barter justru muncul ketika sistem uang yang sudah ada mengalami keruntuhan**, seperti di **Rusia pada 1990-an** dan **Argentina pada 2002**, di mana masyarakat terpaksa bertukar barang karena mata uang mereka hancur.\\n\\n**Fondasi Asli Sebelum Koin — Utang & Kewajiban:** Jauh sebelum koin pertama dicetak, manusia bertransaksi menggunakan **hubungan utang dan kewajiban sosial** (misal: Anda membantu tetangga membangun rumah hari ini, dan tetangga berkewajiban membantu Anda saat musim panen). Di **Mesopotamia kuno**, catatan utang dan kewajiban ini telah ditulis di atas **tablet tanah liat** ribuan tahun sebelum koin logam ditemukan.\\n\\n**Intinya:** ==Barter bukanlah asal-usul uang melainkan respons darurat saat mata uang runtuh; uang sejatinya lahir sebagai catatan utang, klaim, dan kewajiban timbal balik antarmanusia.==",
+    "keyPoints": [
+      "Double coincidence of wants: kendala barter di mana kedua pihak harus kebetulan saling membutuhkan barang yang ditawarkan pada saat bersamaan",
+      "Kasus Rusia (1990-an) dan Argentina (2002) membuktikan bahwa barter muncul ketika sistem moneter gagal, bukan sebelum uang ditemukan",
+      "Tablet tanah liat Mesopotamia membuktikan bahwa sistem pencatatan utang dan klaim kewajiban sudah berjalan ribuan tahun sebelum koin pertama dibuat"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s4",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 4,
+    "stageTitle": "04. [Bab 2: Alat Ukur] Analogi Penggaris & Mengapa Emas Menjadi Jangkar Fisik",
+    "content": "**🔗 Korelasi dari Catatan Utang ke Standar Nilai:** Karena uang digunakan untuk mencatat utang dan memindahkan nilai antarwaktu (Bagian 03), maka uang harus berfungsi layaknya **alat ukur ekonomi**—sama seperti penggaris untuk mengukur panjang dan jam untuk mengukur waktu.\\n\\n**Masalah Alat Ukur yang Berubah-ubah:** Alat ukur hanya dapat diandalkan apabila satuannya stabil. Bayangkan jika 1 meter hari ini sama dengan 100 cm, tetapi besok menyusut menjadi 90 cm tanpa pemberitahuan—seluruh perhitungan bangunan akan kacau. Berbeda dengan **waktu** yang satuannya tetap, tidak bisa dicetak pemerintah, dan tidak dikendalikan bank, **uang** adalah kesepakatan manusia sehingga jumlahnya bisa ditambah dan nilainya bisa berubah karena kebijakan moneter.\\n\\n**Peran Emas sebagai *Physical Anchor*:** Untuk mencegah penggaris nilai ini diubah sembarangan, selama ribuan tahun peradaban manusia mengaitkan uang dengan komoditas fisik seperti **emas dan perak**. Emas dipilih karena jumlahnya terbatas di alam, tidak bisa dicetak semudah kertas, membutuhkan usaha dan sumber daya besar untuk ditambang, serta diterima luas dalam perdagangan.\\n\\n**Intinya:** ==Agar uang dapat menjadi alat ukur nilai yang adil, satuannya harus stabil; itulah sebabnya emas dahulu digunakan sebagai jangkar fisik (physical anchor) agar jumlah uang tidak bisa ditambah secara sembarangan.==",
+    "keyPoints": [
+      "Analogi Penggaris: uang yang nilainya terus menyusut ibarat penggaris yang panjang 1 meternya berubah dari 100 cm menjadi 90 cm",
+      "Perbedaan Waktu vs Uang: waktu memiliki satuan konstan dan tidak bisa dicetak, sedangkan jumlah uang dapat ditambah oleh otoritas moneter dan perbankan",
+      "Physical Anchor (Jangkar Fisik): emas membatasi kekuasaan manusia untuk menciptakan uang dari udara kosong karena ketersediaannya dibatasi oleh alam"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s5",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 5,
+    "stageTitle": "05. [Bab 3: Uang Kertas Awal] Dinasti Song China: Dari Koin Besi ke Jiaozi",
+    "content": "**🔗 Korelasi dari Logam Fisik ke Uang Kertas:** Meskipun logam (emas, perak, atau besi) berhasil menjaga batas fisik uang (Bagian 04), logam memiliki kelemahan praktis yang besar saat volume perdagangan meningkat. Transisi pertama menuju uang kertas tercatat di wilayah **Sichuan, China pada masa Dinasti Song**.\\n\\n**Masalah Koin Besi & Lahirnya Tanda Terima (*Receipt*):** Masyarakat Sichuan saat itu menggunakan koin besi yang nilai per kepingnya kecil. Untuk transaksi besar, pedagang harus mengangkut ribuan koin besi yang sangat berat, lambat, dan berisiko dirampok. Sebagai solusi, pedagang menitipkan koin besi mereka di toko penyimpanan terpercaya dan menerima **tanda terima kertas (*receipt*)**. Alih-alih menggotong besi, mereka cukup bertukar kertas tanda terima tersebut, dan pemegangnya berhak mengklaim logam kapan saja.\\n\\n**Intervensi Pemerintah & Pelajaran Sejarah:** Melihat efisiensi ini, pemerintah Dinasti Song mengambil alih sistem tersebut dan menerbitkan uang kertas resmi bernama **Jiaozi**. Awalnya perdagangan menjadi sangat lancar. Namun, godaan muncul: pemerintah mulai **mencetak Jiaozi secara berlebihan** demi membiayai pengeluaran negara dan peperangan melebihi cadangan logam yang ada. Akibatnya, jumlah uang membludak dan nilainya jatuh.\\n\\n**Intinya:** ==Uang kertas awalnya lahir sebagai tanda terima yang mewakili 100% aset logam yang disimpan, namun berubah menjadi sumber inflasi ketika penguasa mencetaknya melebihi cadangan fisik demi membiayai pengeluaran.==",
+    "keyPoints": [
+      "Tahap 1 (Efisiensi): Koin besi yang berat dititipkan ke toko, dan kertas tanda terimanya dipakai bertransaksi sebagai wakil logam fisik",
+      "Tahap 2 (Monopoli Negara): Pemerintah Dinasti Song meresmikan uang kertas pertama yang disebut Jiaozi",
+      "Tahap 3 (Kelebihan Cetak): Ketika Jiaozi dicetak berlebih untuk membiayai perang, kepercayaan dan daya beli uang tersebut merosot tajam"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s6",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 6,
+    "stageTitle": "06. [Bab 3: Lahirnya Perbankan] Goldsmith London & Asal-Usul Fractional Reserve",
+    "content": "**🔗 Korelasi dari China ke Eropa Abad ke-17:** Pola yang mirip dengan Dinasti Song (Bagian 05) berkembang lebih jauh di **London pada abad ke-17**, dan kali ini melahirkan mekanisme **penciptaan uang oleh perbankan (*Fractional Reserve*)**.\\n\\n**Dari Penitipan Emas ke Penyewaan Diam-diam:** Karena takut dicuri di rumah, warga London menitipkan emas mereka kepada **Goldsmith** (pengrajin emas yang memiliki brankas kuat) dan menerima kertas tanda terima (*receipt*). Karena tanda terima itu praktis, masyarakat menggunakannya langsung untuk jual-beli. *Goldsmith* pun menyadari satu fakta kunci: **hampir tidak pernah semua nasabah datang mengambil emasnya secara bersamaan.**\\n\\n**Analogi Garasi Mobil & Penciptaan Klaim Berlebih:** Awalnya, ketika Nasabah A menitipkan 100 keping emas, *Goldsmith* diam-diam meminjamkan emas itu kepada pedagang untuk meraih keuntungan bunga (ibarat Anda menitipkan mobil di garasi, lalu pemilik garasi diam-diam menyewakan mobil Anda ke orang lain). Lebih jauh lagi, *Goldsmith* sadar ia tidak perlu meminjamkan emas fisiknya—ia cukup **menerbitkan kertas tanda terima baru** kepada peminjam!\\n\\n**Ilustrasi Fractional Reserve:** Di brankas hanya ada **100 keping emas fisik**, tetapi *Goldsmith* menerbitkan **150 tanda terima** (100 milik penyimpan asli + 50 pinjaman baru tanpa dukungan emas). Karena semua kertas tanda terima terlihat identik, publik tidak tahu mana yang didukung emas dan mana yang tidak.\\n\\n**Intinya:** ==Praktik Goldsmith menerbitkan lebih banyak klaim tanda terima (150) daripada emas fisik yang tersimpan di brankas (100) menjadi cikal bakal sistem Fractional Reserve Banking modern.==",
+    "keyPoints": [
+      "Observasi Kunci Goldsmith: Nasabah lebih suka bertransaksi memakai kertas tanda terima dan jarang mengambil emas fisiknya di brankas",
+      "Analogi Garasi: Menyimpan aset milik nasabah namun meminjamkannya kepada pihak ketiga demi memungut bunga",
+      "Ilustrasi 100 vs 150: Dari 100 emas fisik, diterbitkan 150 klaim tanda terima (50 klaim tercipta dari pemberian pinjaman tanpa dukungan emas fisik)"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s7",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 7,
+    "stageTitle": "07. [Bab 3: Institusionalisasi] Bank of England (1694): Ketika Penciptaan Uang Dilembagakan",
+    "content": "**🔗 Korelasi dari Praktik Goldsmith ke Hukum Negara:** Jika praktik *Goldsmith* menerbitkan tanda terima melebihi emas (Bagian 06) dilakukan oleh pihak swasta, bagaimana praktik tersebut berubah menjadi sistem resmi negara? Titik baliknya terjadi pada tahun **1694** melalui pendirian **Bank of England**.\\n\\n**Kesepakatan Raja William III & Kelompok Pedagang:** Pada tahun 1694, **Raja William III** membutuhkan dana raksasa untuk membiayai peperangan Inggris. Karena kas kerajaan tidak cukup, ia bekerja sama dengan sekelompok pedagang kaya yang bersedia memberikan pinjaman kepada pemerintah. Sebagai imbalannya, kelompok tersebut diberi hak istimewa melalui piagam kerajaan untuk mendirikan **Bank of England** dan **menerbitkan uang kertas resmi**.\\n\\n**Perubahan Fundamental Sistem Moneter:** Sejak titik ini, sifat uang berubah secara mendasar: jika sebelumnya tanda terima mewakili emas yang disimpan di brankas, kini **uang kertas diterbitkan berdasarkan janji pembayaran utang pemerintah** dan dilindungi oleh legitimasi hukum negara.\\n\\n**Intinya:** ==Pendirian Bank of England pada 1694 melembagakan pergeseran sejarah dari sistem uang berbasis komoditas fisik menuju sistem perbankan modern yang berbasis kepercayaan dan utang negara.==",
+    "keyPoints": [
+      "Tahun 1694: Kebutuhan dana perang Raja William III melahirkan kesepakatan pembentukan Bank of England",
+      "Pergeseran Fondasi: Uang kertas tidak lagi harus mewakili 100% emas di gudang, melainkan dijamin oleh surat utang (janji bayar) pemerintah",
+      "Legitimasi Negara: Praktik penciptaan kredit dan penerbitan klaim uang kini mendapatkan payung hukum resmi dari otoritas negara"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s8",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 8,
+    "stageTitle": "08. [Bab 4: Uang Fiat] Bretton Woods (US$35/Ounce), Nixon Shock 1971, & Fiat Money",
+    "content": "**🔗 Korelasi dari Bank Sentral ke Terputusnya Jangkar Emas Dunia:** Meskipun bank sentral sudah berdiri sejak 1694 (Bagian 07), selama berabad-abad mata uang dunia masih mempertahankan keterkaitan dengan emas. Namun, ikatan terakhir antara uang dan emas akhirnya putus secara total pada abad ke-20.\\n\\n**1. Sistem Bretton Woods (Pasca-Perang Dunia II):** Setelah Perang Dunia II, negara-negara Barat menyepakati arsitektur moneter **Bretton Woods**: seluruh mata uang dunia dipatok ke **Dolar AS**, sementara Dolar AS dijamin dapat ditukarkan dengan emas pada nilai tetap **US$35 untuk 1 troy ounce emas**.\\n\\n**2. Masalah Pengeluaran AS & Nixon Shock (Agustus 1971):** Pada dekade 1960-an, Amerika Serikat mencetak dan membelanjakan sangat banyak dolar untuk membiayai peperangan (Perang Vietnam), program pemerintah, dan pengeluaran domestik. Jumlah dolar di luar negeri membengkak jauh melampaui cadangan emas AS. Ketika negara-negara lain mulai meragukan kecukupan emas AS dan meminta penukaran, pada **Agustus 1971 Presiden Richard Nixon** secara sepihak menghentikan konvertibilitas dolar terhadap emas (**Nixon Shock**).\\n\\n**3. Era Murni Fiat Money:** Sejak 1971, dunia sepenuhnya menggunakan **Fiat Money**—uang yang tidak lagi bisa ditukar dengan emas, melainkan ditopang oleh kepercayaan masyarakat, otoritas hukum pemerintah, dan kapasitas ekonomi negara. Akibatnya, jumlah uang bisa tumbuh jauh lebih cepat: **US$100 pada tahun 1971** memiliki daya beli yang jauh lebih besar dibandingkan **US$100 hari ini** meskipun angka nominalnya sama.\\n\\n**Intinya:** ==Keputusan Nixon Shock pada Agustus 1971 mengakhiri standar emas Bretton Woods (US$35/ounce) dan membawa dunia ke era uang fiat murni, di mana angka nominal uang bisa tetap sama sementara daya belinya terus menyusut.==",
+    "keyPoints": [
+      "Bretton Woods: Mata uang dunia dikaitkan ke Dolar AS, dan Dolar AS dipatok resmi seharga US$35 per 1 troy ounce emas",
+      "Nixon Shock (Agustus 1971): Karena pengeluaran perang dan domestik AS membuat jumlah dolar melebihi cadangan emas, Presiden Nixon menghentikan penukaran dolar ke emas",
+      "Fiat Money: Uang yang nilainya tidak lagi dijamin komoditas fisik, melainkan oleh hukum pemerintah dan kepercayaan publik (membuat US$100 tahun 1971 jauh lebih bernilai daripada US$100 sekarang)"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s9",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 9,
+    "stageTitle": "09. [Bab 5: Perbankan Modern] Bagaimana Bank Komersial Menciptakan Uang Saat Memberi Kredit",
+    "content": "**🔗 Korelasi dari Uang Fiat ke Mesin Penciptaan Uang Hari Ini:** Di era uang fiat pasca-1971 (Bagian 08), siapa yang sebenarnya menciptakan sebagian besar uang yang beredar di masyarakat? Bukan sekadar mesin cetak pemerintah, melainkan **bank komersial setiap kali mereka menyetujui pinjaman (kredit)**.\\n\\n**Kesalahpahaman Umum tentang Bank:** Banyak orang mengira bank hanya bertindak sebagai perantara pasif: **(1)** Nasabah A menabung uang $\\rightarrow$ **(2)** Bank menyimpan sebagian $\\rightarrow$ **(3)** Bank meminjamkan uang tabungan Nasabah A tadi kepada Nasabah B. Dalam sistem perbankan modern, cara kerjanya tidak sesederhana itu.\\n\\n**Mekanisme Nyata Penciptaan Uang Deposito (Contoh Pinjaman US$10.000):** Ketika seseorang mengajukan kredit **US$10.000** dan disetujui: **(1)** Nasabah menandatangani kontrak utang $\\rightarrow$ **(2)** Bank mencatat kontrak pinjaman itu sebagai *aset* bank $\\rightarrow$ **(3)** Pada saat yang sama, bank mengetik dan mengkreditkan saldo deposito baru sebesar **US$10.000** ke rekening nasabah (dicatat sebagai *kewajiban* bank) $\\rightarrow$ **(4)** Saldo baru tersebut langsung bisa dipakai berbelanja di ekonomi nyata!\\n\\n**Catatan Batasan Penting:** Meskipun pemberian kredit menciptakan uang deposito baru (bukan sekadar memindahkan tabungan orang lain), **bank tidak bisa menciptakan uang tanpa batas**. Bank tetap dibatasi oleh aturan kecukupan modal (*capital adequacy*), cadangan likuiditas, regulasi bank sentral, risiko gagal bayar, dan penyelesaian pembayaran antarbank.\\n\\n**Intinya:** ==Dalam sistem perbankan modern, uang deposito baru tercipta ketika bank komersial memberikan kredit, meskipun kemampuan bank tersebut tetap dibatasi oleh modal, likuiditas, dan regulasi.==",
+    "keyPoints": [
+      "Mitos Umum: Bank hanya meminjamkan uang yang sebelumnya disetorkan oleh penabung lain",
+      "Fakta Akuntansi Perbankan: Saat kredit US$10.000 disetujui, bank mencatat aset pinjaman sekaligus menciptakan saldo deposito baru US$10.000 di rekening peminjam",
+      "Kendala Nyata Bank: Penciptaan uang via kredit tetap dibatasi secara ketat oleh modal bank, likuiditas, regulasi, dan risiko kredit macet"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s10",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 10,
+    "stageTitle": "10. [Bab 5: Dinamika Utang] Paradoks Pinjaman Pokok vs Bunga & Siklus Pertumbuhan Kredit",
+    "content": "**🔗 Korelasi dengan Penciptaan Uang via Kredit:** Dari mekanisme kredit sebesar US$10.000 pada Bagian 09, pembicara dalam video mengangkat sebuah pertanyaan pemikiran mengenai hubungan antara **pokok pinjaman**, **bunga**, dan **jumlah uang beredar**.\\n\\n**Ilustrasi Pinjaman US$10.000 + Bunga US$1.000:** Ketika seseorang meminjam **US$10.000** dari bank, bank menciptakan uang deposito sebesar **US$10.000**. Namun, peminjam wajib mengembalikan total **US$11.000** (pokok US$10.000 + bunga US$1.000). Pertanyaannya: jika saat pinjaman dibuat uang yang tercipta hanya US$10.000, dari mana datangnya tambahan **US$1.000** untuk membayar bunganya?\\n\\n**Argumen Video vs Koreksi Ekonomi Penting:** Menurut pembicara video, tambahan uang untuk membayar bunga harus diperoleh dari uang yang beredar di ekonomi atau dari penciptaan **utang/kredit baru** secara terus-menerus—karena ketika kredit tumbuh maka jumlah uang bertambah, dan ketika utang dilunasi maka uang deposito menyusut.\\n\\n**Catatan Kritis (Agar Tidak Salah Kaprah):** Perlu dipahami secara objektif bahwa klaim *'bunga hanya bisa dibayar dengan utang baru'* adalah **penyederhanaan yang terlalu jauh**. Dalam ekonomi nyata, **uang yang sama dapat berputar berkali-kali (*velocity of money*)** melalui transaksi dan pendapatan (uang bunga yang diterima bank dibelanjakan kembali untuk gaji pegawai, operasional, dan dividen), sehingga tidak setiap pembayaran bunga mengharuskan adanya pinjaman baru.\\n\\n**Intinya:** ==Ekspansi kredit memang memperbesar jumlah uang beredar dan pelunasan utang menyusutkannya, namun pembayaran bunga juga ditopang oleh perputaran uang yang sama berkali-kali dalam aktivitas ekonomi.==",
+    "keyPoints": [
+      "Ilustrasi Video: Pinjaman menciptakan pokok US$10.000, tetapi menuntut pengembalian US$11.000 (termasuk bunga US$1.000)",
+      "Sifat Siklus Kredit: Ekspansi kredit perbankan menambah suplai uang deposito, sedangkan pelunasan kredit mengurangi suplai uang deposito tersebut",
+      "Koreksi Akademis (Velocity of Money): Uang yang sama dapat beredar berulang kali melalui pendapatan dan belanja, sehingga bunga tidak mutlak harus selalu ditutup dari utang baru"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s11",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 11,
+    "stageTitle": "11. [Bab 5: Dampak ke Penabung] Inflasi 2%, Ilustrasi Harga, & Nominal Wealth vs Real Purchasing Power",
+    "content": "**🔗 Korelasi dari Pertumbuhan Uang ke Menyusutnya Tabungan:** Ketika jumlah uang dan kredit di dalam sistem terus bertambah lebih cepat daripada barang dan jasa (Bagian 09–10), konsekuensi langsung yang dirasakan masyarakat adalah **Inflasi**—yaitu kenaikan tingkat harga barang dan jasa secara umum dari waktu ke waktu.\\n\\n**Ilustrasi Kenaikan Harga & Penurunan Daya Beli:** Bayangkan sebuah barang yang pada **Tahun 1** berharga **Rp100.000**. Dengan inflasi **2% per tahun** (target resmi yang dianggap 'sehat' oleh banyak bank sentral dunia), harganya naik secara majemuk menjadi **Rp102.000** (Tahun 2) $\\rightarrow$ **Rp104.040** (Tahun 3) $\\rightarrow$ **Rp106.121** (Tahun 4). Meskipun terlihat kecil, **inflasi konstan 2% per tahun akan memangkas daya beli uang Anda menjadi tinggal setengahnya (50%) dalam waktu 35 tahun!**\\n\\n**Mengapa Menabung Uang Tunai Jangka Panjang Merugikan?** Jika Anda menyimpan uang tunai **Rp100 juta** selama puluhan tahun, secara angka jumlahnya tetap Rp100 juta, tetapi barang yang sanggup dibeli semakin sedikit. Di sinilah kita wajib membedakan dua konsep kunci: **(1) Nominal Wealth** (jumlah angka uang yang dimiliki) dan **(2) Real Purchasing Power** (kemampuan nyata uang tersebut untuk membeli barang dan jasa).\\n\\n**Intinya:** ==Mempertahankan jumlah nominal uang (nominal wealth) di tabungan tunai tidak sama dengan mempertahankan kekayaan, karena inflasi 2% per tahun sekalipun akan menggerus separuh daya beli riil (real purchasing power) dalam 35 tahun.==",
+    "keyPoints": [
+      "Efek Majemuk Inflasi: Barang Rp100.000 dengan inflasi 2%/tahun naik menjadi Rp102.000 (Thn 2), Rp104.040 (Thn 3), dan Rp106.121 (Thn 4)",
+      "Aturan 35 Tahun: Target inflasi bank sentral sebesar 2% per tahun akan memotong daya beli tabungan tunai hingga ~50% dalam 35 tahun",
+      "Nominal Wealth vs Real Purchasing Power: Jangan tertipu oleh saldo angka yang tetap (misal Rp100 juta), ukurlah kekayaan dari berapa banyak barang/jasa nyata yang bisa dibeli"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s12",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 12,
+    "stageTitle": "12. [Bab 6: Distribusi Dampak] Siapa yang Diuntungkan & Dirugikan oleh Inflasi?",
+    "content": "**🔗 Korelasi dari Inflasi ke Pemenang & Pecundang Ekonomi:** Jika inflasi terus menggerus nilai riil uang (Bagian 11), apakah semua orang dirugikan secara merata? Jawabannya **tidak**. Inflasi memindahkan daya beli secara diam-diam dari satu kelompok ke kelompok lain.\\n\\n**1. Pihak yang Dirugikan (Penabung Tunai & Pemberi Pinjaman Bunga Tetap):** Orang yang menyimpan uang tunai mengalami penurunan daya beli langsung. Begitu pula pihak yang meminjamkan uang dengan bunga tetap yang rendah—ketika uangnya dikembalikan beberapa tahun kemudian, nilai riil uang pembayaran tersebut sudah menyusut.\\n\\n**2. Pihak yang Diuntungkan (Peminjam Bunga Tetap, Pemilik Aset Produktif, & Pemerintah):** Bayangkan seseorang (atau pemerintah) memiliki **utang Rp100 juta dengan bunga tetap**. Saat inflasi terjadi, harga barang dan pendapatan nominal naik, tetapi angka pokok utangnya tetap Rp100 juta. Artinya, **peminjam melunasi utangnya menggunakan uang yang daya belinya sudah jauh lebih murah** dibandingkan saat ia pertama kali meminjam! Karena **pemerintah adalah peminjam terbesar** dalam perekonomian, inflasi secara efektif membantu mengurangi beban nilai riil utang domestik pemerintah.\\n\\n**Intinya:** ==Inflasi menggerus daya beli penabung uang tunai dan kreditur, namun meringankan beban riil peminjam berbunga tetap (termasuk pemerintah sebagai debitur terbesar) serta dapat menguntungkan pemilik aset produktif.==",
+    "keyPoints": [
+      "Penabung Uang Tunai & Pemberi Pinjaman Bunga Tetap: Dirugikan karena daya beli tabungan dan nilai riil pelunasan yang diterima menyusut",
+      "Peminjam dengan Bunga Tetap: Diuntungkan karena membayar kembali utang nominal tetap (misal Rp100 juta) menggunakan uang yang nilainya sudah lebih rendah",
+      "Pemerintah & Pemilik Aset Produktif: Pemerintah sebagai peminjam terbesar terbantu oleh penurunan nilai riil utang domestik, sementara aset produktif cenderung menyesuaikan nilainya mengikuti inflasi"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s13",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 13,
+    "stageTitle": "13. [Bab 6: Glosarium Inti] 12 Istilah Fondasi Sistem Moneter yang Wajib Dikuasai",
+    "content": "**🔗 Korelasi Rangkuman Terminologi:** Untuk mengikat seluruh alur sejarah dari Bagian 01 hingga Bagian 12, berikut adalah **12 istilah kunci ekonomi dan moneter** yang menjadi fondasi pembahasan video ini:\\n\\n**1. Kelompok Sejarah & Standar Uang:** **(a) Barter** (pertukaran barang/jasa secara langsung tanpa uang), **(b) Gold Standard** (sistem moneter yang mengaitkan nilai mata uang secara tetap dengan emas), dan **(c) Fiat Money** (uang resmi yang nilainya tidak dijamin komoditas fisik seperti emas, melainkan oleh otoritas pemerintah dan kepercayaan publik).\\n\\n**2. Kelompok Perbankan & Penciptaan Uang:** **(d) Debt** (kewajiban untuk membayar atau mengembalikan sesuatu), **(e) Credit** (fasilitas atau hubungan pemberian pinjaman), **(f) Fractional Reserve Banking** (sistem perbankan yang hanya menyimpan sebagian cadangan likuiditas, bukan 100% dari seluruh kewajiban deposito dalam bentuk kas), **(g) Money Creation** (proses penciptaan uang baru, terutama melalui pemberian kredit oleh bank komersial), dan **(h) Monetary Policy** (kebijakan bank sentral dalam mengatur suku bunga dan jumlah uang beredar).\\n\\n**3. Kelompok Nilai & Daya Beli:** **(i) Inflation** (kenaikan tingkat harga barang dan jasa secara umum), **(j) Purchasing Power** (kemampuan nyata uang untuk membeli barang dan jasa), **(k) Nominal Value** (nilai uang yang tertera secara angka di permukaan), serta **(l) Real Value** (nilai sebenarnya setelah memperhitungkan inflasi/perubahan daya beli).\\n\\n**Intinya:** ==Menguasai perbedaan antara uang komoditas vs uang fiat, kredit vs penciptaan uang, serta nilai nominal vs nilai riil adalah kunci utama agar kita tidak buta terhadap cara kerja sistem keuangan modern.==",
+    "keyPoints": [
+      "Fondasi Sistem: Barter, Gold Standard (Standar Emas), Fiat Money (Uang Fiat), dan Monetary Policy (Kebijakan Moneter Bank Sentral)",
+      "Mesin Perbankan: Debt (Utang), Credit (Kredit), Fractional Reserve Banking (Cadangan Sebagian), dan Money Creation (Penciptaan Uang Deposito)",
+      "Ukuran Kekayaan: Inflation (Inflasi), Purchasing Power (Daya Beli), Nominal Value (Nilai Angka), dan Real Value (Nilai Riil)"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s14",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 14,
+    "stageTitle": "14. [Bab 6: Tinjauan Kritis] Memisahkan Fakta Akademis dari Penyederhanaan Video",
+    "content": "**🔗 Korelasi Evaluasi Objektif:** Karena video ini mengambil sudut pandang yang sangat kritis terhadap sistem moneter modern, sebagai pembelajar yang objektif kita wajib memisahkan **mana klaim yang kuat secara akademis** dan **mana klaim yang disederhanakan secara berlebihan**:\\n\\n**1. Klaim yang Kuat & Valid Secara Akademis:** **(a)** *Uang adalah kesepakatan sosial* (didukung luas dalam ilmu ekonomi dan antropologi), **(b)** *Barter bukan asal mula universal uang* (sejalan dengan temuan antropologi sejarah utang, meski sejarah uang di tiap peradaban tetap kompleks), dan **(c)** *Bank komersial menciptakan uang deposito ketika memberikan kredit* (fakta mekanisme perbankan modern yang diakui oleh bank sentral dunia seperti Bank of England).\\n\\n**2. Klaim yang Perlu Diperiksa & Dikoreksi (Terlalu Menyederhanakan):** **(a)** *Kisah Goldsmith menerbitkan tanda terima berlebih* adalah ilustrasi konseptual yang populer, namun sejarah perbankan nyata jauh lebih beragam; **(b)** *Bank TIDAK bisa menciptakan uang tanpa batas*—bank tunduk pada batas modal, likuiditas, regulasi, biaya pendanaan, dan risiko kredit macet; **(c)** *Bunga utang tidak selalu mengharuskan utang baru* karena uang yang sama dapat berputar berkali-kali (*velocity of money*); serta **(d)** *Inflasi tidak otomatis selalu menguntungkan pemerintah* pada semua jenis utang (utang berbunga mengambang/variabel, utang mata uang asing, atau utang jangka pendek yang harus segera di-*refinance* justru bisa semakin membebani pemerintah saat inflasi dan suku bunga naik).\\n\\n**Intinya:** ==Pahami kritik terhadap uang fiat dan inflasi sebagai wawasan berharga, namun tetap pegang presisi akademis bahwa perbankan memiliki batas regulasi/modal dan dampak inflasi bergantung pada struktur bunga serta jenis utang.==",
+    "keyPoints": [
+      "Valid Secara Ekonomi: Uang sebagai kesepakatan sosial, kritik terhadap mitos barter murni, dan penciptaan uang deposito saat bank memberi kredit",
+      "Koreksi 1 (Batas Bank & Bunga): Bank dibatasi oleh modal/likuiditas/regulasi (tidak tak terbatas), dan bunga dapat dibayar lewat perputaran uang yang sama",
+      "Koreksi 2 (Utang Pemerintah): Inflasi hanya meringankan utang domestik berbunga tetap jangka panjang; utang valas dan bunga mengambang tetap berisiko tinggi"
+    ]
+  },
+  {
+    "id": "econ-understand-money-p1-s15",
+    "branchId": "economics",
+    "branchTitle": "Economics & Finance",
+    "topicId": "econ-understand-money-p1",
+    "topicTitle": "Once You Understand MONEY, You'll Stop Saving It (Part 1)",
+    "stageId": 15,
+    "stageTitle": "15. Sintesis Akhir: Evolusi 7 Tahap Uang & 3 Prinsip Keuangan yang Harus Dibawa",
+    "content": "**🔗 Puncak Integrasi Seluruh Materi (Part 1):** Seluruh perjalanan sistem uang dalam video ini dapat dirangkum menjadi **7 Tahap Evolusi Berantai**: **(1) Kesepakatan Sosial** (pengakuan bersama atas kepemilikan seperti di Pulau Yap) $\\rightarrow$ **(2) Catatan Utang** (tablet kewajiban Mesopotamia) $\\rightarrow$ **(3) Uang Komoditas** (emas & perak sebagai jangkar fisik penggaris nilai) $\\rightarrow$ **(4) Uang Kertas Awal** (tanda terima *Jiaozi* & *Goldsmith*) $\\rightarrow$ **(5) Perbankan Modern** (kredit menciptakan uang deposito sejak era *Bank of England*) $\\rightarrow$ **(6) Uang Fiat Murni** (putusnya kaitan emas pada *Nixon Shock 1971*) $\\rightarrow$ **(7) Dinamika Inflasi & Utang** (pergeseran daya beli antara penabung, peminjam, dan pemilik aset).\\n\\n**3 Gagasan Utama untuk Pengambilan Keputusan Keuangan Anda:**\\n**1. Jangan Menyamakan Uang dengan Kekayaan:** Uang hanyalah klaim atas barang dan jasa. Kekayaan sejati mencakup **aset produktif, keterampilan, sumber daya, dan kemampuan menghasilkan nilai**.\\n**2. Fokus pada Daya Beli Riil, Bukan Sekadar Saldo Nominal:** Rp100 juta hari ini tidak memiliki kemampuan ekonomi yang sama dengan Rp100 juta pada 20–35 tahun mendatang.\\n**3. Pahami Aturan Main Sistem Moneter:** Pesan terdalam video ini bukanlah menyuruh kita berhenti memiliki dana darurat/tabungan sama sekali, melainkan **jangan menjadikan tumpukan uang tunai sebagai satu-satunya cara mempertahankan kekayaan dalam jangka panjang** tanpa memahami dampak inflasi dan suku bunga.\\n\\n**Intinya:** ==Uang adalah alat ukur dan klaim sosial yang daya belinya menyusut karena inflasi; oleh karena itu, pertahankan kekayaan jangka panjang melalui aset produktif dan kapabilitas menghasilkan nilai, bukan sekadar menimbun uang tunai.==",
+    "keyPoints": [
+      "Alur 7 Tahap Evolusi: Kesepakatan Sosial -> Catatan Utang -> Uang Komoditas (Emas) -> Tanda Terima Kertas -> Kredit Perbankan -> Uang Fiat (1971) -> Efek Inflasi",
+      "Prinsip 1 & 2: Pisahkan uang (klaim nominal) dari kekayaan sejati (aset produktif & keahlian), dan selalu ukur nilai uang dari daya beli riilnya (purchasing power)",
+      "Prinsip 3: Menyimpan kas penting untuk likuiditas jangka pendek, tetapi mempertahankan kekayaan jangka panjang menuntut pemahaman atas inflasi, aset, dan suku bunga"
     ]
   }
 ];
