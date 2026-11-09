@@ -38,48 +38,139 @@ function renderNestedBold(inner: string): React.ReactNode[] {
 }
 
 /**
- * Render teks paragraf dengan format **bold**, ==highlight==, *italic*, dan newline
+ * Render inline tokens: **bold**, ==highlight==, *italic*, dan teks biasa
+ */
+function renderInlineTokens(line: string): React.ReactNode[] {
+  // Bersihkan panah mentah jika ada di level inline
+  const sanitized = line.replace(/\$\\rightarrow\$/g, '→').replace(/\\rightarrow/g, '→');
+  const tokens = sanitized.split(/(\*\*.*?\*\*|==.*?==|\*(?!\*)(?:[^*\n]|\*\*.*?\*\*)+?\*(?!\*))/g);
+
+  return tokens.map((token, tIdx) => {
+    if (token.startsWith('**') && token.endsWith('**')) {
+      return (
+        <strong key={tIdx} className="font-semibold text-slate-900">
+          {token.slice(2, -2)}
+        </strong>
+      );
+    }
+    if (token.startsWith('==') && token.endsWith('==')) {
+      return (
+        <mark
+          key={tIdx}
+          className="bg-amber-100/90 text-slate-900 px-1.5 py-0.5 rounded-md font-medium"
+        >
+          {token.slice(2, -2)}
+        </mark>
+      );
+    }
+    if (token.startsWith('*') && token.endsWith('*') && token.length > 2) {
+      return (
+        <em key={tIdx} className="italic text-slate-800 mr-0.5">
+          {renderNestedBold(token.slice(1, -1))}
+        </em>
+      );
+    }
+    return <span key={tIdx}>{token}</span>;
+  });
+}
+
+/**
+ * Parser lanjutan blok konten yang mendukung:
+ * 1. Sanitasi raw LaTeX arrows (\rightarrow -> →)
+ * 2. Callout korelasi (**🔗 ...) dengan border kiri biru/slate
+ * 3. Callout kesimpulan (**Intinya:** ...) dengan card amber lembut
+ * 4. Structured List untuk bullet (•, -) dan numbered list (1., 2., (a), (b))
+ * 5. Formatting inline presisi (**bold**, ==highlight==, *italic*)
  */
 export function renderFormattedContent(text: string): React.ReactNode[] {
-  const normalized = text.replace(/\\n/g, '\n');
-  const paragraphs = normalized
+  // 1. Sanitasi simbol mentah secara global
+  const sanitizedAll = text
+    .replace(/\\n/g, '\n')
+    .replace(/\$\\rightarrow\$/g, '→')
+    .replace(/\\rightarrow/g, '→');
+
+  const rawParagraphs = sanitizedAll
     .split(/\n\s*\n/)
     .map((p) => p.trim())
     .filter(Boolean);
 
-  return paragraphs.map((para, pIdx) => {
-    // Regex membagi string berdasarkan **bold**, ==highlight==, dan *italic* (termasuk bold di dalam italic)
-    const tokens = para.split(/(\*\*.*?\*\*|==.*?==|\*(?!\*)(?:[^*\n]|\*\*.*?\*\*)+?\*(?!\*))/g);
+  return rawParagraphs.map((para, pIdx) => {
+    // 2. Callout Khusus Korelasi Alur (**🔗 ...)
+    if (para.startsWith('**🔗')) {
+      return (
+        <div 
+          key={pIdx} 
+          className="border-l-4 border-blue-500 bg-slate-50/90 pl-4 pr-3 py-3 rounded-r-2xl text-slate-700 text-sm sm:text-base leading-relaxed my-2 shadow-xs"
+        >
+          {renderInlineTokens(para)}
+        </div>
+      );
+    }
 
+    // 3. Callout Khusus Kesimpulan (**Intinya:** ...)
+    if (para.startsWith('**Intinya:**') || para.startsWith('Intinya:')) {
+      return (
+        <div 
+          key={pIdx} 
+          className="bg-amber-50/70 border border-amber-200/90 rounded-2xl p-4 sm:p-5 text-slate-800 text-sm sm:text-base leading-relaxed my-3 shadow-xs"
+        >
+          <div className="flex items-start gap-2.5">
+            <span className="font-mono text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-amber-200/70 text-amber-900 shrink-0 mt-0.5">
+              INTINYA
+            </span>
+            <div className="flex-1 font-medium text-slate-800 leading-relaxed">
+              {renderInlineTokens(para.replace(/^\*\*Intinya:\*\*\s*|^Intinya:\s*/i, ''))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // 4. Periksa apakah blok memiliki daftar terstruktur (dipisahkan baris baru dengan marker list)
+    const lines = para.split('\n').map((l) => l.trim()).filter(Boolean);
+    const listPattern = /^([•\-*]|\d+\.|\([0-9a-z]\))\s+/i;
+    const hasListLines = lines.some((l) => listPattern.test(l));
+
+    if (hasListLines) {
+      // Pisahkan baris pengantar (header) jika ada
+      const firstLineIsList = listPattern.test(lines[0]);
+      const headerLine = firstLineIsList ? null : lines[0];
+      const itemLines = firstLineIsList ? lines : lines.slice(1);
+
+      return (
+        <div key={pIdx} className="space-y-2.5 my-2">
+          {headerLine && (
+            <p className="text-slate-800 text-base sm:text-lg font-medium leading-relaxed">
+              {renderInlineTokens(headerLine)}
+            </p>
+          )}
+          <ul className="space-y-2.5 mt-2">
+            {itemLines.map((line, lIdx) => {
+              const match = line.match(/^([•\-*]|\d+\.|\([0-9a-z]\))\s+(.*)$/i);
+              const marker = match ? match[1].replace(/[().]/g, '').trim() : '•';
+              const content = match ? match[2] : line;
+              const displayMarker = marker === '•' || marker === '-' || marker === '*' ? String(lIdx + 1) : marker;
+
+              return (
+                <li key={lIdx} className="flex items-start gap-3 text-slate-700 text-base sm:text-lg leading-relaxed">
+                  <span className="w-6 h-6 rounded-lg bg-blue-50 text-blue-700 border border-blue-200/60 font-mono text-xs font-bold flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
+                    {displayMarker}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    {renderInlineTokens(content)}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      );
+    }
+
+    // 5. Paragraf biasa dengan formatting presisi
     return (
-      <p key={pIdx} className="leading-relaxed text-slate-700 text-base sm:text-lg font-sans whitespace-pre-line">
-        {tokens.map((token, tIdx) => {
-          if (token.startsWith('**') && token.endsWith('**')) {
-            return (
-              <strong key={tIdx} className="font-semibold text-slate-900">
-                {token.slice(2, -2)}
-              </strong>
-            );
-          }
-          if (token.startsWith('==') && token.endsWith('==')) {
-            return (
-              <mark
-                key={tIdx}
-                className="bg-amber-100/90 text-slate-900 px-1.5 py-0.5 rounded-md font-medium"
-              >
-                {token.slice(2, -2)}
-              </mark>
-            );
-          }
-          if (token.startsWith('*') && token.endsWith('*') && token.length > 2) {
-            return (
-              <em key={tIdx} className="italic text-slate-800">
-                {renderNestedBold(token.slice(1, -1))}
-              </em>
-            );
-          }
-          return <span key={tIdx}>{token}</span>;
-        })}
+      <p key={pIdx} className="leading-relaxed text-slate-700 text-base sm:text-lg font-sans">
+        {renderInlineTokens(para)}
       </p>
     );
   });
@@ -212,7 +303,7 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
 
   return (
     <div 
-      className="flex-1 flex flex-col p-3 sm:p-6 lg:p-8 max-w-3xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-36"
+      className="flex-1 flex flex-col p-3 sm:p-6 lg:p-8 max-w-3xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-36 sm:pb-40"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >

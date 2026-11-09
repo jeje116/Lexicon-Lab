@@ -376,6 +376,12 @@ test('MOCK_KNOWLEDGE_TOPICS contains 539 stages across Psychology (20), Statisti
     assertTrue(item.content.length > 20, `Content of stage ${item.id} must be non-empty`);
     assertTrue(item.keyPoints.length > 0, `Key points of stage ${item.id} must be non-empty`);
   });
+
+  // Verify zero raw LaTeX arrows in all knowledge topics content
+  const topicsWithRawArrows = MOCK_KNOWLEDGE_TOPICS.filter(
+    (t) => t.content.includes('\\rightarrow') || t.content.includes('$\\rightarrow$')
+  );
+  assertEqual(topicsWithRawArrows.length, 0, 'No knowledge topic may contain raw LaTeX arrows');
 });
 
 test('normalizeKnowledgeTopicItems handles string pipe delimiter for keyPoints', () => {
