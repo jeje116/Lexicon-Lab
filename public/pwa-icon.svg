@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    
+    <!-- Accent Gradient (Royal Blue to Indigo) -->
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+
+    <!-- Emerald Glow for Mastery -->
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+
+    <!-- Subtle Drop Shadow -->
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="125%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.12" />
+    </filter>
+    <filter id="innerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#2563eb" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Base Rounded Background Squircle -->
+  <rect x="24" y="24" width="464" height="464" rx="108" fill="url(#bgGrad)" stroke="#e2e8f0" stroke-width="6" />
+
+  <!-- Inner Subtle Accent Border -->
+  <rect x="44" y="44" width="424" height="424" rx="88" fill="none" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="8 8" opacity="0.6" />
+
+  <!-- Central Emblem Container -->
+  <g filter="url(#shadow)">
+    <!-- Main Diamond / Hexagon Shield -->
+    <rect x="116" y="116" width="280" height="280" rx="64" fill="url(#blueGrad)" />
+  </g>
+
+  <!-- Terminal & Book Geometric Motif -->
+  <!-- Left Page / Terminal Left Block -->
+  <path d="M168 184 C168 172 178 164 190 164 L244 164 C250 164 256 170 256 176 L256 328 C256 334 248 338 242 336 C226 330 204 326 182 334 C173 337 168 331 168 322 Z" fill="#ffffff" opacity="0.95" />
+  
+  <!-- Right Page / Terminal Right Block -->
+  <path d="M344 184 C344 172 334 164 322 164 L268 164 C262 164 256 170 256 176 L256 328 C256 334 264 338 270 336 C286 330 308 326 330 334 C339 337 344 331 344 322 Z" fill="#ffffff" opacity="0.82" />
+
+  <!-- Center Spine Sparkle -->
+  <circle cx="256" cy="164" r="14" fill="#ffffff" />
+  <circle cx="256" cy="164" r="7" fill="#2563eb" />
+
+  <!-- Lexicon Lab Neural Node Dots (Network Connectivity) -->
+  <circle cx="196" cy="216" r="8" fill="#2563eb" opacity="0.9" />
+  <circle cx="228" cy="244" r="6" fill="#2563eb" opacity="0.7" />
+  <line x1="196" y1="216" x2="228" y2="244" stroke="#2563eb" stroke-width="4" stroke-linecap="round" opacity="0.6" />
+
+  <!-- Fast Forward / Knowledge Spark Symbol on Right Page -->
+  <path d="M284 212 L316 232 L284 252 Z" fill="#2563eb" opacity="0.9" />
+  <line x1="284" y1="272" x2="324" y2="272" stroke="#2563eb" stroke-width="5" stroke-linecap="round" opacity="0.8" />
+  <line x1="284" y1="292" x2="310" y2="292" stroke="#2563eb" stroke-width="5" stroke-linecap="round" opacity="0.5" />
+
+  <!-- Mastery Accent Orb (Emerald badge bottom right) -->
+  <g filter="url(#shadow)">
+    <circle cx="384" cy="384" r="44" fill="#ffffff" />
+    <circle cx="384" cy="384" r="36" fill="url(#emeraldGrad)" />
+    <!-- Checkmark -->
+    <path d="M370 384 L380 394 L400 374" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+</svg>
