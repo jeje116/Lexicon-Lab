@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { HeaderHUD, LearningBranch } from './components/HeaderHUD';
 import { CommandSidebar, BranchTopicSummary } from './components/CommandSidebar';
 import { BottomNav } from './components/BottomNav';
@@ -8,7 +8,7 @@ import { MemoryMatrixView } from './components/MemoryMatrixView';
 import { KnowledgeTopicReaderView } from './components/KnowledgeTopicReaderView';
 import { HotkeyHelperModal } from './components/HotkeyHelperModal';
 
-import { TerminalMode, StagePhase, QuizQuestion, WordItem, KnowledgeStageItem } from './types/lexicon';
+import { TerminalMode, StagePhase, QuizQuestion, WordItem, KnowledgeStageItem, UserProgressData } from './types/lexicon';
 import { ALL_WORDS_POOL } from './data/mockLexicon';
 import { MOCK_KNOWLEDGE_TOPICS } from './data/mockKnowledgeTopics';
 import { 
@@ -17,17 +17,30 @@ import {
 } from './utils/indonesianLexiconAdapter';
 import { 
   fetchVocabularyData, 
-  fetchCloudUserProgress, 
-  pushCloudUserProgress, 
   fetchKnowledgeTopicsData,
   VocabDataSource 
 } from './services/vocabService';
-import { loadUserData, saveUserData, recordWordAttempt, getDefaultUserData, mergeUserProgress } from './utils/storage';
+import { 
+  loadUserData, 
+  saveUserData, 
+  recordWordAttempt, 
+  getDefaultUserData,
+  syncDerivedProgressFields
+} from './utils/storage';
+import {
+  syncProgressBidirectional,
+  pushProgressToSheets,
+  hasPendingSync,
+  setPendingSync,
+  getLastSyncedAt,
+  isSheetsConfigured,
+  ProgressSyncState
+} from './utils/sheetsSync';
 import { generateStageQuizQuestions, getMemoryTier } from './utils/retentionAlgorithm';
 import { playTactileClick } from './utils/audio';
 
 export default function App() {
-  const [userData, setUserData] = useState(() => loadUserData());
+  const [userData, setUserData] = useState<UserProgressData>(() => loadUserData());
   const [currentMode, setCurrentMode] = useState<TerminalMode>('stage');
   const [stagePhase, setStagePhase] = useState<StagePhase>('deck');
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
@@ -36,6 +49,18 @@ export default function App() {
   // Dynamic Vocabulary Pool & Google Sheets Sync State
   const [wordsPool, setWordsPool] = useState<WordItem[]>(() => ALL_WORDS_POOL);
   const [syncStatus, setSyncStatus] = useState<VocabDataSource | 'syncing'>('mock');
+  const [progressSyncState, setProgressSyncState] = useState<ProgressSyncState>(() =>
+    isSheetsConfigured() ? 'syncing' : 'unconfigured'
+  );
+  const [pendingSyncFlag, setPendingSyncFlag] = useState<boolean>(() => hasPendingSync());
+  const [lastSyncedAt, setLastSyncedAt] = useState<string | null>(() => getLastSyncedAt());
+
+  // Refs untuk mencegah stale closure & race condition saat sinkronisasi 2-arah
+  const userDataRef = useRef<UserProgressData>(userData);
+  userDataRef.current = userData;
+  const isSyncInFlightRef = useRef<boolean>(false);
+  const lastAutoPullMsRef = useRef<number>(0);
+  const pushDebounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Multi-Branch Knowledge Topics State
   const [knowledgeTopics, setKnowledgeTopics] = useState<KnowledgeStageItem[]>(() => MOCK_KNOWLEDGE_TOPICS);
@@ -61,12 +86,119 @@ export default function App() {
     ? (userData.clearedIndonesianStages || []) 
     : (userData.clearedStages || []);
 
-  // Ingestion kosa kata, progres cloud, dan topik materi saat mount
+  // Push langsung ke Google Sheets dengan offline retry queue
+  const flushPushToSheets = useCallback(async (snapshot: UserProgressData) => {
+    if (!isSheetsConfigured()) return;
+
+    setProgressSyncState('syncing');
+    const result = await pushProgressToSheets(snapshot);
+    setPendingSyncFlag(hasPendingSync());
+    setLastSyncedAt(getLastSyncedAt());
+    setProgressSyncState(result.status);
+  }, []);
+
+  // Helper mutasi progres terpusat: stamp lastUpdated, simpan ke localStorage, dan kirim ke Google Sheets
+  const updateUserProgress = useCallback(
+    (
+      updater: (prev: UserProgressData) => UserProgressData,
+      options?: { immediateSync?: boolean }
+    ) => {
+      setUserData((prev) => {
+        const nextRaw = updater(prev);
+        if (nextRaw === prev) return prev;
+
+        const normalized = syncDerivedProgressFields({
+          ...nextRaw,
+          lastUpdated: new Date().toISOString()
+        });
+
+        saveUserData(normalized);
+        userDataRef.current = normalized;
+
+        if (isSheetsConfigured()) {
+          // Tandai tertunda sampai push benar-benar sukses
+          setPendingSync(true);
+          setPendingSyncFlag(true);
+
+          if (pushDebounceTimerRef.current) {
+            clearTimeout(pushDebounceTimerRef.current);
+            pushDebounceTimerRef.current = null;
+          }
+
+          if (options?.immediateSync) {
+            void flushPushToSheets(normalized);
+          } else {
+            pushDebounceTimerRef.current = setTimeout(() => {
+              pushDebounceTimerRef.current = null;
+              void flushPushToSheets(userDataRef.current);
+            }, 800);
+          }
+        }
+
+        return normalized;
+      });
+    },
+    [flushPushToSheets]
+  );
+
+  // Sinkronisasi 2-arah penuh (Auto-Pull dari Google Sheets -> Smart Merge -> Push jika perlu)
+  const runBidirectionalSync = useCallback(async (options?: { forcePush?: boolean }) => {
+    if (!isSheetsConfigured()) {
+      setProgressSyncState('unconfigured');
+      return;
+    }
+    if (isSyncInFlightRef.current) return;
+
+    isSyncInFlightRef.current = true;
+    setProgressSyncState('syncing');
+
+    try {
+      const result = await syncProgressBidirectional(userDataRef.current, {
+        forcePush: options?.forcePush
+      });
+
+      if (result.didChangeLocal) {
+        saveUserData(result.merged);
+        userDataRef.current = result.merged;
+        setUserData(result.merged);
+      }
+
+      setProgressSyncState(result.status);
+      setPendingSyncFlag(hasPendingSync());
+      setLastSyncedAt(getLastSyncedAt());
+    } catch (err) {
+      console.warn('[App] Gagal sinkronisasi progres 2-arah:', err);
+      setProgressSyncState('offline');
+      setPendingSyncFlag(hasPendingSync());
+    } finally {
+      isSyncInFlightRef.current = false;
+    }
+  }, []);
+
+  // Sinkronisasi Manual (dipicu klik pil Sheets: Live / menu mobile di HeaderHUD)
+  const handleManualSync = useCallback(async () => {
+    setSyncStatus('syncing');
+    await Promise.all([
+      fetchVocabularyData()
+        .then(({ words, source }) => {
+          if (words && words.length > 0) setWordsPool(words);
+          setSyncStatus(source);
+        })
+        .catch(() => setSyncStatus('cache')),
+      fetchKnowledgeTopicsData()
+        .then(({ topics }) => {
+          if (topics && topics.length > 0) setKnowledgeTopics(topics);
+        })
+        .catch(() => {}),
+      runBidirectionalSync({ forcePush: true })
+    ]);
+  }, [runBidirectionalSync]);
+
+  // 1. Ingestion kosa kata, auto-pull progres cloud, dan topik materi saat mount
   useEffect(() => {
     let isMounted = true;
     setSyncStatus('syncing');
 
-    // 1. Fetch bank kosa kata dinamis
     fetchVocabularyData()
       .then(({ words, source }) => {
         if (!isMounted) return;
@@ -80,21 +212,6 @@ export default function App() {
         if (isMounted) setSyncStatus('mock');
       });
 
-    // 2. Fetch progres belajar cloud dan lakukan smart-merge dengan localStorage
-    fetchCloudUserProgress()
-      .then((cloudProgress) => {
-        if (!isMounted || !cloudProgress) return;
-        setUserData((prev) => {
-          const merged = mergeUserProgress(prev, cloudProgress);
-          saveUserData(merged);
-          return merged;
-        });
-      })
-      .catch((err) => {
-        console.warn('[App] Gagal sinkronisasi progres cloud saat mount:', err);
-      });
-
-    // 3. Fetch materi topik pengetahuan (KnowledgeTopics)
     fetchKnowledgeTopicsData()
       .then(({ topics }) => {
         if (!isMounted) return;
@@ -106,10 +223,54 @@ export default function App() {
         console.warn('[App] Gagal fetch knowledge topics:', err);
       });
 
+    // Auto-pull progres terbaru dari Google Sheets saat aplikasi dibuka
+    lastAutoPullMsRef.current = Date.now();
+    void runBidirectionalSync({ forcePush: hasPendingSync() });
+
     return () => {
       isMounted = false;
+      if (pushDebounceTimerRef.current) {
+        clearTimeout(pushDebounceTimerRef.current);
+      }
     };
-  }, []);
+  }, [runBidirectionalSync]);
+
+  // 2. Auto-Pull saat tab/PWA kembali fokus (focus / visibilitychange) & Retry saat koneksi online
+  useEffect(() => {
+    const triggerResumeSync = () => {
+      if (document.visibilityState === 'hidden') return;
+      const now = Date.now();
+      const pending = hasPendingSync();
+      // Hindari double-fetch ketika focus + visibilitychange terpanggil bersamaan (< 2.5 detik)
+      if (!pending && now - lastAutoPullMsRef.current < 2500) return;
+
+      lastAutoPullMsRef.current = now;
+      void runBidirectionalSync({ forcePush: pending });
+    };
+
+    const handleOnline = () => {
+      lastAutoPullMsRef.current = Date.now();
+      void runBidirectionalSync({ forcePush: hasPendingSync() });
+    };
+
+    const handleOffline = () => {
+      if (isSheetsConfigured()) {
+        setProgressSyncState('offline');
+      }
+    };
+
+    window.addEventListener('focus', triggerResumeSync);
+    document.addEventListener('visibilitychange', triggerResumeSync);
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+
+    return () => {
+      window.removeEventListener('focus', triggerResumeSync);
+      document.removeEventListener('visibilitychange', triggerResumeSync);
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
+  }, [runBidirectionalSync]);
 
   // 10 kata untuk stage yang sedang aktif dari pool dinamis
   const stageWords = useMemo(() => {
@@ -136,17 +297,6 @@ export default function App() {
       );
     }
   }, [stageWords, activeWordsPool, isIndoBranch]);
-
-  // Sync state ke LocalStorage dan debounced background sync ke Google Sheets
-  useEffect(() => {
-    saveUserData(userData);
-
-    const timeoutId = setTimeout(() => {
-      pushCloudUserProgress(userData);
-    }, 1500);
-
-    return () => clearTimeout(timeoutId);
-  }, [userData]);
 
   // Global keyboard shortcuts (Alt+1..3, Escape)
   useEffect(() => {
@@ -178,7 +328,7 @@ export default function App() {
   // Handlers
   const handleToggleBookmark = (wordId: string) => {
     playTactileClick(userData.soundEnabled);
-    setUserData(prev => {
+    updateUserProgress((prev) => {
       const current = prev.wordStats[wordId] || {
         wordId,
         totalAttempts: 0,
@@ -190,91 +340,119 @@ export default function App() {
         isInspected: true
       };
 
+      const nextBookmarked = !current.isBookmarked;
+      const nextBookmarkedIds = nextBookmarked
+        ? Array.from(new Set([...(prev.bookmarkedIds || []), wordId])).sort()
+        : (prev.bookmarkedIds || []).filter((id) => id !== wordId);
+
       return {
         ...prev,
+        bookmarkedIds: nextBookmarkedIds,
         wordStats: {
           ...prev.wordStats,
           [wordId]: {
             ...current,
-            isBookmarked: !current.isBookmarked
+            isBookmarked: nextBookmarked
           }
         }
       };
     });
   };
 
-  const handleMarkInspected = (wordId: string) => {
-    setUserData(prev => {
-      const current = prev.wordStats[wordId];
-      if (current?.isInspected) return prev;
-
-      return {
-        ...prev,
-        wordStats: {
-          ...prev.wordStats,
-          [wordId]: {
-            ...(current || {
-              wordId,
-              totalAttempts: 0,
-              correctAttempts: 0,
-              consecutiveStreak: 0,
-              lastReviewedAt: 0,
-              isMastered: false,
-              isBookmarked: false
-            }),
-            isInspected: true
-          }
+  const handleMarkInspected = useCallback(
+    (wordId: string) => {
+      updateUserProgress((prev) => {
+        const current = prev.wordStats[wordId];
+        if (current?.isInspected && (prev.inspectedWords || []).includes(wordId)) {
+          return prev;
         }
-      };
-    });
-  };
-
-  const handleQuizCorrectAnswer = (q: QuizQuestion) => {
-    setUserData(prev => ({
-      ...prev,
-      wordStats: recordWordAttempt(prev.wordStats, q.wordId, true)
-    }));
-  };
-
-  const handleQuizEliminationFail = (failedQuestion: QuizQuestion) => {
-    setUserData(prev => ({
-      ...prev,
-      totalRunsAttempted: prev.totalRunsAttempted + 1,
-      wordStats: recordWordAttempt(prev.wordStats, failedQuestion.wordId, false)
-    }));
-  };
-
-  const handleQuizFlawlessVictory = () => {
-    setUserData(prev => {
-      if (isIndoBranch) {
-        const alreadyCleared = (prev.clearedIndonesianStages || []).includes(currentStageId);
-        const nextIndoStages = alreadyCleared
-          ? (prev.clearedIndonesianStages || [])
-          : [...(prev.clearedIndonesianStages || []), currentStageId].sort((a, b) => a - b);
 
         return {
           ...prev,
-          dailyStreak: prev.dailyStreak + 1,
-          clearedIndonesianStages: nextIndoStages,
+          inspectedWords: Array.from(new Set([...(prev.inspectedWords || []), wordId])).sort(),
+          wordStats: {
+            ...prev.wordStats,
+            [wordId]: {
+              ...(current || {
+                wordId,
+                totalAttempts: 0,
+                correctAttempts: 0,
+                consecutiveStreak: 0,
+                lastReviewedAt: 0,
+                isMastered: false,
+                isBookmarked: false
+              }),
+              isInspected: true
+            }
+          }
+        };
+      });
+    },
+    [updateUserProgress]
+  );
+
+  const handleQuizCorrectAnswer = (q: QuizQuestion) => {
+    updateUserProgress(
+      (prev) => ({
+        ...prev,
+        wordStats: recordWordAttempt(prev.wordStats, q.wordId, true)
+      }),
+      { immediateSync: false }
+    );
+  };
+
+  const handleQuizEliminationFail = (failedQuestion: QuizQuestion) => {
+    updateUserProgress(
+      (prev) => ({
+        ...prev,
+        totalRunsAttempted: prev.totalRunsAttempted + 1,
+        wordStats: recordWordAttempt(prev.wordStats, failedQuestion.wordId, false)
+      }),
+      { immediateSync: true }
+    );
+  };
+
+  const handleQuizFlawlessVictory = () => {
+    updateUserProgress(
+      (prev) => {
+        const nextStreak = prev.dailyStreak + 1;
+        const todayIso = new Date().toISOString().split('T')[0];
+
+        if (isIndoBranch) {
+          const alreadyCleared = (prev.clearedIndonesianStages || []).includes(currentStageId);
+          const nextIndoStages = alreadyCleared
+            ? (prev.clearedIndonesianStages || [])
+            : [...(prev.clearedIndonesianStages || []), currentStageId].sort((a, b) => a - b);
+
+          return {
+            ...prev,
+            dailyStreak: nextStreak,
+            streak: nextStreak,
+            lastStreakDate: todayIso,
+            clearedIndonesianStages: nextIndoStages,
+            totalFlawlessRuns: prev.totalFlawlessRuns + 1,
+            totalRunsAttempted: prev.totalRunsAttempted + 1
+          };
+        }
+
+        const alreadyCleared = prev.clearedStages.includes(currentStageId);
+        const nextClearedStages = alreadyCleared 
+          ? prev.clearedStages 
+          : [...prev.clearedStages, currentStageId].sort((a, b) => a - b);
+
+        return {
+          ...prev,
+          dailyStreak: nextStreak,
+          streak: nextStreak,
+          lastStreakDate: todayIso,
+          clustersMasteredCount: nextClearedStages.length,
+          clearedStages: nextClearedStages,
           totalFlawlessRuns: prev.totalFlawlessRuns + 1,
           totalRunsAttempted: prev.totalRunsAttempted + 1
         };
-      }
-
-      const alreadyCleared = prev.clearedStages.includes(currentStageId);
-      const nextClearedStages = alreadyCleared 
-        ? prev.clearedStages 
-        : [...prev.clearedStages, currentStageId];
-
-      return {
-        ...prev,
-        dailyStreak: prev.dailyStreak + 1,
-        clustersMasteredCount: nextClearedStages.length,
-        clearedStages: nextClearedStages,
-        totalFlawlessRuns: prev.totalFlawlessRuns + 1,
-        totalRunsAttempted: prev.totalRunsAttempted + 1
-      };
-    });
+      },
+      { immediateSync: true }
+    );
   };
 
   const handleRebootQuiz = () => {
@@ -289,25 +467,35 @@ export default function App() {
     if (isIndoBranch) {
       setIndoActiveStageNum(stageId);
     } else {
-      setUserData(prev => ({
-        ...prev,
-        currentStageId: stageId
-      }));
+      updateUserProgress((prev) => {
+        if (prev.currentStageId === stageId) return prev;
+        return {
+          ...prev,
+          currentStageId: stageId
+        };
+      });
     }
   };
 
   const handleRetentionResult = (wordId: string, isCorrect: boolean) => {
-    setUserData(prev => ({
-      ...prev,
-      wordStats: recordWordAttempt(prev.wordStats, wordId, isCorrect)
-    }));
+    updateUserProgress(
+      (prev) => ({
+        ...prev,
+        wordStats: recordWordAttempt(prev.wordStats, wordId, isCorrect)
+      }),
+      { immediateSync: true }
+    );
   };
 
   const handleResetDemoData = () => {
-    const fresh = getDefaultUserData();
+    const fresh: UserProgressData = {
+      ...getDefaultUserData(),
+      lastUpdated: new Date().toISOString()
+    };
     setUserData(fresh);
     saveUserData(fresh);
-    pushCloudUserProgress(fresh).catch(err => console.warn('[App] Push reset progress failed:', err));
+    userDataRef.current = fresh;
+    void flushPushToSheets(fresh);
     setCurrentMode('stage');
     setStagePhase('deck');
     const initialStageWords = wordsPool.filter(w => w.stageId === 1);
@@ -393,21 +581,24 @@ export default function App() {
   };
 
   const handleToggleReadStage = (stageId: number) => {
-    setUserData((prev) => {
-      const currentRead = prev.readTopicStages?.[selectedTopicId] || [];
-      const isRead = currentRead.includes(stageId);
-      const nextRead = isRead
-        ? currentRead.filter((id) => id !== stageId)
-        : [...currentRead, stageId].sort((a, b) => a - b);
+    updateUserProgress(
+      (prev) => {
+        const currentRead = prev.readTopicStages?.[selectedTopicId] || [];
+        const isRead = currentRead.includes(stageId);
+        const nextRead = isRead
+          ? currentRead.filter((id) => id !== stageId)
+          : [...currentRead, stageId].sort((a, b) => a - b);
 
-      return {
-        ...prev,
-        readTopicStages: {
-          ...(prev.readTopicStages || {}),
-          [selectedTopicId]: nextRead
-        }
-      };
-    });
+        return {
+          ...prev,
+          readTopicStages: {
+            ...(prev.readTopicStages || {}),
+            [selectedTopicId]: nextRead
+          }
+        };
+      },
+      { immediateSync: true }
+    );
   };
 
   // Telemetry counts
@@ -425,11 +616,15 @@ export default function App() {
         totalLexemesLearned={activeWordsPool.length}
         soundEnabled={userData.soundEnabled}
         syncStatus={syncStatus}
+        progressSyncState={progressSyncState}
+        hasPendingSync={pendingSyncFlag}
+        lastSyncedAt={lastSyncedAt}
+        onManualSync={handleManualSync}
         branches={branches}
         activeBranchId={activeBranchId}
         onSelectBranch={handleSelectBranch}
         onToggleSound={() => {
-          setUserData(prev => ({ ...prev, soundEnabled: !prev.soundEnabled }));
+          updateUserProgress(prev => ({ ...prev, soundEnabled: !prev.soundEnabled }));
         }}
         onOpenHotkeys={() => setShowHotkeysModal(true)}
         onResetData={handleResetDemoData}

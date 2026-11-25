@@ -2,10 +2,21 @@ import { ALL_WORDS_POOL, INITIAL_WORD_STATS } from '../data/mockLexicon';
 import { MOCK_KNOWLEDGE_TOPICS } from '../data/mockKnowledgeTopics';
 import { 
   mergeUserProgress, 
+  mergeProgressState,
   migrateLegacyWordStats, 
   getDefaultUserData,
   markTopicStageRead 
 } from '../utils/storage';
+import {
+  evaluateAnswerSimilarity,
+  levenshteinDistance,
+  normalizeWithSpaces,
+  normalizeWithoutSpaces
+} from '../utils/textSimilarity';
+import {
+  hasMeaningfulProgressDiff,
+  hasLocalLearningActivity
+} from '../utils/sheetsSync';
 import { 
   isExactTranslationMatch, 
   isExactWordMatch, 
@@ -538,6 +549,219 @@ test('UI Navigation 3 Modules visibility contract is satisfied for Indonesian Le
   assertEqual(navItemIds[0], 'stage');
   assertEqual(navItemIds[1], 'retention');
   assertEqual(navItemIds[2], 'matrix');
+});
+
+// =========================================================================
+// TEST SUITE 10: FUZZY WORD-SIMILARITY QUIZ GRADING (LEVENSHTEIN + SYNONYMS)
+// =========================================================================
+console.log('\n--- Test Suite 10: Fuzzy Word-Similarity Quiz Grading ---');
+
+test('String normalization handles punctuation, spaces, and no-space Indonesian variants', () => {
+  assertEqual(normalizeWithSpaces('Ada di mana-mana!'), 'ada di mana mana');
+  assertEqual(normalizeWithoutSpaces('Ada di mana-mana'), 'adadimanamana');
+  assertEqual(normalizeWithoutSpaces('Ada dimana-mana'), 'adadimanamana');
+  assertEqual(levenshteinDistance('merajalela', 'merajalea'), 1);
+  assertEqual(levenshteinDistance('ubiquitous', 'ubiquitus'), 1);
+});
+
+test('evaluateAnswerSimilarity passes "Ada dimana-mana" against "Ada di mana-mana / Merajalela"', () => {
+  const expected = 'Ada di mana-mana / Merajalela';
+  const res = evaluateAnswerSimilarity('Ada dimana-mana', expected);
+  assertEqual(res.isCorrect, true, '"Ada dimana-mana" must pass via space-insensitive normalization');
+  assertTrue(res.similarity >= 0.8, 'Similarity must be >= 0.80');
+
+  const resSynonym = evaluateAnswerSimilarity('Merajalela', expected);
+  assertEqual(resSynonym.isCorrect, true, 'Second synonym "Merajalela" must pass');
+  assertEqual(resSynonym.similarity, 1.0);
+  assertEqual(resSynonym.feedbackMessage, undefined, 'Exact match must not show soft typo hint');
+
+  const resCombined = evaluateAnswerSimilarity('ada di mana mana merajalela', expected);
+  assertEqual(resCombined.isCorrect, true, 'Combined synonyms without slash must pass');
+});
+
+test('evaluateAnswerSimilarity passes 1-letter mild typos with soft canonical spelling message', () => {
+  const expected = 'Ada di mana-mana / Merajalela';
+  const typoIndo = evaluateAnswerSimilarity('merajalea', expected);
+  assertEqual(typoIndo.isCorrect, true, '1-letter typo "merajalea" (0.90) must pass');
+  assertTrue(typoIndo.similarity >= 0.8 && typoIndo.similarity < 1.0, 'Similarity must lie in [0.80, 1.0)');
+  assertEqual(
+    typoIndo.feedbackMessage,
+    `Tepat! (Ejaan baku lengkap: ${expected})`,
+    'Soft spelling hint must match specification'
+  );
+
+  const typoEn = evaluateAnswerSimilarity('ubiquitus', 'ubiquitous');
+  assertEqual(typoEn.isCorrect, true, '1-letter English typo "ubiquitus" (0.90) must pass');
+  assertEqual(typoEn.feedbackMessage, 'Tepat! (Ejaan baku lengkap: ubiquitous)');
+
+  const spellingVariant = evaluateAnswerSimilarity('sekedar formalitas', 'Asal-asalan / Sekadar formalitas');
+  assertEqual(spellingVariant.isCorrect, true, 'Common variant "sekedar formalitas" must pass');
+  assertEqual(
+    spellingVariant.feedbackMessage,
+    'Tepat! (Ejaan baku lengkap: Asal-asalan / Sekadar formalitas)'
+  );
+});
+
+test('evaluateAnswerSimilarity supports semicolon and comma synonym splitting', () => {
+  const expected = 'Cepat; Tangkas, Lincah';
+  assertEqual(evaluateAnswerSimilarity('tangkas', expected).isCorrect, true);
+  assertEqual(evaluateAnswerSimilarity('lincah', expected).isCorrect, true);
+  assertEqual(evaluateAnswerSimilarity('cepat', expected).isCorrect, true);
+});
+
+test('evaluateAnswerSimilarity strictly rejects wrong/gibberish/empty answers and enforces 0.80 threshold', () => {
+  const expected = 'Ada di mana-mana / Merajalela';
+  assertEqual(evaluateAnswerSimilarity('kucing terbang', expected).isCorrect, false, 'Gibberish must fail');
+  assertEqual(evaluateAnswerSimilarity('tidak tahu', expected).isCorrect, false, 'Wrong phrase must fail');
+  assertEqual(evaluateAnswerSimilarity('', expected).isCorrect, false, 'Empty input must fail');
+  assertEqual(evaluateAnswerSimilarity('   --- / ()  ', expected).isCorrect, false, 'Punctuation-only input must fail');
+
+  // Exact 0.80 boundary: 4/5 = 0.80 PASS vs 3/4 = 0.75 FAIL
+  assertEqual(evaluateAnswerSimilarity('abcdf', 'abcde').isCorrect, true, '0.80 exact boundary must pass');
+  assertEqual(evaluateAnswerSimilarity('abce', 'abcd').isCorrect, false, '0.75 below threshold must fail');
+});
+
+// =========================================================================
+// TEST SUITE 11: BI-DIRECTIONAL CROSS-DEVICE PROGRESS SYNC (MOBILE <-> DESKTOP)
+// =========================================================================
+console.log('\n--- Test Suite 11: Cross-Device Progress Merge (Mobile PWA <-> Desktop) ---');
+
+test('mergeProgressState merges Mobile PWA cloud progress with Desktop local state without data loss', () => {
+  const desktopLocal: UserProgressData = {
+    ...getDefaultUserData(),
+    dailyStreak: 2,
+    streak: 2,
+    lastStreakDate: '2026-11-24',
+    clearedStages: [1, 3],
+    clearedIndonesianStages: [2],
+    currentStageId: 3,
+    clustersMasteredCount: 2,
+    totalRunsAttempted: 6,
+    totalFlawlessRuns: 2,
+    inspectedWords: ['w3-articulate'],
+    bookmarkedIds: ['w3-pragmatic'],
+    lastUpdated: '2026-11-25T08:00:00.000Z',
+    readTopicStages: { 'psy-read-people': [1, 2] },
+    wordStats: {
+      'w1-ubiquitous': {
+        wordId: 'w1-ubiquitous',
+        totalAttempts: 3,
+        correctAttempts: 2,
+        consecutiveStreak: 1,
+        lastReviewedAt: 1000,
+        isMastered: false,
+        isBookmarked: false,
+        isInspected: true
+      },
+      'w3-articulate': {
+        wordId: 'w3-articulate',
+        totalAttempts: 4,
+        correctAttempts: 4,
+        consecutiveStreak: 4,
+        lastReviewedAt: 2500,
+        isMastered: true,
+        isBookmarked: false,
+        isInspected: true
+      }
+    }
+  };
+
+  const mobileCloud: UserProgressData = {
+    ...getDefaultUserData(),
+    dailyStreak: 5,
+    streak: 5,
+    lastStreakDate: '2026-11-25',
+    clearedStages: [1, 2],
+    clearedIndonesianStages: [1, 4],
+    currentStageId: 4,
+    clustersMasteredCount: 2,
+    totalRunsAttempted: 9,
+    totalFlawlessRuns: 4,
+    inspectedWords: ['w2-ameliorate', 'w2-galvanize'],
+    bookmarkedIds: ['w1-ubiquitous', 'w2-ameliorate'],
+    lastUpdated: '2026-11-25T13:30:00.000Z',
+    readTopicStages: { 'psy-read-people': [2, 3], 'econ-understand-money-p1': [1] },
+    wordStats: {
+      'w1-ubiquitous': {
+        wordId: 'w1-ubiquitous',
+        totalAttempts: 6,
+        correctAttempts: 6,
+        consecutiveStreak: 5,
+        lastReviewedAt: 5000, // Lebih baru dari mobile
+        isMastered: true,
+        isBookmarked: true,
+        isInspected: true
+      },
+      'w2-ameliorate': {
+        wordId: 'w2-ameliorate',
+        totalAttempts: 2,
+        correctAttempts: 2,
+        consecutiveStreak: 2,
+        lastReviewedAt: 4500,
+        isMastered: false,
+        isBookmarked: true,
+        isInspected: true
+      }
+    }
+  };
+
+  const merged = mergeProgressState(desktopLocal, mobileCloud);
+
+  // Union seluruh stage yang lulus (English & Indonesia)
+  assertDeepEqual(merged.clearedStages, [1, 2, 3], 'English clearedStages must union Mobile + Desktop');
+  assertDeepEqual(merged.clearedIndonesianStages, [1, 2, 4], 'Indonesian clearedStages must union Mobile + Desktop');
+
+  // Union inspectedWords & bookmarkedIds + refleksi ke wordStats
+  assertTrue(merged.inspectedWords?.includes('w1-ubiquitous') ?? false);
+  assertTrue(merged.inspectedWords?.includes('w2-ameliorate') ?? false);
+  assertTrue(merged.inspectedWords?.includes('w2-galvanize') ?? false);
+  assertTrue(merged.inspectedWords?.includes('w3-articulate') ?? false);
+  assertEqual(merged.wordStats['w2-galvanize']?.isInspected, true, 'inspectedWords union must hydrate wordStats');
+
+  assertTrue(merged.bookmarkedIds?.includes('w1-ubiquitous') ?? false);
+  assertTrue(merged.bookmarkedIds?.includes('w2-ameliorate') ?? false);
+  assertTrue(merged.bookmarkedIds?.includes('w3-pragmatic') ?? false);
+  assertEqual(merged.wordStats['w3-pragmatic']?.isBookmarked, true, 'bookmarkedIds union must hydrate wordStats');
+
+  // Streak & timestamp terbaru dari Mobile
+  assertEqual(merged.dailyStreak, 5, 'Merged dailyStreak must take highest/latest Mobile streak (5)');
+  assertEqual(merged.streak, 5, 'Merged streak alias must stay synced with dailyStreak');
+  assertEqual(merged.lastStreakDate, '2026-11-25');
+  assertEqual(merged.lastUpdated, '2026-11-25T13:30:00.000Z', 'Latest lastUpdated timestamp must win');
+  assertEqual(merged.currentStageId, 4, 'Newer cloud currentStageId should sync to Desktop');
+
+  // WordStats terbaru per kata tetap utuh dari kedua perangkat
+  assertEqual(merged.wordStats['w1-ubiquitous'].lastReviewedAt, 5000);
+  assertEqual(merged.wordStats['w1-ubiquitous'].isMastered, true);
+  assertEqual(merged.wordStats['w3-articulate'].isMastered, true, 'Desktop-only wordStats must not be lost');
+  assertDeepEqual(merged.readTopicStages?.['psy-read-people'], [1, 2, 3]);
+  assertDeepEqual(merged.readTopicStages?.['econ-understand-money-p1'], [1]);
+});
+
+test('Fresh Desktop profile cleanly adopts Mobile PWA progress without clobbering cloud', () => {
+  const freshDesktop = getDefaultUserData();
+  assertEqual(hasLocalLearningActivity(freshDesktop), false, 'Untouched fresh Desktop must report no activity');
+
+  const mobileCloud: UserProgressData = {
+    ...getDefaultUserData(),
+    dailyStreak: 4,
+    streak: 4,
+    clearedStages: [1],
+    clearedIndonesianStages: [1],
+    currentStageId: 2,
+    inspectedWords: ['w1-ubiquitous'],
+    lastUpdated: '2026-11-25T12:00:00.000Z'
+  };
+
+  assertEqual(hasLocalLearningActivity(mobileCloud), true, 'Active Mobile state must report activity');
+
+  const merged = mergeProgressState(freshDesktop, mobileCloud);
+  assertDeepEqual(merged.clearedStages, [1]);
+  assertDeepEqual(merged.clearedIndonesianStages, [1]);
+  assertEqual(merged.dailyStreak, 4);
+  assertEqual(merged.currentStageId, 2);
+  assertEqual(hasMeaningfulProgressDiff(freshDesktop, merged), true, 'Desktop must detect incoming Mobile diff');
+  assertEqual(hasMeaningfulProgressDiff(mobileCloud, merged), false, 'Merged state equals cloud so no redundant push needed');
 });
 
 console.log(`\n======================================================`);

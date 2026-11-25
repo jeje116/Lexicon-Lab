@@ -86,3 +86,16 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+/* Cegah badge/drawer "Powered by Netlify" menutupi BottomNav di layar mobile */
+@media (max-width: 768px) {
+  iframe[src*="netlify"],
+  iframe[title*="Netlify" i],
+  #netlify-identity-widget,
+  [id*="netlify" i],
+  [class*="netlify"] {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}

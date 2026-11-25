@@ -153,6 +153,9 @@ function doGet(e) {
       }
 
       var parsed = JSON.parse(rawJson);
+      if (parsed && typeof parsed === 'object' && !parsed.lastUpdated && updatedAt) {
+        parsed.lastUpdated = String(updatedAt);
+      }
       return createJsonResponse({
         status: 'success',
         data: parsed,
@@ -317,7 +320,8 @@ function doGet(e) {
 /**
  * 3. HANDLER POST (doPost)
  * - action === 'appendVocab' : Menambahkan kosa kata baru secara bulk (tanpa duplikasi)
- * - default : Menyimpan progress pengguna ke tab 'UserProgress'
+ * - action === 'syncTopics'  : Menyinkronkan tab 'KnowledgeTopics'
+ * - action === 'saveProgress' (atau default) : Menyimpan JSON progres lengkap ke tab 'UserProgress'
  */
 function doPost(e) {
   try {
@@ -453,27 +457,53 @@ function doPost(e) {
       });
     }
 
-    // C. Mode Default: Simpan Progres Belajar (UserProgress)
+    // C. Mode Simpan Progres Belajar (action === 'saveProgress' atau default)
     var progressSheet = ss.getSheetByName('UserProgress');
     if (!progressSheet) {
       progressSheet = ss.insertSheet('UserProgress');
       progressSheet.appendRow(['user_id', 'progress_json', 'updated_at']);
     }
 
+    var incomingProgress = (parsed && parsed.action === 'saveProgress' && parsed.data && typeof parsed.data === 'object')
+      ? parsed.data
+      : parsed;
+
     var nowIso = new Date().toISOString();
+    var effectiveUpdated = (incomingProgress && incomingProgress.lastUpdated)
+      ? String(incomingProgress.lastUpdated)
+      : nowIso;
+
+    // Bersihkan properti routing 'action' dan pastikan seluruh field progres lintas perangkat tersimpan lengkap
+    var cleanProgress = {};
+    for (var key in incomingProgress) {
+      if (Object.prototype.hasOwnProperty.call(incomingProgress, key) && key !== 'action') {
+        cleanProgress[key] = incomingProgress[key];
+      }
+    }
+    cleanProgress.clearedStages = Array.isArray(cleanProgress.clearedStages) ? cleanProgress.clearedStages : [];
+    cleanProgress.clearedIndonesianStages = Array.isArray(cleanProgress.clearedIndonesianStages) ? cleanProgress.clearedIndonesianStages : [];
+    cleanProgress.wordStats = (cleanProgress.wordStats && typeof cleanProgress.wordStats === 'object') ? cleanProgress.wordStats : {};
+    cleanProgress.inspectedWords = Array.isArray(cleanProgress.inspectedWords) ? cleanProgress.inspectedWords : [];
+    cleanProgress.bookmarkedIds = Array.isArray(cleanProgress.bookmarkedIds) ? cleanProgress.bookmarkedIds : [];
+    cleanProgress.streak = Number(cleanProgress.streak || cleanProgress.dailyStreak || 1);
+    cleanProgress.dailyStreak = Number(cleanProgress.dailyStreak || cleanProgress.streak || 1);
+    cleanProgress.lastUpdated = effectiveUpdated;
+
+    var serializedProgress = JSON.stringify(cleanProgress);
 
     // Baris ke-2 selalu dialokasikan untuk profile default
     if (progressSheet.getLastRow() < 2) {
-      progressSheet.appendRow(['default', JSON.stringify(parsed), nowIso]);
+      progressSheet.appendRow(['default', serializedProgress, effectiveUpdated]);
     } else {
-      progressSheet.getRange(2, 2).setValue(JSON.stringify(parsed));
-      progressSheet.getRange(2, 3).setValue(nowIso);
+      progressSheet.getRange(2, 2).setValue(serializedProgress);
+      progressSheet.getRange(2, 3).setValue(effectiveUpdated);
     }
 
     return createJsonResponse({
       status: 'success',
+      action: 'saveProgress',
       message: 'Progres pengguna berhasil disimpan di Google Sheets',
-      updatedAt: nowIso
+      updatedAt: effectiveUpdated
     });
 
   } catch (err) {

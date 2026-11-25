@@ -65,6 +65,7 @@ export interface QuizQuestion {
 
 export interface UserProgressData {
   dailyStreak: number;
+  streak?: number; // Alias sinkronisasi lintas perangkat (selalu selaras dengan dailyStreak)
   lastStreakDate: string; // YYYY-MM-DD
   clearedStages: number[]; // ID Stage yang sudah lulus 100% (10/10) untuk English Lexicon
   clearedIndonesianStages?: number[]; // ID Stage yang sudah lulus 100% (10/10) untuk Kosa Kata Indonesia
@@ -75,7 +76,10 @@ export interface UserProgressData {
   soundEnabled: boolean;
   speechRate: number; // 0.75 atau 1.0
   wordStats: Record<string, WordRetentionStats>;
+  inspectedWords?: string[]; // Daftar ID kata yang telah ditelaah
+  bookmarkedIds?: string[]; // Daftar ID kata yang ditandai (bookmark)
   readTopicStages?: Record<string, number[]>; // topicId -> array of stageIds read
+  lastUpdated?: string; // Timestamp ISO-8601 pembaruan terakhir
 }
 
 export interface KnowledgeStageItem {

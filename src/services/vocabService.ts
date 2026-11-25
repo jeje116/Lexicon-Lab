@@ -220,10 +220,11 @@ export async function fetchCloudUserProgress(): Promise<UserProgressData | null>
 
   try {
     const separator = apiUrl.includes('?') ? '&' : '?';
-    const progressUrl = `${apiUrl}${separator}action=getProgress`;
+    const progressUrl = `${apiUrl}${separator}action=getProgress&_t=${Date.now()}`;
 
     const response = await fetch(progressUrl, {
       method: 'GET',
+      cache: 'no-store',
       headers: {
         'Accept': 'application/json'
       },
@@ -236,7 +237,10 @@ export async function fetchCloudUserProgress(): Promise<UserProgressData | null>
 
     const json = await response.json();
     if (json && json.status === 'success' && json.data && typeof json.data === 'object') {
-      return json.data as UserProgressData;
+      return {
+        ...(json.data as UserProgressData),
+        lastUpdated: (json.data as UserProgressData).lastUpdated || json.updatedAt
+      };
     }
     return null;
   } catch (err) {
@@ -247,7 +251,7 @@ export async function fetchCloudUserProgress(): Promise<UserProgressData | null>
 }
 
 /**
- * Menyimpan progres pengguna ke Google Sheets (tab UserProgress via doPost)
+ * Menyimpan progres pengguna ke Google Sheets (tab UserProgress via doPost action=saveProgress)
  * Menggunakan Content-Type: text/plain;charset=utf-8 untuk menghindari kendala CORS preflight di browser
  */
 export async function pushCloudUserProgress(data: UserProgressData): Promise<boolean> {
@@ -263,7 +267,11 @@ export async function pushCloudUserProgress(data: UserProgressData): Promise<boo
       headers: {
         'Content-Type': 'text/plain;charset=utf-8'
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+        action: 'saveProgress',
+        ...data,
+        lastUpdated: data.lastUpdated || new Date().toISOString()
+      }),
       signal: controller.signal
     });
 

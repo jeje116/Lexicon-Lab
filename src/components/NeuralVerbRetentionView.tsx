@@ -12,10 +12,9 @@ import {
 import { WordItem, WordRetentionStats, QuizVariant } from '../types/lexicon';
 import { 
   sampleWeightedVerbs, 
-  shuffleArray, 
-  isExactTranslationMatch,
-  isExactWordMatch
+  shuffleArray
 } from '../utils/retentionAlgorithm';
+import { evaluateAnswerSimilarity } from '../utils/textSimilarity';
 import { 
   playTactileClick, 
   playCorrectChime, 
@@ -62,6 +61,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [mcqOptions, setMcqOptions] = useState<{ text: string; isCorrect: boolean }[]>([]);
   const [evalState, setEvalState] = useState<'testing' | 'correct' | 'failed'>('testing');
+  const [softMatchMessage, setSoftMatchMessage] = useState<string | null>(null);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -82,6 +82,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
     setTypedInput('');
     setUserTypedAnswer('');
     setSelectedOption(null);
+    setSoftMatchMessage(null);
     setEvalState('testing');
 
     // Setup opsi pilihan ganda
@@ -156,7 +157,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [evalState, variant, mcqOptions, activeVerb]);
 
-  // Submit Uji Ketik (Exact Match 100% presisi)
+  // Submit Uji Ketik (Fuzzy Word-Similarity >= 80% dengan pemecahan sinonim & normalisasi spasi)
   const handleSubmitTyping = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (evalState !== 'testing' || !activeVerb || !typedInput.trim()) return;
@@ -164,21 +165,18 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
     const trimmed = typedInput.trim();
     setUserTypedAnswer(trimmed);
 
-    let isMatch = false;
-    if (variant === 'TYPE_TRANSLATION') {
-      // EN -> ID atau ID Word -> Inti Makna (mendukung pencocokan terjemahan atau kata)
-      isMatch = isExactTranslationMatch(trimmed, activeVerb.translation) || isExactWordMatch(trimmed, activeVerb.word);
-    } else if (variant === 'TYPE_WORD_EN') {
-      // ID -> EN atau Inti Makna -> ID Word
-      isMatch = isExactWordMatch(trimmed, activeVerb.word) || isExactTranslationMatch(trimmed, activeVerb.translation);
-    }
+    const expectedAnswer =
+      variant === 'TYPE_TRANSLATION' ? activeVerb.translation : activeVerb.word;
+    const evaluation = evaluateAnswerSimilarity(trimmed, expectedAnswer);
 
-    if (isMatch) {
+    if (evaluation.isCorrect) {
       playCorrectChime(soundEnabled);
+      setSoftMatchMessage(evaluation.feedbackMessage || null);
       setEvalState('correct');
       onRecordResult(activeVerb.id, true);
     } else {
       playEliminationBuzzer(soundEnabled);
+      setSoftMatchMessage(null);
       setEvalState('failed');
       onRecordResult(activeVerb.id, false);
     }
@@ -307,7 +305,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                 </div>
 
                 <div className="text-xs sm:text-sm font-semibold text-slate-600">
-                  Ketik arti / terjemahan bahasa Indonesia persis seperti yang dipelajari:
+                  Ketik arti / terjemahan bahasa Indonesia:
                 </div>
 
                 <form onSubmit={handleSubmitTyping} className="space-y-3">
@@ -486,6 +484,12 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                 <div className="text-sm font-sans text-slate-700 pt-1">
                   Kosa kata <strong className="font-mono uppercase text-slate-900 font-bold">{activeVerb.word}</strong> berhasil dijawab dengan tepat.
                 </div>
+
+                {softMatchMessage && (
+                  <div className="mt-2 px-3 py-2 rounded-xl bg-emerald-100/80 border border-emerald-300/80 text-xs font-sans font-semibold text-emerald-900">
+                    {softMatchMessage}
+                  </div>
+                )}
 
                 <div className="p-3.5 rounded-xl bg-white border border-slate-200 text-xs font-sans text-slate-700 space-y-1 mt-2 shadow-xs">
                   <p>

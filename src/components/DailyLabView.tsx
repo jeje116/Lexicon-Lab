@@ -24,7 +24,7 @@ import {
   playEliminationBuzzer, 
   playVictoryFanfare 
 } from '../utils/audio';
-import { isExactTranslationMatch, isExactWordMatch } from '../utils/retentionAlgorithm';
+import { evaluateAnswerSimilarity } from '../utils/textSimilarity';
 
 interface DailyLabViewProps {
   words: WordItem[];
@@ -78,6 +78,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [isEvaluating, setIsEvaluating] = useState(false);
   const [quizFeedback, setQuizFeedback] = useState<'idle' | 'correct' | 'wrong'>('idle');
+  const [correctHintMessage, setCorrectHintMessage] = useState<string | null>(null);
   const [failedQuestionData, setFailedQuestionData] = useState<{
     question: QuizQuestion;
     wrongAnswer: string;
@@ -120,6 +121,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
   useEffect(() => {
     setSelectedOption(null);
     setQuizFeedback('idle');
+    setCorrectHintMessage(null);
     setTypedInput('');
 
     if (phase === 'quiz' && currentQ?.variant === 'TYPE_TRANSLATION') {
@@ -274,11 +276,14 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
   };
 
   // Penanganan jawaban benar
-  const triggerCorrectProgress = (correctQ: QuizQuestion) => {
+  const triggerCorrectProgress = (correctQ: QuizQuestion, softFeedback?: string) => {
     setIsEvaluating(true);
     setQuizFeedback('correct');
+    setCorrectHintMessage(softFeedback || null);
     playCorrectChime(soundEnabled);
     onQuizCorrectAnswer(correctQ);
+
+    const advanceDelayMs = softFeedback ? 1500 : 450;
 
     setTimeout(() => {
       setIsEvaluating(false);
@@ -290,25 +295,19 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
         onQuizFlawlessVictory();
         onSetPhase('victory');
       }
-    }, 450);
+    }, advanceDelayMs);
   };
 
-  // Submit Varian A: UJI ARTI / KATA (WAJIB KETIK - EXACT MATCH 100%)
+  // Submit Varian A: UJI ARTI / KATA (FUZZY SIMILARITY >= 80%)
   const handleSubmitTyping = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (isEvaluating || !currentQ || !typedInput.trim()) return;
 
-    // Evaluasi 100% exact match (baik untuk kosa kata maupun terjemahan)
-    const isMatch = isExactTranslationMatch(
-      typedInput,
-      currentQ.correctAnswer
-    ) || isExactWordMatch(
-      typedInput,
-      currentQ.correctAnswer
-    );
+    // Evaluasi kesamaan kata (Levenshtein >= 80%, pemecahan sinonim, & normalisasi spasi/tanda baca)
+    const evaluation = evaluateAnswerSimilarity(typedInput, currentQ.correctAnswer);
 
-    if (isMatch) {
-      triggerCorrectProgress(currentQ);
+    if (evaluation.isCorrect) {
+      triggerCorrectProgress(currentQ, evaluation.feedbackMessage);
     } else {
       triggerZeroToleranceFail(currentQ, typedInput.trim());
     }
@@ -479,7 +478,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
     const hasNextStage = currentStageId < 3;
 
     return (
-      <div className="flex-1 flex flex-col justify-center p-4 sm:p-6 max-w-xl mx-auto w-full min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-3.5rem)] animate-fadeIn pb-24">
+      <div className="flex-1 flex flex-col justify-center p-4 sm:p-6 max-w-xl mx-auto w-full min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-3.5rem)] animate-fadeIn pb-32">
         <div className="bg-white border border-emerald-200 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
           
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-600" />
@@ -575,7 +574,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
   // ==========================================
   if (phase === 'quiz') {
     return (
-      <div className={`flex-1 flex flex-col p-4 sm:p-6 max-w-xl mx-auto w-full min-h-[calc(100vh-4rem)] transition-colors duration-200 pb-20 ${
+      <div className={`flex-1 flex flex-col p-4 sm:p-6 max-w-xl mx-auto w-full min-h-[calc(100vh-4rem)] transition-colors duration-200 pb-32 ${
         screenFlashCrimson ? 'bg-red-50/90' : ''
       } ${screenShake ? 'animate-terminal-shake' : ''}`}>
         
@@ -653,6 +652,15 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
                   <Send className="w-4 h-4" />
                 </button>
               </form>
+
+              {quizFeedback === 'correct' && (
+                <div className="p-3.5 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-900 flex items-start gap-2.5 animate-fadeIn">
+                  <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <p className="text-xs sm:text-sm font-sans font-semibold leading-snug">
+                    {correctHintMessage || 'Tepat!'}
+                  </p>
+                </div>
+              )}
             </div>
           )}
 
@@ -737,7 +745,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
   // ==========================================
   return (
     <div 
-      className="flex-1 flex flex-col p-3 sm:p-6 max-w-xl mx-auto w-full min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-3.5rem)] space-y-4 pb-36 md:pb-28"
+      className="flex-1 flex flex-col p-3 sm:p-6 max-w-xl mx-auto w-full min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-3.5rem)] space-y-4 pb-44 md:pb-32"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -883,7 +891,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
       </div>
 
       {/* Floating Navigation Dock di Flashcard Stage */}
-      <div className="fixed bottom-20 md:bottom-8 left-0 right-0 z-30 px-4 max-w-md mx-auto pointer-events-none">
+      <div className="fixed bottom-[82px] md:bottom-8 left-0 right-0 z-30 px-4 max-w-md mx-auto pointer-events-none">
         <div className="flex items-center justify-between gap-2 bg-white/95 border border-slate-200 backdrop-blur-md p-2 rounded-full shadow-lg pointer-events-auto">
           {/* Panah Kiri */}
           <button

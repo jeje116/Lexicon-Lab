@@ -303,7 +303,7 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
 
   return (
     <div 
-      className="flex-1 flex flex-col p-3 sm:p-6 lg:p-8 max-w-3xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-36 sm:pb-40"
+      className="flex-1 flex flex-col p-3 sm:p-6 lg:p-8 max-w-3xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-44 sm:pb-40"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -412,7 +412,7 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
       </article>
 
       {/* 3. Universal Single Floating Dock di Bawah Layar (ADR-004) */}
-      <div className="fixed bottom-4 left-0 right-0 z-30 flex justify-center px-4 pointer-events-none">
+      <div className="fixed bottom-[82px] md:bottom-6 left-0 right-0 z-30 flex justify-center px-4 pointer-events-none">
         <div className="bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-2xl rounded-2xl p-1.5 flex items-center gap-2 pointer-events-auto max-w-lg w-full justify-between">
           
           {/* Tombol Bagian Sebelumnya */}

@@ -45,6 +45,7 @@ export function migrateLegacyWordStats(
   const result: Record<string, WordRetentionStats> = {};
 
   for (const [key, stat] of Object.entries(rawStats)) {
+    if (!stat || typeof stat !== 'object') continue;
     const targetKey = LEGACY_ID_MAP[key] || key;
     result[targetKey] = {
       ...stat,
@@ -55,9 +56,94 @@ export function migrateLegacyWordStats(
   return result;
 }
 
+/**
+ * Normalisasi array ID kata dengan migrasi legacy key
+ */
+function normalizeWordIdList(ids?: string[]): string[] {
+  if (!Array.isArray(ids)) return [];
+  return Array.from(
+    new Set(
+      ids
+        .filter((id): id is string => typeof id === 'string' && id.trim().length > 0)
+        .map((id) => LEGACY_ID_MAP[id] || id)
+    )
+  ).sort();
+}
+
+/**
+ * Sinkronisasi array inspectedWords & bookmarkedIds dengan wordStats
+ */
+export function syncDerivedProgressFields(data: UserProgressData): UserProgressData {
+  const wordStats = migrateLegacyWordStats(data.wordStats || {});
+  const inspectedSet = new Set<string>(normalizeWordIdList(data.inspectedWords));
+  const bookmarkedSet = new Set<string>(normalizeWordIdList(data.bookmarkedIds));
+
+  for (const [wordId, stat] of Object.entries(wordStats)) {
+    if (stat.isInspected) inspectedSet.add(wordId);
+    if (stat.isBookmarked) bookmarkedSet.add(wordId);
+  }
+
+  // Pastikan setiap ID pada array inspectedWords / bookmarkedIds juga tercermin di wordStats
+  for (const wordId of inspectedSet) {
+    if (!wordStats[wordId]) {
+      wordStats[wordId] = {
+        wordId,
+        totalAttempts: 0,
+        correctAttempts: 0,
+        consecutiveStreak: 0,
+        lastReviewedAt: 0,
+        isMastered: false,
+        isBookmarked: bookmarkedSet.has(wordId),
+        isInspected: true
+      };
+    } else if (!wordStats[wordId].isInspected) {
+      wordStats[wordId] = { ...wordStats[wordId], isInspected: true };
+    }
+  }
+
+  for (const wordId of bookmarkedSet) {
+    if (!wordStats[wordId]) {
+      wordStats[wordId] = {
+        wordId,
+        totalAttempts: 0,
+        correctAttempts: 0,
+        consecutiveStreak: 0,
+        lastReviewedAt: 0,
+        isMastered: false,
+        isBookmarked: true,
+        isInspected: inspectedSet.has(wordId)
+      };
+    } else if (!wordStats[wordId].isBookmarked) {
+      wordStats[wordId] = { ...wordStats[wordId], isBookmarked: true };
+    }
+  }
+
+  const effectiveStreak = Math.max(data.dailyStreak || 0, data.streak || 0);
+  const clearedStages = Array.isArray(data.clearedStages)
+    ? Array.from(new Set(data.clearedStages)).sort((a, b) => a - b)
+    : [];
+  const clearedIndonesianStages = Array.isArray(data.clearedIndonesianStages)
+    ? Array.from(new Set(data.clearedIndonesianStages)).sort((a, b) => a - b)
+    : [];
+
+  return {
+    ...data,
+    dailyStreak: effectiveStreak,
+    streak: effectiveStreak,
+    clustersMasteredCount: Math.max(data.clustersMasteredCount || 0, clearedStages.length),
+    wordStats,
+    inspectedWords: Array.from(inspectedSet).sort(),
+    bookmarkedIds: Array.from(bookmarkedSet).sort(),
+    clearedStages,
+    clearedIndonesianStages,
+    readTopicStages: data.readTopicStages || {}
+  };
+}
+
 export function getDefaultUserData(): UserProgressData {
   return {
     dailyStreak: 1,
+    streak: 1,
     lastStreakDate: new Date().toISOString().split('T')[0],
     clearedStages: [], // Stage yang sudah lulus 100% (20/20)
     currentStageId: 1, // Stage yang sedang dipelajari
@@ -67,8 +153,11 @@ export function getDefaultUserData(): UserProgressData {
     soundEnabled: true,
     speechRate: 1.0,
     wordStats: { ...INITIAL_WORD_STATS },
+    inspectedWords: [],
+    bookmarkedIds: [],
     readTopicStages: {},
-    clearedIndonesianStages: []
+    clearedIndonesianStages: [],
+    lastUpdated: ''
   };
 }
 
@@ -80,7 +169,7 @@ export function loadUserData(): UserProgressData {
     const parsed = JSON.parse(raw);
     const migratedStats = migrateLegacyWordStats(parsed.wordStats || {});
 
-    return {
+    return syncDerivedProgressFields({
       ...getDefaultUserData(),
       ...parsed,
       wordStats: {
@@ -88,7 +177,7 @@ export function loadUserData(): UserProgressData {
         ...migratedStats
       },
       readTopicStages: parsed.readTopicStages || {}
-    };
+    });
   } catch (err) {
     console.error('Failed to load user progress:', err);
     return getDefaultUserData();
@@ -98,35 +187,59 @@ export function loadUserData(): UserProgressData {
 export function saveUserData(data: UserProgressData): void {
   if (typeof window === 'undefined') return;
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    const normalized = syncDerivedProgressFields(data);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(normalized));
   } catch (err) {
     console.error('Failed to save user progress:', err);
   }
 }
 
+function parseIsoTimestamp(iso?: string): number {
+  if (!iso || typeof iso !== 'string') return 0;
+  const ms = Date.parse(iso);
+  return Number.isNaN(ms) ? 0 : ms;
+}
+
 /**
- * Smart-merge deterministik antara data lokal dan cloud
+ * Resolusi konflik lintas perangkat (Mobile PWA <-> Desktop) berbasis timestamp & progres tertinggi.
+ * - Membandingkan lastUpdated antara lokal dan cloud.
+ * - Union clearedStages, clearedIndonesianStages, inspectedWords, bookmarkedIds, dan readTopicStages.
+ * - Mengambil wordStats dengan timestamp/attempts terbaru dan menjaga streak tertinggi/terbaru.
  */
-export function mergeUserProgress(
+export function mergeProgressState(
   local: UserProgressData,
   cloud?: UserProgressData | null
 ): UserProgressData {
   if (!cloud) return local;
 
+  const localTs = parseIsoTimestamp(local.lastUpdated);
+  const cloudTs = parseIsoTimestamp(cloud.lastUpdated);
+  const isCloudNewer = cloudTs > localTs;
+
   const migratedLocalStats = migrateLegacyWordStats(local.wordStats || {});
   const migratedCloudStats = migrateLegacyWordStats(cloud.wordStats || {});
 
-  // Union clearedStages
+  // 1. Union clearedStages (English Lexicon)
   const localStages = Array.isArray(local.clearedStages) ? local.clearedStages : [];
   const cloudStages = Array.isArray(cloud.clearedStages) ? cloud.clearedStages : [];
   const mergedStages = Array.from(new Set([...localStages, ...cloudStages])).sort((a, b) => a - b);
 
-  // Union clearedIndonesianStages
+  // 2. Union clearedIndonesianStages (Kosa Kata Indonesia)
   const localIndoStages = Array.isArray(local.clearedIndonesianStages) ? local.clearedIndonesianStages : [];
   const cloudIndoStages = Array.isArray(cloud.clearedIndonesianStages) ? cloud.clearedIndonesianStages : [];
   const mergedIndoStages = Array.from(new Set([...localIndoStages, ...cloudIndoStages])).sort((a, b) => a - b);
 
-  // Union wordStats dengan resolusi konflik deterministik
+  // 3. Union inspectedWords & bookmarkedIds (baik dari array eksplisit maupun dari wordStats)
+  const inspectedSet = new Set<string>([
+    ...normalizeWordIdList(local.inspectedWords),
+    ...normalizeWordIdList(cloud.inspectedWords)
+  ]);
+  const bookmarkedSet = new Set<string>([
+    ...normalizeWordIdList(local.bookmarkedIds),
+    ...normalizeWordIdList(cloud.bookmarkedIds)
+  ]);
+
+  // 4. Merge wordStats berbasis timestamp lastReviewedAt terbaru & totalAttempts tertinggi
   const mergedWordStats: Record<string, WordRetentionStats> = {
     ...INITIAL_WORD_STATS,
     ...migratedLocalStats
@@ -135,14 +248,16 @@ export function mergeUserProgress(
   for (const [wordId, cloudStat] of Object.entries(migratedCloudStats)) {
     const localStat = mergedWordStats[wordId];
     if (!localStat) {
-      mergedWordStats[wordId] = cloudStat;
+      mergedWordStats[wordId] = { ...cloudStat, wordId };
       continue;
     }
 
-    // Resolusi: pilih entri dengan total attempts lebih tinggi atau timestamp lastReviewedAt lebih baru
     const pickCloud =
-      cloudStat.totalAttempts > localStat.totalAttempts ||
-      (cloudStat.totalAttempts === localStat.totalAttempts && cloudStat.lastReviewedAt > localStat.lastReviewedAt);
+      cloudStat.lastReviewedAt > localStat.lastReviewedAt ||
+      (cloudStat.lastReviewedAt === localStat.lastReviewedAt && cloudStat.totalAttempts > localStat.totalAttempts) ||
+      (cloudStat.lastReviewedAt === localStat.lastReviewedAt &&
+        cloudStat.totalAttempts === localStat.totalAttempts &&
+        isCloudNewer);
 
     const primary = pickCloud ? cloudStat : localStat;
     const secondary = pickCloud ? localStat : cloudStat;
@@ -150,19 +265,68 @@ export function mergeUserProgress(
     mergedWordStats[wordId] = {
       ...primary,
       wordId,
-      // Flag kumulatif jika pernah dikuasai/ditandai di salah satu sisi
+      // Pertahankan jumlah percobaan kumulatif tertinggi bila timestamp berdekatan
+      totalAttempts: Math.max(primary.totalAttempts, secondary.totalAttempts),
+      correctAttempts: Math.max(primary.correctAttempts, secondary.correctAttempts),
+      // Flag kumulatif jika pernah dikuasai/ditandai/ditelaah di salah satu perangkat
       isMastered: primary.isMastered || secondary.isMastered,
       isBookmarked: primary.isBookmarked || secondary.isBookmarked,
       isInspected: primary.isInspected || secondary.isInspected
     };
   }
 
+  // Kumpulkan semua flag inspected & bookmarked dari wordStats ke dalam union set
+  for (const [wordId, stat] of Object.entries(mergedWordStats)) {
+    if (stat.isInspected) inspectedSet.add(wordId);
+    if (stat.isBookmarked) bookmarkedSet.add(wordId);
+  }
+
+  // Pastikan setiap ID di inspectedSet / bookmarkedSet hadir di mergedWordStats
+  for (const wordId of inspectedSet) {
+    if (!mergedWordStats[wordId]) {
+      mergedWordStats[wordId] = {
+        wordId,
+        totalAttempts: 0,
+        correctAttempts: 0,
+        consecutiveStreak: 0,
+        lastReviewedAt: 0,
+        isMastered: false,
+        isBookmarked: bookmarkedSet.has(wordId),
+        isInspected: true
+      };
+    } else {
+      mergedWordStats[wordId] = { ...mergedWordStats[wordId], isInspected: true };
+    }
+  }
+
+  for (const wordId of bookmarkedSet) {
+    if (!mergedWordStats[wordId]) {
+      mergedWordStats[wordId] = {
+        wordId,
+        totalAttempts: 0,
+        correctAttempts: 0,
+        consecutiveStreak: 0,
+        lastReviewedAt: 0,
+        isMastered: false,
+        isBookmarked: true,
+        isInspected: inspectedSet.has(wordId)
+      };
+    } else {
+      mergedWordStats[wordId] = { ...mergedWordStats[wordId], isBookmarked: true };
+    }
+  }
+
+  // 5. Streak & tanggal terbaru (ambil progres tertinggi / terbaru tanpa regresi)
+  const localStreak = Math.max(local.dailyStreak || 0, local.streak || 0);
+  const cloudStreak = Math.max(cloud.dailyStreak || 0, cloud.streak || 0);
+  const mergedStreak = Math.max(localStreak, cloudStreak);
+
   const latestStreakDate =
     (local.lastStreakDate || '') >= (cloud.lastStreakDate || '')
       ? local.lastStreakDate
       : cloud.lastStreakDate || local.lastStreakDate;
 
-  // Merge readTopicStages deterministik
+  // 6. Merge readTopicStages deterministik
   const mergedReadStages: Record<string, number[]> = {
     ...(local.readTopicStages || {})
   };
@@ -174,12 +338,24 @@ export function mergeUserProgress(
     }
   }
 
+  // 7. Timestamp lastUpdated terbaru
+  const latestUpdated =
+    cloudTs >= localTs
+      ? (cloud.lastUpdated || local.lastUpdated || new Date().toISOString())
+      : (local.lastUpdated || cloud.lastUpdated || new Date().toISOString());
+
+  // 8. Stage aktif: ikuti perangkat terbaru jika cloud lebih baru, selain itu pertahankan lokal
+  const resolvedStageId = isCloudNewer
+    ? (cloud.currentStageId || local.currentStageId || 1)
+    : (local.currentStageId || cloud.currentStageId || 1);
+
   return {
-    dailyStreak: Math.max(local.dailyStreak || 0, cloud.dailyStreak || 0),
+    dailyStreak: mergedStreak,
+    streak: mergedStreak,
     lastStreakDate: latestStreakDate,
     clearedStages: mergedStages,
     clearedIndonesianStages: mergedIndoStages,
-    currentStageId: local.currentStageId || cloud.currentStageId || 1,
+    currentStageId: resolvedStageId,
     clustersMasteredCount: Math.max(
       local.clustersMasteredCount || 0,
       cloud.clustersMasteredCount || 0,
@@ -190,9 +366,17 @@ export function mergeUserProgress(
     soundEnabled: local.soundEnabled !== undefined ? local.soundEnabled : (cloud.soundEnabled ?? true),
     speechRate: local.speechRate || cloud.speechRate || 1.0,
     wordStats: mergedWordStats,
-    readTopicStages: mergedReadStages
+    inspectedWords: Array.from(inspectedSet).sort(),
+    bookmarkedIds: Array.from(bookmarkedSet).sort(),
+    readTopicStages: mergedReadStages,
+    lastUpdated: latestUpdated
   };
 }
+
+/**
+ * Alias kompatibilitas mundur untuk mergeProgressState
+ */
+export const mergeUserProgress = mergeProgressState;
 
 export function markTopicStageRead(
   prevReadTopicStages: Record<string, number[]> = {},
