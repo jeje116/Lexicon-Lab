@@ -303,7 +303,7 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
 
   return (
     <div 
-      className="flex-1 flex flex-col p-3 sm:p-6 lg:p-8 max-w-3xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-44 sm:pb-40"
+      className="flex-1 flex flex-col py-3 sm:py-6 lg:py-8 max-w-5xl xl:max-w-6xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-44 sm:pb-40"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -366,7 +366,7 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
       </div>
 
       {/* 2. Single Hero Card Pembaca Materi */}
-      <article className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-10 shadow-sm space-y-6">
+      <article className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-sm space-y-6">
         
         {/* Header Bagian */}
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4">
@@ -397,9 +397,12 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
               <CheckCircle2 className="w-4 h-4 text-indigo-600 shrink-0" />
               <span>{keyPointsTitle}</span>
             </div>
-            <ul className="space-y-2.5">
+            <ul className="grid grid-cols-1 lg:grid-cols-2 gap-3.5">
               {currentStage.keyPoints.map((point, idx) => (
-                <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-slate-800 leading-normal">
+                <li
+                  key={idx}
+                  className="flex items-start gap-2.5 p-3 rounded-xl bg-white/75 border border-indigo-100/90 text-xs sm:text-sm text-slate-800 leading-relaxed"
+                >
                   <span className="w-5 h-5 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center text-[11px] font-mono font-bold shrink-0 mt-0.5">
                     {idx + 1}
                   </span>
@@ -413,7 +416,7 @@ export const KnowledgeTopicReaderView: React.FC<KnowledgeTopicReaderViewProps> =
 
       {/* 3. Universal Single Floating Dock di Bawah Layar (ADR-004) */}
       <div className="fixed bottom-[82px] md:bottom-6 left-0 right-0 z-30 flex justify-center px-4 pointer-events-none">
-        <div className="bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-2xl rounded-2xl p-1.5 flex items-center gap-2 pointer-events-auto max-w-lg w-full justify-between">
+        <div className="bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-2xl rounded-2xl p-1.5 flex items-center gap-2 pointer-events-auto max-w-xl w-full justify-between">
           
           {/* Tombol Bagian Sebelumnya */}
           <button

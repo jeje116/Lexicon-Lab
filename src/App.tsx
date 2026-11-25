@@ -657,78 +657,79 @@ export default function App() {
 
         {/* Dynamic Main Workspace Stage */}
         <main className="flex-1 overflow-y-auto bg-slate-50 relative">
-          
-          {/* Cabang Non-Inggris & Non-Indo (seperti Psychology / Statistics): Tampilkan Pembaca Topik / Audiobook */}
-          {activeBranchId !== 'english' && activeBranchId !== 'kosa-kata-indonesia' ? (
-            <KnowledgeTopicReaderView
-              stages={activeTopicStages}
-              topicTitle={activeTopicInfo.title}
-              topicId={selectedTopicId}
-              readStageIds={userData.readTopicStages?.[selectedTopicId] || []}
-              onToggleReadStage={handleToggleReadStage}
-              soundEnabled={userData.soundEnabled}
-              activeBranchId={activeBranchId}
-            />
-          ) : (
-            <>
-              {/* Tab 1: Stage Lab (Stage Deck + Floating Control Dock + Zero-Tolerance Stage Quiz) */}
-              {currentMode === 'stage' && (
-                <DailyLabView
-                  words={stageWords}
-                  allWords={activeWordsPool}
-                  statsMap={userData.wordStats}
-                  quizQuestions={quizQuestions}
-                  phase={stagePhase}
-                  onSetPhase={setStagePhase}
-                  onToggleBookmark={handleToggleBookmark}
-                  onMarkInspected={handleMarkInspected}
-                  onQuizCorrectAnswer={handleQuizCorrectAnswer}
-                  onQuizEliminationFail={handleQuizEliminationFail}
-                  onQuizFlawlessVictory={handleQuizFlawlessVictory}
-                  onRebootQuiz={handleRebootQuiz}
-                  onNavigateTab={(tab) => {
-                    playTactileClick(userData.soundEnabled);
-                    setCurrentMode(tab);
-                  }}
-                  currentStageId={currentStageId}
-                  clearedStages={clearedStages}
-                  onSelectStage={handleSelectStage}
-                  dailyStreak={userData.dailyStreak}
-                  clustersMasteredCount={clearedStages.length}
-                  soundEnabled={userData.soundEnabled}
-                />
-              )}
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Cabang Non-Inggris & Non-Indo (seperti Psychology / Statistics): Tampilkan Pembaca Topik / Audiobook */}
+            {activeBranchId !== 'english' && activeBranchId !== 'kosa-kata-indonesia' ? (
+              <KnowledgeTopicReaderView
+                stages={activeTopicStages}
+                topicTitle={activeTopicInfo.title}
+                topicId={selectedTopicId}
+                readStageIds={userData.readTopicStages?.[selectedTopicId] || []}
+                onToggleReadStage={handleToggleReadStage}
+                soundEnabled={userData.soundEnabled}
+                activeBranchId={activeBranchId}
+              />
+            ) : (
+              <>
+                {/* Tab 1: Stage Lab (Stage Deck + Floating Control Dock + Zero-Tolerance Stage Quiz) */}
+                {currentMode === 'stage' && (
+                  <DailyLabView
+                    words={stageWords}
+                    allWords={activeWordsPool}
+                    statsMap={userData.wordStats}
+                    quizQuestions={quizQuestions}
+                    phase={stagePhase}
+                    onSetPhase={setStagePhase}
+                    onToggleBookmark={handleToggleBookmark}
+                    onMarkInspected={handleMarkInspected}
+                    onQuizCorrectAnswer={handleQuizCorrectAnswer}
+                    onQuizEliminationFail={handleQuizEliminationFail}
+                    onQuizFlawlessVictory={handleQuizFlawlessVictory}
+                    onRebootQuiz={handleRebootQuiz}
+                    onNavigateTab={(tab) => {
+                      playTactileClick(userData.soundEnabled);
+                      setCurrentMode(tab);
+                    }}
+                    currentStageId={currentStageId}
+                    clearedStages={clearedStages}
+                    onSelectStage={handleSelectStage}
+                    dailyStreak={userData.dailyStreak}
+                    clustersMasteredCount={clearedStages.length}
+                    soundEnabled={userData.soundEnabled}
+                  />
+                )}
 
-              {/* Tab 2: Retensi Memori 2-Arah (Neural Weighted Probability dari Stage Cleared) */}
-              {currentMode === 'retention' && (
-                <NeuralVerbRetentionView
-                  allWords={activeWordsPool}
-                  clearedStages={clearedStages}
-                  statsMap={userData.wordStats}
-                  onRecordResult={handleRetentionResult}
-                  onNavigateToStage={(stgId) => {
-                    handleSelectStage(stgId);
-                    setCurrentMode('stage');
-                    setStagePhase('deck');
-                  }}
-                  onBackToStage={() => {
-                    setCurrentMode('stage');
-                  }}
-                  soundEnabled={userData.soundEnabled}
-                />
-              )}
+                {/* Tab 2: Retensi Memori 2-Arah (Neural Weighted Probability dari Stage Cleared) */}
+                {currentMode === 'retention' && (
+                  <NeuralVerbRetentionView
+                    allWords={activeWordsPool}
+                    clearedStages={clearedStages}
+                    statsMap={userData.wordStats}
+                    onRecordResult={handleRetentionResult}
+                    onNavigateToStage={(stgId) => {
+                      handleSelectStage(stgId);
+                      setCurrentMode('stage');
+                      setStagePhase('deck');
+                    }}
+                    onBackToStage={() => {
+                      setCurrentMode('stage');
+                    }}
+                    soundEnabled={userData.soundEnabled}
+                  />
+                )}
 
-              {/* Tab 3: Matriks Memori (Memory Matrix & Crystallization) */}
-              {currentMode === 'matrix' && (
-                <MemoryMatrixView
-                  allWords={activeWordsPool}
-                  statsMap={userData.wordStats}
-                  onToggleBookmark={handleToggleBookmark}
-                  soundEnabled={userData.soundEnabled}
-                />
-              )}
-            </>
-          )}
+                {/* Tab 3: Matriks Memori (Memory Matrix & Crystallization) */}
+                {currentMode === 'matrix' && (
+                  <MemoryMatrixView
+                    allWords={activeWordsPool}
+                    statsMap={userData.wordStats}
+                    onToggleBookmark={handleToggleBookmark}
+                    soundEnabled={userData.soundEnabled}
+                  />
+                )}
+              </>
+            )}
+          </div>
         </main>
       </div>
 

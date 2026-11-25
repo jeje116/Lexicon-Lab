@@ -6,6 +6,7 @@
 
 ## Completed
 
+- [x] ENG-014: Desktop Wide-Screen Layout Optimization (Expanded Main Content Containers, 2-Column Key Points & Context Grids, 2x2 MCQ Grid)
 - [x] ENG-013: Fuzzy Word-Similarity Quiz Grading (Levenshtein >= 80%), Clean Mobile Top/Bottom Navigation UX, & Bi-Directional Cloud Progress Sync (Mobile PWA <-> Desktop)
 - [x] ENG-012: Multi-Branch Knowledge Architecture (Dropdown Branch Switcher, KnowledgeTopics Sheet Sync, & Interactive Concept Reader)
 - [x] ENG-011: Bulk Excel Vocabulary Ingestion (423 New Words, Stage 04–46) & Optional Field UI Polish

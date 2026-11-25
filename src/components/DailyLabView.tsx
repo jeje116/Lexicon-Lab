@@ -356,8 +356,8 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
     };
 
     return (
-      <div className="flex-1 flex flex-col justify-center p-4 sm:p-6 max-w-xl mx-auto w-full min-h-[calc(100vh-8rem)] pb-32 animate-fadeIn">
-        <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
+      <div className="flex-1 flex flex-col justify-center py-4 sm:py-6 max-w-4xl xl:max-w-5xl mx-auto w-full min-h-[calc(100vh-8rem)] pb-32 animate-fadeIn">
+        <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl space-y-6">
           
           {/* Header Ringkas Tanpa Badge Toleransi */}
           <div className="flex items-center gap-3.5 pb-4 border-b border-slate-100">
@@ -375,7 +375,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
           </div>
 
           {/* Komparasi Jawaban yang Lega */}
-          <div className="space-y-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
             {/* Jawaban Pengguna */}
             <div className="p-4 rounded-2xl bg-red-50/70 border border-red-200">
               <span className="text-[11px] font-mono font-bold text-red-600 uppercase tracking-wider block mb-1">
@@ -478,8 +478,8 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
     const hasNextStage = currentStageId < 3;
 
     return (
-      <div className="flex-1 flex flex-col justify-center p-4 sm:p-6 max-w-xl mx-auto w-full min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-3.5rem)] animate-fadeIn pb-32">
-        <div className="bg-white border border-emerald-200 rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+      <div className="flex-1 flex flex-col justify-center py-4 sm:py-6 max-w-4xl xl:max-w-5xl mx-auto w-full min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-3.5rem)] animate-fadeIn pb-32">
+        <div className="bg-white border border-emerald-200 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-xl relative overflow-hidden">
           
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-600" />
 
@@ -574,7 +574,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
   // ==========================================
   if (phase === 'quiz') {
     return (
-      <div className={`flex-1 flex flex-col p-4 sm:p-6 max-w-xl mx-auto w-full min-h-[calc(100vh-4rem)] transition-colors duration-200 pb-32 ${
+      <div className={`flex-1 flex flex-col py-4 sm:py-6 max-w-4xl xl:max-w-5xl mx-auto w-full min-h-[calc(100vh-4rem)] transition-colors duration-200 pb-32 ${
         screenFlashCrimson ? 'bg-red-50/90' : ''
       } ${screenShake ? 'animate-terminal-shake' : ''}`}>
         
@@ -600,7 +600,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
         </div>
 
         {/* 3. Single Clean Hero Card Kuis */}
-        <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5 my-auto">
+        <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-sm space-y-5 my-auto">
 
           {/* ==================================================== */}
           {/* VARIAN A: UJI ARTI / KATA (WAJIB KETIK PERSIS 100%)    */}
@@ -689,8 +689,8 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
                 {currentQ.prompt || 'Pilih kata bahasa Inggris yang sesuai dengan definisi di atas:'}
               </div>
 
-              {/* 4 OPSI PILIHAN GANDA (Target Sentuh Lega) */}
-              <div className="space-y-2.5 sm:space-y-3">
+              {/* 4 OPSI PILIHAN GANDA (Grid 2x2 di Layar Lebar, Target Sentuh Lega) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                 {currentQ.options?.map((option, idx) => {
                   const isSelected = selectedOption === idx;
                   let btnStyle = 'bg-white hover:bg-blue-50/30 border-slate-200 hover:border-blue-300 text-slate-800 shadow-xs';
@@ -710,7 +710,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
                       key={idx}
                       onClick={() => handleSelectOption(idx)}
                       disabled={isEvaluating}
-                      className={`w-full p-4 rounded-2xl border text-left transition-all flex items-center justify-between cursor-pointer group min-h-[52px] active:scale-[0.99] ${btnStyle}`}
+                      className={`w-full h-full p-4 rounded-2xl border text-left transition-all flex items-center justify-between cursor-pointer group min-h-[56px] active:scale-[0.99] ${btnStyle}`}
                     >
                       <div className="flex items-center gap-3 min-w-0">
                         <span className="w-7 h-7 rounded-xl bg-slate-100 font-mono text-xs font-bold text-slate-500 flex items-center justify-center shrink-0 border border-slate-200">
@@ -739,13 +739,17 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
     );
   }
 
+  const validContextSentences = (currentWord.contextSentences || []).filter(
+    (ctx) => ctx.english?.trim()
+  );
+
   // ==========================================
   // FASE: FLASHCARD STAGE (DECK BELAJAR 10 KATA)
   // Single Clean Hero Card + Solusi Single Floating Dock (Tidak Menumpuk)
   // ==========================================
   return (
     <div 
-      className="flex-1 flex flex-col p-3 sm:p-6 max-w-xl mx-auto w-full min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-3.5rem)] space-y-4 pb-44 md:pb-32"
+      className="flex-1 flex flex-col py-3 sm:py-6 lg:py-8 max-w-4xl xl:max-w-5xl mx-auto w-full min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-3.5rem)] space-y-4 pb-44 md:pb-32"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -788,7 +792,7 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
       </div>
 
       {/* 2. Single Hero Card Bersih (Bebas Border Bertumpuk) */}
-      <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 shadow-sm space-y-5">
+      <div className="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 lg:p-10 shadow-sm space-y-5">
         
         {/* Baris Atas: Badge Kelas Kata & Bookmark */}
         <div className="flex items-center justify-between">
@@ -862,19 +866,18 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
         </div>
 
         {/* Contoh Kalimat Dwibahasa */}
-        {currentWord.contextSentences?.some((ctx) => ctx.english?.trim()) && (
+        {validContextSentences.length > 0 && (
           <div className="pt-3 border-t border-slate-100 space-y-2.5">
             <div className="text-[10px] sm:text-[11px] font-mono text-slate-500 font-bold uppercase tracking-wider flex items-center gap-1.5">
               <BookOpen className="w-3.5 h-3.5 text-blue-600" />
               <span>CONTOH PENGGUNAAN & TERJEMAHAN:</span>
             </div>
 
-            {currentWord.contextSentences
-              .filter((ctx) => ctx.english?.trim())
-              .map((ctx, idx) => (
+            <div className={validContextSentences.length > 1 ? 'grid grid-cols-1 lg:grid-cols-2 gap-4' : 'space-y-2.5'}>
+              {validContextSentences.map((ctx, idx) => (
                 <div 
                   key={idx}
-                  className="p-3.5 sm:p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1"
+                  className="p-3.5 sm:p-4 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-1 flex flex-col justify-between"
                 >
                   <p className="text-xs sm:text-sm font-semibold text-slate-800 font-sans leading-relaxed">
                     "{ctx.english}"
@@ -886,12 +889,13 @@ export const DailyLabView: React.FC<DailyLabViewProps> = ({
                   )}
                 </div>
               ))}
+            </div>
           </div>
         )}
       </div>
 
       {/* Floating Navigation Dock di Flashcard Stage */}
-      <div className="fixed bottom-[82px] md:bottom-8 left-0 right-0 z-30 px-4 max-w-md mx-auto pointer-events-none">
+      <div className="fixed bottom-[82px] md:bottom-8 left-0 right-0 z-30 px-4 max-w-md md:max-w-xl mx-auto pointer-events-none">
         <div className="flex items-center justify-between gap-2 bg-white/95 border border-slate-200 backdrop-blur-md p-2 rounded-full shadow-lg pointer-events-auto">
           {/* Panah Kiri */}
           <button

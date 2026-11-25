@@ -201,7 +201,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
 
   if (retentionPool.length === 0 || !activeVerb) {
     return (
-      <div className="flex-1 flex flex-col p-3 sm:p-6 lg:p-8 max-w-xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-32">
+      <div className="flex-1 flex flex-col py-3 sm:py-6 lg:py-8 max-w-4xl xl:max-w-5xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-32">
         {/* 1. Header Ultra-Bersih: Hanya Tombol Kembali dan Judul */}
         <div className="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm flex items-center gap-3">
           <button
@@ -246,7 +246,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
   const primaryContext = activeVerb.contextSentences[0];
 
   return (
-    <div className="flex-1 flex flex-col p-3 sm:p-6 lg:p-8 max-w-xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-32">
+    <div className="flex-1 flex flex-col py-3 sm:py-6 lg:py-8 max-w-4xl xl:max-w-5xl mx-auto w-full min-h-[calc(100vh-8rem)] space-y-5 pb-32">
       
       {/* 1. Header Ultra-Bersih: Hanya Tombol Kembali dan Judul */}
       <div className="bg-white border border-slate-200/80 rounded-2xl p-4 shadow-sm flex items-center gap-3">
@@ -263,7 +263,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
       </div>
 
       {/* 2. Single Hero Card Kuis Retensi */}
-      <div className={`bg-white border rounded-3xl p-6 sm:p-8 shadow-sm transition-all space-y-6 ${
+      <div className={`bg-white border rounded-3xl p-6 sm:p-8 lg:p-10 shadow-sm transition-all space-y-6 ${
         evalState === 'correct'
           ? 'border-emerald-300 ring-2 ring-emerald-100 shadow-md'
           : evalState === 'failed'
@@ -388,12 +388,12 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                   Pilih kata bahasa Inggris yang sesuai dengan definisi di atas:
                 </div>
 
-                <div className="space-y-2.5 sm:space-y-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                   {mcqOptions.map((opt, idx) => (
                     <button
                       key={idx}
                       onClick={() => handleSelectOption(idx)}
-                      className="w-full p-4 rounded-2xl border border-slate-200 hover:border-blue-300 bg-white hover:bg-blue-50/30 text-slate-800 text-left transition-all flex items-center justify-between cursor-pointer group min-h-[52px] active:scale-[0.99] shadow-xs"
+                      className="w-full h-full p-4 rounded-2xl border border-slate-200 hover:border-blue-300 bg-white hover:bg-blue-50/30 text-slate-800 text-left transition-all flex items-center justify-between cursor-pointer group min-h-[56px] active:scale-[0.99] shadow-xs"
                     >
                       <div className="flex items-center gap-3 min-w-0">
                         <span className="w-7 h-7 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center font-mono text-xs font-bold text-slate-500 shrink-0">
@@ -440,12 +440,12 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
                   Pilih definisi bahasa Indonesia yang paling tepat untuk kata di atas:
                 </div>
 
-                <div className="space-y-2.5 sm:space-y-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
                   {mcqOptions.map((opt, idx) => (
                     <button
                       key={idx}
                       onClick={() => handleSelectOption(idx)}
-                      className="w-full p-4 rounded-2xl border border-slate-200 hover:border-blue-300 bg-white hover:bg-blue-50/30 text-slate-800 text-left transition-all flex items-start gap-3 cursor-pointer group min-h-[52px] active:scale-[0.99] shadow-xs"
+                      className="w-full h-full p-4 rounded-2xl border border-slate-200 hover:border-blue-300 bg-white hover:bg-blue-50/30 text-slate-800 text-left transition-all flex items-start gap-3 cursor-pointer group min-h-[56px] active:scale-[0.99] shadow-xs"
                     >
                       <span className="w-7 h-7 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center font-mono text-xs font-bold text-slate-500 shrink-0 mt-0.5">
                         {idx + 1}
@@ -551,7 +551,7 @@ export const NeuralVerbRetentionView: React.FC<NeuralVerbRetentionViewProps> = (
             </div>
 
             {/* Komparasi Jawaban */}
-            <div className="space-y-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
               {/* Jawaban Pengguna */}
               <div className="p-4 rounded-2xl bg-red-50/70 border border-red-200">
                 <span className="text-[11px] font-mono font-bold text-red-600 uppercase tracking-wider block mb-1">

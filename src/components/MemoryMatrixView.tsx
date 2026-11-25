@@ -82,7 +82,7 @@ export const MemoryMatrixView: React.FC<MemoryMatrixViewProps> = ({
   ];
 
   return (
-    <div className="flex-1 flex flex-col p-3 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-3.5rem)] space-y-4 sm:space-y-6 pb-32 md:pb-12">
+    <div className="flex-1 flex flex-col py-3 sm:py-6 lg:py-8 w-full min-h-[calc(100vh-8rem)] md:min-h-[calc(100vh-3.5rem)] space-y-4 sm:space-y-6 pb-32 md:pb-12">
       
       {/* Top Header & Telemetry Summary */}
       <div className="bg-white border border-slate-200/80 rounded-2xl p-4 sm:p-6 shadow-sm">
