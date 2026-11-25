@@ -15,7 +15,10 @@ import {
 } from '../utils/textSimilarity';
 import {
   hasMeaningfulProgressDiff,
-  hasLocalLearningActivity
+  hasLocalLearningActivity,
+  pullProgressFromSheets,
+  pushProgressToSheets,
+  syncProgressBidirectional
 } from '../utils/sheetsSync';
 import { 
   isExactTranslationMatch, 
@@ -762,6 +765,181 @@ test('Fresh Desktop profile cleanly adopts Mobile PWA progress without clobberin
   assertEqual(merged.currentStageId, 2);
   assertEqual(hasMeaningfulProgressDiff(freshDesktop, merged), true, 'Desktop must detect incoming Mobile diff');
   assertEqual(hasMeaningfulProgressDiff(mobileCloud, merged), false, 'Merged state equals cloud so no redundant push needed');
+});
+
+async function testAsync(name: string, fn: () => Promise<void>) {
+  testsTotal++;
+  try {
+    await fn();
+    console.log(`  ✓ PASS: ${name}`);
+    testsPassed++;
+  } catch (err) {
+    console.error(`  ✗ FAIL: ${name}`);
+    console.error(err);
+    const g = globalThis as unknown as { process?: { exitCode?: number } };
+    if (g.process) {
+      g.process.exitCode = 1;
+    }
+  }
+}
+
+function makeMockResponse(body: unknown, status: number = 200): Response {
+  const textBody = typeof body === 'string' ? body : JSON.stringify(body);
+  return {
+    ok: status >= 200 && status < 300,
+    status,
+    text: async () => textBody,
+    json: async () => JSON.parse(textBody)
+  } as unknown as Response;
+}
+
+// =========================================================================
+// TEST SUITE 12: BI-DIRECTIONAL SHEETS SYNC TRANSPORT & ANTI-FALSE-POSITIVE
+// =========================================================================
+console.log('\n--- Test Suite 12: Sheets Sync CORS, Richer Push & Anti-False-Positive ---');
+
+await testAsync('pushProgressToSheets uses text/plain;charset=utf-8 (no CORS preflight), redirect follow, and validates JSON success', async () => {
+  let capturedUrl = '';
+  let capturedInit: RequestInit | undefined;
+
+  const mockFetch: typeof fetch = async (input, init) => {
+    capturedUrl = String(input);
+    capturedInit = init;
+    return makeMockResponse({ status: 'success', action: 'saveProgress', updatedAt: '2026-11-25T14:00:00.000Z' }, 200);
+  };
+
+  const payloadData: UserProgressData = {
+    ...getDefaultUserData(),
+    clearedStages: [1, 2],
+    dailyStreak: 3,
+    lastUpdated: '2026-11-25T14:00:00.000Z'
+  };
+
+  const res = await pushProgressToSheets(payloadData, {
+    apiUrl: 'https://script.google.com/macros/s/TEST_DEPLOY/exec',
+    fetchFn: mockFetch
+  });
+
+  assertEqual(res.ok, true, 'Push must succeed when GAS returns { status: "success" }');
+  assertEqual(res.status, 'synced');
+  assertTrue(capturedUrl.includes('action=saveProgress'), 'POST URL must include action=saveProgress query param fallback');
+  assertEqual(capturedInit?.method, 'POST');
+  assertEqual(capturedInit?.redirect, 'follow', 'POST must follow GAS 302 redirect');
+  assertEqual(capturedInit?.mode, undefined, 'Must NOT use mode: no-cors so JSON response is readable');
+
+  const headers = capturedInit?.headers as Record<string, string>;
+  assertEqual(headers['Content-Type'], 'text/plain;charset=utf-8', 'POST Content-Type must be text/plain;charset=utf-8 to avoid CORS preflight');
+
+  const sentBody = JSON.parse(String(capturedInit?.body));
+  assertEqual(sentBody.action, 'saveProgress');
+  assertDeepEqual(sentBody.clearedStages, [1, 2]);
+});
+
+await testAsync('syncProgressBidirectional pushes Mobile PWA clearedStages [1, 2] to cloud when cloud is empty [] and syncs to Desktop', async () => {
+  // Simulasikan database cloud UserProgress yang awalnya masih kosong []
+  let cloudStore: UserProgressData | null = {
+    ...getDefaultUserData(),
+    clearedStages: [],
+    dailyStreak: 1,
+    lastUpdated: '2026-11-25T08:00:00.000Z'
+  };
+  let postCallCount = 0;
+
+  const mockFetch: typeof fetch = async (input, init) => {
+    const url = String(input);
+    if (init?.method === 'POST') {
+      postCallCount++;
+      const parsed = JSON.parse(String(init.body));
+      delete parsed.action;
+      cloudStore = parsed as UserProgressData;
+      return makeMockResponse({ status: 'success', action: 'saveProgress', updatedAt: parsed.lastUpdated }, 200);
+    }
+    if (url.includes('action=getProgress')) {
+      return makeMockResponse({ status: 'success', data: cloudStore, updatedAt: cloudStore?.lastUpdated }, 200);
+    }
+    return makeMockResponse([], 200);
+  };
+
+  const mobilePwaState: UserProgressData = {
+    ...getDefaultUserData(),
+    clearedStages: [1, 2],
+    dailyStreak: 3,
+    streak: 3,
+    currentStageId: 3,
+    inspectedWords: ['w1-ubiquitous', 'w2-ameliorate'],
+    lastUpdated: '2026-11-25T13:45:00.000Z'
+  };
+
+  // 1. Mobile PWA melakukan sync -> wajib mendorong [1, 2] ke cloud!
+  const mobileRes = await syncProgressBidirectional(mobilePwaState, {
+    apiUrl: 'https://script.google.com/macros/s/TEST_DEPLOY/exec',
+    fetchFn: mockFetch
+  });
+
+  assertEqual(mobileRes.status, 'synced');
+  assertEqual(mobileRes.pushedToCloud, true, 'Mobile PWA with richer progress [1, 2] MUST push to cloud');
+  assertEqual(postCallCount, 1, 'Exactly 1 POST saveProgress must be sent');
+  assertDeepEqual(cloudStore?.clearedStages, [1, 2], 'Cloud UserProgress must now hold [1, 2]');
+
+  // 2. Desktop baru (masih 0 Stage) melakukan sync -> langsung menerima [1, 2] tanpa menimpa cloud!
+  const desktopEmpty = getDefaultUserData();
+  const desktopRes = await syncProgressBidirectional(desktopEmpty, {
+    apiUrl: 'https://script.google.com/macros/s/TEST_DEPLOY/exec',
+    fetchFn: mockFetch
+  });
+
+  assertEqual(desktopRes.status, 'synced');
+  assertEqual(desktopRes.didChangeLocal, true, 'Desktop local state must update with Mobile progress');
+  assertEqual(desktopRes.pushedToCloud, false, 'Empty Desktop must not trigger redundant POST');
+  assertDeepEqual(desktopRes.merged.clearedStages, [1, 2], 'Desktop must now show Stage 1 & 2 cleared');
+  assertEqual(desktopRes.merged.dailyStreak, 3);
+});
+
+await testAsync('syncProgressBidirectional NEVER reports "synced" when getProgress fails, returns Vocab array (old GAS), or returns error', async () => {
+  const local = getDefaultUserData();
+  const apiUrl = 'https://script.google.com/macros/s/TEST_DEPLOY/exec';
+
+  // Kasus A: GAS lama mengembalikan Vocabulary Array alih-alih objek UserProgress
+  const oldGasRes = await syncProgressBidirectional(local, {
+    apiUrl,
+    fetchFn: async () => makeMockResponse([{ id: 'w1-ubiquitous', word: 'ubiquitous' }], 200)
+  });
+  assertEqual(oldGasRes.status, 'needs_gas_update', 'Old GAS returning Vocab array must yield needs_gas_update, NOT synced');
+  assertTrue(Boolean(oldGasRes.error), 'Must provide diagnostic error message');
+
+  // Kasus B: GAS mengembalikan HTTP 200 dengan { status: "error" }
+  const gasErrorRes = await syncProgressBidirectional(local, {
+    apiUrl,
+    fetchFn: async () => makeMockResponse({ status: 'error', message: 'Sheet permission denied' }, 200)
+  });
+  assertEqual(gasErrorRes.status, 'error', 'GAS error payload must yield error, NOT synced');
+
+  // Kasus C: GAS mengembalikan HTML error page (HTTP 200)
+  const htmlErrorRes = await pullProgressFromSheets({
+    apiUrl,
+    fetchFn: async () => makeMockResponse('<!DOCTYPE html><html><body>Script function not found: doGet</body></html>', 200)
+  });
+  assertEqual(htmlErrorRes.status, 'needs_gas_update', 'GAS HTML missing-function response must yield needs_gas_update');
+
+  // Kasus D: Network error / offline
+  const offlineRes = await syncProgressBidirectional(local, {
+    apiUrl,
+    fetchFn: async () => {
+      throw new Error('Failed to fetch');
+    }
+  });
+  assertEqual(offlineRes.status, 'offline', 'Network failure must yield offline, NOT synced');
+
+  // Kasus E: Push gagal diam-diam (HTTP 200 dengan HTML error / status error dari GAS)
+  const badPushRes = await pushProgressToSheets(
+    { ...local, clearedStages: [1] },
+    {
+      apiUrl,
+      fetchFn: async () => makeMockResponse('<!DOCTYPE html><html><body>Script function not found: doPost</body></html>', 200)
+    }
+  );
+  assertEqual(badPushRes.ok, false, 'HTTP 200 HTML from doPost must NOT be treated as success');
+  assertEqual(badPushRes.status, 'needs_gas_update');
 });
 
 console.log(`\n======================================================`);

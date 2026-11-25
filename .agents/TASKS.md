@@ -6,6 +6,7 @@
 
 ## Completed
 
+- [x] ENG-015: Cross-Device Cloud Progress Sync Diagnostics & Anti-False-Positive Hardening (Strict JSON Validation, Honest HeaderHUD Status, Richer-Local Auto-Push, GAS Query Fallback)
 - [x] ENG-014: Desktop Wide-Screen Layout Optimization (Expanded Main Content Containers, 2-Column Key Points & Context Grids, 2x2 MCQ Grid)
 - [x] ENG-013: Fuzzy Word-Similarity Quiz Grading (Levenshtein >= 80%), Clean Mobile Top/Bottom Navigation UX, & Bi-Directional Cloud Progress Sync (Mobile PWA <-> Desktop)
 - [x] ENG-012: Multi-Branch Knowledge Architecture (Dropdown Branch Switcher, KnowledgeTopics Sheet Sync, & Interactive Concept Reader)

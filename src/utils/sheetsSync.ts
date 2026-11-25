@@ -5,17 +5,31 @@ const PENDING_SYNC_KEY = 'lexicon_pending_sync_v1';
 const LAST_SYNCED_AT_KEY = 'lexicon_last_synced_at_v1';
 const FETCH_TIMEOUT_MS = 10000;
 
-export type ProgressSyncState = 'synced' | 'syncing' | 'offline' | 'unconfigured';
+export type ProgressSyncState =
+  | 'synced'
+  | 'syncing'
+  | 'offline'
+  | 'error'
+  | 'needs_gas_update'
+  | 'unconfigured';
+
+export interface SheetsSyncOptions {
+  apiUrl?: string;
+  fetchFn?: typeof fetch;
+  forcePush?: boolean;
+}
 
 export interface PullProgressResult {
   data: UserProgressData | null;
-  status: 'synced' | 'empty' | 'offline' | 'unconfigured';
+  status: 'synced' | 'empty' | 'offline' | 'error' | 'needs_gas_update' | 'unconfigured';
   updatedAt?: string;
+  error?: string;
 }
 
 export interface PushProgressResult {
   ok: boolean;
-  status: 'synced' | 'offline' | 'unconfigured';
+  status: 'synced' | 'offline' | 'error' | 'needs_gas_update' | 'unconfigured';
+  error?: string;
 }
 
 export interface BidirectionalSyncResult {
@@ -23,9 +37,13 @@ export interface BidirectionalSyncResult {
   status: ProgressSyncState;
   didChangeLocal: boolean;
   pushedToCloud: boolean;
+  error?: string;
 }
 
-function getSheetsApiUrl(): string {
+function getSheetsApiUrl(overrideUrl?: string): string {
+  if (typeof overrideUrl === 'string') {
+    return overrideUrl.trim();
+  }
   try {
     const meta = import.meta as unknown as { env?: Record<string, string | undefined> };
     return meta?.env?.VITE_GOOGLE_SHEETS_API_URL?.trim() || '';
@@ -34,8 +52,8 @@ function getSheetsApiUrl(): string {
   }
 }
 
-export function isSheetsConfigured(): boolean {
-  return Boolean(getSheetsApiUrl());
+export function isSheetsConfigured(overrideUrl?: string): boolean {
+  return Boolean(getSheetsApiUrl(overrideUrl));
 }
 
 export function hasPendingSync(): boolean {
@@ -79,7 +97,7 @@ function setLastSyncedAt(iso: string): void {
 }
 
 /**
- * Membandingkan isi progres bermakna (mengabaikan perbedaan kecil yang tidak signifikan)
+ * Membandingkan isi progres bermakna secara deterministik (mengabaikan urutan key objek)
  */
 export function hasMeaningfulProgressDiff(a?: UserProgressData | null, b?: UserProgressData | null): boolean {
   if (!a && !b) return false;
@@ -129,15 +147,37 @@ export function hasLocalLearningActivity(data: UserProgressData): boolean {
 }
 
 /**
- * Menarik progres terbaru dari Google Sheets (tab UserProgress via ?action=getProgress)
- * Dilengkapi cache-busting agar browser mobile/desktop tidak mengembalikan data basi.
+ * Helper aman untuk membaca body JSON dari respons GAS (karena GAS sering mengembalikan HTTP 200 HTML saat error)
  */
-export async function pullProgressFromSheets(): Promise<PullProgressResult> {
-  const apiUrl = getSheetsApiUrl();
+async function parseGasJsonResponse(
+  response: Response
+): Promise<{ parsed: unknown | null; rawText: string; isHtml: boolean }> {
+  const rawText = await response.text();
+  const trimmed = rawText.trim();
+  const isHtml = /^<!doctype html|^<html/i.test(trimmed);
+
+  if (!trimmed || isHtml) {
+    return { parsed: null, rawText: trimmed, isHtml };
+  }
+
+  try {
+    return { parsed: JSON.parse(trimmed), rawText: trimmed, isHtml: false };
+  } catch {
+    return { parsed: null, rawText: trimmed, isHtml: false };
+  }
+}
+
+/**
+ * Menarik progres terbaru dari Google Sheets (tab UserProgress via ?action=getProgress).
+ * Memvalidasi kontrak respons secara ketat agar tidak pernah menghasilkan status 'synced' palsu.
+ */
+export async function pullProgressFromSheets(options?: SheetsSyncOptions): Promise<PullProgressResult> {
+  const apiUrl = getSheetsApiUrl(options?.apiUrl);
   if (!apiUrl) {
     return { data: null, status: 'unconfigured' };
   }
 
+  const fetchImpl = options?.fetchFn || fetch;
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
@@ -145,9 +185,10 @@ export async function pullProgressFromSheets(): Promise<PullProgressResult> {
     const separator = apiUrl.includes('?') ? '&' : '?';
     const progressUrl = `${apiUrl}${separator}action=getProgress&_t=${Date.now()}`;
 
-    const response = await fetch(progressUrl, {
+    const response = await fetchImpl(progressUrl, {
       method: 'GET',
       cache: 'no-store',
+      redirect: 'follow',
       headers: {
         Accept: 'application/json'
       },
@@ -157,15 +198,59 @@ export async function pullProgressFromSheets(): Promise<PullProgressResult> {
     clearTimeout(timeoutId);
 
     if (!response.ok) {
-      return { data: null, status: 'offline' };
+      return {
+        data: null,
+        status: 'error',
+        error: `HTTP ${response.status} saat mengambil progres dari Google Sheets`
+      };
     }
 
-    const json = await response.json();
-    if (json && json.status === 'success' && json.data && typeof json.data === 'object') {
-      const cloudData = json.data as UserProgressData;
+    const { parsed, rawText, isHtml } = await parseGasJsonResponse(response);
+
+    if (isHtml || parsed === null) {
+      const missingFn = /Script function not found|doGet/i.test(rawText);
+      return {
+        data: null,
+        status: missingFn ? 'needs_gas_update' : 'error',
+        error: missingFn
+          ? 'Google Apps Script belum memiliki fungsi doGet terbaru. Deploy ulang Code.gs ke New Version.'
+          : 'Respons GAS bukan JSON valid (periksa akses Web App "Anyone" atau deploy ulang Code.gs).'
+      };
+    }
+
+    // Jika GAS lama tidak mengenali action=getProgress, ia akan jatuh ke default Vocabulary Array!
+    if (Array.isArray(parsed)) {
+      return {
+        data: null,
+        status: 'needs_gas_update',
+        error:
+          'Endpoint GAS belum mendukung action=getProgress (mengembalikan array Vocabulary). Salin Code.gs terbaru lalu Manage Deployments -> New Version.'
+      };
+    }
+
+    if (typeof parsed !== 'object') {
+      return {
+        data: null,
+        status: 'error',
+        error: 'Format respons getProgress dari Google Sheets tidak valid.'
+      };
+    }
+
+    const payload = parsed as Record<string, unknown>;
+
+    if (payload.status === 'error') {
+      return {
+        data: null,
+        status: 'error',
+        error: String(payload.message || 'Google Apps Script mengembalikan status error pada getProgress.')
+      };
+    }
+
+    if (payload.status === 'success' && payload.data && typeof payload.data === 'object' && !Array.isArray(payload.data)) {
+      const cloudData = payload.data as UserProgressData;
       const resolvedLastUpdated =
         cloudData.lastUpdated ||
-        (typeof json.updatedAt === 'string' && json.updatedAt ? json.updatedAt : undefined);
+        (typeof payload.updatedAt === 'string' && payload.updatedAt ? payload.updatedAt : undefined);
 
       return {
         data: syncDerivedProgressFields({
@@ -177,28 +262,43 @@ export async function pullProgressFromSheets(): Promise<PullProgressResult> {
       };
     }
 
-    if (json && json.status === 'empty') {
+    if (payload.status === 'empty') {
       return { data: null, status: 'empty' };
     }
 
-    return { data: null, status: 'empty' };
+    return {
+      data: null,
+      status: 'needs_gas_update',
+      error: `Respons getProgress tidak dikenali (status: ${String(payload.status || 'undefined')}). Perbarui deployment Code.gs.`
+    };
   } catch (err) {
     clearTimeout(timeoutId);
-    console.warn('[SheetsSync] Gagal pullProgressFromSheets (offline/timeout):', err);
-    return { data: null, status: 'offline' };
+    const errMsg = err instanceof Error ? err.message : String(err);
+    console.warn('[SheetsSync] Gagal pullProgressFromSheets (offline/timeout):', errMsg);
+    return {
+      data: null,
+      status: 'offline',
+      error: `Tidak dapat menghubungi Google Sheets (${errMsg})`
+    };
   }
 }
 
 /**
- * Mengirim progres lengkap ke Google Sheets (action: 'saveProgress').
- * Jika gagal (offline/jaringan lambat), otomatis menandai pendingSync = true untuk retry.
+ * Mengirim progres lengkap ke Google Sheets via POST (action=saveProgress).
+ * - WAJIB menggunakan Content-Type: text/plain;charset=utf-8 (tanpa CORS preflight OPTIONS)
+ * - WAJIB tanpa mode: 'no-cors' dengan redirect: 'follow' agar respons JSON aktual terbaca
+ * - Hanya menandai sukses jika GAS mengembalikan JSON { status: 'success' }
  */
-export async function pushProgressToSheets(data: UserProgressData): Promise<PushProgressResult> {
-  const apiUrl = getSheetsApiUrl();
+export async function pushProgressToSheets(
+  data: UserProgressData,
+  options?: SheetsSyncOptions
+): Promise<PushProgressResult> {
+  const apiUrl = getSheetsApiUrl(options?.apiUrl);
   if (!apiUrl) {
     return { ok: false, status: 'unconfigured' };
   }
 
+  const fetchImpl = options?.fetchFn || fetch;
   const normalized = syncDerivedProgressFields({
     ...data,
     lastUpdated: data.lastUpdated || new Date().toISOString()
@@ -213,8 +313,12 @@ export async function pushProgressToSheets(data: UserProgressData): Promise<Push
   const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
   try {
-    const response = await fetch(apiUrl, {
+    const separator = apiUrl.includes('?') ? '&' : '?';
+    const saveUrl = `${apiUrl}${separator}action=saveProgress`;
+
+    const response = await fetchImpl(saveUrl, {
       method: 'POST',
+      redirect: 'follow',
       headers: {
         'Content-Type': 'text/plain;charset=utf-8'
       },
@@ -226,7 +330,35 @@ export async function pushProgressToSheets(data: UserProgressData): Promise<Push
 
     if (!response.ok) {
       setPendingSync(true);
-      return { ok: false, status: 'offline' };
+      return {
+        ok: false,
+        status: 'error',
+        error: `HTTP ${response.status} saat menyimpan progres ke Google Sheets`
+      };
+    }
+
+    const { parsed, rawText, isHtml } = await parseGasJsonResponse(response);
+
+    if (isHtml || !parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+      setPendingSync(true);
+      const missingDoPost = /Script function not found|doPost/i.test(rawText);
+      return {
+        ok: false,
+        status: missingDoPost ? 'needs_gas_update' : 'error',
+        error: missingDoPost
+          ? 'Google Apps Script belum mendukung doPost/saveProgress. Salin Code.gs terbaru lalu Manage Deployments -> New Version.'
+          : 'Respons saveProgress dari GAS bukan JSON valid (periksa deployment Web App).'
+      };
+    }
+
+    const json = parsed as Record<string, unknown>;
+    if (json.status !== 'success') {
+      setPendingSync(true);
+      return {
+        ok: false,
+        status: 'error',
+        error: String(json.message || 'Gagal menyimpan progres ke tab UserProgress Google Sheets.')
+      };
     }
 
     setPendingSync(false);
@@ -234,20 +366,30 @@ export async function pushProgressToSheets(data: UserProgressData): Promise<Push
     return { ok: true, status: 'synced' };
   } catch (err) {
     clearTimeout(timeoutId);
-    console.warn('[SheetsSync] Gagal pushProgressToSheets, masuk retry queue (pendingSync=true):', err);
+    const errMsg = err instanceof Error ? err.message : String(err);
+    console.warn('[SheetsSync] Gagal pushProgressToSheets, masuk retry queue (pendingSync=true):', errMsg);
     setPendingSync(true);
-    return { ok: false, status: 'offline' };
+    return {
+      ok: false,
+      status: 'offline',
+      error: `Koneksi gagal saat menyimpan progres (${errMsg})`
+    };
   }
 }
 
 /**
- * Sinkronisasi 2-arah penuh (Pull -> Smart Merge -> Push jika ada data lokal lebih baru atau pendingSync).
+ * Sinkronisasi 2-arah penuh:
+ * 1. Pull progres dari tab UserProgress (?action=getProgress).
+ * 2. Jika endpoint gagal / belum mendukung getProgress, JANGAN laporkan 'synced'.
+ * 3. Merge progres lokal & cloud via mergeProgressState.
+ * 4. Jika hasil merge lebih kaya dari cloud (contoh: Mobile PWA punya clearedStages [1, 2]
+ *    sedangkan cloud masih [] / kosong), otomatis dorong (push) ke Google Sheets!
  */
 export async function syncProgressBidirectional(
   localData: UserProgressData,
-  options?: { forcePush?: boolean }
+  options?: SheetsSyncOptions
 ): Promise<BidirectionalSyncResult> {
-  if (!isSheetsConfigured()) {
+  if (!isSheetsConfigured(options?.apiUrl)) {
     return {
       merged: localData,
       status: 'unconfigured',
@@ -256,40 +398,52 @@ export async function syncProgressBidirectional(
     };
   }
 
-  const pullResult = await pullProgressFromSheets();
+  const pullResult = await pullProgressFromSheets(options);
 
-  if (pullResult.status === 'offline') {
-    if (options?.forcePush) {
+  if (
+    pullResult.status === 'offline' ||
+    pullResult.status === 'error' ||
+    pullResult.status === 'needs_gas_update'
+  ) {
+    if (options?.forcePush && hasLocalLearningActivity(localData)) {
       setPendingSync(true);
     }
     return {
       merged: localData,
-      status: 'offline',
+      status: pullResult.status,
       didChangeLocal: false,
-      pushedToCloud: false
+      pushedToCloud: false,
+      error: pullResult.error
     };
   }
 
   const cloudData = pullResult.data;
-  const merged = cloudData ? mergeProgressState(localData, cloudData) : localData;
+  const merged = cloudData ? mergeProgressState(localData, cloudData) : syncDerivedProgressFields(localData);
   const didChangeLocal = hasMeaningfulProgressDiff(localData, merged);
+  const localHasActivity = hasLocalLearningActivity(merged);
 
-  const cloudNeedsUpdate =
-    Boolean(options?.forcePush) ||
-    hasPendingSync() ||
-    (!cloudData && hasLocalLearningActivity(merged)) ||
+  // Deteksi apakah hasil gabungan lebih kaya dari cloud (mis. Mobile PWA clearedStages [1, 2] > cloud [])
+  const mergedRicherThanCloud =
+    (cloudData === null && localHasActivity) ||
     (cloudData !== null && hasMeaningfulProgressDiff(cloudData, merged));
 
-  if (cloudNeedsUpdate) {
-    const pushRes = await pushProgressToSheets(merged);
+  const shouldPushToCloud =
+    mergedRicherThanCloud ||
+    (hasPendingSync() && localHasActivity) ||
+    (Boolean(options?.forcePush) && localHasActivity);
+
+  if (shouldPushToCloud) {
+    const pushRes = await pushProgressToSheets(merged, options);
     return {
       merged,
-      status: pushRes.ok ? 'synced' : 'offline',
+      status: pushRes.ok ? 'synced' : pushRes.status,
       didChangeLocal,
-      pushedToCloud: pushRes.ok
+      pushedToCloud: pushRes.ok,
+      error: pushRes.error
     };
   }
 
+  // Pull berhasil ('synced' atau 'empty' terkonfirmasi dari Code.gs) dan tidak ada data baru yang perlu di-push
   setPendingSync(false);
   setLastSyncedAt(new Date().toISOString());
   return {

@@ -10,7 +10,8 @@ import {
   ChevronDown,
   Compass,
   CloudOff,
-  CheckCircle2
+  CheckCircle2,
+  AlertTriangle
 } from 'lucide-react';
 import { ProgressSyncState } from '../utils/sheetsSync';
 
@@ -27,6 +28,7 @@ interface HeaderHUDProps {
   soundEnabled: boolean;
   syncStatus?: 'connected' | 'mock' | 'syncing' | 'cache';
   progressSyncState?: ProgressSyncState;
+  syncError?: string | null;
   hasPendingSync?: boolean;
   lastSyncedAt?: string | null;
   onManualSync?: () => void;
@@ -44,7 +46,8 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
   totalLexemesLearned,
   soundEnabled,
   syncStatus = 'mock',
-  progressSyncState,
+  progressSyncState = 'unconfigured',
+  syncError,
   hasPendingSync = false,
   lastSyncedAt,
   onManualSync,
@@ -73,11 +76,14 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
 
   const activeBranch = branches.find((b) => b.id === activeBranchId) || branches[0];
 
-  // Tentukan status indikator sinkronisasi efektif
+  // Status sinkronisasi progres jujur (ANTI false-positive 'Sheets: Synced')
+  // Hijau 'Sheets: Synced' HANYA jika progressSyncState === 'synced' dan tidak ada antrean tertunda!
   const isActivelySyncing = progressSyncState === 'syncing' || syncStatus === 'syncing';
-  const isOfflineState = progressSyncState === 'offline' || hasPendingSync;
-  const isSyncedLive = !isActivelySyncing && !isOfflineState && (progressSyncState === 'synced' || syncStatus === 'connected');
-  const isCachedOnly = !isActivelySyncing && !isOfflineState && !isSyncedLive && syncStatus === 'cache';
+  const isNeedsGasUpdate = !isActivelySyncing && progressSyncState === 'needs_gas_update';
+  const isSyncError = !isActivelySyncing && progressSyncState === 'error';
+  const isOfflineState = !isActivelySyncing && !isNeedsGasUpdate && !isSyncError && (progressSyncState === 'offline' || hasPendingSync);
+  const isSyncedLive = !isActivelySyncing && !isNeedsGasUpdate && !isSyncError && !isOfflineState && progressSyncState === 'synced';
+  const isCachedOnly = !isActivelySyncing && !isNeedsGasUpdate && !isSyncError && !isOfflineState && !isSyncedLive && syncStatus === 'cache';
 
   const formattedLastSync = lastSyncedAt
     ? new Date(lastSyncedAt).toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })
@@ -85,11 +91,15 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
 
   const syncTooltip = isActivelySyncing
     ? 'Sedang menyinkronkan progres dengan Google Sheets...'
+    : isNeedsGasUpdate
+    ? syncError || 'Deployment Google Apps Script belum mendukung getProgress/saveProgress. Deploy ulang Code.gs ke New Version.'
+    : isSyncError
+    ? syncError || 'Gagal menyinkronkan progres ke tab UserProgress Google Sheets. Klik untuk coba lagi.'
     : isOfflineState
-    ? 'Offline / ada progres tertunda. Klik untuk coba sinkronkan sekarang.'
+    ? syncError || 'Offline / ada progres tertunda. Klik untuk coba sinkronkan sekarang.'
     : isSyncedLive
-    ? `Tersinkron dengan Google Sheets${formattedLastSync ? ` (${formattedLastSync})` : ''}. Klik untuk sinkronisasi manual sekarang.`
-    : 'Klik untuk sinkronisasi manual dengan Google Sheets';
+    ? `Progres UserProgress tersinkron dengan Google Sheets${formattedLastSync ? ` (${formattedLastSync})` : ''}. Klik untuk sinkronisasi manual sekarang.`
+    : 'VITE_GOOGLE_SHEETS_API_URL belum dikonfigurasi (mode lokal).';
 
   return (
     <header className="w-full bg-white/95 backdrop-blur-md border-b border-slate-200 sticky top-0 z-30 select-none shadow-xs">
@@ -174,18 +184,27 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
 
                 {/* Menu Sinkronisasi Cloud untuk Mobile (dan akses cepat) */}
                 {onManualSync && (
-                  <div className="mt-1.5 pt-1.5 border-t border-slate-100 sm:hidden">
+                  <div className="mt-1.5 pt-1.5 border-t border-slate-100 sm:hidden space-y-1">
                     <button
                       type="button"
                       onClick={() => {
                         onManualSync();
                       }}
                       disabled={isActivelySyncing}
-                      className="w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-mono font-semibold bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700 transition-colors cursor-pointer disabled:opacity-60"
+                      title={syncTooltip}
+                      className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-mono font-semibold transition-colors cursor-pointer disabled:opacity-60 ${
+                        isNeedsGasUpdate || isSyncError
+                          ? 'bg-red-50 text-red-700 hover:bg-red-100'
+                          : isOfflineState
+                          ? 'bg-amber-50 text-amber-800 hover:bg-amber-100'
+                          : 'bg-slate-50 hover:bg-blue-50 text-slate-700 hover:text-blue-700'
+                      }`}
                     >
                       <span className="flex items-center gap-2 min-w-0">
                         {isActivelySyncing ? (
                           <RefreshCw className="w-3.5 h-3.5 text-blue-600 animate-spin shrink-0" />
+                        ) : isNeedsGasUpdate || isSyncError ? (
+                          <AlertTriangle className="w-3.5 h-3.5 text-red-600 shrink-0" />
                         ) : isOfflineState ? (
                           <CloudOff className="w-3.5 h-3.5 text-amber-600 shrink-0" />
                         ) : isSyncedLive ? (
@@ -196,6 +215,10 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
                         <span className="truncate">
                           {isActivelySyncing
                             ? 'Menyinkronkan...'
+                            : isNeedsGasUpdate
+                            ? 'Perlu Update GAS'
+                            : isSyncError
+                            ? 'Sync Gagal · Retry'
                             : isOfflineState
                             ? 'Offline · Coba Sync'
                             : isSyncedLive
@@ -203,12 +226,17 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
                             : 'Sinkronkan Cloud'}
                         </span>
                       </span>
-                      {formattedLastSync && !isActivelySyncing && (
+                      {formattedLastSync && isSyncedLive && !isActivelySyncing && (
                         <span className="text-[10px] text-slate-400 shrink-0 ml-1">
                           {formattedLastSync}
                         </span>
                       )}
                     </button>
+                    {(isNeedsGasUpdate || isSyncError) && syncError && (
+                      <p className="px-2.5 text-[10px] leading-snug text-red-600 font-sans">
+                        {syncError}
+                      </p>
+                    )}
                   </div>
                 )}
               </div>
@@ -230,6 +258,8 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
             } ${
               isActivelySyncing
                 ? 'bg-blue-50 border-blue-200 text-blue-700'
+                : isNeedsGasUpdate || isSyncError
+                ? 'bg-red-50 hover:bg-red-100 border-red-200 text-red-700'
                 : isOfflineState
                 ? 'bg-amber-50 hover:bg-amber-100 border-amber-200 text-amber-800'
                 : isSyncedLive
@@ -243,6 +273,16 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
               <>
                 <RefreshCw className="w-3.5 h-3.5 text-blue-600 animate-spin shrink-0" />
                 <span className="font-semibold">Menyinkronkan...</span>
+              </>
+            ) : isNeedsGasUpdate ? (
+              <>
+                <AlertTriangle className="w-3.5 h-3.5 text-red-600 shrink-0" />
+                <span className="font-semibold">Perlu Update GAS</span>
+              </>
+            ) : isSyncError ? (
+              <>
+                <AlertTriangle className="w-3.5 h-3.5 text-red-600 shrink-0" />
+                <span className="font-semibold">Sync Gagal</span>
               </>
             ) : isOfflineState ? (
               <>

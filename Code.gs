@@ -325,17 +325,31 @@ function doGet(e) {
  */
 function doPost(e) {
   try {
-    var rawBody = (e && e.postData && e.postData.contents) ? e.postData.contents : '';
+    var queryAction = (e && e.parameter && e.parameter.action) ? String(e.parameter.action).trim() : '';
+    var rawBody = (e && e.postData && e.postData.contents)
+      ? String(e.postData.contents)
+      : ((e && e.parameter && e.parameter.payload) ? String(e.parameter.payload) : '');
+
     if (!rawBody) {
       return createJsonResponse({ status: 'error', message: 'Payload body kosong' }, 400);
     }
 
-    // Validasi apakah payload merupakan format JSON valid
-    var parsed = JSON.parse(rawBody);
+    // Parse JSON secara aman untuk Content-Type text/plain;charset=utf-8 maupun application/json
+    var parsed;
+    try {
+      parsed = JSON.parse(rawBody);
+    } catch (parseErr) {
+      return createJsonResponse({
+        status: 'error',
+        message: 'Payload bukan JSON valid: ' + parseErr.toString()
+      }, 400);
+    }
+
+    var effectiveAction = (parsed && parsed.action) ? String(parsed.action).trim() : queryAction;
     var ss = SpreadsheetApp.getActiveSpreadsheet();
 
     // A. Mode Bulk Append Vocabulary
-    if (parsed && (parsed.action === 'appendVocab' || parsed.action === 'appendVocabBatch')) {
+    if (effectiveAction === 'appendVocab' || effectiveAction === 'appendVocabBatch') {
       var vocabSheet = ss.getSheetByName('Vocabulary');
       if (!vocabSheet) {
         return createJsonResponse({ status: 'error', message: "Sheet 'Vocabulary' tidak ditemukan. Jalankan 'setupDatabase' terlebih dahulu." }, 404);
@@ -427,7 +441,7 @@ function doPost(e) {
     }
 
     // B. Mode Bulk Sync KnowledgeTopics (action === 'syncTopics')
-    if (parsed && parsed.action === 'syncTopics') {
+    if (effectiveAction === 'syncTopics') {
       var topicSheet = setupKnowledgeTopics();
       if (topicSheet.getLastRow() > 1) {
         topicSheet.getRange(2, 1, topicSheet.getLastRow() - 1, 8).clearContent();
@@ -457,14 +471,17 @@ function doPost(e) {
       });
     }
 
-    // C. Mode Simpan Progres Belajar (action === 'saveProgress' atau default)
+    // C. Mode Simpan Progres Belajar (action === 'saveProgress' via body/query param atau default)
     var progressSheet = ss.getSheetByName('UserProgress');
     if (!progressSheet) {
       progressSheet = ss.insertSheet('UserProgress');
+    }
+    if (progressSheet.getLastRow() === 0) {
       progressSheet.appendRow(['user_id', 'progress_json', 'updated_at']);
+      progressSheet.getRange(1, 1, 1, 3).setFontWeight('bold').setBackground('#f1f5f9');
     }
 
-    var incomingProgress = (parsed && parsed.action === 'saveProgress' && parsed.data && typeof parsed.data === 'object')
+    var incomingProgress = (effectiveAction === 'saveProgress' && parsed && parsed.data && typeof parsed.data === 'object')
       ? parsed.data
       : parsed;
 

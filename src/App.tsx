@@ -52,6 +52,7 @@ export default function App() {
   const [progressSyncState, setProgressSyncState] = useState<ProgressSyncState>(() =>
     isSheetsConfigured() ? 'syncing' : 'unconfigured'
   );
+  const [syncError, setSyncError] = useState<string | null>(null);
   const [pendingSyncFlag, setPendingSyncFlag] = useState<boolean>(() => hasPendingSync());
   const [lastSyncedAt, setLastSyncedAt] = useState<string | null>(() => getLastSyncedAt());
 
@@ -91,10 +92,12 @@ export default function App() {
     if (!isSheetsConfigured()) return;
 
     setProgressSyncState('syncing');
+    setSyncError(null);
     const result = await pushProgressToSheets(snapshot);
     setPendingSyncFlag(hasPendingSync());
     setLastSyncedAt(getLastSyncedAt());
     setProgressSyncState(result.status);
+    setSyncError(result.error || null);
   }, []);
 
   // Helper mutasi progres terpusat: stamp lastUpdated, simpan ke localStorage, dan kirim ke Google Sheets
@@ -145,12 +148,14 @@ export default function App() {
   const runBidirectionalSync = useCallback(async (options?: { forcePush?: boolean }) => {
     if (!isSheetsConfigured()) {
       setProgressSyncState('unconfigured');
+      setSyncError(null);
       return;
     }
     if (isSyncInFlightRef.current) return;
 
     isSyncInFlightRef.current = true;
     setProgressSyncState('syncing');
+    setSyncError(null);
 
     try {
       const result = await syncProgressBidirectional(userDataRef.current, {
@@ -164,11 +169,14 @@ export default function App() {
       }
 
       setProgressSyncState(result.status);
+      setSyncError(result.error || null);
       setPendingSyncFlag(hasPendingSync());
       setLastSyncedAt(getLastSyncedAt());
     } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
       console.warn('[App] Gagal sinkronisasi progres 2-arah:', err);
       setProgressSyncState('offline');
+      setSyncError(msg);
       setPendingSyncFlag(hasPendingSync());
     } finally {
       isSyncInFlightRef.current = false;
@@ -617,6 +625,7 @@ export default function App() {
         soundEnabled={userData.soundEnabled}
         syncStatus={syncStatus}
         progressSyncState={progressSyncState}
+        syncError={syncError}
         hasPendingSync={pendingSyncFlag}
         lastSyncedAt={lastSyncedAt}
         onManualSync={handleManualSync}
