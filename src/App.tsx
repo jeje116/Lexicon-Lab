@@ -56,10 +56,12 @@ export default function App() {
   const [pendingSyncFlag, setPendingSyncFlag] = useState<boolean>(() => hasPendingSync());
   const [lastSyncedAt, setLastSyncedAt] = useState<string | null>(() => getLastSyncedAt());
 
-  // Refs untuk mencegah stale closure & race condition saat sinkronisasi 2-arah
+  // Refs untuk mencegah stale closure, pre-hydration push race, & overlapping sync calls
   const userDataRef = useRef<UserProgressData>(userData);
   userDataRef.current = userData;
   const isSyncInFlightRef = useRef<boolean>(false);
+  const hasCompletedInitialPullRef = useRef<boolean>(!isSheetsConfigured());
+  const deferredMutationBeforePullRef = useRef<boolean>(false);
   const lastAutoPullMsRef = useRef<number>(0);
   const pushDebounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -87,54 +89,77 @@ export default function App() {
     ? (userData.clearedIndonesianStages || []) 
     : (userData.clearedStages || []);
 
-  // Push langsung ke Google Sheets dengan offline retry queue
+  // Push langsung ke Google Sheets dengan offline retry queue & proteksi anti-hang try/catch/finally
   const flushPushToSheets = useCallback(async (snapshot: UserProgressData) => {
     if (!isSheetsConfigured()) return;
 
     setProgressSyncState('syncing');
     setSyncError(null);
-    const result = await pushProgressToSheets(snapshot);
-    setPendingSyncFlag(hasPendingSync());
-    setLastSyncedAt(getLastSyncedAt());
-    setProgressSyncState(result.status);
-    setSyncError(result.error || null);
+    let resolvedState: ProgressSyncState = 'offline';
+    let resolvedError: string | null = null;
+
+    try {
+      const result = await pushProgressToSheets(snapshot);
+      resolvedState = result.status;
+      resolvedError = result.error || null;
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.warn('[App] Exception pada flushPushToSheets:', msg);
+      setPendingSync(true);
+      resolvedState = 'offline';
+      resolvedError = msg;
+    } finally {
+      setPendingSyncFlag(hasPendingSync());
+      setLastSyncedAt(getLastSyncedAt());
+      setProgressSyncState(resolvedState);
+      setSyncError(resolvedError);
+    }
   }, []);
 
   // Helper mutasi progres terpusat: stamp lastUpdated, simpan ke localStorage, dan kirim ke Google Sheets
+  // PENTING: Dilarang mem-push sebelum initial cloud pull selesai agar Desktop kosong tidak menimpa progres Mobile!
   const updateUserProgress = useCallback(
     (
       updater: (prev: UserProgressData) => UserProgressData,
-      options?: { immediateSync?: boolean }
+      options?: { immediateSync?: boolean; passive?: boolean }
     ) => {
       setUserData((prev) => {
         const nextRaw = updater(prev);
         if (nextRaw === prev) return prev;
 
+        const isPreHydrationPassive = !hasCompletedInitialPullRef.current && Boolean(options?.passive);
         const normalized = syncDerivedProgressFields({
           ...nextRaw,
-          lastUpdated: new Date().toISOString()
+          lastUpdated: isPreHydrationPassive ? (prev.lastUpdated || '') : new Date().toISOString()
         });
 
         saveUserData(normalized);
         userDataRef.current = normalized;
 
-        if (isSheetsConfigured()) {
-          // Tandai tertunda sampai push benar-benar sukses
-          setPendingSync(true);
-          setPendingSyncFlag(true);
-
-          if (pushDebounceTimerRef.current) {
-            clearTimeout(pushDebounceTimerRef.current);
-            pushDebounceTimerRef.current = null;
-          }
-
-          if (options?.immediateSync) {
-            void flushPushToSheets(normalized);
+        if (isSheetsConfigured() && !isPreHydrationPassive) {
+          if (!hasCompletedInitialPullRef.current) {
+            // Tunda push sampai initial cloud pull selesai agar digabung dulu dengan progres Mobile
+            deferredMutationBeforePullRef.current = true;
+            setPendingSync(true);
+            setPendingSyncFlag(true);
           } else {
-            pushDebounceTimerRef.current = setTimeout(() => {
+            // Tandai tertunda sampai push benar-benar sukses
+            setPendingSync(true);
+            setPendingSyncFlag(true);
+
+            if (pushDebounceTimerRef.current) {
+              clearTimeout(pushDebounceTimerRef.current);
               pushDebounceTimerRef.current = null;
-              void flushPushToSheets(userDataRef.current);
-            }, 800);
+            }
+
+            if (options?.immediateSync) {
+              void flushPushToSheets(normalized);
+            } else {
+              pushDebounceTimerRef.current = setTimeout(() => {
+                pushDebounceTimerRef.current = null;
+                void flushPushToSheets(userDataRef.current);
+              }, 800);
+            }
           }
         }
 
@@ -147,6 +172,7 @@ export default function App() {
   // Sinkronisasi 2-arah penuh (Auto-Pull dari Google Sheets -> Smart Merge -> Push jika perlu)
   const runBidirectionalSync = useCallback(async (options?: { forcePush?: boolean }) => {
     if (!isSheetsConfigured()) {
+      hasCompletedInitialPullRef.current = true;
       setProgressSyncState('unconfigured');
       setSyncError(null);
       return;
@@ -157,9 +183,13 @@ export default function App() {
     setProgressSyncState('syncing');
     setSyncError(null);
 
+    let resolvedStatus: ProgressSyncState = 'offline';
+    let resolvedError: string | null = null;
+
     try {
+      const shouldForce = Boolean(options?.forcePush) || deferredMutationBeforePullRef.current;
       const result = await syncProgressBidirectional(userDataRef.current, {
-        forcePush: options?.forcePush
+        forcePush: shouldForce
       });
 
       if (result.didChangeLocal) {
@@ -168,38 +198,48 @@ export default function App() {
         setUserData(result.merged);
       }
 
-      setProgressSyncState(result.status);
-      setSyncError(result.error || null);
-      setPendingSyncFlag(hasPendingSync());
-      setLastSyncedAt(getLastSyncedAt());
+      if (result.status === 'synced') {
+        deferredMutationBeforePullRef.current = false;
+      }
+
+      resolvedStatus = result.status;
+      resolvedError = result.error || null;
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       console.warn('[App] Gagal sinkronisasi progres 2-arah:', err);
-      setProgressSyncState('offline');
-      setSyncError(msg);
-      setPendingSyncFlag(hasPendingSync());
+      resolvedStatus = 'offline';
+      resolvedError = msg;
     } finally {
+      hasCompletedInitialPullRef.current = true;
       isSyncInFlightRef.current = false;
+      setProgressSyncState(resolvedStatus);
+      setSyncError(resolvedError);
+      setPendingSyncFlag(hasPendingSync());
+      setLastSyncedAt(getLastSyncedAt());
     }
   }, []);
 
-  // Sinkronisasi Manual (dipicu klik pil Sheets: Live / menu mobile di HeaderHUD)
+  // Sinkronisasi Manual (dipicu klik pil Sheets: Synced / menu mobile di HeaderHUD)
   const handleManualSync = useCallback(async () => {
     setSyncStatus('syncing');
-    await Promise.all([
-      fetchVocabularyData()
-        .then(({ words, source }) => {
-          if (words && words.length > 0) setWordsPool(words);
-          setSyncStatus(source);
-        })
-        .catch(() => setSyncStatus('cache')),
-      fetchKnowledgeTopicsData()
-        .then(({ topics }) => {
-          if (topics && topics.length > 0) setKnowledgeTopics(topics);
-        })
-        .catch(() => {}),
-      runBidirectionalSync({ forcePush: true })
-    ]);
+    try {
+      await Promise.all([
+        fetchVocabularyData()
+          .then(({ words, source }) => {
+            if (words && words.length > 0) setWordsPool(words);
+            setSyncStatus(source);
+          })
+          .catch(() => setSyncStatus('cache')),
+        fetchKnowledgeTopicsData()
+          .then(({ topics }) => {
+            if (topics && topics.length > 0) setKnowledgeTopics(topics);
+          })
+          .catch(() => {}),
+        runBidirectionalSync({ forcePush: true })
+      ]);
+    } finally {
+      setSyncStatus((prev) => (prev === 'syncing' ? 'cache' : prev));
+    }
   }, [runBidirectionalSync]);
 
   // 1. Ingestion kosa kata, auto-pull progres cloud, dan topik materi saat mount
@@ -218,6 +258,11 @@ export default function App() {
       .catch((err) => {
         console.warn('[App] Gagal inisialisasi kosa kata dinamis:', err);
         if (isMounted) setSyncStatus('mock');
+      })
+      .finally(() => {
+        if (isMounted) {
+          setSyncStatus((prev) => (prev === 'syncing' ? 'cache' : prev));
+        }
       });
 
     fetchKnowledgeTopicsData()
@@ -369,32 +414,35 @@ export default function App() {
 
   const handleMarkInspected = useCallback(
     (wordId: string) => {
-      updateUserProgress((prev) => {
-        const current = prev.wordStats[wordId];
-        if (current?.isInspected && (prev.inspectedWords || []).includes(wordId)) {
-          return prev;
-        }
-
-        return {
-          ...prev,
-          inspectedWords: Array.from(new Set([...(prev.inspectedWords || []), wordId])).sort(),
-          wordStats: {
-            ...prev.wordStats,
-            [wordId]: {
-              ...(current || {
-                wordId,
-                totalAttempts: 0,
-                correctAttempts: 0,
-                consecutiveStreak: 0,
-                lastReviewedAt: 0,
-                isMastered: false,
-                isBookmarked: false
-              }),
-              isInspected: true
-            }
+      updateUserProgress(
+        (prev) => {
+          const current = prev.wordStats[wordId];
+          if (current?.isInspected && (prev.inspectedWords || []).includes(wordId)) {
+            return prev;
           }
-        };
-      });
+
+          return {
+            ...prev,
+            inspectedWords: Array.from(new Set([...(prev.inspectedWords || []), wordId])).sort(),
+            wordStats: {
+              ...prev.wordStats,
+              [wordId]: {
+                ...(current || {
+                  wordId,
+                  totalAttempts: 0,
+                  correctAttempts: 0,
+                  consecutiveStreak: 0,
+                  lastReviewedAt: 0,
+                  isMastered: false,
+                  isBookmarked: false
+                }),
+                isInspected: true
+              }
+            }
+          };
+        },
+        { passive: true }
+      );
     },
     [updateUserProgress]
   );

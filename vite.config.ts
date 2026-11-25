@@ -54,16 +54,31 @@ export default defineConfig({
         ]
       },
       workbox: {
+        skipWaiting: true,
+        clientsClaim: true,
+        cleanupOutdatedCaches: true,
         globPatterns: ['**/*.{js,css,html,svg,png,ico,woff2}'],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MB
-        // Exclude live Google Apps Script endpoint from SW navigation and caching
-        navigateFallbackDenylist: [/^\/api\//, /script\.google\.com/],
+        // Exclude live Google Apps Script & redirect target from SW navigation and caching
+        navigateFallbackDenylist: [
+          /^\/api\//,
+          /^\/sw\.js$/,
+          /script\.google\.com/,
+          /script\.googleusercontent\.com/
+        ],
         runtimeCaching: [
           {
             urlPattern: /^https:\/\/script\.google\.com\/.*/i,
             handler: 'NetworkOnly',
             options: {
               cacheName: 'google-sheets-sync-bypass'
+            }
+          },
+          {
+            urlPattern: /^https:\/\/script\.googleusercontent\.com\/.*/i,
+            handler: 'NetworkOnly',
+            options: {
+              cacheName: 'google-sheets-redirect-bypass'
             }
           },
           {

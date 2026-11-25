@@ -3,7 +3,8 @@ import { mergeProgressState, syncDerivedProgressFields } from './storage';
 
 const PENDING_SYNC_KEY = 'lexicon_pending_sync_v1';
 const LAST_SYNCED_AT_KEY = 'lexicon_last_synced_at_v1';
-const FETCH_TIMEOUT_MS = 10000;
+const GET_TIMEOUT_MS = 10000;
+const POST_TIMEOUT_MS = 12000;
 
 export type ProgressSyncState =
   | 'synced'
@@ -40,13 +41,17 @@ export interface BidirectionalSyncResult {
   error?: string;
 }
 
+/**
+ * WAJIB menggunakan ekspresi literal langsung `import.meta.env.VITE_GOOGLE_SHEETS_API_URL`
+ * agar Vite static bundler replacement selalu meng-inline URL saat `vite build` produksi!
+ * (JANGAN di-assign ke variabel perantara seperti `const meta = import.meta`.)
+ */
 function getSheetsApiUrl(overrideUrl?: string): string {
   if (typeof overrideUrl === 'string') {
     return overrideUrl.trim();
   }
   try {
-    const meta = import.meta as unknown as { env?: Record<string, string | undefined> };
-    return meta?.env?.VITE_GOOGLE_SHEETS_API_URL?.trim() || '';
+    return (import.meta.env.VITE_GOOGLE_SHEETS_API_URL || '').trim();
   } catch {
     return '';
   }
@@ -169,7 +174,10 @@ async function parseGasJsonResponse(
 
 /**
  * Menarik progres terbaru dari Google Sheets (tab UserProgress via ?action=getProgress).
- * Memvalidasi kontrak respons secara ketat agar tidak pernah menghasilkan status 'synced' palsu.
+ * - Bebas custom header agar murni CORS simple GET request (tanpa OPTIONS preflight)
+ * - Cache-busting melalui query param `&_t=...`
+ * - Timeout tegas 10 detik mencakup fetch DAN pembacaan body agar tidak pernah hang
+ * - Mendukung payload `data` berupa object maupun JSON string (double-stringified)
  */
 export async function pullProgressFromSheets(options?: SheetsSyncOptions): Promise<PullProgressResult> {
   const apiUrl = getSheetsApiUrl(options?.apiUrl);
@@ -179,7 +187,7 @@ export async function pullProgressFromSheets(options?: SheetsSyncOptions): Promi
 
   const fetchImpl = options?.fetchFn || fetch;
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  const timeoutId = setTimeout(() => controller.abort(), GET_TIMEOUT_MS);
 
   try {
     const separator = apiUrl.includes('?') ? '&' : '?';
@@ -189,13 +197,8 @@ export async function pullProgressFromSheets(options?: SheetsSyncOptions): Promi
       method: 'GET',
       cache: 'no-store',
       redirect: 'follow',
-      headers: {
-        Accept: 'application/json'
-      },
       signal: controller.signal
     });
-
-    clearTimeout(timeoutId);
 
     if (!response.ok) {
       return {
@@ -218,7 +221,7 @@ export async function pullProgressFromSheets(options?: SheetsSyncOptions): Promi
       };
     }
 
-    // Jika GAS lama tidak mengenali action=getProgress, ia akan jatuh ke default Vocabulary Array!
+    // Jika GAS lama tidak mengenali action=getProgress, ia jatuh ke default Vocabulary Array
     if (Array.isArray(parsed)) {
       return {
         data: null,
@@ -246,24 +249,40 @@ export async function pullProgressFromSheets(options?: SheetsSyncOptions): Promi
       };
     }
 
-    if (payload.status === 'success' && payload.data && typeof payload.data === 'object' && !Array.isArray(payload.data)) {
-      const cloudData = payload.data as UserProgressData;
-      const resolvedLastUpdated =
-        cloudData.lastUpdated ||
-        (typeof payload.updatedAt === 'string' && payload.updatedAt ? payload.updatedAt : undefined);
-
-      return {
-        data: syncDerivedProgressFields({
-          ...cloudData,
-          lastUpdated: resolvedLastUpdated
-        }),
-        status: 'synced',
-        updatedAt: resolvedLastUpdated
-      };
-    }
-
     if (payload.status === 'empty') {
       return { data: null, status: 'empty' };
+    }
+
+    if (payload.status === 'success') {
+      // Dukung `payload.data` baik berupa object langsung maupun JSON string
+      let rawData: unknown = payload.data;
+      if (typeof rawData === 'string' && rawData.trim()) {
+        try {
+          rawData = JSON.parse(rawData);
+        } catch {
+          return {
+            data: null,
+            status: 'error',
+            error: 'Data JSON di tab UserProgress tidak valid (gagal parse string JSON).'
+          };
+        }
+      }
+
+      if (rawData && typeof rawData === 'object' && !Array.isArray(rawData)) {
+        const cloudData = rawData as UserProgressData;
+        const resolvedLastUpdated =
+          cloudData.lastUpdated ||
+          (typeof payload.updatedAt === 'string' && payload.updatedAt ? payload.updatedAt : undefined);
+
+        return {
+          data: syncDerivedProgressFields({
+            ...cloudData,
+            lastUpdated: resolvedLastUpdated
+          }),
+          status: 'synced',
+          updatedAt: resolvedLastUpdated
+        };
+      }
     }
 
     return {
@@ -272,7 +291,6 @@ export async function pullProgressFromSheets(options?: SheetsSyncOptions): Promi
       error: `Respons getProgress tidak dikenali (status: ${String(payload.status || 'undefined')}). Perbarui deployment Code.gs.`
     };
   } catch (err) {
-    clearTimeout(timeoutId);
     const errMsg = err instanceof Error ? err.message : String(err);
     console.warn('[SheetsSync] Gagal pullProgressFromSheets (offline/timeout):', errMsg);
     return {
@@ -280,6 +298,8 @@ export async function pullProgressFromSheets(options?: SheetsSyncOptions): Promi
       status: 'offline',
       error: `Tidak dapat menghubungi Google Sheets (${errMsg})`
     };
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
@@ -287,6 +307,7 @@ export async function pullProgressFromSheets(options?: SheetsSyncOptions): Promi
  * Mengirim progres lengkap ke Google Sheets via POST (action=saveProgress).
  * - WAJIB menggunakan Content-Type: text/plain;charset=utf-8 (tanpa CORS preflight OPTIONS)
  * - WAJIB tanpa mode: 'no-cors' dengan redirect: 'follow' agar respons JSON aktual terbaca
+ * - Timeout tegas 12 detik mencakup fetch DAN pembacaan body
  * - Hanya menandai sukses jika GAS mengembalikan JSON { status: 'success' }
  */
 export async function pushProgressToSheets(
@@ -310,7 +331,7 @@ export async function pushProgressToSheets(
   };
 
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  const timeoutId = setTimeout(() => controller.abort(), POST_TIMEOUT_MS);
 
   try {
     const separator = apiUrl.includes('?') ? '&' : '?';
@@ -325,8 +346,6 @@ export async function pushProgressToSheets(
       body: JSON.stringify(payload),
       signal: controller.signal
     });
-
-    clearTimeout(timeoutId);
 
     if (!response.ok) {
       setPendingSync(true);
@@ -365,7 +384,6 @@ export async function pushProgressToSheets(
     setLastSyncedAt(new Date().toISOString());
     return { ok: true, status: 'synced' };
   } catch (err) {
-    clearTimeout(timeoutId);
     const errMsg = err instanceof Error ? err.message : String(err);
     console.warn('[SheetsSync] Gagal pushProgressToSheets, masuk retry queue (pendingSync=true):', errMsg);
     setPendingSync(true);
@@ -374,6 +392,8 @@ export async function pushProgressToSheets(
       status: 'offline',
       error: `Koneksi gagal saat menyimpan progres (${errMsg})`
     };
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
@@ -419,7 +439,9 @@ export async function syncProgressBidirectional(
 
   const cloudData = pullResult.data;
   const merged = cloudData ? mergeProgressState(localData, cloudData) : syncDerivedProgressFields(localData);
-  const didChangeLocal = hasMeaningfulProgressDiff(localData, merged);
+  const didChangeLocal =
+    hasMeaningfulProgressDiff(localData, merged) ||
+    localData.currentStageId !== merged.currentStageId;
   const localHasActivity = hasLocalLearningActivity(merged);
 
   // Deteksi apakah hasil gabungan lebih kaya dari cloud (mis. Mobile PWA clearedStages [1, 2] > cloud [])

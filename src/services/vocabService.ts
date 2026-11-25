@@ -152,13 +152,9 @@ export async function fetchVocabularyData(): Promise<VocabFetchResult> {
   try {
     const response = await fetch(apiUrl, {
       method: 'GET',
-      headers: {
-        'Accept': 'application/json'
-      },
+      redirect: 'follow',
       signal: controller.signal
     });
-
-    clearTimeout(timeoutId);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -185,7 +181,6 @@ export async function fetchVocabularyData(): Promise<VocabFetchResult> {
     };
 
   } catch (err: unknown) {
-    clearTimeout(timeoutId);
     const errorMessage = err instanceof Error ? err.message : String(err);
     console.warn('[VocabService] Fetch Google Sheets gagal, beralih ke fallback:', errorMessage);
 
@@ -205,6 +200,8 @@ export async function fetchVocabularyData(): Promise<VocabFetchResult> {
       source: 'mock',
       error: errorMessage
     };
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
@@ -368,13 +365,9 @@ export async function fetchKnowledgeTopicsData(): Promise<KnowledgeTopicsFetchRe
 
     const response = await fetch(topicsUrl, {
       method: 'GET',
-      headers: {
-        'Accept': 'application/json'
-      },
+      redirect: 'follow',
       signal: controller.signal
     });
-
-    clearTimeout(timeoutId);
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -399,7 +392,6 @@ export async function fetchKnowledgeTopicsData(): Promise<KnowledgeTopicsFetchRe
       source: 'connected'
     };
   } catch (err: unknown) {
-    clearTimeout(timeoutId);
     const errorMessage = err instanceof Error ? err.message : String(err);
     console.warn('[VocabService] Fetch KnowledgeTopics gagal, beralih ke fallback:', errorMessage);
 
@@ -417,6 +409,8 @@ export async function fetchKnowledgeTopicsData(): Promise<KnowledgeTopicsFetchRe
       source: 'mock',
       error: errorMessage
     };
+  } finally {
+    clearTimeout(timeoutId);
   }
 }
 
